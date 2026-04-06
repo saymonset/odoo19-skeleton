@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    user: "1001:1001"
+    volumes:
+      - ./v19/odoo-web-data:/var/lib/odoo
+      - ./v19/config:/etc/odoo
+      - ./v19/addons/extra:/opt/odoo/custom-addons/extra
+      - ./v19/addons/oca:/opt/odoo/custom-addons/oca
+      - ./v19/addons/enterprise:/opt/odoo/custom-addons/enterprise
+      - ./v19/logs:/var/log/odoo
+      - ./v19/data:/var/lib/odoo/.local/share/Odoo
+
+  db:
+    volumes:
+      - "./v19/odoo_n8n_pgdata/data:/var/lib/postgresql/data/pgdata"
+      - "./v19/odoo_n8n_pgdata/init:/docker-entrypoint-initdb.d"
+
+  redis:
+    volumes:
+      - "./v19/redis_data:/data"

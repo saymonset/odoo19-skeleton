@@ -1,0 +1,163 @@
+# Hacer backup
+services:
+  chatwoot-postgres:
+    image: pgvector/pgvector:pg12
+    container_name: chatwoot-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: chatwoot 
+      POSTGRES_PASSWORD: chatwoot123
+      POSTGRES_DB: chatwoot_production
+    volumes:
+      - ./v19/chatwoot_pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatwoot -d chatwoot_production"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - odoo_network_19
+
+  chatwoot-app:
+    image: chatwoot/chatwoot:v4.12.0
+    container_name: chatwoot-app
+    restart: unless-stopped
+    depends_on:
+      chatwoot-postgres:
+        condition: service_healthy
+      # redis eliminado - ya existe externamente
+    environment:
+      RAILS_ENV: production
+      INSTALLATION_ENV: docker
+      NODE_ENV: production
+      
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      APP_HOST: https://chatwoot.integraia.lat
+      
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      RAILS_STORAGE_HOST: https://chatwoot.integraia.lat
+      
+      ACTIVE_STORAGE_SERVICE: local
+      FILE_ATTACHMENT_ENABLED: "true"
+      ENABLE_FILE_PICKER: "true"
+      MAXIMUM_FILE_SIZE: "10485760"
+      ENABLED_FILE_TYPES: "image/*,audio/*,video/*,text/*,application/pdf"
+      
+      ACTIVE_STORAGE_ROOT: /app/storage
+      RAILS_STORAGE_PATH: /app/storage
+      RAILS_ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_URL_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN: "604800"
+      
+      POSTGRES_USER: chatwoot
+      POSTGRES_PASSWORD: chatwoot123
+      POSTGRES_DB: chatwoot_production
+      POSTGRES_HOST: chatwoot-postgres
+      POSTGRES_PORT: 5432
+      DATABASE_URL: postgresql://chatwoot:chatwoot123@chatwoot-postgres:5432/chatwoot_production
+      
+      REDIS_PASSWORD: redis123
+      REDIS_URL: redis://:redis123@redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      
+      SECRET_KEY_BASE: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      RAILS_MASTER_KEY: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      
+      FORCE_SSL: "false"
+      ALLOW_INSECURE_SSL: "true"
+      DEFAULT_LOCALE: es
+      ENABLE_ACCOUNT_SIGNUP: "true"
+      
+      CORS_ALLOWED_ORIGINS: "*"
+      CORS_ALLOW_CREDENTIALS: "true"
+      
+      RAILS_LOG_TO_STDOUT: "true"
+      RAILS_SERVE_STATIC_FILES: "true"
+      
+      API_AUTH_TOKEN: chatwoot_api_token_1234567890  
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./v19/chatwoot_storage:/app/storage
+      - ./v19/chatwoot_logs:/app/log
+      - ./v19/chatwoot_tmp:/app/tmp
+    networks:
+      - odoo_network_19
+    command: >
+      sh -c "
+        rm -f /app/tmp/pids/server.pid 2>/dev/null &&
+        
+        # Esperar PostgreSQL
+        until pg_isready -h chatwoot-postgres -p 5432 -U chatwoot -d chatwoot_production 2>/dev/null; do
+          echo 'Esperando PostgreSQL...' &&
+          sleep 5;
+        done &&
+        
+        # Esperar un momento para Redis (sin redis-cli)
+        echo 'Esperando a que Redis esté listo...' &&
+        sleep 15 &&
+        
+        # Inicializar base de datos
+        bundle exec rails db:chatwoot_prepare &&
+        
+        # Iniciar servidor
+        bundle exec rails server -p 3000 -b 0.0.0.0
+      "
+
+  chatwoot-sidekiq:
+    image: chatwoot/chatwoot:v4.12.0
+    container_name: chatwoot-sidekiq
+    restart: unless-stopped
+    depends_on:
+      - chatwoot-postgres
+      # redis eliminado - ya existe externamente
+    environment:
+      RAILS_ENV: production
+      INSTALLATION_ENV: docker
+      
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      
+      POSTGRES_USER: chatwoot
+      POSTGRES_PASSWORD: chatwoot123
+      POSTGRES_DB: chatwoot_production
+      POSTGRES_HOST: chatwoot-postgres
+      DATABASE_URL: postgresql://chatwoot:chatwoot123@chatwoot-postgres:5432/chatwoot_production
+      
+      REDIS_PASSWORD: redis123
+      REDIS_URL: redis://:redis123@redis:6379
+      
+      SECRET_KEY_BASE: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      RAILS_MASTER_KEY: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      
+      ACTIVE_STORAGE_SERVICE: local
+      FILE_ATTACHMENT_ENABLED: "true"
+      
+    volumes:
+      - ./v19/chatwoot_storage:/app/storage
+      - ./v19/chatwoot_logs:/app/log
+      - ./v19/chatwoot_tmp:/app/tmp
+    networks:
+      - odoo_network_19
+    command: >
+      sh -c "
+        # Esperar un momento para que Redis esté listo
+        echo 'Esperando a que Redis esté disponible...' &&
+        sleep 20 &&
+        
+        # Iniciar Sidekiq
+        bundle exec sidekiq -C config/sidekiq.yml
+      "
+
+networks:
+  odoo_network_19:
+    external: true
+    name: odoo_network_19

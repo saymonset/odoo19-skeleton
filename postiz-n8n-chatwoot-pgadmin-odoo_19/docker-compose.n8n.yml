@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.2.6
+    container_name: "n8n-container"
+    restart: unless-stopped
+    user: "1000:1000"
+    networks:
+      - odoo_network_19
+    ports:
+      - "5678:5678"
+    environment:
+      # Base de datos
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=db_n8n
+      - DB_POSTGRESDB_HOST=db
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=odoo
+      - DB_POSTGRESDB_PASSWORD_FILE=/run/secrets/postgres_password
+      
+      # Autenticación básica
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD_FILE=/run/secrets/n8n_password
+      - N8N_ENCRYPTION_KEY_FILE=/run/secrets/n8n_encryption_key
+      
+      # URLs
+      - N8N_HOST=localhost
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_EDITOR_BASE_URL=http://localhost:5678/
+      
+      # Configuración general
+      - N8N_RUNNERS_ENABLED=false
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_CORS_ALLOW_ORIGIN=*
+      - N8N_CORS_ALLOW_CREDENTIALS=true
+      
+      # ✅ REDIS CONFIGURACIÓN CORRECTA
+      # Cache
+      - N8N_CACHE_BACKEND=redis
+      - N8N_CACHE_REDIS_HOST=redis
+      - N8N_CACHE_REDIS_PORT=6379
+      - N8N_CACHE_REDIS_PASSWORD=redis123
+      - N8N_CACHE_REDIS_DB=1
+      
+      # Queue (Bull)
+      - QUEUE_BULL_REDIS_HOST=redis
+      - QUEUE_BULL_REDIS_PORT=6379
+      - QUEUE_BULL_REDIS_PASSWORD=redis123
+      - QUEUE_BULL_REDIS_DB=1
+      
+      # Push/WebSockets
+      - N8N_PUSH_BACKEND=redis
+      - N8N_PUSH_REDIS_HOST=redis
+      - N8N_PUSH_REDIS_PORT=6379
+      - N8N_PUSH_REDIS_PASSWORD=redis123
+      - N8N_PUSH_REDIS_DB=1
+      
+      # Ejecuciones
+      - EXECUTIONS_MODE=regular
+      - EXECUTIONS_DATA_SAVE_ON_ERROR=all
+      - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
+      - EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS=true
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=168
+      
+      # Logs
+      - N8N_LOG_LEVEL=info
+      
+    volumes:
+      - "./v19/n8n_data:/home/node/.n8n"
+    secrets:
+      - postgres_password
+      - n8n_password
+      - n8n_encryption_key
+    depends_on:
+      - db
+      - redis
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password.txt
+  n8n_password:
+    file: ./secrets/n8n_password.txt
+  n8n_encryption_key:
+    file: ./secrets/n8n_encryption_key.txt
+
+networks:
+  odoo_network_19:
+    external: true
+    name: odoo_network_19

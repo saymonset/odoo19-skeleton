@@ -1,0 +1,98 @@
+# Este archivo une todos los servicios
+services:
+  # Incluir servicios de Odoo
+  db:
+    extends:
+      file: docker-compose.odoo.yml
+      service: db
+  
+  redis:
+    extends:
+      file: docker-compose.odoo.yml
+      service: redis
+  
+  web:
+    extends:
+      file: docker-compose.odoo.yml
+      service: web
+  
+  # Incluir n8n
+  n8n:
+    extends:
+      file: docker-compose.n8n.yml
+      service: n8n
+  
+  # Incluir Chatwoot - SERVICIOS INDIVIDUALES
+  chatwoot-postgres:
+    extends:
+      file: docker-compose.chatwoot.yml
+      service: chatwoot-postgres
+  
+  chatwoot-app:
+    extends:
+      file: docker-compose.chatwoot.yml
+      service: chatwoot-app
+  
+  chatwoot-sidekiq:
+    extends:
+      file: docker-compose.chatwoot.yml
+      service: chatwoot-sidekiq
+  
+  # Opcional: Worker de Chatwoot
+  # chatwoot-worker:
+  #   extends:
+  #     file: docker-compose.chatwoot.yml
+  #     service: chatwoot-worker
+
+    # Incluir Postiz
+  postiz:
+    extends:
+      file: docker-compose.postiz.yml
+      service: postiz
+
+  temporal-elasticsearch:
+    extends:
+      file: docker-compose.postiz.yml
+      service: temporal-elasticsearch
+
+  temporal:
+    extends:
+      file: docker-compose.postiz.yml
+      service: temporal
+
+  temporal-admin-tools:
+    extends:
+      file: docker-compose.postiz.yml
+      service: temporal-admin-tools
+
+  temporal-ui:
+    extends:
+      file: docker-compose.postiz.yml
+      service: temporal-ui
+
+  spotlight:
+    extends:
+      file: docker-compose.postiz.yml
+      service: spotlight
+  
+  # Incluir pgAdmin (opcional)
+  pgadmin:
+    extends:
+      file: docker-compose.pgadmin.yml
+      service: pgadmin
+
+# Secrets globales
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password.txt
+  redis_password:
+    file: ./secrets/redis_password.txt
+  n8n_password:
+    file: ./secrets/n8n_password.txt
+  n8n_encryption_key:
+    file: ./secrets/n8n_encryption_key.txt
+
+# CORRECCIÓN: La red debe ser external: true porque ya existe
+networks:
+  odoo_network_19:
+    external: true

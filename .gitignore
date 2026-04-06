@@ -1,0 +1,49 @@
+# dotfiles, with exceptions:
+.*
+!.gitignore
+
+# python compiled files
+*.py[co]
+
+# emacs backup files
+*~
+
+# not tracked subdirectories
+/env/
+/src/
+/filestore/
+/logs/
+
+
+# Nueva instancia leads (v18_2)
+leads/odoo_instancia_2/v18_2/addons/extra/chat-bot-unisa/
+leads/odoo_instancia_2/v18_2/pgdata/
+leads/odoo_instancia_2/v18_2/n8n_data/
+leads/odoo_instancia_2/v18_2/odoo-web-data/
+leads/odoo_instancia_2/v18_2/logs/
+leads/odoo_instancia_2/v18_2/filestore/
+
+# Excepción para el archivo de configuración de Odoo
+!leads/odoo_instancia_2/v18_2/config/odoo.conf
+
+# ----- Instancia Odoo 19 (postiz-n8n-chatwoot-pgadmin-odoo_19) -----
+postiz-n8n-chatwoot-pgadmin-odoo_19/.env
+postiz-n8n-chatwoot-pgadmin-odoo_19/secrets/
+postiz-n8n-chatwoot-pgadmin-odoo_19/backup/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/backups/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/data/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/logs/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/n8n_data/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/odoo-web-data/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/odoo_n8n_pgdata/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/pgadmin-data/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/postiz_uploads/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/redis_data/
+# Ignorar todas las carpetas que empiezan con chatwoot_
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/chatwoot_*/
+
+# Excepción para conservar el config de Odoo si se necesitara (opcional)
+# !postiz-n8n-chatwoot-pgadmin-odoo_19/v19/config/odoo.conf
+
+# General data directories
+**/temporal_elasticsearch_data/
