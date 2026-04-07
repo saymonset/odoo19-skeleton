@@ -30,11 +30,28 @@ database_exists() {
     psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -lqt | cut -d \| -f 1 | grep -qw "$DB_NAME"
 }
 
+database_initialized() {
+    # Verifica si la tabla 'res_users' existe (tabla base de Odoo)
+    psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" -tAc "SELECT 1 FROM information_schema.tables WHERE table_name='res_users'" 2>/dev/null | grep -q 1
+}
+
 wait_for_postgres
 
+# Crear la base de datos si no existe
 if ! database_exists; then
-    echo "ERROR: La base de datos '$DB_NAME' no existe."
-    exit 1
+    echo "INFO: La base de datos '$DB_NAME' no existe. Creándola..."
+    psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -c "CREATE DATABASE $DB_NAME OWNER $DB_USER;"
+    echo "INFO: Base de datos '$DB_NAME' creada."
+fi
+
+# Inicializar la base de datos si no está inicializada
+if ! database_initialized; then
+    echo "INFO: Base de datos no inicializada. Inicializando con módulo base (esto puede tomar 2-3 minutos)..."
+    cd /opt/odoo/odoo-core
+    python3 odoo-bin -c "$CONFIG_FILE" --database="$DB_NAME" --stop-after-init -i base --log-level=info --without-demo=True
+    echo "INFO: Base de datos inicializada correctamente."
+else
+    echo "INFO: Base de datos ya inicializada."
 fi
 
 # Buscar el binario de Odoo
@@ -46,4 +63,4 @@ else
 fi
 
 echo "Iniciando Odoo con: $ODOO_BIN"
-exec $ODOO_BIN -c "$CONFIG_FILE" "$@"
+exec $ODOO_BIN -c "$CONFIG_FILE" --database="$DB_NAME" "$@"

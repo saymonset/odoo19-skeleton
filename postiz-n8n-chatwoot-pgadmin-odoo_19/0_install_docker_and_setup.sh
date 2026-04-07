@@ -14,15 +14,15 @@ print_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
 print_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 # 1. Actualizar sistema
-print_message "[1/7] Actualizando sistema..."
+print_message "[1/8] Actualizando sistema..."
 sudo apt update && sudo apt upgrade -y
 
 # 2. Instalar dependencias
-print_message "[2/7] Instalando dependencias..."
+print_message "[2/8] Instalando dependencias..."
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common openssl
 
 # 3. Agregar repositorio de Docker
-print_message "[3/7] Agregando repositorio de Docker..."
+print_message "[3/8] Agregando repositorio de Docker..."
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -30,21 +30,21 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # 4. Instalar Docker Engine
-print_message "[4/7] Instalando Docker Engine..."
+print_message "[4/8] Instalando Docker Engine..."
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 5. Agregar usuario al grupo docker
-print_message "[5/7] Agregando usuario al grupo docker..."
+print_message "[5/8] Agregando usuario al grupo docker..."
 sudo usermod -aG docker $USER
 
 # 6. Crear grupo odoogroup y agregar usuario
-print_message "[6/7] Configurando grupo odoogroup..."
+print_message "[6/8] Configurando grupo odoogroup..."
 sudo groupadd -f odoogroup
 sudo usermod -aG odoogroup $USER
 
-# 7. Configurar directorios y permisos
-print_message "[7/7] Configurando directorios y permisos..."
+# 7. Configurar directorios y permisos (LIMPIO DESDE CERO)
+print_message "[7/8] Configurando directorios y permisos..."
 
 # Detener contenedores si existen
 print_message "Deteniendo contenedores existentes..."
@@ -54,8 +54,9 @@ docker compose -f docker-compose.chatwoot.yml down 2>/dev/null || true
 docker compose -f docker-compose.pgadmin.yml down 2>/dev/null || true
 docker compose -f docker-compose.postiz.yml down 2>/dev/null || true
 
-# Borrar directorios con permisos incorrectos
-print_message "Limpiando directorios antiguos..."
+# LIMPIEZA TOTAL DE DIRECTORIOS ANTIGUOS
+print_message "Limpiando directorios antiguos por completo..."
+sudo rm -rf v19/ secrets/ backups/
 sudo rm -rf v19/chatwoot_logs v19/chatwoot_pgdata v19/chatwoot_tmp v19/chatwoot_storage
 sudo rm -rf v19/logs v19/n8n_data v19/odoo_n8n_pgdata
 sudo rm -rf v19/redis_data v19/temporal_elasticsearch_data
@@ -79,7 +80,7 @@ mkdir -p v19/redis_data
 sudo chown -R 1001:1001 v19/redis_data
 chmod 755 v19/redis_data
 
-# n8n (usuario 1000) - CORREGIDO
+# n8n (usuario 1000)
 print_message "Configurando n8n (UID 1000)..."
 mkdir -p v19/n8n_data
 sudo chown -R 1000:1000 v19/n8n_data
@@ -115,21 +116,41 @@ mkdir -p v19/config
 sudo chown -R $USER:$USER v19/config
 chmod 755 v19/config
 
-if [ ! -f "v19/config/odoo.conf" ]; then
-    print_message "Creando v19/config/odoo.conf por defecto..."
-    cat > v19/config/odoo.conf << 'EOF'
+# CREAR ODOO.CONF ACTUALIZADO (con proxy_mode=False)
+print_message "Creando v19/config/odoo.conf (configuración optimizada)..."
+cat > v19/config/odoo.conf << 'EOF'
 [options]
+addons_path = /opt/odoo/odoo-core/addons,/opt/odoo/custom-addons/extra,/opt/odoo/custom-addons/oca,/opt/odoo/custom-addons/enterprise
 admin_passwd = admin
 db_host = db
 db_port = 5432
 db_user = odoo
-db_password = odoo_password_secure
-addons_path = /opt/odoo/odoo-core/addons,/opt/odoo/custom-addons/extra,/opt/odoo/custom-addons/oca,/opt/odoo/custom-addons/enterprise
-logfile = /var/log/odoo/odoo-server.log
+db_name = dbodoo19
+db_password = 0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
+db_sslmode = prefer
+db_template = template0
+db_maxconn = 64
+http_enable = True
+http_interface = 0.0.0.0
+http_port = 8069
+gevent_port = 8072
+proxy_mode = False
+workers = 2
+max_cron_threads = 1
+limit_memory_hard = 1610612736
+limit_memory_soft = 1073741824
+limit_request = 8192
+limit_time_cpu = 300
+limit_time_real = 600
+logfile = /var/log/odoo/odoo.log
+log_level = info
+data_dir = /var/lib/odoo/.local/share/Odoo
+server_wide_modules = base,web
+without_demo = all
 EOF
-    sudo chown $USER:$USER v19/config/odoo.conf
-    chmod 644 v19/config/odoo.conf
-fi
+
+sudo chown $USER:$USER v19/config/odoo.conf
+chmod 644 v19/config/odoo.conf
 
 # Addons Odoo (usuario 1001)
 print_message "Configurando addons de Odoo..."
@@ -137,42 +158,47 @@ mkdir -p v19/addons/extra v19/addons/oca v19/addons/enterprise
 sudo chown -R 1001:1001 v19/addons
 chmod 755 v19/addons
 
-# Configurar secrets
+# Configurar secrets (CON TU CONTRASEÑA ESPECÍFICA)
 print_message "Configurando secrets..."
 mkdir -p secrets
 chmod 755 secrets
 
-if [ ! -f "secrets/postgres_password.txt" ]; then
-    print_message "Generando nuevos secrets..."
-    openssl rand -hex 32 > secrets/postgres_password.txt
-    openssl rand -hex 32 > secrets/redis_password.txt
+# Usar tu contraseña específica
+cat > secrets/postgres_password.txt << 'EOF'
+0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
+EOF
+
+cat > secrets/redis_password.txt << 'EOF'
+redis123
+EOF
+
+# Generar otros secrets si no existen
+if [ ! -f "secrets/n8n_password.txt" ]; then
     openssl rand -hex 32 > secrets/n8n_password.txt
+fi
+
+if [ ! -f "secrets/n8n_encryption_key.txt" ]; then
     openssl rand -hex 64 > secrets/n8n_encryption_key.txt
+fi
+
+if [ ! -f "secrets/chatwoot_secret_key_base.txt" ]; then
     echo "chatwoot_secret_key_base_$(openssl rand -hex 32)" > secrets/chatwoot_secret_key_base.txt
-    echo "✓ Secrets generados"
-else
-    print_message "✓ Secrets ya existen"
 fi
 
 chmod 644 secrets/*.txt
+print_message "✓ Secrets configurados"
 
-# Crear archivo .env si no existe
-if [ ! -f ".env" ]; then
-    if [ -f "env-example" ]; then
-        print_message "Copiando env-example a .env..."
-        cp env-example .env
-    else
-        print_message "Creando archivo .env básico..."
-        cat > .env << 'EOF'
+# Crear archivo .env actualizado
+print_message "Creando archivo .env..."
+cat > .env << 'EOF'
 VERSION=19
 POSTGRES_DB=dbodoo19
 POSTGRES_USER=odoo
-POSTGRES_PASSWORD=odoo_password_secure
+POSTGRES_PASSWORD=0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
 REDIS_PASSWORD=redis123
 EOF
-    fi
-    chmod 644 .env
-fi
+
+chmod 644 .env
 
 # Crear docker-compose.override.yml si no existe
 if [ ! -f "docker-compose.override.yml" ]; then
@@ -203,7 +229,8 @@ services:
 EOF
 fi
 
-# Verificar Docker
+# 8. Verificar Docker
+print_message "[8/8] Verificación final..."
 echo ""
 echo "=== Verificación final ==="
 docker --version
@@ -218,8 +245,8 @@ echo ""
 echo "Secrets generados:"
 ls -la secrets/
 echo ""
-echo "✅ Instalación completada"
+echo "✅ Instalación y configuración completada"
 echo ""
 print_warning "⚠️  IMPORTANTE: Cierra sesión y vuelve a entrar para aplicar cambios de grupo"
-echo "   Luego ejecuta: ./1_despliegue_odoo_19_servicios_adicionales.sh"
-echo "   Y después: ./2_despliegue_servicios_adicionales.sh"
+echo "   Luego ejecuta: ./1_deploy_odoo.sh"
+echo "   Y después: ./2_deploy_services.sh"

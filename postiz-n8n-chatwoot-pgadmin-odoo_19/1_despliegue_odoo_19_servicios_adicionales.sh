@@ -1,209 +1,136 @@
 #!/bin/bash
 
-# Script completo para despliegue de Odoo 19 con servicios adicionales
-# Autor: Configuración personalizada
-# Fecha: $(date +%Y-%m-%d)
-
-set -e  # Detener el script si hay algún error
+# Script para despliegue de Odoo 19 (VERSIÓN DEFINITIVA - SIMPLIFICADA)
+set -e
 
 # Colores para output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+BLUE='\033[0;34m'
+NC='\033[0m'
 
-# Función para imprimir mensajes
-print_message() {
-    echo -e "${GREEN}[INFO]${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
+print_message() { echo -e "${GREEN}[INFO]${NC} $1"; }
+print_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+print_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
+print_header() { echo -e "${BLUE}════════════════════════════════════════════════════════════${NC}"; echo -e "${BLUE} $1${NC}"; echo -e "${BLUE}════════════════════════════════════════════════════════════${NC}"; }
 
 # 1. Construcción de la Imagen Personalizada
-print_message "Paso 1: Construcción de la imagen personalizada Odoo 19"
+print_header "Paso 1: Construcción de la imagen personalizada Odoo 19"
 
-# Eliminar recursos anteriores (opcional)
-print_message "Eliminando recursos anteriores..."
-docker rm -f odoo-pers-19 2>/dev/null || true
+print_message "Eliminando imagen anterior..."
 docker image rm odoo-pers:19 2>/dev/null || true
 
-# Construir nueva imagen
 print_message "Construyendo nueva imagen odoo-pers:19..."
-docker build -t odoo-pers:19 .
+docker build --no-cache -t odoo-pers:19 .
 
 # 2. Configuración del archivo .env
-print_message "Paso 2: Configuración del archivo .env"
+print_header "Paso 2: Configuración del archivo .env"
 
-# Copiar el archivo env-example a .env si no existe
 if [ ! -f .env ]; then
-    if [ -f env-example ]; then
-        cp env-example .env
-        print_message "Archivo .env creado desde env-example"
-    else
-        print_warning "No se encontró archivo env-example. Creando .env básico..."
-        cat > .env << EOF
+    print_warning "No se encontró .env. Creando archivo..."
+    cat > .env << 'EOF'
 VERSION=19
 POSTGRES_DB=dbodoo19
 POSTGRES_USER=odoo
-POSTGRES_PASSWORD=odoo_password_secure
+POSTGRES_PASSWORD=0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
 REDIS_PASSWORD=redis123
 EOF
-        print_message "Archivo .env básico creado"
-    fi
-else
-    print_message "Archivo .env ya existe"
 fi
 
-# Cargar variables de entorno
-source .env 2>/dev/null || VERSION="19"
-print_message "Variables de entorno cargadas. VERSION=$VERSION"
+source .env
+print_message "Variables cargadas. VERSION=$VERSION"
 
 # 3. Creación de la red en Docker
-print_message "Paso 3: Creación de la red Docker"
+print_header "Paso 3: Creación de la red Docker"
 
-# Crear red con nombre específico por versión (USANDO GUIÓN BAJO)
-docker network create odoo_network_${VERSION} 2>/dev/null && print_message "Red odoo_network_${VERSION} creada" || print_message "Red odoo_network_${VERSION} ya existe"
+if docker network ls | grep -q "odoo_network_${VERSION}"; then
+    print_message "✓ Red odoo_network_${VERSION} ya existe"
+else
+    docker network create odoo_network_${VERSION}
+    print_message "✓ Red odoo_network_${VERSION} creada"
+fi
 
-# Verificar red creada
-print_message "Redes Docker disponibles:"
-docker network ls | grep odoo_network
-
-# 4. Detener servicios existentes
-print_message "Paso 4: Deteniendo servicios existentes"
-docker-compose down 2>/dev/null || print_message "No hay servicios corriendo con docker-compose"
+# 4. Detener y eliminar todo (limpieza total)
+print_header "Paso 4: Limpieza total de contenedores"
+docker compose -f docker-compose.odoo.yml down -v 2>/dev/null || true
+docker stop odoo-db19-n8n odoo_redis odoo-19-web 2>/dev/null || true
+docker rm odoo-db19-n8n odoo_redis odoo-19-web 2>/dev/null || true
 
 # 5. Verificar archivos de secretos
-print_message "Paso 5: Verificando archivos de secretos"
+print_header "Paso 5: Verificando archivos de secretos"
 
-# Crear directorio de secretos si no existe
 mkdir -p secrets
 
-# Verificar/crear archivo de contraseña de PostgreSQL
 if [ ! -f secrets/postgres_password.txt ]; then
-    print_warning "No se encontró secrets/postgres_password.txt. Creando archivo..."
-    echo "${POSTGRES_PASSWORD:-odoo_password_secure}" > secrets/postgres_password.txt
+    echo "0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491" > secrets/postgres_password.txt
     chmod 600 secrets/postgres_password.txt
-    print_message "Archivo secrets/postgres_password.txt creado"
 fi
 
-# Verificar/crear archivo de contraseña de Redis
 if [ ! -f secrets/redis_password.txt ]; then
-    print_warning "No se encontró secrets/redis_password.txt. Creando archivo..."
-    echo "${REDIS_PASSWORD:-redis123}" > secrets/redis_password.txt
+    echo "redis123" > secrets/redis_password.txt
     chmod 600 secrets/redis_password.txt
-    print_message "Archivo secrets/redis_password.txt creado"
 fi
 
-# 6. Iniciar servicios en orden
-print_message "Paso 6: Iniciando servicios Docker Compose"
+print_message "✓ Secretos verificados"
 
-# Iniciar Odoo stack
-if [ -f docker-compose.odoo.yml ]; then
-    print_message "Iniciando Odoo stack con docker-compose.odoo.yml..."
-    docker compose -f docker-compose.odoo.yml up -d
-else
-    print_error "No se encontró el archivo docker-compose.odoo.yml"
-    exit 1
-fi
+# 6. Iniciar todos los servicios (DB, Redis y Odoo juntos)
+print_header "Paso 6: Iniciando todos los servicios"
 
-# Esperar a que PostgreSQL esté listo
-print_message "Esperando a que PostgreSQL esté listo (máximo 60 segundos)..."
-MAX_RETRIES=12
+docker compose -f docker-compose.odoo.yml up -d
+print_message "✓ Todos los servicios iniciados"
+
+# 7. Esperar a que PostgreSQL esté realmente listo
+print_header "Paso 7: Esperando a PostgreSQL"
+
+sleep 10
+MAX_RETRIES=20
 RETRY_COUNT=0
 while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-    if docker exec odoo-db19-n8n pg_isready -U odoo -d dbodoo19 2>/dev/null; then
-        print_message "PostgreSQL está listo!"
+    if docker exec odoo-db19-n8n pg_isready -U odoo 2>/dev/null; then
+        print_message "✓ PostgreSQL está listo"
         break
     fi
     RETRY_COUNT=$((RETRY_COUNT + 1))
-    echo "Esperando... ($RETRY_COUNT/$MAX_RETRIES)"
-    sleep 5
+    echo "Esperando PostgreSQL... ($RETRY_COUNT/$MAX_RETRIES)"
+    sleep 3
 done
 
-if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
-    print_error "Timeout esperando a PostgreSQL"
-    exit 1
-fi
+# 8. Crear bases de datos adicionales (usando postgres como DB base)
+print_header "Paso 8: Creando bases de datos adicionales"
 
-# 7. Crear bases de datos adicionales
-print_message "Paso 7: Creando bases de datos adicionales (postiz, temporal)"
+for db in postiz temporal db_n8n; do
+    print_message "Creando base de datos: $db"
+    docker exec odoo-db19-n8n psql -U odoo -d postgres -c "CREATE DATABASE $db OWNER odoo;" 2>/dev/null || print_message "✓ Base de datos $db ya existe"
+done
 
-# Función para crear base de datos si no existe
-create_database_if_not_exists() {
-    local db_name=$1
-    local exists=$(docker exec odoo-db19-n8n psql -U odoo -d dbodoo19 -tAc "SELECT 1 FROM pg_database WHERE datname='$db_name'")
-    
-    if [ -z "$exists" ]; then
-        print_message "Creando base de datos: $db_name"
-        docker exec odoo-db19-n8n psql -U odoo -d dbodoo19 -c "CREATE DATABASE $db_name;"
-        print_message "Base de datos $db_name creada exitosamente"
-    else
-        print_message "La base de datos $db_name ya existe"
-    fi
-}
+# 9. Verificar e inicializar Odoo
+print_header "Paso 9: Verificando Odoo"
 
-# Crear bases de datos necesarias
-create_database_if_not_exists "postiz"
-create_database_if_not_exists "temporal"
-create_database_if_not_exists "db_n8n"
+sleep 30
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:18069 2>/dev/null || echo "000")
 
-# Verificar bases de datos creadas
-print_message "Bases de datos existentes:"
-docker exec odoo-db19-n8n psql -U odoo -d dbodoo19 -c "\l"
-
-# 8. Verificar estado de los servicios
-print_message "Paso 8: Verificando estado de los servicios"
-
-echo ""
-print_message "=== Estado de los contenedores ==="
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" | grep -E "odoo|db|redis"
-
-echo ""
-print_message "=== Verificación específica de servicios ==="
-
-# Verificar Redis
-if docker exec odoo_redis redis-cli -a redis123 ping 2>/dev/null | grep -q "PONG"; then
-    print_message "✓ Redis está funcionando correctamente"
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302" ] || [ "$HTTP_CODE" = "303" ]; then
+    print_message "✓ Odoo responde correctamente (HTTP $HTTP_CODE)"
 else
-    print_error "✗ Redis no responde"
+    print_warning "⚠ Odoo aún no responde (HTTP $HTTP_CODE). Revisando logs..."
+    docker logs odoo-19-web --tail 30
 fi
 
-# Verificar Odoo
-if curl -s http://localhost:19069/web/database/selector > /dev/null 2>&1; then
-    print_message "✓ Odoo está accesible en el puerto 19069"
-else
-    print_warning "✗ Odoo puede que aún esté iniciando (espera unos segundos)"
-fi
-
-# Verificar PostgreSQL
-if docker exec odoo-db19-n8n pg_isready -U odoo -d dbodoo19 > /dev/null 2>&1; then
-    print_message "✓ PostgreSQL está funcionando correctamente"
-else
-    print_error "✗ PostgreSQL no está funcionando correctamente"
-fi
+# 10. Resumen final
+print_header "🎉 DESPLIEGUE COMPLETADO"
 
 echo ""
-print_message "=== Resumen del despliegue ==="
-print_message "✓ Imagen Odoo personalizada construida"
-print_message "✓ Red Docker creada: odoo_network_${VERSION}"
-print_message "✓ Servicios iniciados: PostgreSQL, Redis, Odoo"
-print_message "✓ Bases de datos adicionales creadas: postiz, temporal"
+echo "=== SERVICIOS DESPLEGADOS ==="
+echo "🌐 Odoo 19:        http://localhost:18069"
+echo "📊 PostgreSQL:     localhost:5432 (user: odoo)"
+echo "📡 Redis:          localhost:6379 (password: redis123)"
+echo "🗄️ Bases creadas:  dbodoo19, postiz, temporal, db_n8n"
 echo ""
-print_message "=== Acceso a los servicios ==="
-echo "Odoo Web: http://localhost:19069"
-echo "Redis: localhost:6379 (password: redis123)"
-echo "PostgreSQL: localhost:5432 (database: dbodoo19, user: odoo)"
+echo "=== PRÓXIMOS PASOS ==="
+echo "Ejecuta: ./2_despliegue_servicios_adicionales.sh"
 echo ""
-print_message "=== Comandos útiles ==="
-echo "Ver logs: docker compose -f docker-compose.odoo.yml logs -f"
-echo "Detener servicios: docker compose -f docker-compose.odoo.yml down"
-echo "Acceder a PostgreSQL: docker exec -it odoo-db19-n8n psql -U odoo -d dbodoo19"
-echo "Acceder a Odoo shell: docker exec -it odoo-19-web bash"
+echo "=== VER LOGS ==="
+echo "docker logs -f odoo-19-web"
 echo ""
-print_message "¡Despliegue completado exitosamente!"
+print_message "¡Odoo 19 está listo! Accede a http://localhost:18069"

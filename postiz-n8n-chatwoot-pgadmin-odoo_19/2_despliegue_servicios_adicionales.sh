@@ -61,20 +61,20 @@ fi
 
 print_message "✓ Archivos de secretos verificados"
 
-# 1. Desplegar n8n
+# 1. Desplegar n8n (USANDO DOCKER-COMPOSE.YAML PRINCIPAL)
 print_header "Desplegando n8n"
-if [ -f docker-compose.n8n.yml ]; then
-    print_message "Iniciando n8n..."
-    docker compose -f docker-compose.n8n.yml up -d
+if [ -f docker-compose.yaml ]; then
+    print_message "Iniciando n8n desde docker-compose.yaml..."
+    docker compose -f docker-compose.yaml up -d n8n
     print_message "✓ n8n desplegado correctamente"
     print_message "  Acceso: http://localhost:5678"
 else
-    print_error "No se encontró docker-compose.n8n.yml"
+    print_error "No se encontró docker-compose.yaml"
     exit 1
 fi
 
 # Esperar que n8n esté listo
-sleep 5
+sleep 10
 
 # 2. Desplegar pgAdmin
 print_header "Desplegando pgAdmin"
@@ -106,7 +106,7 @@ fi
 # Verificar estado de los servicios
 print_header "Verificando estado de los servicios"
 echo ""
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" | grep -E "n8n|pgadmin|chatwoot|odoo" || true
+docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" | grep -E "n8n|pgadmin|chatwoot|odoo|db|redis" || true
 
 # Mostrar información de acceso
 print_header "Información de acceso a servicios"
@@ -135,7 +135,7 @@ if docker ps | grep -q "chatwoot"; then
 fi
 
 if docker ps | grep -q "odoo-19-web"; then
-    echo -e "${GREEN}✓ Odoo 19:${NC} http://localhost:19069"
+    echo -e "${GREEN}✓ Odoo 19:${NC} http://localhost:18069"
     echo "   Master Password: admin"
     echo ""
 fi
@@ -156,12 +156,12 @@ fi
 # Verificar backup (opcional)
 print_header "Verificar backups (opcional)"
 echo "Para verificar backups de Odoo, ejecuta:"
-echo "  docker exec -it odoo_app_backup ls /backup/daily"
+echo "  docker exec -it odoo_backup ls /backup/daily 2>/dev/null || echo 'No backups yet'"
 echo ""
 echo "Para ver logs de servicios:"
-echo "  docker compose -f docker-compose.n8n.yml logs -f"
+echo "  docker compose -f docker-compose.yaml logs -f n8n"
 echo "  docker compose -f docker-compose.chatwoot.yml logs -f"
+echo "  docker compose -f docker-compose.pgadmin.yml logs -f"
 echo ""
 
 print_message "¡Despliegue de servicios adicionales completado!"
-

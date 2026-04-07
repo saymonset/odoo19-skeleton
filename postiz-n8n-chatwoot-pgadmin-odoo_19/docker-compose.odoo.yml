@@ -70,8 +70,8 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "19069:8069"
-      - "19072:8072"
+      - "18069:8069"
+      - "18072:8072"
     volumes:
       - "./v19/odoo-web-data:/var/lib/odoo"
       - "./v19/config:/etc/odoo"
