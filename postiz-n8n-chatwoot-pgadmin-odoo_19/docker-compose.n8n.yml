@@ -26,10 +26,10 @@ services:
       - N8N_ENCRYPTION_KEY_FILE=/run/secrets/n8n_encryption_key
       
       # URLs
-      - N8N_HOST=localhost
-      - N8N_PROTOCOL=http
-      - WEBHOOK_URL=http://localhost:5678/
-      - N8N_EDITOR_BASE_URL=http://localhost:5678/
+      - N8N_HOST=n8n.integraia.lat
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://n8n.integraia.lat/
+      - N8N_EDITOR_BASE_URL=https://n8n.integraia.lat/
       
       # Configuración general
       - N8N_RUNNERS_ENABLED=false
@@ -38,26 +38,20 @@ services:
       - N8N_CORS_ALLOW_ORIGIN=*
       - N8N_CORS_ALLOW_CREDENTIALS=true
       
-      # ✅ REDIS CONFIGURACIÓN CORRECTA
-      # Cache
+      # Redis
       - N8N_CACHE_BACKEND=redis
       - N8N_CACHE_REDIS_HOST=redis
       - N8N_CACHE_REDIS_PORT=6379
       - N8N_CACHE_REDIS_PASSWORD=redis123
       - N8N_CACHE_REDIS_DB=1
       
-      # Queue (Bull)
       - QUEUE_BULL_REDIS_HOST=redis
       - QUEUE_BULL_REDIS_PORT=6379
       - QUEUE_BULL_REDIS_PASSWORD=redis123
       - QUEUE_BULL_REDIS_DB=1
       
-      # Push/WebSockets
-      - N8N_PUSH_BACKEND=redis
-      - N8N_PUSH_REDIS_HOST=redis
-      - N8N_PUSH_REDIS_PORT=6379
-      - N8N_PUSH_REDIS_PASSWORD=redis123
-      - N8N_PUSH_REDIS_DB=1
+      # ✅ SOLO CAMBIA ESTO
+      - N8N_PUSH_BACKEND=websocket
       
       # Ejecuciones
       - EXECUTIONS_MODE=regular
