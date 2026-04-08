@@ -15,8 +15,8 @@
 /logs/
 
 # Backups y datos locales
-v19/data.backup.*
-v19/addons.backup.*
+v19/data.backup.*/
+v19/addons.backup.*/
 v19/backups/*.dump
 v19/backups/*.tar.gz
 *.dump
@@ -46,6 +46,9 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/v19/odoo_n8n_pgdata/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/pgadmin-data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/postiz_uploads/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/redis_data/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/data.backup.*/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/addons.backup.*/
+
 # Ignorar todas las carpetas que empiezan con chatwoot_
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/chatwoot_*/
 
