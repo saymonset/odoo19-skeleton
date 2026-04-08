@@ -14,6 +14,13 @@
 /filestore/
 /logs/
 
+# Backups y datos locales
+v19/data.backup.*
+v19/addons.backup.*
+v19/backups/*.dump
+v19/backups/*.tar.gz
+*.dump
+*.tar.gz
 
 # Nueva instancia leads (v18_2)
 leads/odoo_instancia_2/v18_2/addons/extra/chat-bot-unisa/
