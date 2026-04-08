@@ -29,7 +29,7 @@ leads/odoo_instancia_2/v18_2/filestore/
 # ----- Instancia Odoo 19 (postiz-n8n-chatwoot-pgadmin-odoo_19) -----
 postiz-n8n-chatwoot-pgadmin-odoo_19/.env
 postiz-n8n-chatwoot-pgadmin-odoo_19/secrets/
-postiz-n8n-chatwoot-pgadmin-odoo_19/backup/
+!postiz-n8n-chatwoot-pgadmin-odoo_19/backup/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/backups/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/logs/
