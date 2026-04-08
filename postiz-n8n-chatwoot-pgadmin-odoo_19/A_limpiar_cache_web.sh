@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec odoo-19-web rm -rf /var/lib/odoo/.local/share/Odoo/assets-* /var/lib/odoo/.local/share/Odoo/sessions/* && docker restart odoo-19-web && sleep 15 && docker exec odoo-19-web rm -rf /var/lib/odoo/.local/share/Odoo/assets-* && docker restart odoo-19-web
