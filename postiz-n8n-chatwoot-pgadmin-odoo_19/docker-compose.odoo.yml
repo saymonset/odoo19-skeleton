@@ -101,7 +101,7 @@ services:
       # Scripts de backup
       - ./backup:/backup/scripts:ro
       # Directorio donde se guardarán los backups
-      - ./v19/backups:/backup/daily
+      - ./backup/out:/backup/daily
       # Datos de n8n (solo lectura)
       - ./v19/n8n_data:/n8n_data:ro
       # Configuración de Odoo (solo lectura)
