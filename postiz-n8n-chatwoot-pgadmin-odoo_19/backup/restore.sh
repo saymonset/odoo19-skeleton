@@ -1,19 +1,33 @@
 #!/bin/bash
 set -e
 
-# Configuración
-BACKUP_DIR="/home/simon/opt/odoo/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/backup_2026-04-10_16-27-26"
+# Configuración - DINÁMICA
+BACKUP_BASE_DIR="./backup/out"
 DB_CONTAINER="odoo-db19-n8n"
 ODOO_CONF="./v19/config/odoo.conf"
 
-# Extraer variables del archivo de configuración de forma dinámica
+# Buscar el backup más reciente automáticamente
+if [ -d "$BACKUP_BASE_DIR" ]; then
+    LATEST_BACKUP=$(ls -td "$BACKUP_BASE_DIR"/backup_* 2>/dev/null | head -1)
+    if [ -n "$LATEST_BACKUP" ]; then
+        BACKUP_DIR="$LATEST_BACKUP"
+    else
+        BACKUP_DIR="$BACKUP_BASE_DIR"
+    fi
+else
+    BACKUP_DIR="$BACKUP_BASE_DIR"
+fi
+
+# Configuración
+#BACKUP_DIR="/home/simon/opt/odoo/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/backup_2026-04-11_09-33-00"
+
+# Extraer variables del archivo de configuración
 if [ -f "$ODOO_CONF" ]; then
     DB_NAME=$(grep -E '^db_name\s*=' "$ODOO_CONF" | awk -F '=' '{print $2}' | tr -d ' ' | tr -d '\r')
     DB_USER=$(grep -E '^db_user\s*=' "$ODOO_CONF" | awk -F '=' '{print $2}' | tr -d ' ' | tr -d '\r')
     DB_PASSWORD=$(grep -E '^db_password\s*=' "$ODOO_CONF" | awk -F '=' '{print $2}' | tr -d ' ' | tr -d '\r')
 fi
 
-# Valores por defecto en caso de no encontrarlos o no existir el conf
 DB_NAME=${DB_NAME:-dbodoo19}
 DB_USER=${DB_USER:-odoo}
 
@@ -41,30 +55,27 @@ usage() {
 
 list_backups() {
     echo "=========================================="
-    echo "📚 Backups disponibles:"
+    echo "📚 Backups disponibles en: $BACKUP_BASE_DIR"
     echo "=========================================="
-    echo "🗄️ Bases de datos:"
-    ls -lh $BACKUP_DIR/odoo_db_*.dump 2>/dev/null || echo "   No hay backups"
-    echo ""
-    echo "📎 Filestore:"
-    ls -lh $BACKUP_DIR/odoo_filestore_*.tar.gz 2>/dev/null || echo "   No hay backups"
-    echo ""
-    echo "📚 Addons:"
-    ls -lh $BACKUP_DIR/odoo_addons_*.tar.gz 2>/dev/null || echo "   No hay backups"
+    
+    for backup in $(ls -td $BACKUP_BASE_DIR/backup_* 2>/dev/null); do
+        echo ""
+        echo "📁 $(basename $backup)"
+        echo "   🗄️ Bases de datos:"
+        ls -lh $backup/odoo_db_*.dump 2>/dev/null | awk '{print "      - " $9 " (" $5 ")"}' || echo "      No hay backups"
+        echo "   📎 Filestore+Addons:"
+        ls -lh $backup/odoo_filestore_*.tar.gz 2>/dev/null | awk '{print "      - " $9 " (" $5 ")"}' || echo "      No hay backups"
+    done
 }
 
 install_oca_modules() {
     info "Instalando módulos OCA encontrados en ./v19/addons/oca..."
     
-    # Lista de módulos OCA a instalar
-    OCA_MODULES=$(ls -d ./v19/addons/oca/*/ 2>/dev/null | xargs -n 1 basename | tr '\n' ',')
-    
-    if [ -z "$OCA_MODULES" ]; then
-        warn "No se encontraron módulos OCA en ./v19/addons/oca/"
+    # Verificar si hay módulos OCA
+    if [ ! -d "./v19/addons/oca" ]; then
+        warn "No existe el directorio ./v19/addons/oca"
         return
     fi
-    
-    info "Módulos OCA encontrados: $OCA_MODULES"
     
     # Agregar la ruta OCA al addons_path en el contenedor
     docker exec odoo-19-web bash -c "
@@ -74,9 +85,9 @@ install_oca_modules() {
         fi
     "
     
-    # Instalar módulos OCA
+    # Instalar cada módulo OCA encontrado
     for module in $(ls -d ./v19/addons/oca/*/ 2>/dev/null | xargs -n 1 basename); do
-        info "Instalando módulo: $module"
+        info "Instalando módulo OCA: $module"
         docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
             -c /etc/odoo/odoo.conf \
             --update=$module \
@@ -90,8 +101,13 @@ install_oca_modules() {
 install_extra_modules() {
     info "Instalando módulos EXTRA encontrados en ./v19/addons/extra..."
     
+    if [ ! -d "./v19/addons/extra" ]; then
+        warn "No existe el directorio ./v19/addons/extra"
+        return
+    fi
+    
     for module in $(ls -d ./v19/addons/extra/*/ 2>/dev/null | xargs -n 1 basename); do
-        info "Instalando módulo: $module"
+        info "Instalando módulo EXTRA: $module"
         docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
             -c /etc/odoo/odoo.conf \
             --update=$module \
@@ -103,9 +119,21 @@ install_extra_modules() {
 }
 
 fix_whatsapp_module() {
-    info "Arreglando módulo website_whatsapp..."
+    info "Verificando/Arreglando módulo website_whatsapp..."
     
-    # Crear el campo manualmente si el módulo no funciona
+    # Verificar si el módulo existe en el sistema de archivos
+    if [ -d "./v19/addons/oca/website_whatsapp" ]; then
+        info "Módulo website_whatsapp encontrado en ./v19/addons/oca/"
+        
+        # Instalar el módulo específicamente
+        docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
+            -c /etc/odoo/odoo.conf \
+            --update=website_whatsapp \
+            --stop-after-init \
+            --log-level=info 2>&1 | head -20
+    fi
+    
+    # Crear el campo manualmente como respaldo
     docker exec -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER psql -U $DB_USER -d $DB_NAME << EOF
     ALTER TABLE website ADD COLUMN IF NOT EXISTS whatsapp_text varchar DEFAULT '';
     INSERT INTO ir_model_fields (model, name, field_description, ttype, store, selectable)
@@ -114,7 +142,7 @@ fix_whatsapp_module() {
     DELETE FROM ir_ui_view WHERE arch_db::text LIKE '%whatsapp%';
 EOF
     
-    log "✅ Campo whatsapp_text creado/verificado"
+    log "✅ Campo whatsapp_text verificado/creado"
 }
 
 restore() {
@@ -127,123 +155,78 @@ restore() {
         exit 1
     fi
     
-    # Obtener la fecha del backup para buscar archivos relacionados
     local BASE_NAME=$(basename "$dump_file" | sed 's/odoo_db_//' | sed 's/\.dump//')
-    local ADDONS_FILE="$BACKUP_DIR/odoo_addons_${BASE_NAME}.tar.gz"
-    local FILESTORE_FILE="$BACKUP_DIR/odoo_filestore_${BASE_NAME}.tar.gz"
-    local CONFIG_FILE="$BACKUP_DIR/odoo_config_${BASE_NAME}.conf"
+    local FILESTORE_FILE="$(dirname "$dump_file")/odoo_filestore_${BASE_NAME}.tar.gz"
+    local CONFIG_FILE="$(dirname "$dump_file")/odoo_config_${BASE_NAME}.conf"
     
     info "Restaurando desde backup: $BASE_NAME"
     info "Base de datos destino: $DB_NAME"
+    info "Directorio de backup: $(dirname "$dump_file")"
     
     # 1. Detener Odoo web
     info "Deteniendo Odoo web..."
     docker compose -f docker-compose.odoo.yml stop web
     
-    # 2. Restaurar addons (código personalizado)
-    if [ -f "$ADDONS_FILE" ]; then
-        info "Restaurando addons personalizados..."
-        
-        # Eliminar addons existentes
-        sudo rm -rf ./v19/addons
-        
-        mkdir -p ./v19/addons
-        
-        # Extraer sin preservar permisos para evitar errores
-        tar --no-same-owner --no-same-permissions -xzf "$ADDONS_FILE" -C ./v19/addons/
-        
-        # Cambiar permisos al usuario 1001
-        sudo chown -R 1001:odoogroup ./v19/addons/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/addons/
-        sudo chmod -R 755 ./v19/addons/
-        
-        log "✅ Addons restaurados"
-    else
-        warn "No se encontró backup de addons"
-    fi
-    
-    # 2b. También restaurar addons OCA y EXTRA si existen como directorios separados
-    if [ -d "./v19/addons/extra" ]; then
-        sudo chown -R 1001:odoogroup ./v19/addons/extra 2>/dev/null || true
-        log "✅ Addons EXTRA preservados"
-    fi
-    
-    if [ -d "./v19/addons/oca" ]; then
-        sudo chown -R 1001:odoogroup ./v19/addons/oca 2>/dev/null || true
-        log "✅ Addons OCA preservados"
-    fi
-    
-    # 3. Restaurar filestore y renombrar al nombre de la BD actual
+    # 2. Restaurar filestore y addons (vienen juntos en el backup)
     if [ -f "$FILESTORE_FILE" ]; then
-        info "Restaurando filestore (documentos adjuntos)..."
+        info "Restaurando filestore y addons..."
         
-        # Crear directorio temporal para extraer
-        local TEMP_FILESTORE_DIR="/tmp/filestore_restore_$$"
-        mkdir -p "$TEMP_FILESTORE_DIR"
+        local TEMP_RESTORE_DIR="/tmp/restore_$$"
+        mkdir -p "$TEMP_RESTORE_DIR"
         
-        # Extraer el filestore backup sin preservar permisos
-        tar --no-same-owner --no-same-permissions -xzf "$FILESTORE_FILE" -C "$TEMP_FILESTORE_DIR"
+        # Extraer todo el contenido
+        tar --no-same-owner --no-same-permissions -xzf "$FILESTORE_FILE" -C "$TEMP_RESTORE_DIR"
         
-        # Buscar el directorio del filestore original
-        local FILESTORE_BASE=$(find "$TEMP_FILESTORE_DIR" -type d -name "filestore" | head -1)
+        # Buscar y restaurar filestore
+        local FILESTORE_BASE=$(find "$TEMP_RESTORE_DIR" -type d -name "filestore" | head -1)
         
         if [ -n "$FILESTORE_BASE" ]; then
-            # Obtener el nombre original de la BD del backup
+            # Obtener el nombre original de la BD
             ORIGINAL_DB_NAME=$(find "$FILESTORE_BASE" -maxdepth 1 -type d ! -path "$FILESTORE_BASE" | head -1 | xargs basename 2>/dev/null)
             
             if [ -n "$ORIGINAL_DB_NAME" ]; then
                 info "Filestore original detectado: $ORIGINAL_DB_NAME"
                 info "Renombrando a: $DB_NAME"
                 
-                # Eliminar filestore existente
                 sudo rm -rf ./v19/data/filestore/$DB_NAME
-                
-                # Crear estructura de directorios
                 mkdir -p ./v19/data/filestore
-                
-                # Mover y renombrar el filestore
                 sudo mv "$FILESTORE_BASE/$ORIGINAL_DB_NAME" "./v19/data/filestore/$DB_NAME"
                 
-                # Cambiar permisos al usuario 1001
-                sudo chown -R 1001:odoogroup ./v19/data/filestore/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/data/filestore/
-                sudo chmod -R 755 ./v19/data/filestore/
-                
-                log "✅ Filestore restaurado y renombrado a: $DB_NAME"
-            else
-                error "No se pudo determinar el nombre original del filestore"
-                sudo rm -rf ./v19/data/filestore/$DB_NAME
-                mkdir -p "./v19/data/filestore/$DB_NAME"
-                sudo cp -r "$FILESTORE_BASE"/* "./v19/data/filestore/$DB_NAME/"
-                sudo chown -R 1001:odoogroup ./v19/data/filestore/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/data/filestore/
-                warn "Filestore copiado con estructura alternativa"
-            fi
-        else
-            warn "Carpeta padre 'filestore' no explícita, buscando heurísticamente..."
-            local ANY_FILESTORE=$(find "$TEMP_FILESTORE_DIR" -type d -name "db*" -o -type d -name "*odoo*" | head -1)
-            if [ -n "$ANY_FILESTORE" ]; then
-                ORIGINAL_DB_NAME=$(basename "$ANY_FILESTORE")
-                
-                sudo rm -rf ./v19/data/filestore/$DB_NAME
-                mkdir -p "./v19/data/filestore"
-                sudo mv "$ANY_FILESTORE" "./v19/data/filestore/$DB_NAME"
-                sudo chown -R 1001:odoogroup ./v19/data/filestore/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/data/filestore/
-                log "✅ Filestore recuperado y renombrado a: $DB_NAME"
-            else
-                warn "No se pudo recuperar el filestore - Los documentos adjuntos se perderán"
+                log "✅ Filestore restaurado"
             fi
         fi
         
-        sudo rm -rf "$TEMP_FILESTORE_DIR"
+        # Buscar y restaurar addons (pueden estar en diferentes ubicaciones dentro del tar)
+        local ADDONS_DIRS=("addons" "custom-addons" "oca" "extra")
         
+        for dir in "${ADDONS_DIRS[@]}"; do
+            local ADDONS_PATH=$(find "$TEMP_RESTORE_DIR" -type d -name "$dir" | head -1)
+            if [ -n "$ADDONS_PATH" ] && [ "$(ls -A "$ADDONS_PATH" 2>/dev/null)" ]; then
+                info "Restaurando addons desde: $(basename "$ADDONS_PATH")"
+                sudo cp -r "$ADDONS_PATH"/* ./v19/addons/ 2>/dev/null || true
+            fi
+        done
+        
+        # También buscar directamente la estructura oca/website_whatsapp
+        local OCA_MODULE=$(find "$TEMP_RESTORE_DIR" -type d -path "*/oca/website_whatsapp" | head -1)
+        if [ -n "$OCA_MODULE" ]; then
+            info "Encontrado módulo OCA: website_whatsapp"
+            mkdir -p ./v19/addons/oca
+            sudo cp -r "$OCA_MODULE" ./v19/addons/oca/
+        fi
+        
+        # Limpiar permisos
+        sudo chown -R 1001:odoogroup ./v19/addons/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/addons/
+        sudo chown -R 1001:odoogroup ./v19/data/filestore/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/data/filestore/
+        sudo chmod -R 755 ./v19/addons/ ./v19/data/filestore/
+        
+        sudo rm -rf "$TEMP_RESTORE_DIR"
+        log "✅ Filestore y addons restaurados"
     else
-        warn "No se encontró backup de filestore - Los documentos adjuntos se perderán"
+        warn "No se encontró backup de filestore"
     fi
     
-    # 4. Restaurar configuración
-    if [ -f "$CONFIG_FILE" ]; then
-        info "Backup contiene configuración, pero se mantendrá odoo.conf original."
-    fi
-    
-    # 5. Restaurar base de datos
+    # 3. Restaurar base de datos
     info "Restaurando base de datos..."
     
     if [ -z "$DB_PASSWORD" ]; then
@@ -253,10 +236,9 @@ restore() {
     info "Eliminando base de datos existente..."
     docker exec -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER psql -U $DB_USER -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='$DB_NAME';" 2>/dev/null || true
     docker exec -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER dropdb -U $DB_USER --if-exists $DB_NAME
-    
     docker exec -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER createdb -U $DB_USER $DB_NAME
     
-    info "Restaurando dump de base de datos (esto puede tomar varios minutos)..."
+    info "Restaurando dump de base de datos..."
     set +e
     docker exec -i -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER pg_restore \
         -U $DB_USER \
@@ -264,7 +246,6 @@ restore() {
         --no-owner \
         --no-privileges \
         < "$dump_file" 2>&1
-    
     PG_EXIT=$?
     set -e
     
@@ -272,35 +253,29 @@ restore() {
         log "✅ Base de datos restaurada"
         
         if [ -n "$ORIGINAL_DB_NAME" ] && [ "$ORIGINAL_DB_NAME" != "$DB_NAME" ]; then
-            info "Actualizando referencias al filestore en la base de datos..."
+            info "Actualizando referencias al filestore..."
             docker exec -e PGPASSWORD=$DB_PASSWORD $DB_CONTAINER psql -U $DB_USER -d $DB_NAME -c \
                 "UPDATE ir_attachment SET store_fname = REPLACE(store_fname, '$ORIGINAL_DB_NAME', '$DB_NAME') WHERE store_fname LIKE '%$ORIGINAL_DB_NAME%';" \
-                2>/dev/null || warn "No se pudieron actualizar algunas referencias"
-            
-            log "✅ Referencias actualizadas en la base de datos"
+                2>/dev/null || true
         fi
     else
         error "❌ Falló la restauración de la base de datos (código: $PG_EXIT)"
         exit 1
     fi
     
-    # 6. Iniciar Odoo web
+    # 4. Iniciar Odoo
     info "Iniciando Odoo web..."
     docker compose -f docker-compose.odoo.yml start web
-    
-    # Esperar a que Odoo esté listo
-    info "Esperando a que Odoo esté listo..."
     sleep 15
     
-    # 7. Instalar módulos OCA si se solicitó
+    # 5. Instalar módulos si se solicitó
     if [ "$INSTALL_MODULES" = true ]; then
         info "Instalando módulos adicionales..."
         fix_whatsapp_module
         install_oca_modules
         install_extra_modules
         
-        # Reiniciar Odoo después de instalar módulos
-        info "Reiniciando Odoo para aplicar cambios..."
+        info "Reiniciando Odoo..."
         docker restart odoo-19-web
         sleep 10
     fi
@@ -324,7 +299,7 @@ case $1 in
         if [ "$3" = "--install-modules" ]; then
             INSTALL_MODULES=true
         fi
-        restore "$BACKUP_DIR/$2" "$INSTALL_MODULES"
+        restore "$2" "$INSTALL_MODULES"
         ;;
     --install-modules)
         INSTALL_MODULES=true
@@ -341,7 +316,7 @@ case $1 in
     *)
         LATEST=$(ls -t $BACKUP_DIR/odoo_db_*.dump 2>/dev/null | head -1)
         if [ -z "$LATEST" ]; then
-            error "No hay backups disponibles"
+            error "No hay backups disponibles en $BACKUP_DIR"
             exit 1
         fi
         restore "$LATEST" false
