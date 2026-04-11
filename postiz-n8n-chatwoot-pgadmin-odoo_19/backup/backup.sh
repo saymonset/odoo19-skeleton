@@ -56,24 +56,24 @@ else
     exit 1
 fi
 
-# 2. Backup de addons (todo ./v19/addons)
+# 2. Backup de addons (ahora desde ./v19/data/addons)
 log "📚 Backup de addons completos..."
-if [ -d "./v19/addons" ] && [ "$(ls -A ./v19/addons 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" -C ./v19/addons . 2>/dev/null
+if [ -d "./v19/data/addons" ] && [ "$(ls -A ./v19/data/addons 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" -C ./v19/data/addons . 2>/dev/null
     SIZE=$(du -sh "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" | cut -f1)
     log "✅ Addons respaldados: odoo_addons_${DATE}.tar.gz ($SIZE)"
 else
-    warn "⚠️ No hay addons para respaldar"
+    warn "⚠️ No hay addons para respaldar en ./v19/data/addons"
 fi
 
-# 3. Backup de filestore (./v19/data completo)
+# 3. Backup de filestore (./v19/data/filestore específicamente)
 log "📎 Backup de documentos adjuntos (filestore)..."
-if [ -d "./v19/data" ] && [ "$(ls -A ./v19/data 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" -C ./v19/data . 2>/dev/null
+if [ -d "./v19/data/filestore" ] && [ "$(ls -A ./v19/data/filestore 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" -C ./v19/data/filestore . 2>/dev/null
     SIZE=$(du -sh "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" | cut -f1)
     log "✅ Filestore respaldado: odoo_filestore_${DATE}.tar.gz ($SIZE)"
 else
-    warn "⚠️ No hay filestore para respaldar"
+    warn "⚠️ No hay filestore para respaldar en ./v19/data/filestore"
 fi
 
 # 4. Backup de configuración
@@ -85,23 +85,31 @@ else
     warn "⚠️ No se encontró archivo de configuración"
 fi
 
-# 5. Backup de addons OCA y EXTRA (por separado, opcional)
+# 5. Backup de addons OCA y EXTRA (desde la nueva ruta)
 log "📚 Backup de addons OCA específicos..."
-if [ -d "./v19/addons/oca" ] && [ "$(ls -A ./v19/addons/oca 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_oca_addons_${DATE}.tar.gz" -C ./v19/addons/oca . 2>/dev/null
+if [ -d "./v19/data/addons/oca" ] && [ "$(ls -A ./v19/data/addons/oca 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_oca_addons_${DATE}.tar.gz" -C ./v19/data/addons/oca . 2>/dev/null
     log "✅ Addons OCA respaldados"
 fi
 
-if [ -d "./v19/addons/extra" ] && [ "$(ls -A ./v19/addons/extra 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_extra_addons_${DATE}.tar.gz" -C ./v19/addons/extra . 2>/dev/null
+if [ -d "./v19/data/addons/extra" ] && [ "$(ls -A ./v19/data/addons/extra 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_extra_addons_${DATE}.tar.gz" -C ./v19/data/addons/extra . 2>/dev/null
     log "✅ Addons EXTRA respaldados"
 fi
 
-# 6. Limpiar backups antiguos
+# 6. Backup completo de ./v19/data (opcional, para tener todo junto)
+log "📦 Backup completo del directorio data (addons + filestore)..."
+if [ -d "./v19/data" ] && [ "$(ls -A ./v19/data 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_data_complete_${DATE}.tar.gz" -C ./v19/data . 2>/dev/null
+    SIZE=$(du -sh "$BACKUP_DIR/odoo_data_complete_${DATE}.tar.gz" | cut -f1)
+    log "✅ Data completo respaldado: odoo_data_complete_${DATE}.tar.gz ($SIZE)"
+fi
+
+# 7. Limpiar backups antiguos
 log "🧹 Eliminando backups con más de $RETENTION_DAYS días..."
 find $BACKUP_BASE_DIR -type d -name "backup_*" -mtime +$RETENTION_DAYS -exec rm -rf {} \; 2>/dev/null || true
 
-# 7. Resumen final
+# 8. Resumen final
 log "=========================================="
 log "✅ BACKUP COMPLETADO"
 log "=========================================="

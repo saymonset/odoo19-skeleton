@@ -18,9 +18,6 @@ else
     BACKUP_DIR="$BACKUP_BASE_DIR"
 fi
 
-# Configuración
-#BACKUP_DIR="/home/simon/opt/odoo/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/backup_2026-04-11_09-33-00"
-
 # Extraer variables del archivo de configuración
 if [ -f "$ODOO_CONF" ]; then
     DB_NAME=$(grep -E '^db_name\s*=' "$ODOO_CONF" | awk -F '=' '{print $2}' | tr -d ' ' | tr -d '\r')
@@ -69,11 +66,11 @@ list_backups() {
 }
 
 install_oca_modules() {
-    info "Instalando módulos OCA encontrados en ./v19/addons/oca..."
+    info "Instalando módulos OCA encontrados en ./v19/data/addons/oca..."
     
     # Verificar si hay módulos OCA
-    if [ ! -d "./v19/addons/oca" ]; then
-        warn "No existe el directorio ./v19/addons/oca"
+    if [ ! -d "./v19/data/addons/oca" ]; then
+        warn "No existe el directorio ./v19/data/addons/oca"
         return
     fi
     
@@ -86,7 +83,7 @@ install_oca_modules() {
     "
     
     # Instalar cada módulo OCA encontrado
-    for module in $(ls -d ./v19/addons/oca/*/ 2>/dev/null | xargs -n 1 basename); do
+    for module in $(ls -d ./v19/data/addons/oca/*/ 2>/dev/null | xargs -n 1 basename); do
         info "Instalando módulo OCA: $module"
         docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
             -c /etc/odoo/odoo.conf \
@@ -99,14 +96,14 @@ install_oca_modules() {
 }
 
 install_extra_modules() {
-    info "Instalando módulos EXTRA encontrados en ./v19/addons/extra..."
+    info "Instalando módulos EXTRA encontrados en ./v19/data/addons/extra..."
     
-    if [ ! -d "./v19/addons/extra" ]; then
-        warn "No existe el directorio ./v19/addons/extra"
+    if [ ! -d "./v19/data/addons/extra" ]; then
+        warn "No existe el directorio ./v19/data/addons/extra"
         return
     fi
     
-    for module in $(ls -d ./v19/addons/extra/*/ 2>/dev/null | xargs -n 1 basename); do
+    for module in $(ls -d ./v19/data/addons/extra/*/ 2>/dev/null | xargs -n 1 basename); do
         info "Instalando módulo EXTRA: $module"
         docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
             -c /etc/odoo/odoo.conf \
@@ -118,12 +115,32 @@ install_extra_modules() {
     log "✅ Módulos EXTRA instalados"
 }
 
+install_enterprise_modules() {
+    info "Instalando módulos ENTERPRISE encontrados en ./v19/data/addons/enterprise..."
+    
+    if [ ! -d "./v19/data/addons/enterprise" ]; then
+        warn "No existe el directorio ./v19/data/addons/enterprise"
+        return
+    fi
+    
+    for module in $(ls -d ./v19/data/addons/enterprise/*/ 2>/dev/null | xargs -n 1 basename); do
+        info "Instalando módulo ENTERPRISE: $module"
+        docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
+            -c /etc/odoo/odoo.conf \
+            --update=$module \
+            --stop-after-init \
+            --log-level=error 2>&1 | grep -E "ERROR|$module" || true
+    done
+    
+    log "✅ Módulos ENTERPRISE instalados"
+}
+
 fix_whatsapp_module() {
     info "Verificando/Arreglando módulo website_whatsapp..."
     
     # Verificar si el módulo existe en el sistema de archivos
-    if [ -d "./v19/addons/oca/website_whatsapp" ]; then
-        info "Módulo website_whatsapp encontrado en ./v19/addons/oca/"
+    if [ -d "./v19/data/addons/oca/website_whatsapp" ]; then
+        info "Módulo website_whatsapp encontrado en ./v19/data/addons/oca/"
         
         # Instalar el módulo específicamente
         docker exec odoo-19-web python3 /opt/odoo/odoo-core/odoo-bin \
@@ -143,6 +160,34 @@ fix_whatsapp_module() {
 EOF
     
     log "✅ Campo whatsapp_text verificado/creado"
+}
+
+# Función para determinar el tipo de addon basado en el contenido
+determine_addon_type() {
+    local addon_path=$1
+    local addon_name=$(basename "$addon_path")
+    
+    # Verificar si es módulo OCA (tiene __manifest__.py y posibles características OCA)
+    if [ -f "$addon_path/__manifest__.py" ]; then
+        # Buscar indicadores de módulo OCA
+        if grep -q "OCA" "$addon_path/__manifest__.py" 2>/dev/null || \
+           [ -f "$addon_path/README.rst" ] && grep -q "OCA" "$addon_path/README.rst" 2>/dev/null || \
+           [ -d "$addon_path/i18n" ] && ls "$addon_path/i18n/"*.po 2>/dev/null | grep -q "es_" || \
+           [[ "$addon_name" =~ ^(web_|base_|account_|sale_|purchase_|stock_|hr_|project_|mrp_) ]]; then
+            echo "oca"
+            return
+        fi
+        
+        # Verificar si es módulo enterprise (por nombre o contenido)
+        if [[ "$addon_name" =~ (enterprise|_enterprise$) ]] || \
+           grep -q "enterprise" "$addon_path/__manifest__.py" 2>/dev/null; then
+            echo "enterprise"
+            return
+        fi
+    fi
+    
+    # Por defecto, considerar como extra
+    echo "extra"
 }
 
 restore() {
@@ -167,7 +212,14 @@ restore() {
     info "Deteniendo Odoo web..."
     docker compose -f docker-compose.odoo.yml stop web
     
-    # 2. Restaurar filestore y addons (vienen juntos en el backup)
+    # 2. Limpiar directorios de addons existentes
+    info "Limpiando directorios de addons existentes..."
+    sudo rm -rf ./v19/data/addons/oca/*
+    sudo rm -rf ./v19/data/addons/extra/*
+    sudo rm -rf ./v19/data/addons/enterprise/*
+    mkdir -p ./v19/data/addons/{oca,extra,enterprise}
+    
+    # 3. Restaurar filestore y addons
     if [ -f "$FILESTORE_FILE" ]; then
         info "Restaurando filestore y addons..."
         
@@ -181,7 +233,6 @@ restore() {
         local FILESTORE_BASE=$(find "$TEMP_RESTORE_DIR" -type d -name "filestore" | head -1)
         
         if [ -n "$FILESTORE_BASE" ]; then
-            # Obtener el nombre original de la BD
             ORIGINAL_DB_NAME=$(find "$FILESTORE_BASE" -maxdepth 1 -type d ! -path "$FILESTORE_BASE" | head -1 | xargs basename 2>/dev/null)
             
             if [ -n "$ORIGINAL_DB_NAME" ]; then
@@ -196,37 +247,106 @@ restore() {
             fi
         fi
         
-        # Buscar y restaurar addons (pueden estar en diferentes ubicaciones dentro del tar)
-        local ADDONS_DIRS=("addons" "custom-addons" "oca" "extra")
+        # Buscar todos los addons en el backup
+        info "Buscando y clasificando addons..."
         
-        for dir in "${ADDONS_DIRS[@]}"; do
-            local ADDONS_PATH=$(find "$TEMP_RESTORE_DIR" -type d -name "$dir" | head -1)
-            if [ -n "$ADDONS_PATH" ] && [ "$(ls -A "$ADDONS_PATH" 2>/dev/null)" ]; then
-                info "Restaurando addons desde: $(basename "$ADDONS_PATH")"
-                sudo cp -r "$ADDONS_PATH"/* ./v19/addons/ 2>/dev/null || true
+        # Buscar cualquier directorio que parezca un módulo Odoo (tiene __manifest__.py o __openerp__.py)
+        local MODULES=$(find "$TEMP_RESTORE_DIR" -type f \( -name "__manifest__.py" -o -name "__openerp__.py" \) -exec dirname {} \; 2>/dev/null)
+        
+        if [ -n "$MODULES" ]; then
+            for module_path in $MODULES; do
+                local module_name=$(basename "$module_path")
+                local addon_type=$(determine_addon_type "$module_path")
+                
+                info "Procesando módulo: $module_name (tipo: $addon_type)"
+                
+                # Crear directorio destino según el tipo
+                local dest_dir="./v19/data/addons/$addon_type/$module_name"
+                
+                # Si el módulo ya existe, respaldarlo
+                if [ -d "$dest_dir" ]; then
+                    warn "Módulo $module_name ya existe, actualizando..."
+                    sudo rm -rf "$dest_dir"
+                fi
+                
+                # Copiar el módulo a su ubicación correspondiente
+                sudo cp -r "$module_path" "$dest_dir"
+                
+                log "  ✅ Módulo $module_name restaurado en $addon_type/"
+            done
+        else
+            warn "No se encontraron módulos Odoo en el backup"
+            
+            # Fallback: buscar directorios comunes
+            local ADDONS_DIRS=("addons" "custom-addons" "oca" "extra" "enterprise")
+            
+            for dir in "${ADDONS_DIRS[@]}"; do
+                local ADDONS_PATH=$(find "$TEMP_RESTORE_DIR" -type d -name "$dir" | head -1)
+                if [ -n "$ADDONS_PATH" ] && [ "$(ls -A "$ADDONS_PATH" 2>/dev/null)" ]; then
+                    info "Encontrada estructura de addons en: $dir"
+                    
+                    # Para cada subdirectorio dentro (que debería ser un módulo)
+                    for module_dir in "$ADDONS_PATH"/*/; do
+                        if [ -d "$module_dir" ] && [ -f "$module_dir/__manifest__.py" -o -f "$module_dir/__openerp__.py" ]; then
+                            local module_name=$(basename "$module_dir")
+                            local addon_type=$(determine_addon_type "$module_dir")
+                            
+                            info "  Procesando módulo: $module_name (tipo: $addon_type)"
+                            sudo cp -r "$module_dir" "./v19/data/addons/$addon_type/"
+                        fi
+                    done
+                fi
+            done
+        fi
+        
+        # Buscar específicamente módulos OCA conocidos
+        local OCA_MODULES=$(find "$TEMP_RESTORE_DIR" -type d -path "*/oca/*" | grep -E "/[^/]+/[^/]+$" | while read dir; do
+            if [ -f "$dir/__manifest__.py" ]; then
+                echo "$dir"
             fi
-        done
+        done)
         
-        # También buscar directamente la estructura oca/website_whatsapp
-        local OCA_MODULE=$(find "$TEMP_RESTORE_DIR" -type d -path "*/oca/website_whatsapp" | head -1)
-        if [ -n "$OCA_MODULE" ]; then
-            info "Encontrado módulo OCA: website_whatsapp"
-            mkdir -p ./v19/addons/oca
-            sudo cp -r "$OCA_MODULE" ./v19/addons/oca/
+        if [ -n "$OCA_MODULES" ]; then
+            for module_path in $OCA_MODULES; do
+                local module_name=$(basename "$module_path")
+                info "Encontrado módulo OCA específico: $module_name"
+                mkdir -p ./v19/data/addons/oca
+                sudo cp -r "$module_path" ./v19/data/addons/oca/
+            done
         fi
         
         # Limpiar permisos
-        sudo chown -R 1001:odoogroup ./v19/addons/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/addons/
-        sudo chown -R 1001:odoogroup ./v19/data/filestore/ 2>/dev/null || sudo chown -R 1001:1001 ./v19/data/filestore/
-        sudo chmod -R 755 ./v19/addons/ ./v19/data/filestore/
+        sudo chown -R 1001:1001 ./v19/data/addons/ 2>/dev/null || true
+        sudo chown -R 1001:1001 ./v19/data/filestore/ 2>/dev/null || true
+        sudo chmod -R 755 ./v19/data/addons/ ./v19/data/filestore/
         
         sudo rm -rf "$TEMP_RESTORE_DIR"
-        log "✅ Filestore y addons restaurados"
+        
+        # Mostrar resumen de lo restaurado
+        echo ""
+        info "=== RESUMEN DE ADDONS RESTAURADOS ==="
+        for type in oca extra enterprise; do
+            if [ -d "./v19/data/addons/$type" ] && [ "$(ls -A ./v19/data/addons/$type 2>/dev/null)" ]; then
+                local count=$(ls -d ./v19/data/addons/$type/*/ 2>/dev/null | wc -l)
+                log "✅ $type: $count módulos"
+                ls -d ./v19/data/addons/$type/*/ 2>/dev/null | xargs -n 1 basename | head -5 | while read module; do
+                    echo "   - $module"
+                done
+                if [ $count -gt 5 ]; then
+                    echo "   ... y $((count - 5)) más"
+                fi
+            else
+                warn "⚠️ $type: No se encontraron módulos"
+            fi
+        done
+        echo ""
+        
+        log "✅ Filestore y addons restaurados en ./v19/data/addons con estructura correcta"
     else
         warn "No se encontró backup de filestore"
     fi
     
-    # 3. Restaurar base de datos
+    # 4. Restaurar base de datos
     info "Restaurando base de datos..."
     
     if [ -z "$DB_PASSWORD" ]; then
@@ -263,17 +383,18 @@ restore() {
         exit 1
     fi
     
-    # 4. Iniciar Odoo
+    # 5. Iniciar Odoo
     info "Iniciando Odoo web..."
     docker compose -f docker-compose.odoo.yml start web
     sleep 15
     
-    # 5. Instalar módulos si se solicitó
+    # 6. Instalar módulos si se solicitó
     if [ "$INSTALL_MODULES" = true ]; then
         info "Instalando módulos adicionales..."
         fix_whatsapp_module
         install_oca_modules
         install_extra_modules
+        install_enterprise_modules
         
         info "Reiniciando Odoo..."
         docker restart odoo-19-web
@@ -284,7 +405,7 @@ restore() {
     log "✅ RESTAURACIÓN COMPLETADA"
     info "Base de datos: $DB_NAME"
     info "Filestore: ./v19/data/filestore/$DB_NAME"
-    info "Addons: ./v19/addons"
+    info "Addons: ./v19/data/addons/{oca,extra,enterprise}"
     info "Accede a Odoo en: http://localhost:18069"
 }
 

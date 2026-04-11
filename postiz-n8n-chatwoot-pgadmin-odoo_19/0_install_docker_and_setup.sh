@@ -70,7 +70,8 @@ mkdir -p v19
 
 # Odoo (usuario 1001)
 print_message "Configurando Odoo (UID 1001)..."
-mkdir -p v19/logs v19/odoo-web-data v19/data v19/odoo_n8n_pgdata
+# IMPORTANTE: Crear la estructura data/addons en lugar de addons suelto
+mkdir -p v19/logs v19/odoo-web-data v19/data/addons v19/data/filestore v19/odoo_n8n_pgdata
 sudo chown -R 1001:1001 v19/logs v19/odoo-web-data v19/data v19/odoo_n8n_pgdata
 chmod 755 v19/logs v19/odoo-web-data v19/data
 
@@ -116,7 +117,7 @@ mkdir -p v19/config
 sudo chown -R $USER:$USER v19/config
 chmod 755 v19/config
 
-# CREAR ODOO.CONF ACTUALIZADO (con proxy_mode=False)
+# CREAR ODOO.CONF ACTUALIZADO (con proxy_mode=False y data_dir correcto)
 print_message "Creando v19/config/odoo.conf (configuración optimizada)..."
 cat > v19/config/odoo.conf << 'EOF'
 [options]
@@ -152,11 +153,11 @@ EOF
 sudo chown $USER:$USER v19/config/odoo.conf
 chmod 644 v19/config/odoo.conf
 
-# Addons Odoo (usuario 1001)
-print_message "Configurando addons de Odoo..."
-mkdir -p v19/addons/extra v19/addons/oca v19/addons/enterprise
-sudo chown -R 1001:1001 v19/addons
-chmod 755 v19/addons
+# Addons Odoo (dentro de data, usuario 1001)
+print_message "Configurando addons de Odoo dentro de v19/data/addons..."
+mkdir -p v19/data/addons/extra v19/data/addons/oca v19/data/addons/enterprise
+sudo chown -R 1001:1001 v19/data/addons
+chmod 755 v19/data/addons
 
 # Configurar secrets (CON TU CONTRASEÑA ESPECÍFICA)
 print_message "Configurando secrets..."
@@ -200,10 +201,9 @@ EOF
 
 chmod 644 .env
 
-# Crear docker-compose.override.yml si no existe
-if [ ! -f "docker-compose.override.yml" ]; then
-    print_message "Creando docker-compose.override.yml..."
-    cat > docker-compose.override.yml << 'EOF'
+# Crear docker-compose.override.yml actualizado con las rutas correctas
+print_message "Creando docker-compose.override.yml..."
+cat > docker-compose.override.yml << 'EOF'
 version: '3.8'
 
 services:
@@ -212,11 +212,11 @@ services:
     volumes:
       - ./v19/odoo-web-data:/var/lib/odoo
       - ./v19/config:/etc/odoo
-      - ./v19/addons/extra:/opt/odoo/custom-addons/extra
-      - ./v19/addons/oca:/opt/odoo/custom-addons/oca
-      - ./v19/addons/enterprise:/opt/odoo/custom-addons/enterprise
+      - ./v19/data/addons/extra:/opt/odoo/custom-addons/extra
+      - ./v19/data/addons/oca:/opt/odoo/custom-addons/oca
+      - ./v19/data/addons/enterprise:/opt/odoo/custom-addons/enterprise
       - ./v19/logs:/var/log/odoo
-      - ./v19/data:/var/lib/odoo/.local/share/Odoo
+      - ./v19/data/filestore:/var/lib/odoo/.local/share/Odoo
 
   db:
     volumes:
@@ -227,7 +227,6 @@ services:
     volumes:
       - "./v19/redis_data:/data"
 EOF
-fi
 
 # 8. Verificar Docker
 print_message "[8/8] Verificación final..."
@@ -239,8 +238,14 @@ echo ""
 echo "Grupos del usuario:"
 groups $USER
 echo ""
-echo "Permisos de directorios:"
-ls -la v19/ | head -15
+echo "Estructura de directorios creada:"
+ls -la v19/
+echo ""
+echo "Contenido de v19/data:"
+ls -la v19/data/
+echo ""
+echo "Contenido de v19/data/addons:"
+ls -la v19/data/addons/
 echo ""
 echo "Secrets generados:"
 ls -la secrets/

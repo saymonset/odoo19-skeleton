@@ -38,6 +38,15 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/.env
 postiz-n8n-chatwoot-pgadmin-odoo_19/secrets/
 !postiz-n8n-chatwoot-pgadmin-odoo_19/backup/
 !postiz-n8n-chatwoot-pgadmin-odoo_19/v19/backups/
+
+# Ignorar backups automáticos de Odoo (carpeta out)
+postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/
+postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/*
+# Excepción: mantener la estructura de carpetas
+!postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/.gitkeep
+!postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/README.md
+
+# Datos de Odoo
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/logs/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/n8n_data/
