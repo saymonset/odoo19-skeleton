@@ -63,4 +63,7 @@ else
 fi
 
 echo "Iniciando Odoo con: $ODOO_BIN"
-exec $ODOO_BIN -c "$CONFIG_FILE" --database="$DB_NAME" "$@"
+
+
+exec $ODOO_BIN -c "$CONFIG_FILE" --database="$DB_NAME" --db_user="$DB_USER" --db_host="$DB_HOST" --db_port="$DB_PORT" "$@"
+
