@@ -360,6 +360,13 @@ restore() {
         exit 1
     fi
     
+    # Ajustar permisos para Odoo antes de iniciar (UID 1001 suele ser el usuario odoo)
+    info "Ajustando permisos de Odoo (data y web-data) para evitar errores de lectura/escritura..."
+    sudo chown -R 1001:1001 ./v19/data/ 2>/dev/null || true
+    sudo chmod -R 775 ./v19/data/ 2>/dev/null || true
+    sudo chown -R 1001:1001 ./v19/odoo-web-data/ 2>/dev/null || true
+    sudo chmod -R 775 ./v19/odoo-web-data/ 2>/dev/null || true
+
     # 5. Iniciar Odoo
     info "Iniciando Odoo web..."
     docker compose -f docker-compose.odoo.yml start web
