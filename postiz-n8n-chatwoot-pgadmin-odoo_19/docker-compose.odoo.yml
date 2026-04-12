@@ -76,8 +76,8 @@ services:
       - "./v19/odoo-web-data:/var/lib/odoo"
       - "./v19/config:/etc/odoo"
       - "./v19/data/addons/extra:/opt/odoo/custom-addons/extra"
-      - "./v19/addons/oca:/opt/odoo/custom-addons/oca"
-      - "./v19/addons/enterprise:/opt/odoo/custom-addons/enterprise"
+      - "./v19/data/addons/oca:/opt/odoo/custom-addons/oca"
+      - "./v19/data/addons/enterprise:/opt/odoo/custom-addons/enterprise"
       - "./v19/logs:/var/log/odoo"
       - "./v19/data:/var/lib/odoo/.local/share/Odoo"
     environment:
