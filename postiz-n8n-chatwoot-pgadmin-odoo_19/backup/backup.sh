@@ -28,11 +28,13 @@ RETENTION_DAYS=7
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 log() { echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 
 # Crear directorio de backup
 mkdir -p $BACKUP_DIR
@@ -56,17 +58,27 @@ else
     exit 1
 fi
 
-# 2. Backup de addons (ahora desde ./v19/data/addons)
+# 2. Backup de addons (completo desde ./v19/data/addons)
+# Este es el archivo principal que usa el restore
 log "📚 Backup de addons completos..."
 if [ -d "./v19/data/addons" ] && [ "$(ls -A ./v19/data/addons 2>/dev/null)" ]; then
     tar -czf "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" -C ./v19/data/addons . 2>/dev/null
     SIZE=$(du -sh "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" | cut -f1)
     log "✅ Addons respaldados: odoo_addons_${DATE}.tar.gz ($SIZE)"
+    
+    # Mostrar desglose de tipos de addons
+    info "   Desglose de addons:"
+    for type in oca extra enterprise; do
+        if [ -d "./v19/data/addons/$type" ] && [ "$(ls -A ./v19/data/addons/$type 2>/dev/null)" ]; then
+            count=$(ls -d ./v19/data/addons/$type/*/ 2>/dev/null | wc -l)
+            info "     - $type: $count módulos"
+        fi
+    done
 else
     warn "⚠️ No hay addons para respaldar en ./v19/data/addons"
 fi
 
-# 3. Backup de filestore (./v19/data/filestore específicamente)
+# 3. Backup de filestore (./v19/data/filestore)
 log "📎 Backup de documentos adjuntos (filestore)..."
 if [ -d "./v19/data/filestore" ] && [ "$(ls -A ./v19/data/filestore 2>/dev/null)" ]; then
     tar -czf "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" -C ./v19/data/filestore . 2>/dev/null
@@ -85,19 +97,25 @@ else
     warn "⚠️ No se encontró archivo de configuración"
 fi
 
-# 5. Backup de addons OCA y EXTRA (desde la nueva ruta)
-log "📚 Backup de addons OCA específicos..."
+# 5. Backup individual de addons OCA (opcional, para restauraciones selectivas)
 if [ -d "./v19/data/addons/oca" ] && [ "$(ls -A ./v19/data/addons/oca 2>/dev/null)" ]; then
     tar -czf "$BACKUP_DIR/odoo_oca_addons_${DATE}.tar.gz" -C ./v19/data/addons/oca . 2>/dev/null
-    log "✅ Addons OCA respaldados"
+    log "✅ Addons OCA respaldados individualmente"
 fi
 
+# 6. Backup individual de addons EXTRA (opcional, para restauraciones selectivas)
 if [ -d "./v19/data/addons/extra" ] && [ "$(ls -A ./v19/data/addons/extra 2>/dev/null)" ]; then
     tar -czf "$BACKUP_DIR/odoo_extra_addons_${DATE}.tar.gz" -C ./v19/data/addons/extra . 2>/dev/null
-    log "✅ Addons EXTRA respaldados"
+    log "✅ Addons EXTRA respaldados individualmente"
 fi
 
-# 6. Backup completo de ./v19/data (opcional, para tener todo junto)
+# 7. Backup individual de addons ENTERPRISE (opcional, para restauraciones selectivas)
+if [ -d "./v19/data/addons/enterprise" ] && [ "$(ls -A ./v19/data/addons/enterprise 2>/dev/null)" ]; then
+    tar -czf "$BACKUP_DIR/odoo_enterprise_addons_${DATE}.tar.gz" -C ./v19/data/addons/enterprise . 2>/dev/null
+    log "✅ Addons ENTERPRISE respaldados individualmente"
+fi
+
+# 8. Backup completo del directorio data (opcional, para tener todo junto)
 log "📦 Backup completo del directorio data (addons + filestore)..."
 if [ -d "./v19/data" ] && [ "$(ls -A ./v19/data 2>/dev/null)" ]; then
     tar -czf "$BACKUP_DIR/odoo_data_complete_${DATE}.tar.gz" -C ./v19/data . 2>/dev/null
@@ -105,15 +123,38 @@ if [ -d "./v19/data" ] && [ "$(ls -A ./v19/data 2>/dev/null)" ]; then
     log "✅ Data completo respaldado: odoo_data_complete_${DATE}.tar.gz ($SIZE)"
 fi
 
-# 7. Limpiar backups antiguos
+# 9. Crear archivo de metadatos del backup
+log "📝 Creando metadatos del backup..."
+cat > "$BACKUP_DIR/backup_metadata_${DATE}.txt" << EOF
+Backup Information
+==================
+Date: $DATE
+Database: $DB_NAME
+Database User: $DB_USER
+Backup Directory: $BACKUP_DIR
+
+Files Generated:
+$(ls -la $BACKUP_DIR | tail -n +4)
+
+Retention Policy: $RETENTION_DAYS days
+EOF
+log "✅ Metadatos guardados: backup_metadata_${DATE}.txt"
+
+# 10. Limpiar backups antiguos
 log "🧹 Eliminando backups con más de $RETENTION_DAYS días..."
 find $BACKUP_BASE_DIR -type d -name "backup_*" -mtime +$RETENTION_DAYS -exec rm -rf {} \; 2>/dev/null || true
 
-# 8. Resumen final
+# 11. Resumen final
 log "=========================================="
 log "✅ BACKUP COMPLETADO"
 log "=========================================="
 log "📁 Ubicación: $BACKUP_DIR"
 log "📦 Archivos generados:"
 ls -lh $BACKUP_DIR/ | tail -n +2 | awk '{print "   - " $9 " (" $5 ")"}'
+log ""
+log "📋 Para restaurar este backup, usa:"
+log "   ./9_3__restore_odoo_filestore.sh -f $BACKUP_DIR/odoo_db_${DATE}.dump"
+log ""
+log "   O con instalación de módulos:"
+log "   ./9_3__restore_odoo_filestore.sh -f $BACKUP_DIR/odoo_db_${DATE}.dump --install-modules"
 log "=========================================="
