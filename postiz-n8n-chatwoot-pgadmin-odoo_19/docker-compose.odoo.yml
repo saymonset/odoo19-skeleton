@@ -79,7 +79,7 @@ services:
       - "./v19/data/addons/oca:/opt/odoo/custom-addons/oca"
       - "./v19/data/addons/enterprise:/opt/odoo/custom-addons/enterprise"
       - "./v19/logs:/var/log/odoo"
-      - "./v19/data:/var/lib/odoo/.local/share/Odoo"
+      - "./v19/data/filestore:/var/lib/odoo/.local/share/Odoo/filestore"
     environment:
       HOST: db
       USER: odoo

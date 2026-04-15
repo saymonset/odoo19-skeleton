@@ -228,6 +228,8 @@ restore() {
                 info "Filestore original detectado: $ORIGINAL_DB_NAME"
                 info "Renombrando a: $DB_NAME"
                 
+                info "Renombrando a: $DB_NAME"
+                
                 sudo rm -rf ./v19/data/filestore/$DB_NAME
                 mkdir -p ./v19/data/filestore
                 sudo mv "$FILESTORE_BASE/$ORIGINAL_DB_NAME" "./v19/data/filestore/$DB_NAME"

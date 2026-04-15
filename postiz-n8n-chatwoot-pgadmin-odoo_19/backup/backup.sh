@@ -61,8 +61,8 @@ fi
 # 2. Backup de addons (completo desde ./v19/data/addons)
 # Este es el archivo principal que usa el restore
 log "📚 Backup de addons completos..."
-if [ -d "./v19/data/addons" ] && [ "$(ls -A ./v19/data/addons 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" -C ./v19/data/addons . 2>/dev/null
+if [ -d "./v19/data/addons" ]; then
+    sudo tar -czf "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" -C ./v19/data/addons . 
     SIZE=$(du -sh "$BACKUP_DIR/odoo_addons_${DATE}.tar.gz" | cut -f1)
     log "✅ Addons respaldados: odoo_addons_${DATE}.tar.gz ($SIZE)"
     
@@ -80,8 +80,8 @@ fi
 
 # 3. Backup de filestore (./v19/data/filestore)
 log "📎 Backup de documentos adjuntos (filestore)..."
-if [ -d "./v19/data/filestore" ] && [ "$(ls -A ./v19/data/filestore 2>/dev/null)" ]; then
-    tar -czf "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" -C ./v19/data/filestore . 2>/dev/null
+if [ -d "./v19/data/filestore" ]; then
+    sudo tar -czf "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" -C ./v19/data filestore
     SIZE=$(du -sh "$BACKUP_DIR/odoo_filestore_${DATE}.tar.gz" | cut -f1)
     log "✅ Filestore respaldado: odoo_filestore_${DATE}.tar.gz ($SIZE)"
 else
