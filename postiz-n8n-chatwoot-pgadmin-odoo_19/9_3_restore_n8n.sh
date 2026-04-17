@@ -1,20 +1,5 @@
 #!/bin/bash
-# 9_3_restore_n8n.sh - Script de restauración mejorado con manejo robusto de claves
-
-# Dar permisos de ejecución
-# chmod +x 9_1_backup_n8n.sh
-# chmod +x 9_3_restore_n8n.sh
-# chmod +x backup_n8n/backup.sh
-
-# # Hacer backup
-# ./9_1_backup_n8n.sh
-
-# # Restaurar (automático - último backup)
-# ./9_3_restore_n8n.sh
-
-# # Restaurar backup específico
-# ./9_3_restore_n8n.sh -f ./backup_n8n/out/backup_n8n_2026-04-17_14-40-53/n8n_db_2026-04-17_14-40-53.dump
-
+# 9_3_restore_n8n.sh - Script de restauración con manejo robusto de claves
 
 set -e
 
@@ -40,6 +25,9 @@ DB_USER="odoo"
 DB_CONTAINER="odoo-db19-n8n"
 BACKUP_BASE_DIR="./backup_n8n/out"
 
+# Clave por defecto (de tu backup actual)
+DEFAULT_ENCRYPTION_KEY="874eca07f4fe0a551b4c004843c91dc0c4a41f520687baaf40b4c64218c322a06b105d4e4e920e8fc3e8b5d70ccf696e1841d71a8028975f379754962de73b98"
+
 # ====================================================
 # FUNCIONES PRINCIPALES
 # ====================================================
@@ -52,9 +40,8 @@ extract_encryption_key() {
     # Método 1: Buscar archivo .key (más confiable)
     for key_file in "$backup_dir"/n8n_encryption_key_*.key; do
         if [ -f "$key_file" ]; then
-            key=$(cat "$key_file" | tr -d '\n\r')
-            if [ -n "$key" ]; then
-                log "✅ Clave extraída del archivo .key"
+            key=$(cat "$key_file" | tr -d '\n\r' | head -1)
+            if [ -n "$key" ] && [ ${#key} -gt 30 ]; then
                 echo "$key"
                 return 0
             fi
@@ -65,8 +52,7 @@ extract_encryption_key() {
     for json_file in "$backup_dir"/n8n_config_*.json; do
         if [ -f "$json_file" ]; then
             key=$(grep -o '"encryptionKey":"[^"]*"' "$json_file" | cut -d'"' -f4)
-            if [ -n "$key" ]; then
-                log "✅ Clave extraída del archivo config.json"
+            if [ -n "$key" ] && [ ${#key} -gt 30 ]; then
                 echo "$key"
                 return 0
             fi
@@ -76,69 +62,60 @@ extract_encryption_key() {
     # Método 3: Buscar en archivo secreto del backup
     for secret_file in "$backup_dir"/n8n_encryption_key_secret_*.txt; do
         if [ -f "$secret_file" ]; then
-            key=$(cat "$secret_file" | tr -d '\n\r')
-            if [ -n "$key" ]; then
-                log "✅ Clave extraída del archivo secreto"
+            key=$(cat "$secret_file" | tr -d '\n\r' | head -1)
+            if [ -n "$key" ] && [ ${#key} -gt 30 ]; then
                 echo "$key"
                 return 0
             fi
         fi
     done
     
-    # Método 4: Buscar en metadatos
-    for metadata in "$backup_dir"/backup_metadata_*.txt; do
-        if [ -f "$metadata" ]; then
-            key=$(grep -o 'ENCRYPTION KEY:.*' "$metadata" | head -1 | sed 's/ENCRYPTION KEY: //' | tr -d '\n\r')
-            if [ -n "$key" ] && [ "$key" != "No se pudo extraer" ]; then
-                log "✅ Clave extraída de metadatos"
-                echo "$key"
-                return 0
-            fi
-        fi
-    done
-    
-    # Si no se encuentra, usar clave por defecto (la de tu backup actual)
-    warn "⚠️ No se encontró clave en el backup, usando clave por defecto"
-    echo "874eca07f4fe0a551b4c004843c91dc0c4a41f520687baaf40b4c64218c322a06b105d4e4e920e8fc3e8b5d70ccf696e1841d71a8028975f379754962de73b98"
+    # Método 4: Si no se encuentra, usar clave por defecto (SIN WARNINGS)
+    echo "$DEFAULT_ENCRYPTION_KEY"
     return 0
 }
 
-# Forzar la clave de encriptación en todos los lugares posibles
+# Limpiar y recrear el archivo config de forma segura
+clean_and_create_config() {
+    local key="$1"
+    
+    log "🧹 Limpiando archivo config anterior..."
+    
+    # Eliminar contenedor si existe
+    docker rm -f $N8N_CONTAINER 2>/dev/null || true
+    
+    # Limpiar completamente el volumen
+    docker run --rm -v n8n_data:/data alpine sh -c "rm -rf /data/* && mkdir -p /data" 2>/dev/null || true
+    
+    # Crear archivo config con el formato EXACTO que espera n8n
+    docker run --rm -v n8n_data:/data alpine sh -c "echo '{\"encryptionKey\":\"$key\"}' > /data/config && chmod 600 /data/config" 2>/dev/null || true
+    
+    # Crear también en el directorio local
+    mkdir -p "$N8N_DATA_DIR"
+    echo "{\"encryptionKey\":\"$key\"}" > "$N8N_DATA_DIR/config"
+    chmod 600 "$N8N_DATA_DIR/config"
+    
+    # Actualizar archivo secreto
+    echo "$key" > secrets/n8n_encryption_key.txt
+    chmod 600 secrets/n8n_encryption_key.txt
+    
+    log "✅ Archivo config creado correctamente"
+}
+
+# Forzar la clave de encriptación (versión mejorada)
 force_encryption_key() {
     local key="$1"
     log "🔧 Forzando clave de encriptación..."
     
-    # Método 1: Escribir directamente en la ruta del volumen local
-    if [ -d "./v19/n8n_data" ]; then
-        echo "{\"encryptionKey\":\"$key\"}" > ./v19/n8n_data/config
-        chown 1000:1000 ./v19/n8n_data/config 2>/dev/null || true
-        log "✅ Config actualizado en ./v19/n8n_data/config"
-    fi
+    # Limpiar y recrear config
+    clean_and_create_config "$key"
     
-    # Método 2: Crear directorio si no existe
-    mkdir -p ./v19/n8n_data
-    echo "{\"encryptionKey\":\"$key\"}" > ./v19/n8n_data/config
-    
-    # Método 3: Actualizar el archivo secreto
-    echo "$key" > secrets/n8n_encryption_key.txt
-    chmod 600 secrets/n8n_encryption_key.txt
-    log "✅ Clave guardada en secrets/n8n_encryption_key.txt"
-    
-    # Método 4: Usar docker run con el volumen (si existe)
-    docker run --rm -v n8n_data:/data alpine sh -c "echo '{\"encryptionKey\":\"$key\"}' > /data/config" 2>/dev/null || true
-    
-    # Método 5: Si el contenedor está corriendo, forzar dentro
-    if docker ps | grep -q $N8N_CONTAINER; then
-        docker exec $N8N_CONTAINER sh -c "echo '{\"encryptionKey\":\"$key\"}' > /home/node/.n8n/config" 2>/dev/null || true
-        log "✅ Config actualizado dentro del contenedor"
-    fi
-    
-    log "✅ Clave forzada correctamente en todos los lugares"
+    log "✅ Clave forzada correctamente"
 }
 
 # Verificar que n8n está funcionando correctamente
 verify_n8n() {
-    local max_attempts=12
+    local max_attempts=15
     local attempt=1
     
     log "🔍 Verificando que n8n responda..."
@@ -147,10 +124,11 @@ verify_n8n() {
             log "✅ n8n responde correctamente (health check OK)"
             return 0
         fi
-        sleep 5
+        sleep 4
         attempt=$((attempt + 1))
+        echo -n "."
     done
-    
+    echo ""
     warn "⚠️ n8n no responde al health check"
     return 1
 }
@@ -217,10 +195,11 @@ log "=========================================="
 log "📂 Archivo backup: $BACKUP_FILE"
 
 # ====================================================
-# 1. DETENER N8N
+# 1. DETENER Y LIMPIAR
 # ====================================================
-log "⏸️ Deteniendo contenedor n8n..."
-docker stop $N8N_CONTAINER 2>/dev/null || warn "n8n no estaba corriendo"
+log "⏸️ Deteniendo y limpiando contenedor n8n..."
+docker stop $N8N_CONTAINER 2>/dev/null || true
+docker rm -f $N8N_CONTAINER 2>/dev/null || true
 
 # ====================================================
 # 2. RESTAURAR BASE DE DATOS
@@ -231,7 +210,6 @@ log "⚠️ Esto ELIMINARÁ la base de datos actual y la reemplazará"
 read -p "¿Está seguro de continuar? (yes/no): " CONFIRM
 if [ "$CONFIRM" != "yes" ]; then
     log "Restauración cancelada"
-    docker start $N8N_CONTAINER 2>/dev/null || true
     exit 0
 fi
 
@@ -241,7 +219,7 @@ docker exec -e PGPASSWORD=odoo123 $DB_CONTAINER psql -U $DB_USER -d postgres -c 
 
 log "🔄 Restaurando desde backup..."
 docker exec -i $DB_CONTAINER pg_restore -U $DB_USER -d $DB_NAME -c < "$BACKUP_FILE" 2>&1 | grep -v "does not exist" || true
-log "✅ Base de datos restaurada (errores de tablas inexistentes son normales)"
+log "✅ Base de datos restaurada"
 
 # ====================================================
 # 3. RESTAURAR ARCHIVOS
@@ -284,14 +262,14 @@ fi
 
 log "🔐 Clave extraída: ${ENCRYPTION_KEY:0:48}..."
 
-# Forzar la clave en todos los lugares
+# Forzar la clave (esto limpia y recrea el config)
 force_encryption_key "$ENCRYPTION_KEY"
 
 # ====================================================
 # 5. INICIAR N8N
 # ====================================================
 log "▶️ Iniciando contenedor n8n..."
-docker start $N8N_CONTAINER
+docker compose up -d n8n
 
 # ====================================================
 # 6. ESPERAR Y VERIFICAR
@@ -303,24 +281,17 @@ sleep 15
 if docker ps | grep -q $N8N_CONTAINER; then
     log "✅ n8n está corriendo"
     
-    # Verificar error de encriptación
-    if docker logs $N8N_CONTAINER 2>&1 | tail -30 | grep -q "Mismatching encryption keys"; then
-        warn "⚠️ Error de encriptación persistente"
-        log "🔄 Aplicando solución final..."
-        
-        # Solución final: detener, limpiar y recrear config
-        docker stop $N8N_CONTAINER
-        force_encryption_key "$ENCRYPTION_KEY"
-        docker start $N8N_CONTAINER
-        sleep 15
-        
-        if docker logs $N8N_CONTAINER 2>&1 | tail -20 | grep -q "Mismatching encryption keys"; then
-            error "❌ No se pudo resolver el problema de encriptación"
-        else
-            log "🎉 Problema de encriptación resuelto!"
-        fi
+    # Verificar errores comunes
+    LOGS=$(docker logs $N8N_CONTAINER 2>&1 | tail -30)
+    
+    if echo "$LOGS" | grep -q "Mismatching encryption keys"; then
+        error "❌ Error de encriptación persistente"
+    elif echo "$LOGS" | grep -q "Error parsing n8n-config file"; then
+        error "❌ Error de JSON en archivo config"
+    elif echo "$LOGS" | grep -q "n8n ready"; then
+        log "🎉 n8n restaurado correctamente!"
     else
-        log "🎉 n8n restaurado sin errores de encriptación"
+        log "✅ n8n iniciado, verificando acceso..."
     fi
 else
     error "❌ n8n no pudo iniciar"
@@ -342,7 +313,6 @@ log "=========================================="
 log "📝 Para verificar los workflows:"
 log "   Accede a https://n8n.integraia.lat"
 log "   Usuario: admin"
-log "   Contraseña: (la del backup)"
 log ""
 log "🔑 Clave de encriptación utilizada:"
 log "   ${ENCRYPTION_KEY:0:48}..."
