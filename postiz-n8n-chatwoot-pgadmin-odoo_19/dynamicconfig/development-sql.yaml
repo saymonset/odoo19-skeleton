@@ -1,0 +1,9 @@
+limit.maxIDLength:
+  - value: 255
+    constraints: {}
+system.forceSearchAttributesCacheRefreshOnRead:
+  - value: false
+    constraints: {}
+worker.buildIdScavengerEnabled:
+  - value: true
+    constraints: {}

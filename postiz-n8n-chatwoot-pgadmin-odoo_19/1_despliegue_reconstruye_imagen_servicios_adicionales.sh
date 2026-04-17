@@ -80,10 +80,27 @@ print_header "Paso 6: Iniciando todos los servicios"
 docker compose -f docker-compose.odoo.yml up -d
 print_message "✓ Todos los servicios iniciados"
 
+# 6.5. Corregir permisos del directorio de sesiones de Odoo dentro del contenedor
+print_header "Paso 6.5: Corrigiendo permisos del directorio de sesiones de Odoo"
+
+print_message "Esperando a que el contenedor esté listo..."
+sleep 10
+
+# Crear directorio de sesiones y asignar permisos correctos
+docker exec --user root odoo-19-web bash -c "mkdir -p /var/lib/odoo/.local/share/Odoo/sessions && chown -R odoo:odoo /var/lib/odoo/.local/share/Odoo && chmod -R 755 /var/lib/odoo/.local/share/Odoo && chmod 700 /var/lib/odoo/.local/share/Odoo/sessions"
+# Verificar que se creó correctamente
+if docker exec odoo-19-web ls -la /var/lib/odoo/.local/share/Odoo/ 2>/dev/null; then
+    print_message "✓ Directorio de sesiones de Odoo verificado"
+else
+    print_warning "⚠ No se pudo verificar el directorio de sesiones"
+fi
+
+print_message "✓ Permisos de Odoo corregidos"
+
 # 7. Esperar a que PostgreSQL esté realmente listo
 print_header "Paso 7: Esperando a PostgreSQL"
 
-sleep 10
+sleep 5
 MAX_RETRIES=20
 RETRY_COUNT=0
 while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
@@ -96,12 +113,13 @@ while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
     sleep 3
 done
 
-# 8. Crear bases de datos adicionales (usando postgres como DB base)
+# 8. Crear bases de datos adicionales (incluyendo 'odoo' que busca Temporal)
 print_header "Paso 8: Creando bases de datos adicionales"
 
-for db in postiz temporal db_n8n; do
+# Lista completa de bases de datos necesarias
+for db in postiz temporal db_n8n odoo; do
     print_message "Creando base de datos: $db"
-    docker exec odoo-db19-n8n psql -U odoo -d postgres -c "CREATE DATABASE $db OWNER odoo;" 2>/dev/null || print_message "✓ Base de datos $db ya existe"
+    docker exec odoo-db19-n8n psql -U odoo -d postgres -c "CREATE DATABASE $db OWNER odoo;" 2>/dev/null && echo "   ✅ Base $db creada" || echo "   ⚠️ Base $db ya existe"
 done
 
 # 9. Verificar e inicializar Odoo
@@ -125,7 +143,7 @@ echo "=== SERVICIOS DESPLEGADOS ==="
 echo "🌐 Odoo 19:        http://localhost:18069"
 echo "📊 PostgreSQL:     localhost:5432 (user: odoo)"
 echo "📡 Redis:          localhost:6379 (password: redis123)"
-echo "🗄️ Bases creadas:  dbodoo19, postiz, temporal, db_n8n"
+echo "🗄️ Bases creadas:  dbodoo19, postiz, temporal, db_n8n, odoo"
 echo ""
 echo "=== PRÓXIMOS PASOS ==="
 echo "Ejecuta: ./2_despliegue_servicios_adicionales.sh"
