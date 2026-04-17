@@ -1,5 +1,5 @@
 #!/bin/bash
-# 9_1_backup_n8n.sh
+# 9_1_backup_n8n.sh - Script de backup mejorado con guardado de clave
 
 set -e
 
@@ -13,6 +13,7 @@ NC='\033[0m'
 log() { echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 
 # Verificar que el script de backup existe
 if [ ! -f "./backup_n8n/backup.sh" ]; then
