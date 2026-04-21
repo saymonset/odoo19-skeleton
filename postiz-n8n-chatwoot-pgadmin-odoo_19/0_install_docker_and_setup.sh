@@ -66,6 +66,8 @@ if [ "$CLEAN_VOLUMES" = "yes" ]; then
     print_message "✓ Volúmenes eliminados"
 fi
 
+
+
 # LIMPIEZA TOTAL DE DIRECTORIOS ANTIGUOS
 print_message "Limpiando directorios antiguos por completo..."
 sudo rm -rf v19/ secrets/ backups/ dynamicconfig/
@@ -144,6 +146,24 @@ worker.buildIdScavengerEnabled:
   - value: true
     constraints: {}
 EOF
+
+# Crear un directorio estándar nginx
+
+# 1. Crear un directorio estándar accesible
+sudo mkdir -p /var/www/postiz_uploads
+
+# 2. Enlazar tu carpeta real (esto funciona en CUALQUIER servidor)
+sudo ln -s $(pwd)/v19/postiz_uploads/* /var/www/postiz_uploads/
+# O así:
+sudo cp -r $(pwd)/v19/postiz_uploads/* /var/www/postiz_uploads/
+
+# 3. Dar permisos
+sudo chown -R www-data:www-data /var/www/postiz_uploads
+sudo chmod -R 755 /var/www/postiz_uploads
+
+# En Nginx usar ruta fija
+# alias /var/www/postiz_uploads/;
+
 
 # Verificar que el archivo no está vacío
 if [ -s dynamicconfig/development-sql.yaml ]; then

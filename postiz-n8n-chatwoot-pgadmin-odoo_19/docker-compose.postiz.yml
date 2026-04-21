@@ -1,4 +1,3 @@
-# docker-compose.postiz.yml - Versión oficial corregida
 services:
   # --------------------------------------------
   # Postiz App (usa BD y Redis compartidos)
@@ -15,16 +14,16 @@ services:
       temporal:
         condition: service_started
     environment:
-      # === Required Settings (usando variables del .env)
+      # === Required Settings
       MAIN_URL: '${MAIN_URL:-https://postiz.integraia.lat}'
       FRONTEND_URL: '${FRONTEND_URL:-https://postiz.integraia.lat}'
       NEXT_PUBLIC_BACKEND_URL: '${FRONTEND_URL:-https://postiz.integraia.lat}/api'
       JWT_SECRET: '${JWT_SECRET:-pon_aqui_un_secreto_muy_largo_y_aleatorio}'
       
-      # === Base de datos (usando PostgreSQL compartido con usuario 'odoo')
+      # === Base de datos
       DATABASE_URL: 'postgresql://odoo:${POSTGRES_PASSWORD}@db:5432/postiz?sslmode=disable'
       
-      # === Redis (usando Redis compartido con contraseña)
+      # === Redis
       REDIS_URL: 'redis://:${REDIS_PASSWORD:-redis123}@redis:6379'
       
       # === Backend interno
@@ -38,12 +37,17 @@ services:
       DISABLE_REGISTRATION: 'false'
       RUN_CRON: 'true'
 
-      # === Storage Settings
+      # ==========================================
+      # === Storage Settings (VERSIÓN ESTÁNDAR) ===
+      # ==========================================
+      # Usamos 'local' que es el único valor estable probado
       STORAGE_PROVIDER: 'local'
+      # Directorio interno donde Postiz guarda las imágenes
       UPLOAD_DIRECTORY: '/uploads'
+      # Ruta pública donde Nginx debe servir las imágenes
       NEXT_PUBLIC_UPLOAD_DIRECTORY: '/uploads'
 
-      # === Social Media API Settings (desde .env)
+      # === Social Media API Settings
       X_API_KEY: '${X_API_KEY:-}'
       X_API_SECRET: '${X_API_SECRET:-}'
       INSTAGRAM_APP_ID: '${INSTAGRAM_APP_ID:-}'
@@ -84,7 +88,13 @@ services:
       NEXT_PUBLIC_POLOTNO: '${NEXT_PUBLIC_POLOTNO:-}'
       API_LIMIT: 30
 
-      # === Payment / Stripe Settings
+      # === Email Settings
+      EMAIL_PROVIDER: '${EMAIL_PROVIDER:-}'
+      SMTP_HOST: '${SMTP_HOST:-}'
+      SMTP_PORT: '${SMTP_PORT:-}'
+      SMTP_USER: '${SMTP_USER:-}'
+      SMTP_PASSWORD: '${SMTP_PASSWORD:-}'
+      SMTP_FROM: '${SMTP_FROM:-}'
       FEE_AMOUNT: 0.05
       STRIPE_PUBLISHABLE_KEY: '${STRIPE_PUBLISHABLE_KEY:-}'
       STRIPE_SECRET_KEY: '${STRIPE_SECRET_KEY:-}'
@@ -103,7 +113,7 @@ services:
       - odoo_network_19
 
   # --------------------------------------------
-  # Temporal Stack (usando BD compartida para metadata)
+  # Temporal Stack (sin cambios)
   # --------------------------------------------
   temporal-elasticsearch:
     image: elasticsearch:7.17.27
@@ -132,7 +142,6 @@ services:
       temporal-elasticsearch:
         condition: service_started
     environment:
-      # Configuración para usar PostgreSQL compartido
       DB: postgres12
       DB_PORT: 5432
       POSTGRES_USER: odoo
@@ -148,7 +157,6 @@ services:
     ports:
       - "7233:7233"
     volumes:
-      # ✅ SOLO dynamicconfig queda fuera de v19/
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
 
   temporal-admin-tools:
@@ -186,7 +194,6 @@ services:
     networks:
       - odoo_network_19
 
-# Red compartida (externa - debe existir)
 networks:
   odoo_network_19:
     external: true
