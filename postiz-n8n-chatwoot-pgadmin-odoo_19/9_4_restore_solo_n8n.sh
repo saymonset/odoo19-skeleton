@@ -10,10 +10,12 @@ NC='\033[0m'
 log() { echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 
-# NOTA: Usaremos el script de restauración anterior o el nuevo de forma selectiva
-# Pero para n8n, lo más robusto es usar el anterior renombrado o una sección del nuevo.
-# Por simplicidad y robustez, invocaremos el restore_full.sh pero el usuario deberá esperar que restaura todo.
-# O mejor, creamos uno específico para n8n basado en el que estaba.
+# Verificar scripts
+if [ ! -f "./backup/restore_solo_n8n.sh" ]; then
+    error "No se encuentra ./backup/restore_solo_n8n.sh"
+fi
 
-log "🚀 Restaurando n8n (esto usará el motor de restauración integral)..."
-./backup/restore_full.sh "$@"
+chmod +x ./backup/restore_solo_n8n.sh
+
+log "🚀 Restaurando SOLO n8n..."
+./backup/restore_solo_n8n.sh "$@"

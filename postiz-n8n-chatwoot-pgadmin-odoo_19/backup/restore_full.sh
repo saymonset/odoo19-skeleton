@@ -50,7 +50,7 @@ docker compose stop web n8n postiz chatwoot-app chatwoot-sidekiq 2>/dev/null || 
 # ---------------------------------------------------------
 # A. RESTAURAR BASES DE DATOS
 # ---------------------------------------------------------
-DATABASES=("dbodoo19" "db_n8n" "postiz")
+DATABASES=("dbodoo19" "db_n8n")
 for DB in "${DATABASES[@]}"; do
     DUMP_FILE=$(ls $BACKUP_DIR/${DB}_*.dump 2>/dev/null | head -1)
     if [ -f "$DUMP_FILE" ]; then
@@ -98,7 +98,7 @@ restore_folder() {
 
 restore_folder "Odoo Data" "odoo_data_*.tar.gz" "v19/data"
 restore_folder "n8n Data" "n8n_data_*.tar.gz" "v19/n8n_data"
-restore_folder "Postiz Data" "postiz_data_*.tar.gz" "v19/postiz_uploads"
+# restore_folder "Postiz Data" "postiz_data_*.tar.gz" "v19/postiz_uploads"
 restore_folder "Chatwoot Data" "chatwoot_data_*.tar.gz" "v19/chatwoot_storage"
 
 # ---------------------------------------------------------

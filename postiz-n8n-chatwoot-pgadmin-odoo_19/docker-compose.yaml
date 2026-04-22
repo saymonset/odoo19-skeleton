@@ -44,7 +44,7 @@ services:
   #     file: docker-compose.chatwoot.yml
   #     service: chatwoot-worker
 
-    # Incluir Postiz
+  # Incluir Postiz
   postiz:
     extends:
       file: docker-compose.postiz.yml
