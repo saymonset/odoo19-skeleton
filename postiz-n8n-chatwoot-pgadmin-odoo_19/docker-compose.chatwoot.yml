@@ -33,6 +33,14 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       NODE_ENV: production
+
+      # CONFIGURACIÓN ANTI-BLOQUEO PARA USUARIOS TORPES
+      RACK_ATTACK_LIMIT: "10000"
+      RACK_ATTACK_ALLOWED_IPS: "127.0.0.1,190.103.28.100"
+      RACK_ATTACK_LOGIN_ATTEMPTS_PER_IP: "20"
+      RACK_ATTACK_LOGIN_ATTEMPTS_PER_EMAIL: "30"
+      RACK_ATTACK_LOGIN_PERIOD_IP: "300"
+      RACK_ATTACK_LOGIN_PERIOD_EMAIL: "900"
       
       RAILS_HOST: https://chatwoot.integraia.lat
       FRONTEND_URL: https://chatwoot.integraia.lat
