@@ -12,42 +12,22 @@ services:
       redis:
         condition: service_healthy
       temporal:
-        condition: service_started
+        condition: service_healthy
     environment:
-      # === Required Settings
       MAIN_URL: '${MAIN_URL:-https://postiz.integraia.lat}'
       FRONTEND_URL: '${FRONTEND_URL:-https://postiz.integraia.lat}'
       NEXT_PUBLIC_BACKEND_URL: '${FRONTEND_URL:-https://postiz.integraia.lat}/api'
       JWT_SECRET: '${JWT_SECRET:-pon_aqui_un_secreto_muy_largo_y_aleatorio}'
-      
-      # === Base de datos
       DATABASE_URL: 'postgresql://odoo:${POSTGRES_PASSWORD}@db:5432/postiz?sslmode=disable'
-      
-      # === Redis
       REDIS_URL: 'redis://:${REDIS_PASSWORD:-redis123}@redis:6379'
-      
-      # === Backend interno
       BACKEND_INTERNAL_URL: 'http://postiz:3000'
-      
-      # === Temporal
       TEMPORAL_ADDRESS: "temporal:7233"
-      
-      # === Configuración general
       IS_GENERAL: 'true'
       DISABLE_REGISTRATION: 'false'
       RUN_CRON: 'true'
-
-      # ==========================================
-      # === Storage Settings (VERSIÓN ESTÁNDAR) ===
-      # ==========================================
-      # Usamos 'local' que es el único valor estable probado
       STORAGE_PROVIDER: 'local'
-      # Directorio interno donde Postiz guarda las imágenes
       UPLOAD_DIRECTORY: '/uploads'
-      # Ruta pública donde Nginx debe servir las imágenes
       NEXT_PUBLIC_UPLOAD_DIRECTORY: '/uploads'
-
-      # === Social Media API Settings
       X_API_KEY: '${X_API_KEY:-}'
       X_API_SECRET: '${X_API_SECRET:-}'
       INSTAGRAM_APP_ID: '${INSTAGRAM_APP_ID:-}'
@@ -81,14 +61,10 @@ services:
       MASTODON_URL: '${MASTODON_URL:-https://mastodon.social}'
       MASTODON_CLIENT_ID: '${MASTODON_CLIENT_ID:-}'
       MASTODON_CLIENT_SECRET: '${MASTODON_CLIENT_SECRET:-}'
-
-      # === Misc Settings
       OPENAI_API_KEY: '${OPENAI_API_KEY:-}'
       NEXT_PUBLIC_DISCORD_SUPPORT: '${NEXT_PUBLIC_DISCORD_SUPPORT:-}'
       NEXT_PUBLIC_POLOTNO: '${NEXT_PUBLIC_POLOTNO:-}'
       API_LIMIT: 30
-
-      # === Email Settings
       EMAIL_PROVIDER: '${EMAIL_PROVIDER:-}'
       SMTP_HOST: '${SMTP_HOST:-}'
       SMTP_PORT: '${SMTP_PORT:-}'
@@ -100,10 +76,7 @@ services:
       STRIPE_SECRET_KEY: '${STRIPE_SECRET_KEY:-}'
       STRIPE_SIGNING_KEY: '${STRIPE_SIGNING_KEY:-}'
       STRIPE_SIGNING_KEY_CONNECT: '${STRIPE_SIGNING_KEY_CONNECT:-}'
-
-      # === Developer Settings
       NX_ADD_PLUGINS: false
-
     volumes:
       - ./v19/postiz_config:/config
       - ./v19/postiz_uploads:/uploads
@@ -113,7 +86,7 @@ services:
       - odoo_network_19
 
   # --------------------------------------------
-  # Temporal Stack (sin cambios)
+  # Temporal Stack (configuración completa)
   # --------------------------------------------
   temporal-elasticsearch:
     image: elasticsearch:7.17.27
@@ -147,6 +120,9 @@ services:
       POSTGRES_USER: odoo
       POSTGRES_PWD: ${POSTGRES_PASSWORD}
       POSTGRES_SEEDS: db
+      POSTGRES_DB: temporal
+      SERVICES: frontend,history,matching,worker
+      TEMPORAL_BIND_ADDRESS: 0.0.0.0
       DYNAMIC_CONFIG_FILE_PATH: config/dynamicconfig/development-sql.yaml
       ENABLE_ES: true
       ES_SEEDS: temporal-elasticsearch
@@ -158,6 +134,12 @@ services:
       - "7233:7233"
     volumes:
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
+    healthcheck:
+      test: ["CMD", "tctl", "--address", "127.0.0.1:7233", "namespace", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
 
   temporal-admin-tools:
     image: temporalio/admin-tools:1.28.1-tctl-1.18.4-cli-1.4.1

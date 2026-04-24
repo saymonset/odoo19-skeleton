@@ -131,3 +131,9 @@ SMTP_PORT=587
 SMTP_USER=oraclefedora@gmail.com
 SMTP_PASSWORD='gpok vuym icks vfpf'
 SMTP_FROM=oraclefedora@gmail.com
+
+POSTGRES_PASSWORD=0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
+REDIS_PASSWORD=redis123
+JWT_SECRET=pon_aqui_un_secreto_muy_largo_y_aleatorio
+MAIN_URL=https://postiz.integraia.lat
+FRONTEND_URL=https://postiz.integraia.lat
