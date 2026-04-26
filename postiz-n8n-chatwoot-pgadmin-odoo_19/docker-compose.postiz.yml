@@ -97,7 +97,7 @@ services:
       - cluster.routing.allocation.disk.watermark.high=256mb
       - cluster.routing.allocation.disk.watermark.flood_stage=128mb
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - xpack.security.enabled=false
     networks:
       - odoo_network_19
@@ -135,7 +135,7 @@ services:
     volumes:
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
     healthcheck:
-      test: ["CMD", "tctl", "--address", "127.0.0.1:7233", "namespace", "list"]
+      test: ["CMD", "temporal", "--address", "temporal:7233", "operator", "cluster", "health"]
       interval: 30s
       timeout: 10s
       retries: 5
