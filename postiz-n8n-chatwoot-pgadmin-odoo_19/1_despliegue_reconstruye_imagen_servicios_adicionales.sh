@@ -80,11 +80,20 @@ print_header "Paso 6: Iniciando todos los servicios"
 docker compose -f docker-compose.odoo.yml up -d
 print_message "✓ Todos los servicios iniciados"
 
+# Esperar a que el contenedor de Odoo esté realmente corriendo antes de instalar openai
+print_message "Esperando estabilidad del contenedor Odoo..."
+sleep 15
+
+# Instalar openai dentro del contenedor (sin -it para evitar errores en modo no interactivo)
+print_header "Paso 6.1: Instalando librería openai en el contenedor"
+docker exec --user root odoo-19-web bash -c "apt update -qq && apt install -y -qq python3-pip && pip3 install -q openai" || {
+    print_warning "Falló la instalación automática de openai. Intentando nuevamente..."
+    docker exec --user root odoo-19-web bash -c "pip3 install openai"
+}
+print_message "✓ Librería openai instalada correctamente"
+
 # 6.5. Corregir permisos del directorio de sesiones de Odoo dentro del contenedor
 print_header "Paso 6.5: Corrigiendo permisos del directorio de sesiones de Odoo"
-
-print_message "Esperando a que el contenedor esté listo..."
-sleep 10
 
 # Crear directorio de sesiones y asignar permisos correctos
 docker exec --user root odoo-19-web bash -c "mkdir -p /var/lib/odoo/.local/share/Odoo/sessions && chown -R odoo:odoo /var/lib/odoo/.local/share/Odoo && chmod -R 755 /var/lib/odoo/.local/share/Odoo && chmod 700 /var/lib/odoo/.local/share/Odoo/sessions"
@@ -144,6 +153,7 @@ echo "🌐 Odoo 19:        http://localhost:18069"
 echo "📊 PostgreSQL:     localhost:5432 (user: odoo)"
 echo "📡 Redis:          localhost:6379 (password: redis123)"
 echo "🗄️ Bases creadas:  dbodoo19, postiz, temporal, db_n8n, odoo"
+echo "🤖 Librería openai instalada en el contenedor de Odoo"
 echo ""
 echo "=== PRÓXIMOS PASOS ==="
 echo "Ejecuta: ./2_despliegue_servicios_adicionales.sh"
