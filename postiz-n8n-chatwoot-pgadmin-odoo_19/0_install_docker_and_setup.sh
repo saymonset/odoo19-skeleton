@@ -62,7 +62,12 @@ read -p "¿Deseas eliminar también los volúmenes? (yes/no): " CLEAN_VOLUMES
 
 if [ "$CLEAN_VOLUMES" = "yes" ]; then
     print_message "Eliminando volúmenes..."
-    docker compose down -v 2>/dev/null || true
+    docker compose -f docker-compose.yaml down -v 2>/dev/null || true
+    docker compose -f docker-compose.odoo.yml down -v 2>/dev/null || true
+    docker compose -f docker-compose.n8n.yml down -v 2>/dev/null || true
+    docker compose -f docker-compose.chatwoot.yml down -v 2>/dev/null || true
+    docker compose -f docker-compose.postiz.yml down -v 2>/dev/null || true
+    docker compose -f docker-compose.pgadmin.yml down -v 2>/dev/null || true
     print_message "✓ Volúmenes eliminados"
 fi
 
@@ -306,9 +311,6 @@ print_message "Contenido de .env:"
 cat .env
 
 
-# 2. Crear base de datos 'odoo' faltante
-echo "2. Creando base de datos 'odoo'..."
-docker exec odoo-db19-n8n psql -U odoo -d postgres -c "CREATE DATABASE odoo OWNER odoo;" 2>/dev/null && echo "   ✅ Base de datos 'odoo' creada" || echo "   ⚠️ La base de datos 'odoo' ya existe"
 
 # 3. Crear base de datos 'dbodoo19' si no existe
 echo "3. Verificando base de datos 'dbodoo19'..."
@@ -340,6 +342,8 @@ services:
     volumes:
       - "./v19/redis_data:/data"
 EOF
+
+
 
 # 8. Verificar Docker
 print_message "[8/8] Verificación final..."

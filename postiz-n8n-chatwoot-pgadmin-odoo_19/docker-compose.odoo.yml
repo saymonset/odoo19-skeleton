@@ -9,8 +9,8 @@ services:
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
       PGDATA: /var/lib/postgresql/data/pgdata
     command: ["postgres", "-c", "max_connections=200"]
-    ports:
-      - "5432:5432"
+   # ports:
+      #- "5433:5432"
     networks:
       - odoo_network_19
     volumes:
@@ -40,7 +40,7 @@ services:
       --bind 0.0.0.0
       --protected-mode no
       --maxmemory 256mb
-      --maxmemory-policy allkeys-lru
+      --maxmemory-policy noeviction
       --databases 16
       --save 900 1
       --save 300 10
@@ -76,8 +76,8 @@ services:
     volumes:
       - "./v19/odoo-web-data:/var/lib/odoo"
       - "./v19/config:/etc/odoo"
-      - "./v19/data/addons/extra:/opt/odoo/custom-addons/extra"
-      - "./v19/data/addons/oca:/opt/odoo/custom-addons/oca"
+      - "/home/odoo/prod/modulos_odoo/shared/extra/19.0:/opt/odoo/custom-addons/extra"
+      - "/home/odoo/prod/modulos_odoo/shared/oca/19.0:/opt/odoo/custom-addons/oca"
       - "./v19/data/addons/enterprise:/opt/odoo/custom-addons/enterprise"
       - "./v19/logs:/var/log/odoo"
       - "./v19/data/filestore:/var/lib/odoo/.local/share/Odoo/filestore"

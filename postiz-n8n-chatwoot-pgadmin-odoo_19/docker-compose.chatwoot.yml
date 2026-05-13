@@ -1,17 +1,17 @@
-# Hacer backup
+# docker-compose.chatwoot.yml corregido (usando nc para esperar Redis)
 services:
   chatwoot-postgres:
     image: pgvector/pgvector:pg12
     container_name: chatwoot-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: chatwoot 
+      POSTGRES_USER: chatwoot
       POSTGRES_PASSWORD: chatwoot123
       POSTGRES_DB: chatwoot_production
     volumes:
       - ./v19/chatwoot_pgdata:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "127.0.0.1:5433:5432"   # Solo localhost por seguridad
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U chatwoot -d chatwoot_production"]
       interval: 15s
@@ -28,13 +28,11 @@ services:
     depends_on:
       chatwoot-postgres:
         condition: service_healthy
-      # redis eliminado - ya existe externamente
     environment:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       NODE_ENV: production
 
-      # CONFIGURACIÓN ANTI-BLOQUEO PARA USUARIOS TORPES
       RACK_ATTACK_LIMIT: "10000"
       RACK_ATTACK_ALLOWED_IPS: "127.0.0.1,190.103.28.100"
       RACK_ATTACK_LOGIN_ATTEMPTS_PER_IP: "20"
@@ -100,21 +98,17 @@ services:
     command: >
       sh -c "
         rm -f /app/tmp/pids/server.pid 2>/dev/null &&
-        
         # Esperar PostgreSQL
         until pg_isready -h chatwoot-postgres -p 5432 -U chatwoot -d chatwoot_production 2>/dev/null; do
-          echo 'Esperando PostgreSQL...' &&
-          sleep 5;
+          echo 'Esperando PostgreSQL...' && sleep 5;
         done &&
-        
-        # Esperar un momento para Redis (sin redis-cli)
-        echo 'Esperando a que Redis esté listo...' &&
-        sleep 15 &&
-        
-        # Inicializar base de datos
-        bundle exec rails db:chatwoot_prepare &&
-        
-        # Iniciar servidor
+        # Esperar Redis usando netcat (verificar puerto abierto)
+        until nc -z redis 6379; do
+          echo 'Esperando Redis...' && sleep 2;
+        done &&
+        # Preparar la base de datos (crea, migra y seedea si es necesario)
+        bundle exec rails db:prepare &&
+        # Iniciar el servidor
         bundle exec rails server -p 3000 -b 0.0.0.0
       "
 
@@ -124,7 +118,6 @@ services:
     restart: unless-stopped
     depends_on:
       - chatwoot-postgres
-      # redis eliminado - ya existe externamente
     environment:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
@@ -157,10 +150,10 @@ services:
       - odoo_network_19
     command: >
       sh -c "
-        # Esperar un momento para que Redis esté listo
-        echo 'Esperando a que Redis esté disponible...' &&
-        sleep 20 &&
-        
+        # Esperar a que Redis esté disponible (usando netcat)
+        until nc -z redis 6379; do
+          echo 'Esperando Redis...' && sleep 2;
+        done &&
         # Iniciar Sidekiq
         bundle exec sidekiq -C config/sidekiq.yml
       "

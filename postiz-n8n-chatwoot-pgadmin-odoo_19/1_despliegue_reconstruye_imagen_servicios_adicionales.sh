@@ -21,6 +21,10 @@ print_header "Paso 1: Construcción de la imagen personalizada Odoo 19"
 print_message "Eliminando imagen anterior..."
 docker image rm odoo-pers:19 2>/dev/null || true
 
+if [ ! -f Dockerfile ]; then
+    print_error "No se encuentra el Dockerfile para construir la imagen odoo-pers:19"
+    exit 1
+fi
 print_message "Construyendo nueva imagen odoo-pers:19..."
 docker build --no-cache -t odoo-pers:19 .
 
@@ -142,6 +146,34 @@ if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302
 else
     print_warning "⚠ Odoo aún no responde (HTTP $HTTP_CODE). Revisando logs..."
     docker logs odoo-19-web --tail 30
+fi
+
+
+# Configurar swap de 16G (solo si no existe)
+if [ ! -f /swapfile ]; then
+    print_message "Creando archivo swap de 16G..."
+    # Intentar con fallocate, si falla usar dd
+    if ! sudo fallocate -l 16G /swapfile 2>/dev/null; then
+        sudo dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress
+    fi
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    # Evitar duplicar línea en fstab
+    if ! grep -q '/swapfile' /etc/fstab; then
+        echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+    fi
+    print_message "Swap activado correctamente"
+else
+    print_warning "El archivo /swapfile ya existe. No se modificó el swap."
+fi
+
+# (Opcional) Ajustar swappiness a 10 para usar swap solo cuando sea necesario
+CURRENT_SWAPPINESS=$(sysctl -n vm.swappiness)
+if [ "$CURRENT_SWAPPINESS" -gt 10 ]; then
+    sudo sysctl vm.swappiness=10
+    echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
+    print_message "Swappiness reducido de $CURRENT_SWAPPINESS a 10"
 fi
 
 # 10. Resumen final
