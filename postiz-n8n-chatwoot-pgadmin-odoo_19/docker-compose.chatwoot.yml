@@ -40,13 +40,13 @@ services:
       RACK_ATTACK_LOGIN_PERIOD_IP: "300"
       RACK_ATTACK_LOGIN_PERIOD_EMAIL: "900"
       
-      RAILS_HOST: https://chatwoot.integraia.lat
-      FRONTEND_URL: https://chatwoot.integraia.lat
-      APP_HOST: https://chatwoot.integraia.lat
+      RAILS_HOST: https://chatwoot.unisasalud.com
+      FRONTEND_URL: https://chatwoot.unisasalud.com
+      APP_HOST: https://chatwoot.unisasalud.com
       
-      ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
-      RAILS_STORAGE_HOST: https://chatwoot.integraia.lat
+      ASSET_HOST: https://chatwoot.unisasalud.com
+      ACTIVE_STORAGE_HOST: https://chatwoot.unisasalud.com
+      RAILS_STORAGE_HOST: https://chatwoot.unisasalud.com
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
@@ -56,8 +56,8 @@ services:
       
       ACTIVE_STORAGE_ROOT: /app/storage
       RAILS_STORAGE_PATH: /app/storage
-      RAILS_ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_URL_HOST: https://chatwoot.integraia.lat
+      RAILS_ASSET_HOST: https://chatwoot.unisasalud.com
+      ACTIVE_STORAGE_URL_HOST: https://chatwoot.unisasalud.com
       ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN: "604800"
       
       POSTGRES_USER: chatwoot
@@ -122,10 +122,10 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       
-      RAILS_HOST: https://chatwoot.integraia.lat
-      FRONTEND_URL: https://chatwoot.integraia.lat
-      ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      RAILS_HOST: https://chatwoot.unisasalud.com
+      FRONTEND_URL: https://chatwoot.unisasalud.com
+      ASSET_HOST: https://chatwoot.unisasalud.com
+      ACTIVE_STORAGE_HOST: https://chatwoot.unisasalud.com
       
       POSTGRES_USER: chatwoot
       POSTGRES_PASSWORD: chatwoot123
