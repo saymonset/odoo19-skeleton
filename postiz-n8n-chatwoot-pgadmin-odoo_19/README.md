@@ -67,3 +67,15 @@ Puedes restaurar utilizando el script principal. Por defecto va a coger el backu
 ```
 
 **Nota:** Si vas a restaurar un backup específico, asegúrate de actualizar la variable `BACKUP_DIR` dentro del archivo `./backup/restore.sh` apuntando a la subruta o ID exacto del backup que extrajiste.
+
+
+# Configurar redis en el n8n, sus credenciales para el segundo flujo
+
+✅ Datos exactos para el nodo Redis en n8n:
+Campo	Valor
+
+Host	redis
+Port	6379
+Password	redis123
+Database Number	0 (o el que necesites)
+User	(dejar vacío)
