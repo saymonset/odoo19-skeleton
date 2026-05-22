@@ -112,6 +112,13 @@ services:
       ACTION_MAILER_SMTP_SSL: "true"
       ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
 
+      # ========== MODIFICACIÓN AGREGADA (siguiendo paso de Portainer) ==========
+      # Descomentar o añadir la siguiente línea para conectar con el hub de Chatwoot
+      CHATWOOT_HUB_URL: https://hub.chatwoot.com
+      # Alternativa para deshabilitar telemetría (recomendado):
+      # DISABLE_TELEMETRY: "true"
+      # ========================================================================
+
     ports:
       - "3000:3000"
     volumes:
@@ -184,6 +191,13 @@ services:
       ACTION_MAILER_SMTP_AUTHENTICATION: plain
       ACTION_MAILER_SMTP_SSL: "true"
       ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
+
+      # ========== MODIFICACIÓN AGREGADA (siguiendo paso de Portainer) ==========
+      # Descomentar o añadir la siguiente línea para conectar con el hub de Chatwoot
+      CHATWOOT_HUB_URL: https://hub.chatwoot.com
+      # Alternativa para deshabilitar telemetría (recomendado):
+      # DISABLE_TELEMETRY: "true"
+      # ========================================================================
 
     volumes:
       - ./v19/chatwoot_storage:/app/storage
