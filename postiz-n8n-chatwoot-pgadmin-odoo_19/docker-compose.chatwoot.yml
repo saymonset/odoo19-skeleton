@@ -22,7 +22,7 @@ services:
       - odoo_network_19
 
   chatwoot-app:
-    image: chatwoot/chatwoot:v4.12.0
+    image: chatwoot/chatwoot:v4.13.0
     container_name: chatwoot-app
     restart: unless-stopped
     depends_on:
@@ -134,7 +134,7 @@ services:
       "
 
   chatwoot-sidekiq:
-    image: chatwoot/chatwoot:v4.12.0
+    image: chatwoot/chatwoot:v4.13.0
     container_name: chatwoot-sidekiq
     restart: unless-stopped
     depends_on:
