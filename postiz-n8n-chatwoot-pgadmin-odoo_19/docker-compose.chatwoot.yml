@@ -1,4 +1,4 @@
-# docker-compose.chatwoot.yml corregido (usando nc para esperar Redis)
+# docker-compose.chatwoot.yml
 services:
   chatwoot-postgres:
     image: pgvector/pgvector:pg12
@@ -11,7 +11,7 @@ services:
     volumes:
       - ./v19/chatwoot_pgdata:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5433:5432"   # Solo localhost por seguridad
+      - "127.0.0.1:5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U chatwoot -d chatwoot_production"]
       interval: 15s
@@ -87,7 +87,31 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
       RAILS_SERVE_STATIC_FILES: "true"
       
-      API_AUTH_TOKEN: chatwoot_api_token_1234567890  
+      API_AUTH_TOKEN: chatwoot_api_token_1234567890
+
+      # Configuración SMTP (estándar de Chatwoot)
+      SMTP_ADDRESS: mail.privateemail.com
+      SMTP_PORT: 465
+      SMTP_USERNAME: admin@unisasalud.com
+      SMTP_PASSWORD: 'Steamashit..17'
+      SMTP_DOMAIN: unisasalud.com
+      SMTP_AUTHENTICATION: plain
+      SMTP_ENABLE_STARTTLS_AUTO: "false"
+      SMTP_SSL: "true"
+      SMTP_TLS: "true"
+      MAILER_SENDER_EMAIL: admin@unisasalud.com
+      MAIL_DOMAIN: unisasalud.com
+
+      # Configuración específica de Action Mailer (para forzar SMTP)
+      ACTION_MAILER_DELIVERY_METHOD: smtp
+      ACTION_MAILER_SMTP_ADDRESS: mail.privateemail.com
+      ACTION_MAILER_SMTP_PORT: 465
+      ACTION_MAILER_SMTP_USER_NAME: admin@unisasalud.com
+      ACTION_MAILER_SMTP_PASSWORD: 'Steamashit..17'
+      ACTION_MAILER_SMTP_AUTHENTICATION: plain
+      ACTION_MAILER_SMTP_SSL: "true"
+      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
+
     ports:
       - "3000:3000"
     volumes:
@@ -99,17 +123,13 @@ services:
     command: >
       sh -c "
         rm -f /app/tmp/pids/server.pid 2>/dev/null &&
-        # Esperar PostgreSQL
         until pg_isready -h chatwoot-postgres -p 5432 -U chatwoot -d chatwoot_production 2>/dev/null; do
           echo 'Esperando PostgreSQL...' && sleep 5;
         done &&
-        # Esperar Redis usando netcat (verificar puerto abierto)
         until nc -z redis 6379; do
           echo 'Esperando Redis...' && sleep 2;
         done &&
-        # Preparar la base de datos (crea, migra y seedea si es necesario)
         bundle exec rails db:prepare &&
-        # Iniciar el servidor
         bundle exec rails server -p 3000 -b 0.0.0.0
       "
 
@@ -142,7 +162,29 @@ services:
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
-      
+
+      # Misma configuración SMTP que en app
+      SMTP_ADDRESS: mail.privateemail.com
+      SMTP_PORT: 465
+      SMTP_USERNAME: admin@unisasalud.com
+      SMTP_PASSWORD: 'Steamashit..17'
+      SMTP_DOMAIN: unisasalud.com
+      SMTP_AUTHENTICATION: plain
+      SMTP_ENABLE_STARTTLS_AUTO: "false"
+      SMTP_SSL: "true"
+      SMTP_TLS: "true"
+      MAILER_SENDER_EMAIL: admin@unisasalud.com
+      MAIL_DOMAIN: unisasalud.com
+
+      ACTION_MAILER_DELIVERY_METHOD: smtp
+      ACTION_MAILER_SMTP_ADDRESS: mail.privateemail.com
+      ACTION_MAILER_SMTP_PORT: 465
+      ACTION_MAILER_SMTP_USER_NAME: admin@unisasalud.com
+      ACTION_MAILER_SMTP_PASSWORD: 'Steamashit..17'
+      ACTION_MAILER_SMTP_AUTHENTICATION: plain
+      ACTION_MAILER_SMTP_SSL: "true"
+      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
+
     volumes:
       - ./v19/chatwoot_storage:/app/storage
       - ./v19/chatwoot_logs:/app/log
@@ -151,11 +193,9 @@ services:
       - odoo_network_19
     command: >
       sh -c "
-        # Esperar a que Redis esté disponible (usando netcat)
         until nc -z redis 6379; do
           echo 'Esperando Redis...' && sleep 2;
         done &&
-        # Iniciar Sidekiq
         bundle exec sidekiq -C config/sidekiq.yml
       "
 
