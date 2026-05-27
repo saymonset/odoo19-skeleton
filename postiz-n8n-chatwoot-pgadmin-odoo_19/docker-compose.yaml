@@ -45,35 +45,35 @@ services:
   #     service: chatwoot-worker
 
   # Incluir Postiz
-  postiz:
-    extends:
-      file: docker-compose.postiz.yml
-      service: postiz
+  # postiz:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: postiz
 
-  temporal-elasticsearch:
-    extends:
-      file: docker-compose.postiz.yml
-      service: temporal-elasticsearch
+  # temporal-elasticsearch:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: temporal-elasticsearch
 
-  temporal:
-    extends:
-      file: docker-compose.postiz.yml
-      service: temporal
+  # temporal:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: temporal
 
-  temporal-admin-tools:
-    extends:
-      file: docker-compose.postiz.yml
-      service: temporal-admin-tools
+  # temporal-admin-tools:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: temporal-admin-tools
 
-  temporal-ui:
-    extends:
-      file: docker-compose.postiz.yml
-      service: temporal-ui
+  # temporal-ui:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: temporal-ui
 
-  spotlight:
-    extends:
-      file: docker-compose.postiz.yml
-      service: spotlight
+  # spotlight:
+  #   extends:
+  #     file: docker-compose.postiz.yml
+  #     service: spotlight
   
   # Incluir pgAdmin (opcional)
   pgadmin:
