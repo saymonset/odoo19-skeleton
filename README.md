@@ -1,3 +1,9 @@
+cd /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19
+
+copiar env-example a ./env
+ejecutar ./0_install_d 
+
+
 # Traer backup de maquina remota a local linux 
 scp -r odoo@147.93.179.254:/home/odoo/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out  /home/simon/opt/odoo/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup
 
