@@ -112,7 +112,7 @@ list_backups() {
         echo ""
         echo "📁 $(basename $backup)"
         echo "   🗄️ Bases de datos:"
-        ls -lh $backup/odoo_db_*.dump 2>/dev/null | awk '{print "      - " $9 " (" $5 ")"}' || echo "      No hay backups"
+        ls -lh $backup/dbodoo19_*.dump $backup/odoo_db_*.dump 2>/dev/null | awk '{print "      - " $9 " (" $5 ")"}' || echo "      No hay backups"
         echo "   📎 Filestore:"
         ls -lh $backup/odoo_filestore_*.tar.gz 2>/dev/null | awk '{print "      - " $9 " (" $5 ")"}' || echo "      No hay backups"
         echo "   📦 Addons:"
@@ -244,9 +244,19 @@ restore() {
         exit 1
     fi
     
-    local BASE_NAME=$(basename "$dump_file" | sed 's/odoo_db_//' | sed 's/\.dump//')
-    local FILESTORE_FILE="$(dirname "$dump_file")/odoo_filestore_${BASE_NAME}.tar.gz"
-    local ADDONS_FILE="$(dirname "$dump_file")/odoo_addons_${BASE_NAME}.tar.gz"
+    local BASE_NAME=$(basename "$dump_file" | sed 's/odoo_db_//' | sed 's/dbodoo19_//' | sed 's/\.dump//')
+    local BACKUP_DIR=$(dirname "$dump_file")
+    local FILESTORE_FILE=""
+    for pattern in "odoo_filestore_${BASE_NAME}.tar.gz" "odoo_data_${BASE_NAME}.tar.gz" "odoo_data_*.tar.gz"; do
+        FILESTORE_FILE=$(ls $BACKUP_DIR/$pattern 2>/dev/null | head -1)
+        [ -n "$FILESTORE_FILE" ] && break
+    done
+
+    local ADDONS_FILE=""
+    for pattern in "odoo_addons_${BASE_NAME}.tar.gz" "odoo_addons_*.tar.gz"; do
+        ADDONS_FILE=$(ls $BACKUP_DIR/$pattern 2>/dev/null | head -1)
+        [ -n "$ADDONS_FILE" ] && break
+    done
     
     info "Restaurando desde backup: $BASE_NAME"
     info "Base de datos destino: $DB_NAME"
@@ -444,7 +454,7 @@ case $1 in
         ;;
     --install-modules)
         INSTALL_MODULES=true
-        LATEST=$(ls -t $BACKUP_DIR/odoo_db_*.dump 2>/dev/null | head -1)
+        LATEST=$(ls -t $BACKUP_DIR/dbodoo19_*.dump $BACKUP_DIR/odoo_db_*.dump 2>/dev/null | head -1)
         if [ -z "$LATEST" ]; then
             error "No hay backups disponibles"
             exit 1
@@ -455,7 +465,7 @@ case $1 in
         usage
         ;;
     *)
-        LATEST=$(ls -t $BACKUP_DIR/odoo_db_*.dump 2>/dev/null | head -1)
+        LATEST=$(ls -t $BACKUP_DIR/dbodoo19_*.dump $BACKUP_DIR/odoo_db_*.dump 2>/dev/null | head -1)
         if [ -z "$LATEST" ]; then
             error "No hay backups disponibles en $BACKUP_DIR"
             exit 1
