@@ -16,3 +16,11 @@ mv /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/ou
 
 # backup de desarrollo a produccion
 mv /home/odoo/develop/odoo-from-13-to-18/arquitectura/odoo19/backup/out/backup_2026-04-28_21-46-06 /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out
+
+# Bajar solo Postiz + Temporal
+cd /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19
+docker compose stop postiz temporal temporal-elasticsearch
+
+# Levantarlos de nuevo
+cd /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19
+docker compose up -d postiz temporal temporal-elasticsearch
