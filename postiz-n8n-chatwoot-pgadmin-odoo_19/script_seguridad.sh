@@ -23,8 +23,8 @@ ufw default allow outgoing
 # Permitir SSH (puerto 22)
 ufw allow ssh
 
-# Permitir solo desde tu IP el puerto 18069
-ufw allow from 147.93.179.254 to any port 18069 proto tcp
+# Permitir solo desde tu IP el puerto 28069
+ufw allow from 147.93.179.254 to any port 28069 proto tcp
 
 # Activar el firewall
 ufw --force enable
@@ -39,7 +39,7 @@ systemctl start fail2ban
 
 echo "✅ Fail2ban está activo y protegiendo contra intentos de hackeo."
 
-echo "🧩 Verificando servicio en puerto 18069..."
-ss -tuln | grep 18069 || echo "⚠️ El puerto 18069 no está escuchando (verifica tu servicio)."
+echo "🧩 Verificando servicio en puerto 28069..."
+ss -tuln | grep 28069 || echo "⚠️ El puerto 28069 no está escuchando (verifica tu servicio)."
 
 echo "🎯 Configuración completada con éxito."

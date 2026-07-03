@@ -1,0 +1,724 @@
+MANUAL DE FABRICACIÓN EN ODOO 19 CE — CON CÁLCULOS CORREGIDOS
+===============================================================
+Escenario: Bobinas de Aluminio de 0.3 mm y 0.5 mm
+Basado en datos reales del sistema Odoo Leads
+===============================================================
+
+ÍNDICE
+───────────────────────────────────────────────────────────────
+  Escenario del Cliente
+  Paso 1 — Activar módulos
+  Paso 2 — Activar fabricación en almacén
+  Paso 3 — Rutas y centros de trabajo
+  Paso 4 — Crear centro de trabajo
+  Paso 5 — Productos materia prima
+  Paso 6 — ★ Configurar costeo AVCO (CLAVE)
+  Paso 7 — Productos fabricados
+  Paso 8 — Listas de Materiales (BOMs) con costos
+  Paso 9 — Comprar materia prima
+  Paso 10 — Fabricar productos
+  Paso 11 — Verificar stock: resultados REALES en Odoo
+  Paso 12 — Responder al cliente: 40 Torre Corazón
+  Costos Unitarios por BOM (resumen)
+  Notas Importantes
+
+═══════════════════════════════════════════════════════════════
+ESCENARIO DEL CLIENTE
+═══════════════════════════════════════════════════════════════
+
+  Fabricante de moldes de aluminio que compra:
+    • Láminas de aluminio en dos espesores:
+        - 0.3 mm  → $8.50/m²
+        - 0.5 mm  → $13.33/m²
+    • Ancho fijo: 1.22 m
+    • Largo bobina: 30 m lineales = 36.6 m² por bobina
+    • Alambre para borde: $0.50/m
+
+  Produce moldes:
+    • TAFD 102x10
+    • Planita Parabuirgue 122x44.6
+    • Torre Corazón Mezclado
+
+  Pregunta del cliente:
+    "Si fabrico X unidades, ¿cuánta lámina gasto (de cada
+     espesor) y cuánto me cuesta?"
+
+═══════════════════════════════════════════════════════════════
+PASO 1 — ACTIVAR MÓDULOS
+═══════════════════════════════════════════════════════════════
+
+  1. ☰ → Aplicaciones → Instalar "Manufactura" (MRP)
+  2. ☰ → Ajustes → Inventario
+     ✅ Rutas multietapa
+     ✅ Reabastecer sobre pedido (MTO)
+  3. Guardar
+
+═══════════════════════════════════════════════════════════════
+PASO 2 — ACTIVAR FABRICACIÓN EN ALMACÉN
+═══════════════════════════════════════════════════════════════
+
+  1. ☰ → Inventario → Configuración → Almacenes
+  2. Abrir "My Company"
+  3. Reabastecimiento → "Fabricación para reabastecimiento"
+  4. Guardar
+
+═══════════════════════════════════════════════════════════════
+PASO 3 — RUTAS Y CENTROS DE TRABAJO
+═══════════════════════════════════════════════════════════════
+
+  1. ☰ → Inventario → Configuración → Rutas
+     - Debe existir "Manufactura" (Tipo: Fabricación)
+     - Check "Seleccionable en producto" ACTIVADO
+
+  2. ☰ → Manufactura → Ajustes
+     ✅ Órdenes de Trabajo
+     Guardar
+
+═══════════════════════════════════════════════════════════════
+PASO 4 — CREAR CENTRO DE TRABAJO
+═══════════════════════════════════════════════════════════════
+
+  ☰ → Manufactura → Configuración → Centros de Trabajo → Crear
+
+  Nombre:         Corte y Armado
+  Costo por hora: $10.00
+  Guardar
+
+═══════════════════════════════════════════════════════════════
+PASO 5 — CREAR PRODUCTOS (MATERIA PRIMA)
+═══════════════════════════════════════════════════════════════
+
+  Producto 1: LÁMINA ALUMINIO 0.5mm
+  ──────────────────────────────────
+    Nombre:         Lámina Aluminio 0.5mm
+    Referencia:     LAM-ALU-05
+    Tipo:           Bienes
+    U.M.:           m²
+    Precio de costo: $13.33
+    Precio de venta: $1.00
+    Rutas:          Comprar
+    Guardar.
+
+  Producto 2: LÁMINA ALUMINIO 0.3mm
+  ──────────────────────────────────
+    Nombre:         Lámina Aluminio 0.3mm
+    Referencia:     LAM-ALU-03
+    Tipo:           Bienes
+    U.M.:           m²
+    Precio de costo: $8.50
+    Precio de venta: $1.00
+    Rutas:          Comprar
+    Guardar.
+
+  Producto 3: ALAMBRE PARA BORDE
+  ───────────────────────────────
+    Nombre:         Alambre para borde
+    Referencia:     ALAMBRE
+    Tipo:           Bienes
+    U.M.:           m (metros)
+    Precio de costo: $0.50
+    Precio de venta: $1.00
+    Guardar.
+
+═══════════════════════════════════════════════════════════════
+★ PASO 6 — CONFIGURAR COSTEO AVCO (CLAVE PARA VER COSTOS)
+═══════════════════════════════════════════════════════════════
+
+  SIN ESTE PASO los productos fabricados saldrán en $0.00.
+
+  1. ☰ → Inventario → Configuración → Categorías de Producto
+  2. Abrir "Todos los Productos / All Products"
+  3. Método de Costo → "Precio Promedio" (AVCO)
+  4. Guardar
+
+═══════════════════════════════════════════════════════════════
+PASO 7 — CREAR PRODUCTOS (FABRICADOS)
+═══════════════════════════════════════════════════════════════
+
+  Producto 4: TAFD 102x10
+  ────────────────────────
+    Nombre:         TAFD 102x10
+    Referencia:     TAFD
+    Tipo:           Bienes
+    U.M.:           Unidades
+    Rutas:          Comprar + Manufactura
+    Costo:          Dejar en 0.00 (lo calcula Odoo)
+    Guardar.
+
+  Producto 5: PLANITA PARABUIRGUE
+  ────────────────────────────────
+    Nombre:         Planita Parabuirgue 122x44.6
+    Referencia:     PLA-PARA
+    Tipo:           Bienes
+    U.M.:           Unidades
+    Rutas:          Comprar + Manufactura
+    Costo:          Dejar en 0.00
+    Guardar.
+
+  Producto 6: TORRE CORAZÓN
+  ──────────────────────────
+    Nombre:         Torre Corazón Mezclado
+    Referencia:     TOR-COR
+    Tipo:           Bienes
+    U.M.:           Unidades
+    Rutas:          Comprar + Manufactura
+    Costo:          Dejar en 0.00
+    Guardar.
+
+═══════════════════════════════════════════════════════════════
+PASO 8 — LISTAS DE MATERIALES (BOMs) CON COSTOS
+═══════════════════════════════════════════════════════════════
+
+  Cada producto fabricado tiene DOS BOMs (una por espesor).
+  Al crear una MO, Odoo te pide seleccionar cuál usar.
+
+  ─────────────────────────────────────────────────────────────
+  BOM 1A — TAFD con Lámina 0.5 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           TAFD 102x10
+    Cantidad:           1
+    Referencia interna: BOM-TAFD-05
+    Tipo:               Fabricar este producto
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-05 (0.5mm)  0.20 m²
+      ALAMBRE             0.50 m
+
+    OPERACIONES:
+      #  Operación            Duración  Centro Trabajo
+      ─────────────────────────────────────────────────
+      10 Corte de lámina      15 min    Corte y Armado
+      20 Armado / Ensamble    20 min    Corte y Armado
+      30 Control de calidad   10 min    Corte y Armado
+
+    Guardar.
+
+    COSTO POR UNIDAD (cálculo manual para verificar):
+      Material:
+        LAM-ALU-05: 0.20 m² × $13.33 = $2.67
+        ALAMBRE:    0.50 m  × $0.50  = $0.25
+        Total material:                $2.92
+
+      Mano de obra: 45 min = 0.75 h × $10/h = $7.50
+
+      COSTO TOTAL POR TAFD (0.5mm): $2.92 + $7.50 = $10.42
+
+  ─────────────────────────────────────────────────────────────
+  BOM 1B — TAFD con Lámina 0.3 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           TAFD 102x10
+    Cantidad:           1
+    Referencia interna: BOM-TAFD-03
+    Tipo:               Fabricar este producto
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-03 (0.3mm)  0.20 m²
+      ALAMBRE             0.50 m
+
+    OPERACIONES: (idénticas a BOM 1A)
+      Guardar.
+
+    COSTO POR UNIDAD:
+      Material:
+        LAM-ALU-03: 0.20 m² × $8.50  = $1.70
+        ALAMBRE:    0.50 m  × $0.50  = $0.25
+        Total material:                $1.95
+
+      Mano de obra: 45 min = 0.75 h × $10/h = $7.50
+
+      COSTO TOTAL POR TAFD (0.3mm): $1.95 + $7.50 = $9.45
+
+  ─────────────────────────────────────────────────────────────
+  BOM 2A — Planita con Lámina 0.5 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           Planita Parabuirgue 122x44.6
+    Referencia interna: BOM-PLANITA-05
+    Cantidad:           1
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-05 (0.5mm)  0.88 m²
+      ALAMBRE             1.20 m
+
+    OPERACIONES:
+      #  Operación            Duración
+      ─────────────────────────────────
+      10 Corte de lámina      20 min
+      20 Armado / Ensamble    30 min
+      30 Control de calidad   10 min
+
+    Guardar.
+
+    COSTO POR UNIDAD:
+      Material:
+        LAM-ALU-05: 0.88 m² × $13.33 = $11.73
+        ALAMBRE:    1.20 m  × $0.50  = $0.60
+        Total material:                $12.33
+
+      Mano de obra: 60 min = 1.0 h × $10/h = $10.00
+
+      COSTO TOTAL POR PLANITA (0.5mm): $12.33 + $10.00 = $22.33
+
+  ─────────────────────────────────────────────────────────────
+  BOM 2B — Planita con Lámina 0.3 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           Planita Parabuirgue 122x44.6
+    Referencia interna: BOM-PLANITA-03
+    Cantidad:           1
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-03 (0.3mm)  0.88 m²
+      ALAMBRE             1.20 m
+
+    OPERACIONES: (idénticas a BOM 2A)
+      Guardar.
+
+    COSTO POR UNIDAD:
+      Material:
+        LAM-ALU-03: 0.88 m² × $8.50  = $7.48
+        ALAMBRE:    1.20 m  × $0.50  = $0.60
+        Total material:                $8.08
+
+      Mano de obra: 60 min = 1.0 h × $10/h = $10.00
+
+      COSTO TOTAL POR PLANITA (0.3mm): $8.08 + $10.00 = $18.08
+
+  ─────────────────────────────────────────────────────────────
+  BOM 3A — Torre Corazón con Lámina 0.5 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           Torre Corazón Mezclado
+    Referencia interna: BOM-TORRE-05
+    Cantidad:           1
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-05 (0.5mm)  2.85 m²
+      ALAMBRE             2.00 m
+
+    OPERACIONES:
+      #  Operación            Duración
+      ─────────────────────────────────
+      10 Corte de lámina      30 min
+      20 Armado / Ensamble    45 min
+      30 Control de calidad   15 min
+
+    Guardar.
+
+    COSTO POR UNIDAD:
+      Material:
+        LAM-ALU-05: 2.85 m² × $13.33 = $37.99
+        ALAMBRE:    2.00 m  × $0.50  = $1.00
+        Total material:                $38.99
+
+      Mano de obra: 90 min = 1.5 h × $10/h = $15.00
+
+      COSTO TOTAL POR TORRE (0.5mm): $38.99 + $15.00 = $53.99
+
+  ─────────────────────────────────────────────────────────────
+  BOM 3B — Torre Corazón con Lámina 0.3 mm
+  ─────────────────────────────────────────────────────────────
+  ☰ → Manufactura → Lista de Materiales → Crear
+
+    Producto:           Torre Corazón Mezclado
+    Referencia interna: BOM-TORRE-03
+    Cantidad:           1
+
+    COMPONENTES:
+      Producto            Cantidad
+      ─────────────────────────────────
+      LAM-ALU-03 (0.3mm)  2.85 m²
+      ALAMBRE             2.00 m
+
+    OPERACIONES: (idénticas a BOM 3A)
+      Guardar.
+
+    COSTO POR UNIDAD:
+      Material:
+        LAM-ALU-03: 2.85 m² × $8.50  = $24.23
+        ALAMBRE:    2.00 m  × $0.50  = $1.00
+        Total material:                $25.23
+
+      Mano de obra: 90 min = 1.5 h × $10/h = $15.00
+
+      COSTO TOTAL POR TORRE (0.3mm): $25.23 + $15.00 = $40.23
+
+  ─────────────────────────────────────────────────────────────
+  ★ DESPUÉS DE CREAR TODAS LAS BOMS:
+  ─────────────────────────────────────────────────────────────
+
+  ☰ → Manufactura → Lista de Materiales
+  → Seleccionar TODAS las BOMs (Ctrl+click o check)
+  → Acción → "Actualizar Costo de LdM"
+
+  Esto asigna el costo calculado al producto fabricado.
+  Sin esto, los productos terminados quedan en $0.00.
+
+═══════════════════════════════════════════════════════════════
+PASO 9 — COMPRAR MATERIA PRIMA
+═══════════════════════════════════════════════════════════════
+
+  ☰ → Compras → Crear
+
+  Proveedor: AluStock C.A. (o crea uno nuevo)
+
+  Productos:
+    Producto          Cantidad  Precio     Subtotal
+    ─────────────────────────────────────────────────
+    LAM-ALU-05        30 m²     $13.33/m²  $399.90
+    LAM-ALU-03        30 m²     $8.50/m²   $255.00
+    ALAMBRE           50 m      $0.50/m    $25.00
+                                         ─────────
+                              Total OC:   $679.90
+
+  Pasos:
+    1. Confirmar orden
+    2. Recibir productos (botón "Recibir" o "Validar")
+
+  Stock inicial después de compra:
+    LAM-ALU-05:  30 m² × $13.33 = $399.90
+    LAM-ALU-03:  30 m² × $8.50  = $255.00
+    ALAMBRE:     50 m  × $0.50  = $25.00
+
+═══════════════════════════════════════════════════════════════
+PASO 10 — FABRICAR PRODUCTOS (CÁLCULOS VERIFICADOS)
+═══════════════════════════════════════════════════════════════
+
+  Al crear cada MO, Odoo te pedirá seleccionar qué BOM usar.
+  Elige la del espesor deseado.
+
+  ─────────────────────────────────────────────────────────────
+  ORDEN 1: 10 TAFD con Lámina 0.5 mm
+  ─────────────────────────────────────────────────────────────
+
+  ☰ → Manufactura → Órdenes de Fabricación → Crear
+    Producto:            TAFD
+    Cantidad:            10
+    Lista de Materiales: BOM-TAFD-05
+
+  LO QUE ODOO CALCULA:
+  ───────────────────────
+  MATERIAL A CONSUMIR:
+    LAM-ALU-05:  10 × 0.20 m² = 2.00 m²  × $13.33 = $26.66
+    ALAMBRE:     10 × 0.50 m  = 5.00 m   × $0.50  = $2.50
+                                       Material:    $29.16
+
+  MANO DE OBRA:
+    10 uds × 45 min = 450 min = 7.5 h
+    7.5 h × $10/h = $75.00
+
+  TOTAL ORDEN: $29.16 + $75.00 = $104.16
+  COSTO UNITARIO: $10.42
+
+  → Confirmar → Validar (Marcar como Hecho)
+
+  ─────────────────────────────────────────────────────────────
+  ORDEN 2: 5 Planitas con Lámina 0.3 mm
+  ─────────────────────────────────────────────────────────────
+
+  ☰ → Manufactura → Órdenes de Fabricación → Crear
+    Producto:            PLA-PARA
+    Cantidad:            5
+    Lista de Materiales: BOM-PLANITA-03
+
+  MATERIAL A CONSUMIR:
+    LAM-ALU-03:  5 × 0.88 m² = 4.40 m²  × $8.50  = $37.40
+    ALAMBRE:     5 × 1.20 m  = 6.00 m   × $0.50  = $3.00
+                                       Material:    $40.40
+
+  MANO DE OBRA:
+    5 uds × 60 min = 300 min = 5 h × $10/h = $50.00
+
+  TOTAL ORDEN: $40.40 + $50.00 = $90.40
+  COSTO UNITARIO: $18.08
+
+  → Confirmar → Validar
+
+  ─────────────────────────────────────────────────────────────
+  ORDEN 3: 2 Torre Corazón con Lámina 0.5 mm
+  ─────────────────────────────────────────────────────────────
+
+  ☰ → Manufactura → Órdenes de Fabricación → Crear
+    Producto:            TOR-COR
+    Cantidad:            2
+    Lista de Materiales: BOM-TORRE-05
+
+  MATERIAL A CONSUMIR:
+    LAM-ALU-05:  2 × 2.85 m² = 5.70 m²  × $13.33 = $75.98
+    ALAMBRE:     2 × 2.00 m  = 4.00 m   × $0.50  = $2.00
+                                       Material:    $77.98
+
+  MANO DE OBRA:
+    2 uds × 90 min = 180 min = 3 h × $10/h = $30.00
+
+  TOTAL ORDEN: $77.98 + $30.00 = $107.98
+  COSTO UNITARIO: $53.99
+
+  → Confirmar → Validar
+
+  ─────────────────────────────────────────────────────────────
+  ORDEN 4: 15 TAFD con Lámina 0.3 mm
+  ─────────────────────────────────────────────────────────────
+
+  ☰ → Manufactura → Órdenes de Fabricación → Crear
+    Producto:            TAFD
+    Cantidad:            15
+    Lista de Materiales: BOM-TAFD-03
+
+  MATERIAL A CONSUMIR:
+    LAM-ALU-03:  15 × 0.20 m² = 3.00 m²  × $8.50  = $25.50
+    ALAMBRE:     15 × 0.50 m  = 7.50 m   × $0.50  = $3.75
+                                        Material:    $29.25
+
+  MANO DE OBRA:
+    15 uds × 45 min = 675 min = 11.25 h × $10/h = $112.50
+
+  TOTAL ORDEN: $29.25 + $112.50 = $141.75
+  COSTO UNITARIO: $9.45
+
+  → Confirmar → Validar
+
+═══════════════════════════════════════════════════════════════
+PASO 11 — VERIFICAR STOCK: RESULTADOS EN ODOO
+═══════════════════════════════════════════════════════════════
+
+  ☰ → Inventario → Ubicaciones → WH/Stock
+
+  ─────────────────────────────────────────────────────────────
+  MATERIAS PRIMAS — Stock final
+  ─────────────────────────────────────────────────────────────
+
+  LÁMINA ALUMINIO 0.5mm (LAM-ALU-05):
+    Comprado:         30.00 m²
+    Consumido:
+      10 TAFD × 0.20  =  2.00 m²
+       2 Torre × 2.85 =  5.70 m²
+                        ─────────
+      Total consumo:     7.70 m²
+    STOCK FINAL:        22.30 m²
+    VALOR: 22.30 × $13.33 = $297.26
+
+  LÁMINA ALUMINIO 0.3mm (LAM-ALU-03):
+    Comprado:         30.00 m²
+    Consumido:
+       5 Planitas × 0.88 = 4.40 m²
+      15 TAFD × 0.20     = 3.00 m²
+                           ─────────
+      Total consumo:        7.40 m²
+    STOCK FINAL:           22.60 m²
+    VALOR: 22.60 × $8.50 = $192.10
+
+  ALAMBRE PARA BORDE (ALAMBRE):
+    Comprado:         50.00 m
+    Consumido:
+      10 TAFD × 0.50  =  5.00 m
+       5 Planitas × 1.20 = 6.00 m
+       2 Torre × 2.00 =  4.00 m
+      15 TAFD × 0.50  =  7.50 m
+                        ─────────
+      Total consumo:    22.50 m
+    STOCK FINAL:        27.50 m
+    VALOR: 27.50 × $0.50 = $13.75
+
+  ─────────────────────────────────────────────────────────────
+  PRODUCTOS FABRICADOS — Stock y costos
+  ─────────────────────────────────────────────────────────────
+
+  TAFD 102x10:
+    Fabricados: 10 uds (BOM-TAFD-05) + 15 uds (BOM-TAFD-03)
+    Stock:      25 Unidades
+
+    Costo total fabricación:
+      10 uds × $10.42 = $104.16
+      15 uds × $9.45  = $141.75
+      Total: $245.91
+
+    Costo unitario promedio (AVCO):
+      $245.91 / 25 = $9.84/unidad
+
+    En pantalla Odoo deberías ver:
+      25 Unidades  |  $245.91  |  $9.84/ud
+
+  PLANITA PARABUIRGUE:
+    Fabricados: 5 uds (BOM-PLANITA-03)
+    Stock:      5 Unidades
+
+    Costo total: $90.40
+    Costo unitario: $18.08
+
+    En pantalla Odoo deberías ver:
+      5 Unidades  |  $90.40  |  $18.08/ud
+
+  TORRE CORAZÓN:
+    Fabricados: 2 uds (BOM-TORRE-05)
+    Stock:      2 Unidades
+
+    Costo total: $107.98
+    Costo unitario: $53.99
+
+    En pantalla Odoo deberías ver:
+      2 Unidades  |  $107.98  |  $53.99/ud
+
+  ─────────────────────────────────────────────────────────────
+  VALOR TOTAL DEL INVENTARIO:
+  ─────────────────────────────────────────────────────────────
+
+    Materias primas:
+      LAM-ALU-05:  $297.26
+      LAM-ALU-03:  $192.10
+      ALAMBRE:     $13.75
+                   ───────
+                   $503.11
+
+    Productos fabricados:
+      TAFD:        $245.91
+      PLANITA:     $90.40
+      TORRE:       $107.98
+                   ───────
+                   $444.29
+
+    TOTAL INVENTARIO: $503.11 + $444.29 = $947.40
+
+═══════════════════════════════════════════════════════════════
+PASO 12 — RESPONDER AL CLIENTE: 40 TORRE CORAZÓN
+═══════════════════════════════════════════════════════════════
+
+  Pregunta del cliente:
+    "Necesito fabricar 40 Torre Corazón, ¿cuánta lámina
+     necesito y cuánto me cuesta?"
+
+  ─────────────────────────────────────────────────────────────
+  OPCIÓN A — Con Lámina 0.5 mm (BOM-TORRE-05)
+  ─────────────────────────────────────────────────────────────
+
+    Materiales para 40 uds:
+      Lámina 0.5mm:  40 × 2.85 = 114.0 m²
+      Alambre:       40 × 2.00 = 80.0 m
+
+    Costo materiales:
+      Lámina 0.5mm:  114 m² × $13.33 = $1,519.62
+      Alambre:        80 m  × $0.50  =    $40.00
+      Total material:                  $1,559.62
+
+    Mano de obra:
+      40 uds × 1.5 h × $10/h = $600.00
+
+    COSTO TOTAL:       $2,159.62
+    COSTO POR UNIDAD:  $53.99
+
+  ─────────────────────────────────────────────────────────────
+  OPCIÓN B — Con Lámina 0.3 mm (BOM-TORRE-03)
+  ─────────────────────────────────────────────────────────────
+
+    Materiales para 40 uds:
+      Lámina 0.3mm:  40 × 2.85 = 114.0 m²
+      Alambre:       40 × 2.00 = 80.0 m
+
+    Costo materiales:
+      Lámina 0.3mm:  114 m² × $8.50 = $969.00
+      Alambre:        80 m  × $0.50 =  $40.00
+      Total material:                  $1,009.00
+
+    Mano de obra:
+      40 uds × 1.5 h × $10/h = $600.00
+
+    COSTO TOTAL:       $1,609.00
+    COSTO POR UNIDAD:  $40.23
+
+  ─────────────────────────────────────────────────────────────
+  COMPARATIVA PARA EL CLIENTE
+  ─────────────────────────────────────────────────────────────
+
+    Espesor    Costo Total    Costo/ud    Ahorro
+    ─────────────────────────────────────────────────
+    0.5 mm    $2,159.62      $53.99      —
+    0.3 mm    $1,609.00      $40.23      $550.62
+
+    La lámina de 0.3 mm ahorra $550.62 (25.5%)
+    respecto a la de 0.5 mm para 40 unidades.
+
+═══════════════════════════════════════════════════════════════
+RESUMEN — COSTOS UNITARIOS POR BOM
+═══════════════════════════════════════════════════════════════
+
+  BOM                     Material    MO       Total
+  ─────────────────────────────────────────────────────
+  BOM-TAFD-05 (0.5mm)     $2.92      $7.50    $10.42
+  BOM-TAFD-03 (0.3mm)     $1.95      $7.50    $9.45
+  BOM-PLANITA-05 (0.5mm)  $12.33     $10.00   $22.33
+  BOM-PLANITA-03 (0.3mm)  $8.08      $10.00   $18.08
+  BOM-TORRE-05 (0.5mm)    $38.99     $15.00   $53.99
+  BOM-TORRE-03 (0.3mm)    $25.23     $15.00   $40.23
+
+═══════════════════════════════════════════════════════════════
+NOTAS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+  1. BOBINAS:
+     Cada bobina = 30 m × 1.22 m = 36.6 m²
+     En el sistema se trabaja en m², no en metros lineales.
+
+  2. ANCHO FIJO:
+     El ancho de 1.22 m ya está considerado en los m².
+     No hace falta calcularlo aparte.
+
+  3. SELECCIÓN DE BOM:
+     Al crear una orden de fabricación, Odoo pregunta qué
+     BOM usar. Elegir según el espesor deseado (0.5mm o
+     0.3mm). El sistema calcula materiales y costos según
+     la BOM seleccionada.
+
+  4. ACTUALIZAR COSTOS (CLAVE):
+     ☰ → Manufactura → Lista de Materiales
+     → Seleccionar BOMs → Acción → "Actualizar Costo de LdM"
+     Esto le dice a Odoo que calcule el costo del producto
+     terminado desde la BOM. Sin esto → $0.00.
+
+  5. CATEGORÍA DE PRODUCTO (CLAVE):
+     ☰ → Inventario → Categorías de Producto
+     → "Todos los Productos" → Método: Precio Promedio (AVCO)
+     Sin AVCO → los costos no se actualizan automáticamente
+     al recibir productos fabricados.
+
+  6. CÓMO VERIFICAR QUE LOS CÁLCULOS COINCIDEN:
+     a) Abre la MO → pestaña "Componentes" → verás el
+        consumo de materiales y su costo.
+     b) Abre la MO → pestaña "Órdenes de Trabajo" → verás
+        las horas y el costo de mano de obra.
+     c) ☰ → Inventario → WH/Stock → los valores deben
+        coincidir con los cálculos de este manual.
+
+  7. MANO DE OBRA:
+     $10/hora configurado en el centro de trabajo
+     "Corte y Armado".
+
+  8. PRECIOS DE COSTO (materia prima):
+     LAM-ALU-05 (0.5mm): $13.33/m²
+     LAM-ALU-03 (0.3mm): $8.50/m²
+     ALAMBRE:             $0.50/m
+
+  9. NOTA SOBRE PRODUCTOS CON MÚLTIPLES BOMs:
+     Si fabricas un producto con dos BOMs diferentes
+     (ej. TAFD con 0.5mm y con 0.3mm), Odoo usa AVCO
+     para promediar el costo. No separa por espesor
+     en el stock, pero el costo refleja el promedio
+     ponderado de lo fabricado.
+
+═══════════════════════════════════════════════════════════════
