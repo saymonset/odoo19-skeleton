@@ -1,3 +1,13 @@
+
+# Acceder al contenedor
+docker compose stop web-leads
+docker exec -it odoo-db19-leads bash
+psql -U odoo -d postgres
+DROP DATABASE dbodoo19;
+CREATE DATABASE dbodoo19;
+docker compose start web-leads
+
+
 # Backup & Restore — Postiz-n8n-Chatwoot-Odoo 19
 
 Guía de respaldo y restauración para el stack completo.
