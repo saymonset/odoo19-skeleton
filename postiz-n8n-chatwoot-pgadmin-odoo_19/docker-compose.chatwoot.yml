@@ -11,7 +11,7 @@ services:
     volumes:
       - ./v19/chatwoot_pgdata:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U chatwoot -d chatwoot_production"]
       interval: 15s
@@ -41,13 +41,13 @@ services:
       RACK_ATTACK_LOGIN_PERIOD_IP: "300"
       RACK_ATTACK_LOGIN_PERIOD_EMAIL: "900"
       
-      RAILS_HOST: https://chatwoot.unisasalud.com
-      FRONTEND_URL: https://chatwoot.unisasalud.com
-      APP_HOST: https://chatwoot.unisasalud.com
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      APP_HOST: https://chatwoot.integraia.lat
       
-      ASSET_HOST: https://chatwoot.unisasalud.com
-      ACTIVE_STORAGE_HOST: https://chatwoot.unisasalud.com
-      RAILS_STORAGE_HOST: https://chatwoot.unisasalud.com
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      RAILS_STORAGE_HOST: https://chatwoot.integraia.lat
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
@@ -57,8 +57,8 @@ services:
       
       ACTIVE_STORAGE_ROOT: /app/storage
       RAILS_STORAGE_PATH: /app/storage
-      RAILS_ASSET_HOST: https://chatwoot.unisasalud.com
-      ACTIVE_STORAGE_URL_HOST: https://chatwoot.unisasalud.com
+      RAILS_ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_URL_HOST: https://chatwoot.integraia.lat
       ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN: "604800"
       
       POSTGRES_USER: chatwoot
@@ -150,10 +150,10 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       
-      RAILS_HOST: https://chatwoot.unisasalud.com
-      FRONTEND_URL: https://chatwoot.unisasalud.com
-      ASSET_HOST: https://chatwoot.unisasalud.com
-      ACTIVE_STORAGE_HOST: https://chatwoot.unisasalud.com
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
       
       POSTGRES_USER: chatwoot
       POSTGRES_PASSWORD: chatwoot123
