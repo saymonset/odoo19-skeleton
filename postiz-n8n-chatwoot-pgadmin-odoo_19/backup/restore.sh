@@ -146,6 +146,7 @@ install_oca_modules() {
             -c /etc/odoo/odoo.conf \
             --update=$module \
             --stop-after-init \
+            --http-port=8099 \
             --log-level=error 2>&1 | grep -E "ERROR|$module" || true
     done
     log "Módulos OCA instalados"
@@ -163,6 +164,7 @@ install_extra_modules() {
             -c /etc/odoo/odoo.conf \
             --update=$module \
             --stop-after-init \
+            --http-port=8099 \
             --log-level=error 2>&1 | grep -E "ERROR|$module" || true
     done
     log "Módulos EXTRA instalados"
@@ -180,6 +182,7 @@ install_enterprise_modules() {
             -c /etc/odoo/odoo.conf \
             --update=$module \
             --stop-after-init \
+            --http-port=8099 \
             --log-level=error 2>&1 | grep -E "ERROR|$module" || true
     done
     log "Módulos ENTERPRISE instalados"
@@ -192,6 +195,7 @@ fix_whatsapp_module() {
             -c /etc/odoo/odoo.conf \
             --update=website_whatsapp \
             --stop-after-init \
+            --http-port=8099 \
             --log-level=info 2>&1 | head -20
     fi
     exec_in_db psql -U $DB_USER -d $DB_NAME << EOF
@@ -333,7 +337,8 @@ restore() {
     exec_in_web python3 /opt/odoo/odoo-core/odoo-bin \
         -c /etc/odoo/odoo.conf \
         --update=bcv_rate_update_venezuela \
-        --stop-after-init 2>&1 | tail -10 || true
+        --stop-after-init \
+        --http-port=8099 2>&1 | tail -10 || true
     # Si falló la actualización BCV, agregar columnas faltantes manualmente
     exec_in_db psql -U $DB_USER -d $DB_NAME -c "
         ALTER TABLE res_company ADD COLUMN IF NOT EXISTS schedule_info VARCHAR;
@@ -358,6 +363,22 @@ restore() {
     " 2>/dev/null || true
     docker restart "$WEB_CONTAINER" 2>/dev/null || true
     sleep 5
+
+    # Force immediate currency rate update
+    info "Forzando actualización inmediata de tasa de cambio..."
+    exec_in_web /opt/venv/bin/python3 -c "
+import sys
+sys.path.append('/opt/odoo/odoo-core')
+import odoo
+from odoo.modules.registry import Registry
+odoo.tools.config.parse_config(['-c', '/etc/odoo/odoo.conf', '-d', '$DB_NAME'])
+registry = Registry('$DB_NAME')
+with registry.cursor() as cr:
+    env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
+    providers = env['currency.rate.provider'].search([('active', '=', True)])
+    providers.action_update_rate()
+    cr.commit()
+" || true
 
     # 8. Instalar módulos si se solicitó
     if [ "$INSTALL_MODULES" = true ]; then
