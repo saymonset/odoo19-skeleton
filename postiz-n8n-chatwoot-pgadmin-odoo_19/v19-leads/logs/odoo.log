@@ -166311,3 +166311,8 @@ ValueError: No possible route found for incoming message from "Quora - Espacios 
 2026-07-12 11:23:59,940 21 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) fully done (#loop 1; done 1; remaining 0; duration 1.24s) 
 2026-07-12 11:25:01,082 21 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (23) starting 
 2026-07-12 11:25:01,141 21 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Payment: Post-process transactions' (23) fully done (#loop 1; done 0; remaining 0; duration 0.06s) 
+2026-07-12 11:29:05,888 21 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2026-07-12 11:29:05,974 21 INFO dbodoo19 odoo.addons.mail.models.fetchmail: Fetchmail servers (in order) to be processed ['imap.gmail.com'] 
+2026-07-12 11:29:05,976 21 INFO dbodoo19 odoo.addons.mail.models.fetchmail: Start checking for new emails on imap server imap.gmail.com 
+2026-07-12 11:29:06,575 21 INFO dbodoo19 odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server imap.gmail.com; 0 succeeded, 0 failed. 
+2026-07-12 11:29:06,623 21 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) fully done (#loop 1; done 1; remaining 0; duration 0.73s) 
