@@ -39,8 +39,8 @@ services:
     volumes:
       - "./v19-leads/odoo-web-data:/var/lib/odoo"
       - "./v19-leads/config:/etc/odoo"
-      - "/home/odoo/lead/modulos_odoo/shared/extra/19.0:/opt/odoo/custom-addons/extra"
-      - "/home/odoo/lead/modulos_odoo/shared/oca/19.0:/opt/odoo/custom-addons/oca"
+      - "/home/simon/opt/odoo/modulos_odoo/shared/extra/19.0:/opt/odoo/custom-addons/extra"
+      - "/home/simon/opt/odoo/modulos_odoo/shared/oca/19.0:/opt/odoo/custom-addons/oca"
       - "./v19-leads/logs:/var/log/odoo"
     environment:
       DB_HOST: db-leads
