@@ -89,28 +89,28 @@ services:
       
       API_AUTH_TOKEN: chatwoot_api_token_1234567890
 
-      # Configuración SMTP (estándar de Chatwoot)
-      SMTP_ADDRESS: mail.privateemail.com
-      SMTP_PORT: 465
-      SMTP_USERNAME: admin@unisasalud.com
-      SMTP_PASSWORD: 'Steamashit..17'
-      SMTP_DOMAIN: unisasalud.com
-      SMTP_AUTHENTICATION: plain
-      SMTP_ENABLE_STARTTLS_AUTO: "false"
-      SMTP_SSL: "true"
-      SMTP_TLS: "true"
-      MAILER_SENDER_EMAIL: admin@unisasalud.com
-      MAIL_DOMAIN: unisasalud.com
+      # Configuración SMTP (estándar de Chatwoot) - valores desde .env
+      SMTP_ADDRESS: ${SMTP_ADDRESS}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_DOMAIN: ${SMTP_DOMAIN}
+      SMTP_AUTHENTICATION: ${SMTP_AUTHENTICATION}
+      SMTP_ENABLE_STARTTLS_AUTO: ${SMTP_ENABLE_STARTTLS_AUTO}
+      SMTP_SSL: ${SMTP_SSL}
+      SMTP_TLS: ${SMTP_TLS}
+      MAILER_SENDER_EMAIL: ${MAILER_SENDER_EMAIL}
+      MAIL_DOMAIN: ${MAIL_DOMAIN}
 
       # Configuración específica de Action Mailer (para forzar SMTP)
-      ACTION_MAILER_DELIVERY_METHOD: smtp
-      ACTION_MAILER_SMTP_ADDRESS: mail.privateemail.com
-      ACTION_MAILER_SMTP_PORT: 465
-      ACTION_MAILER_SMTP_USER_NAME: admin@unisasalud.com
-      ACTION_MAILER_SMTP_PASSWORD: 'Steamashit..17'
-      ACTION_MAILER_SMTP_AUTHENTICATION: plain
-      ACTION_MAILER_SMTP_SSL: "true"
-      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
+      ACTION_MAILER_DELIVERY_METHOD: ${ACTION_MAILER_DELIVERY_METHOD}
+      ACTION_MAILER_SMTP_ADDRESS: ${ACTION_MAILER_SMTP_ADDRESS}
+      ACTION_MAILER_SMTP_PORT: ${ACTION_MAILER_SMTP_PORT}
+      ACTION_MAILER_SMTP_USER_NAME: ${ACTION_MAILER_SMTP_USER_NAME}
+      ACTION_MAILER_SMTP_PASSWORD: ${ACTION_MAILER_SMTP_PASSWORD}
+      ACTION_MAILER_SMTP_AUTHENTICATION: ${ACTION_MAILER_SMTP_AUTHENTICATION}
+      ACTION_MAILER_SMTP_SSL: ${ACTION_MAILER_SMTP_SSL}
+      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: ${ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO}
 
       # ========== MODIFICACIÓN AGREGADA (siguiendo paso de Portainer) ==========
       # Descomentar o añadir la siguiente línea para conectar con el hub de Chatwoot
@@ -170,27 +170,27 @@ services:
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
 
-      # Misma configuración SMTP que en app
-      SMTP_ADDRESS: mail.privateemail.com
-      SMTP_PORT: 465
-      SMTP_USERNAME: admin@unisasalud.com
-      SMTP_PASSWORD: 'Steamashit..17'
-      SMTP_DOMAIN: unisasalud.com
-      SMTP_AUTHENTICATION: plain
-      SMTP_ENABLE_STARTTLS_AUTO: "false"
-      SMTP_SSL: "true"
-      SMTP_TLS: "true"
-      MAILER_SENDER_EMAIL: admin@unisasalud.com
-      MAIL_DOMAIN: unisasalud.com
+      # Misma configuración SMTP que en app - valores desde .env
+      SMTP_ADDRESS: ${SMTP_ADDRESS}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_DOMAIN: ${SMTP_DOMAIN}
+      SMTP_AUTHENTICATION: ${SMTP_AUTHENTICATION}
+      SMTP_ENABLE_STARTTLS_AUTO: ${SMTP_ENABLE_STARTTLS_AUTO}
+      SMTP_SSL: ${SMTP_SSL}
+      SMTP_TLS: ${SMTP_TLS}
+      MAILER_SENDER_EMAIL: ${MAILER_SENDER_EMAIL}
+      MAIL_DOMAIN: ${MAIL_DOMAIN}
 
-      ACTION_MAILER_DELIVERY_METHOD: smtp
-      ACTION_MAILER_SMTP_ADDRESS: mail.privateemail.com
-      ACTION_MAILER_SMTP_PORT: 465
-      ACTION_MAILER_SMTP_USER_NAME: admin@unisasalud.com
-      ACTION_MAILER_SMTP_PASSWORD: 'Steamashit..17'
-      ACTION_MAILER_SMTP_AUTHENTICATION: plain
-      ACTION_MAILER_SMTP_SSL: "true"
-      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: "false"
+      ACTION_MAILER_DELIVERY_METHOD: ${ACTION_MAILER_DELIVERY_METHOD}
+      ACTION_MAILER_SMTP_ADDRESS: ${ACTION_MAILER_SMTP_ADDRESS}
+      ACTION_MAILER_SMTP_PORT: ${ACTION_MAILER_SMTP_PORT}
+      ACTION_MAILER_SMTP_USER_NAME: ${ACTION_MAILER_SMTP_USER_NAME}
+      ACTION_MAILER_SMTP_PASSWORD: ${ACTION_MAILER_SMTP_PASSWORD}
+      ACTION_MAILER_SMTP_AUTHENTICATION: ${ACTION_MAILER_SMTP_AUTHENTICATION}
+      ACTION_MAILER_SMTP_SSL: ${ACTION_MAILER_SMTP_SSL}
+      ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO: ${ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO}
 
       # ========== MODIFICACIÓN AGREGADA (siguiendo paso de Portainer) ==========
       # Descomentar o añadir la siguiente línea para conectar con el hub de Chatwoot

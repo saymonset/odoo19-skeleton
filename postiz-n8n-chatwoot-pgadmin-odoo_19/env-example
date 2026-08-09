@@ -118,14 +118,14 @@ TIKTOK_CLIENT_SECRET=
 
 # ========== CONFIGURACIÓN SMTP (para Chatwoot y otros servicios) ==========
 EMAIL_PROVIDER=smtp
-SMTP_HOST=mail.tudominio.com
-SMTP_ADDRESS=mail.tudominio.com
+SMTP_HOST=mail.privateemail.com
+SMTP_ADDRESS=mail.privateemail.com
 SMTP_PORT=465
-SMTP_USER=admin@tudominio.com
-SMTP_USERNAME=admin@tudominio.com
+SMTP_USER=admin@integraia.lat
+SMTP_USERNAME=admin@integraia.lat
 SMTP_PASSWORD='CAMBIAR_SMTP_PASSWORD'
-SMTP_FROM=admin@tudominio.com
-SMTP_DOMAIN=tudominio.com
+SMTP_FROM=admin@integraia.lat
+SMTP_DOMAIN=integraia.lat
 SMTP_AUTHENTICATION=plain
 SMTP_ENABLE_STARTTLS_AUTO=false
 SMTP_SSL=true
@@ -133,12 +133,12 @@ SMTP_TLS=true
 
 # Configuración específica para Action Mailer (Chatwoot)
 ACTION_MAILER_DELIVERY_METHOD=smtp
-ACTION_MAILER_SMTP_ADDRESS=mail.tudominio.com
+ACTION_MAILER_SMTP_ADDRESS=mail.privateemail.com
 ACTION_MAILER_SMTP_PORT=465
-ACTION_MAILER_SMTP_USER_NAME=admin@tudominio.com
+ACTION_MAILER_SMTP_USER_NAME=admin@integraia.lat
 ACTION_MAILER_SMTP_PASSWORD='CAMBIAR_SMTP_PASSWORD'
 ACTION_MAILER_SMTP_AUTHENTICATION=plain
 ACTION_MAILER_SMTP_SSL=true
 ACTION_MAILER_SMTP_ENABLE_STARTTLS_AUTO=false
-MAILER_SENDER_EMAIL=admin@tudominio.com
+MAILER_SENDER_EMAIL=admin@integraia.lat
 # ========================================================================
