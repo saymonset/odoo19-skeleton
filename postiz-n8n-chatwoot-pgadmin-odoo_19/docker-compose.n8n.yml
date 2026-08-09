@@ -26,14 +26,16 @@ services:
       - N8N_ENCRYPTION_KEY_FILE=/run/secrets/n8n_encryption_key
       
       # URLs
-      - N8N_HOST=n8n.unisasalud.com
+      - N8N_HOST=n8n.integraia.lat
       - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://n8n.unisasalud.com/
-      - N8N_EDITOR_BASE_URL=https://n8n.unisasalud.com/
+      - WEBHOOK_URL=https://n8n.integraia.lat/
+      - N8N_EDITOR_BASE_URL=https://n8n.integraia.lat/
       
       # Configuración general
       - N8N_RUNNERS_ENABLED=false
-      - N8N_BLOCK_ENV_ACCESS_IN_NODE=true
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - N8N_EXPRESSIONS_ALLOWED_ENV_VARS=CHATBOT_API_TOKEN
+      - CHATBOT_API_TOKEN=OOm8oXtJ3Df03_El39HoYcor2myq7eKcg22_uxXabrg
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_CORS_ALLOW_ORIGIN=*
       - N8N_CORS_ALLOW_CREDENTIALS=true

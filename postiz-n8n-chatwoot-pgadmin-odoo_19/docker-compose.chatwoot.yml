@@ -87,7 +87,7 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
       RAILS_SERVE_STATIC_FILES: "true"
       
-      API_AUTH_TOKEN: chatwoot_api_token_1234567890
+      API_AUTH_TOKEN: yvJxkWhiTMioFgKTZTq3ZE3h
 
       # Configuración SMTP (estándar de Chatwoot) - valores desde .env
       SMTP_ADDRESS: ${SMTP_ADDRESS}
