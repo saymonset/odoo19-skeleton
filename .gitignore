@@ -66,3 +66,9 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/v19/chatwoot_*/
 
 # General data directories
 **/temporal_elasticsearch_data/
+
+# Credenciales R2 / backup remoto (config sensible)
+postiz-n8n-chatwoot-pgadmin-odoo_19/cloudflare/
+
+# Logs de backup
+postiz-n8n-chatwoot-pgadmin-odoo_19/backup/*.log

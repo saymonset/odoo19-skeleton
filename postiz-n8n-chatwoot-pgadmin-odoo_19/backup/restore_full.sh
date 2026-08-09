@@ -80,9 +80,15 @@ restore_folder() {
     local label=$1
     local file_pattern=$2
     local dest_subpath=$3
+    local strip_components=${4:-0}
     local tar_file=$(ls $BACKUP_DIR/$file_pattern 2>/dev/null | head -1)
     local abs_tar=$(readlink -f "$tar_file")
+    local strip_args=""
     
+    if [ "$strip_components" -gt 0 ]; then
+        strip_args="--strip-components=$strip_components"
+    fi
+
     if [ -f "$tar_file" ]; then
         log "📁 Restaurando archivos: $label..."
         # Limpiar destino
@@ -91,12 +97,14 @@ restore_folder() {
         docker run --rm \
             -v "$(pwd)/$dest_subpath:/dest" \
             -v "$abs_tar:/backup.tar.gz:ro" \
-            alpine sh -c "rm -rf /dest/* && tar -xzf /backup.tar.gz -C /dest"
+            alpine sh -c "rm -rf /dest/* && tar $strip_args -xzf /backup.tar.gz -C /dest"
         log "   ✅ $label restaurado"
     fi
 }
 
-restore_folder "Odoo Data" "odoo_data_*.tar.gz" "v19/data"
+# El tar de odoo_data trae el filestore bajo ./.local/share/Odoo/filestore/...
+# El contenedor monta v19/data/filestore → /var/lib/odoo/.local/share/Odoo/filestore
+restore_folder "Odoo Data (filestore)" "odoo_data_*.tar.gz" "v19/data/filestore" 5
 restore_folder "n8n Data" "n8n_data_*.tar.gz" "v19/n8n_data"
 # restore_folder "Postiz Data" "postiz_data_*.tar.gz" "v19/postiz_uploads"
 restore_folder "Chatwoot Data" "chatwoot_data_*.tar.gz" "v19/chatwoot_storage"

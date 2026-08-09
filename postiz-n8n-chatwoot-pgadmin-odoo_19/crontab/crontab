@@ -1,8 +1,8 @@
 # Backup diario a las 2:00 AM
-0 2 * * * /backup/backup.sh >> /backup/backup.log 2>&1
+0 2 * * * /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/backup.sh >> /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/backup.log 2>&1
 
-# Backup semanal los domingos a las 3:00 AM (backup completo)
-0 3 * * 0 /backup/backup.sh >> /backup/backup_weekly.log 2>&1
+# Limpieza de backups semanales antiguos (más de 4 semanas) todos los lunes a las 4:00 AM
+0 4 * * 1 find /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/weekly -maxdepth 1 -type d -name 'weekly_*' -mtime +28 -exec rm -rf {} \; >> /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/backup.log 2>&1
 
-# Limpieza mensual de backups antiguos (1er día del mes a las 4:00 AM)
-0 4 1 * * find /backup/daily -type f -mtime +30 -delete
+# Rotación del log: truncar si supera los 5 MB (todos los días a las 3:30 AM)
+30 3 * * * [ "$(stat -c%s /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/backup.log 2>/dev/null || echo 0)" -gt 5242880 ] && truncate -s 0 /home/odoo/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19/backup/backup.log || true
