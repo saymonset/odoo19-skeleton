@@ -9,7 +9,7 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "5678:5678"
+      - "127.0.0.1:5678:5678"
     environment:
       # Base de datos
       - DB_TYPE=postgresdb

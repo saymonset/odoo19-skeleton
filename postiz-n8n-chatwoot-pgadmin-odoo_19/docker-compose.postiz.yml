@@ -81,7 +81,7 @@ services:
       - ./v19/postiz_config:/config
       - ./v19/postiz_uploads:/uploads
     ports:
-      - "4007:5000"
+      - "127.0.0.1:4007:5000"
     networks:
       - odoo_network_19
 
@@ -131,7 +131,7 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "7233:7233"
+      - "127.0.0.1:7233:7233"
     volumes:
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
     healthcheck:
@@ -163,7 +163,7 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "8180:8080"
+      - "127.0.0.1:8180:8080"
     depends_on:
       - temporal
 

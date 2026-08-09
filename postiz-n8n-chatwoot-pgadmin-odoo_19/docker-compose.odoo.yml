@@ -33,7 +33,7 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     command: >
       redis-server 
       --requirepass redis123 
@@ -71,8 +71,8 @@ services:
     networks:
       - odoo_network_19
     ports:
-      - "18069:8069"
-      - "18072:8072"
+      - "127.0.0.1:18069:8069"
+      - "127.0.0.1:18072:8072"
     volumes:
       - "./v19/odoo-web-data:/var/lib/odoo"
       - "./v19/config:/etc/odoo"

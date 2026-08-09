@@ -65,10 +65,10 @@ services:
   #     file: docker-compose.postiz.yml
   #     service: temporal-admin-tools
 
-  # temporal-ui:
-  #   extends:
-  #     file: docker-compose.postiz.yml
-  #     service: temporal-ui
+  temporal-ui:
+    extends:
+      file: docker-compose.postiz.yml
+      service: temporal-ui
 
   # spotlight:
   #   extends:
