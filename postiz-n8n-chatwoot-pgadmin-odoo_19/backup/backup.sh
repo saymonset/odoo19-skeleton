@@ -27,7 +27,9 @@ ODOO_CONF="$PROJECT_DIR/v19/config/odoo.conf"
 ENV_FILE="$PROJECT_DIR/.env"
 
 if [ -f "$ENV_FILE" ]; then
-    export $(grep -v '^#' "$ENV_FILE" | xargs)
+    set -a
+    . "$ENV_FILE"
+    set +a
 fi
 
 # Leer variables de odoo.conf si existe
@@ -50,10 +52,20 @@ R2_REMOTE_WEEKLY="r2-crypt:weekly"
 # Directorio de backup
 BACKUP_BASE_DIR="$PROJECT_DIR/backup/out"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
-BACKUP_DIR="$BACKUP_BASE_DIR/backup_$DATE"
-ABS_BACKUP_DIR=$(readlink -f "$BACKUP_DIR")
 RETENTION_DAYS=7
 WEEKLY_DIR="$BACKUP_BASE_DIR/weekly"
+
+# Si el directorio base no existe o no es escribible (ej. creado por otro usuario),
+# usar un fallback en /tmp para que el backup no falle.
+if ! mkdir -p "$BACKUP_BASE_DIR" 2>/dev/null || [ ! -w "$BACKUP_BASE_DIR" ]; then
+    warn "Sin permisos de escritura en $BACKUP_BASE_DIR, usando /tmp/backup_odoo como alternativa"
+    BACKUP_BASE_DIR="/tmp/backup_odoo"
+    WEEKLY_DIR="$BACKUP_BASE_DIR/weekly"
+    mkdir -p "$BACKUP_BASE_DIR"
+fi
+
+BACKUP_DIR="$BACKUP_BASE_DIR/backup_$DATE"
+ABS_BACKUP_DIR=$(readlink -f "$BACKUP_DIR")
 
 # Destinatario de notificaciones
 NOTIFY_TO="${BACKUP_NOTIFY_TO:-admin@integraia.lat}"
