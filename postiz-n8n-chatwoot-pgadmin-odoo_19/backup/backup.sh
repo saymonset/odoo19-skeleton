@@ -27,7 +27,9 @@ ODOO_CONF="$PROJECT_DIR/v19/config/odoo.conf"
 ENV_FILE="$PROJECT_DIR/.env"
 
 if [ -f "$ENV_FILE" ]; then
-    export $(grep -v '^#' "$ENV_FILE" | xargs)
+    set -a
+    . "$ENV_FILE"
+    set +a
 fi
 
 # Leer variables de odoo.conf si existe
@@ -50,10 +52,20 @@ R2_REMOTE_WEEKLY="r2-crypt:weekly"
 # Directorio de backup
 BACKUP_BASE_DIR="$PROJECT_DIR/backup/out"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
-BACKUP_DIR="$BACKUP_BASE_DIR/backup_$DATE"
-ABS_BACKUP_DIR=$(readlink -f "$BACKUP_DIR")
 RETENTION_DAYS=7
 WEEKLY_DIR="$BACKUP_BASE_DIR/weekly"
+
+# Si el directorio base no existe o no es escribible (ej. creado por otro usuario),
+# usar un fallback en /tmp para que el backup no falle.
+if ! mkdir -p "$BACKUP_BASE_DIR" 2>/dev/null || [ ! -w "$BACKUP_BASE_DIR" ]; then
+    warn "Sin permisos de escritura en $BACKUP_BASE_DIR, usando /tmp/backup_odoo como alternativa"
+    BACKUP_BASE_DIR="/tmp/backup_odoo"
+    WEEKLY_DIR="$BACKUP_BASE_DIR/weekly"
+    mkdir -p "$BACKUP_BASE_DIR"
+fi
+
+BACKUP_DIR="$BACKUP_BASE_DIR/backup_$DATE"
+ABS_BACKUP_DIR=$(readlink -f "$BACKUP_DIR")
 
 # Destinatario de notificaciones
 NOTIFY_TO="${BACKUP_NOTIFY_TO:-admin@integraia.lat}"
@@ -244,9 +256,22 @@ log "🔑 Respaldando configuración y claves..."
 [ -f "$ENV_FILE" ] && cp "$ENV_FILE" "$BACKUP_DIR/env_file_${DATE}.env"
 [ -f "$ODOO_CONF" ] && cp "$ODOO_CONF" "$BACKUP_DIR/odoo_config_${DATE}.conf"
 
-if [ -d "$PROJECT_DIR/v19/n8n_data" ] && [ -f "$PROJECT_DIR/v19/n8n_data/config" ]; then
-    ENCRYPTION_KEY=$(grep -o '"encryptionKey":"[^"]*"' "$PROJECT_DIR/v19/n8n_data/config" | cut -d'"' -f4)
-    [ -n "$ENCRYPTION_KEY" ] && echo "$ENCRYPTION_KEY" > "$BACKUP_DIR/n8n_encryption_key_${DATE}.key"
+if [ -d "$PROJECT_DIR/v19/n8n_data" ]; then
+    N8N_CONFIG="$PROJECT_DIR/v19/n8n_data/config"
+    CONFIG_CONTENT=""
+    if [ -r "$N8N_CONFIG" ]; then
+        CONFIG_CONTENT=$(cat "$N8N_CONFIG" 2>/dev/null)
+    fi
+    if [ -z "$CONFIG_CONTENT" ] && docker exec n8n-container cat /home/node/.n8n/config >/dev/null 2>&1; then
+        warn "Config n8n sin permisos en el host, leyendo via docker exec..."
+        CONFIG_CONTENT=$(docker exec n8n-container cat /home/node/.n8n/config 2>/dev/null)
+    fi
+    if [ -n "$CONFIG_CONTENT" ]; then
+        ENCRYPTION_KEY=$(echo "$CONFIG_CONTENT" | grep -o '"encryptionKey": *"[^"]*"' | cut -d'"' -f4)
+        [ -n "$ENCRYPTION_KEY" ] && echo "$ENCRYPTION_KEY" > "$BACKUP_DIR/n8n_encryption_key_${DATE}.key"
+    else
+        warn "⚠️ No se pudo leer la clave de cifrado n8n; el backup de n8n no será restaurable"
+    fi
 fi
 
 report "Configuración y claves: OK"
