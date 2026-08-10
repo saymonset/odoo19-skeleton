@@ -256,9 +256,22 @@ log "🔑 Respaldando configuración y claves..."
 [ -f "$ENV_FILE" ] && cp "$ENV_FILE" "$BACKUP_DIR/env_file_${DATE}.env"
 [ -f "$ODOO_CONF" ] && cp "$ODOO_CONF" "$BACKUP_DIR/odoo_config_${DATE}.conf"
 
-if [ -d "$PROJECT_DIR/v19/n8n_data" ] && [ -f "$PROJECT_DIR/v19/n8n_data/config" ]; then
-    ENCRYPTION_KEY=$(grep -o '"encryptionKey":"[^"]*"' "$PROJECT_DIR/v19/n8n_data/config" | cut -d'"' -f4)
-    [ -n "$ENCRYPTION_KEY" ] && echo "$ENCRYPTION_KEY" > "$BACKUP_DIR/n8n_encryption_key_${DATE}.key"
+if [ -d "$PROJECT_DIR/v19/n8n_data" ]; then
+    N8N_CONFIG="$PROJECT_DIR/v19/n8n_data/config"
+    CONFIG_CONTENT=""
+    if [ -r "$N8N_CONFIG" ]; then
+        CONFIG_CONTENT=$(cat "$N8N_CONFIG" 2>/dev/null)
+    fi
+    if [ -z "$CONFIG_CONTENT" ] && docker exec n8n-container cat /home/node/.n8n/config >/dev/null 2>&1; then
+        warn "Config n8n sin permisos en el host, leyendo via docker exec..."
+        CONFIG_CONTENT=$(docker exec n8n-container cat /home/node/.n8n/config 2>/dev/null)
+    fi
+    if [ -n "$CONFIG_CONTENT" ]; then
+        ENCRYPTION_KEY=$(echo "$CONFIG_CONTENT" | grep -o '"encryptionKey": *"[^"]*"' | cut -d'"' -f4)
+        [ -n "$ENCRYPTION_KEY" ] && echo "$ENCRYPTION_KEY" > "$BACKUP_DIR/n8n_encryption_key_${DATE}.key"
+    else
+        warn "⚠️ No se pudo leer la clave de cifrado n8n; el backup de n8n no será restaurable"
+    fi
 fi
 
 report "Configuración y claves: OK"
