@@ -549,7 +549,7 @@
               "value": "={{ $json.text }}"
             },
             {
-              "name": "=platform",
+              "name": "platform",
               "value": "={{ $json.platform }}"
             }
           ]
