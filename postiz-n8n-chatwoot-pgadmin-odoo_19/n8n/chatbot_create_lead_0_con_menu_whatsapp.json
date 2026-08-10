@@ -974,7 +974,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/inicioagendar",
+        "url": "https://aristosoluciones.integraia.lat/ai_chatbot_1_portal/inicioagendar",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\"\n}\n",
@@ -1065,7 +1065,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://chatwoot.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
+        "url": "=https://chatwoot.aristosoluciones.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1075,7 +1075,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "yvJxkWhiTMioFgKTZTq3ZE3h"
+              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
             }
           ]
         },
@@ -1102,7 +1102,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://chatwoot.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
+        "url": "=https://chatwoot.aristosoluciones.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1112,7 +1112,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "yvJxkWhiTMioFgKTZTq3ZE3h"
+              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
             }
           ]
         },
@@ -1186,7 +1186,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://chatwoot.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
+        "url": "=https://chatwoot.aristosoluciones.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1196,7 +1196,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "yvJxkWhiTMioFgKTZTq3ZE3h"
+              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
             }
           ]
         },
@@ -1285,7 +1285,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.phone_number_formatted }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"list\",\n    \"header\": {\n      \"type\": \"text\",\n      \"text\": \"🚀 IntegraIA - Automatización con Odoo CE 19\"\n    },\n    \"body\": {\n      \"text\": \"Hola! 😊 Bienvenido/a a IntegraIA (https://integraia.lat). ¿Qué necesitas hoy?\"\n    },\n    \"footer\": {\n      \"text\": \"https://integraia.lat\"\n    },\n    \"action\": {\n      \"button\": \"📋 Ver opciones\",\n      \"sections\": [\n        {\n          \"title\": \"Nuestros Servicios\",\n          \"rows\": [\n            { \"id\": \"precios\", \"title\": \"💰 Tienda Virtual\", \"description\": \"Tienda online profesional con Odoo CE 19 → https://integraia.lat\" },\n            { \"id\": \"servicios\", \"title\": \"🤖 Agentes de IA\", \"description\": \"Chatbots WhatsApp, FB, Instagram 24/7\" },\n            { \"id\": \"agendar_cita\", \"title\": \"📅 Agendar Demo\", \"description\": \"Demo interactiva o asesoría Odoo\" }\n          ]\n        },\n        {\n          \"title\": \"Infraestructura\",\n          \"rows\": [\n            { \"id\": \"tarjeta_salud\", \"title\": \"🖥️ Hosting Dedicado\", \"description\": \"Servidor, SSL, dominio y mantenimiento → https://integraia.lat\" },\n            { \"id\": \"otra_consulta\", \"title\": \"🔧 Desarrollo\", \"description\": \"Módulos, migraciones, APIs\" }\n          ]\n        },\n        {\n          \"title\": \"Información\",\n          \"rows\": [\n            { \"id\": \"horario\", \"title\": \"🕒 Soporte\", \"description\": \"Horarios y contacto\" },\n            { \"id\": \"promociones\", \"title\": \"🎉 Promociones\", \"description\": \"Ofertas y descuentos vigentes\" },\n            { \"id\": \"resultados\", \"title\": \"🧪 Resultados\", \"description\": \"Consultar resultados de estudios\" }\n          ]\n        }\n      ]\n    }\n  }\n}",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.phone_number_formatted }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"list\",\n    \"header\": {\n      \"type\": \"text\",\n      \"text\": \"🚀 IntegraIA - Automatización con Odoo CE 19\"\n    },\n    \"body\": {\n      \"text\": \"Hola! 😊 Bienvenido/a a IntegraIA (https://aristosoluciones.integraia.lat). ¿Qué necesitas hoy?\"\n    },\n    \"footer\": {\n      \"text\": \"https://aristosoluciones.integraia.lat\"\n    },\n    \"action\": {\n      \"button\": \"📋 Ver opciones\",\n      \"sections\": [\n        {\n          \"title\": \"Nuestros Servicios\",\n          \"rows\": [\n            { \"id\": \"precios\", \"title\": \"💰 Tienda Virtual\", \"description\": \"Tienda online profesional con Odoo CE 19 → https://aristosoluciones.integraia.lat\" },\n            { \"id\": \"servicios\", \"title\": \"🤖 Agentes de IA\", \"description\": \"Chatbots WhatsApp, FB, Instagram 24/7\" },\n            { \"id\": \"agendar_cita\", \"title\": \"📅 Agendar Demo\", \"description\": \"Demo interactiva o asesoría Odoo\" }\n          ]\n        },\n        {\n          \"title\": \"Infraestructura\",\n          \"rows\": [\n            { \"id\": \"tarjeta_salud\", \"title\": \"🖥️ Hosting Dedicado\", \"description\": \"Servidor, SSL, dominio y mantenimiento → https://aristosoluciones.integraia.lat\" },\n            { \"id\": \"otra_consulta\", \"title\": \"🔧 Desarrollo\", \"description\": \"Módulos, migraciones, APIs\" }\n          ]\n        },\n        {\n          \"title\": \"Información\",\n          \"rows\": [\n            { \"id\": \"horario\", \"title\": \"🕒 Soporte\", \"description\": \"Horarios y contacto\" },\n            { \"id\": \"promociones\", \"title\": \"🎉 Promociones\", \"description\": \"Ofertas y descuentos vigentes\" },\n            { \"id\": \"resultados\", \"title\": \"🧪 Resultados\", \"description\": \"Consultar resultados de estudios\" }\n          ]\n        }\n      ]\n    }\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1301,7 +1301,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://chatwoot.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
+        "url": "=https://chatwoot.aristosoluciones.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1311,7 +1311,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "yvJxkWhiTMioFgKTZTq3ZE3h"
+              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
             }
           ]
         },
@@ -1519,7 +1519,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://chatwoot.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
+        "url": "=https://chatwoot.aristosoluciones.integraia.lat/api/v1/accounts/{{$json.account_id}}/conversations/{{ $json.conversation_id }}/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1529,7 +1529,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "yvJxkWhiTMioFgKTZTq3ZE3h"
+              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
             }
           ]
         },
@@ -1556,7 +1556,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/configuracion_agente",
+        "url": "https://aristosoluciones.integraia.lat/ai_chatbot_1_portal/configuracion_agente",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"text\": \"{{ $json.text }}\",\n  \"image_url\": \"{{ $json.image_url || '' }}\",\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\": \"{{ $json.conversation_id }}\",\n  \"account_id\": \"{{ $json.account_id }}\",\n  \"platform\": \"{{ $json.platform }}\",\n  \"token\": \"{{ $env.CHATBOT_API_TOKEN || '' }}\"\n}",
@@ -2004,6 +2004,6 @@
     "templateCredsSetupCompleted": true,
     "instanceId": "8e7596cc730d6c90157a0c769dff83c553a912055f1dd239814fe1703e14ce05"
   },
-  "id": "rPbpU1hvL5XFdJ5VuIXTe",
+  "id": "pOrI6B4yPnInj82x",
   "tags": []
 }

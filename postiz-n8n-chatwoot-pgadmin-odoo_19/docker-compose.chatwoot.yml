@@ -41,13 +41,13 @@ services:
       RACK_ATTACK_LOGIN_PERIOD_IP: "300"
       RACK_ATTACK_LOGIN_PERIOD_EMAIL: "900"
       
-      RAILS_HOST: https://chatwoot.integraia.lat
-      FRONTEND_URL: https://chatwoot.integraia.lat
-      APP_HOST: https://chatwoot.integraia.lat
+      RAILS_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      FRONTEND_URL: https://chatwoot.aristosoluciones.integraia.lat
+      APP_HOST: https://chatwoot.aristosoluciones.integraia.lat
       
-      ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
-      RAILS_STORAGE_HOST: https://chatwoot.integraia.lat
+      ASSET_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      RAILS_STORAGE_HOST: https://chatwoot.aristosoluciones.integraia.lat
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
@@ -57,8 +57,8 @@ services:
       
       ACTIVE_STORAGE_ROOT: /app/storage
       RAILS_STORAGE_PATH: /app/storage
-      RAILS_ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_URL_HOST: https://chatwoot.integraia.lat
+      RAILS_ASSET_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      ACTIVE_STORAGE_URL_HOST: https://chatwoot.aristosoluciones.integraia.lat
       ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN: "604800"
       
       POSTGRES_USER: chatwoot
@@ -87,7 +87,7 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
       RAILS_SERVE_STATIC_FILES: "true"
       
-      API_AUTH_TOKEN: yvJxkWhiTMioFgKTZTq3ZE3h
+      API_AUTH_TOKEN: 7Ejne6nkEkfmtREbzLPJv9D2
 
       # Configuración SMTP (estándar de Chatwoot) - valores desde .env
       SMTP_ADDRESS: ${SMTP_ADDRESS}
@@ -150,10 +150,10 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       
-      RAILS_HOST: https://chatwoot.integraia.lat
-      FRONTEND_URL: https://chatwoot.integraia.lat
-      ASSET_HOST: https://chatwoot.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      RAILS_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      FRONTEND_URL: https://chatwoot.aristosoluciones.integraia.lat
+      ASSET_HOST: https://chatwoot.aristosoluciones.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.aristosoluciones.integraia.lat
       
       POSTGRES_USER: chatwoot
       POSTGRES_PASSWORD: chatwoot123

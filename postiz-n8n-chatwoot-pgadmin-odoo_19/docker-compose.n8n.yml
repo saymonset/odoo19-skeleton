@@ -26,10 +26,10 @@ services:
       - N8N_ENCRYPTION_KEY_FILE=/run/secrets/n8n_encryption_key
       
       # URLs
-      - N8N_HOST=n8n.integraia.lat
+      - N8N_HOST=n8n.aristosoluciones.integraia.lat
       - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://n8n.integraia.lat/
-      - N8N_EDITOR_BASE_URL=https://n8n.integraia.lat/
+      - WEBHOOK_URL=https://n8n.aristosoluciones.integraia.lat/
+      - N8N_EDITOR_BASE_URL=https://n8n.aristosoluciones.integraia.lat/
       
       # Configuración general
       - N8N_RUNNERS_ENABLED=false

@@ -528,7 +528,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/procesar_paso",
+        "url": "https://aristosoluciones.integraia.lat/ai_chatbot_1_portal/procesar_paso",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -967,6 +967,6 @@
     "templateCredsSetupCompleted": true,
     "instanceId": "8e7596cc730d6c90157a0c769dff83c553a912055f1dd239814fe1703e14ce05"
   },
-  "id": "nyhS-AWWoXbFIj_MkYkuO",
+  "id": "BOjWNcGBPzFAhfNy5h27P",
   "tags": []
 }
