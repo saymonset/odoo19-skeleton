@@ -1082,7 +1082,7 @@
         "sendBody": true,
         "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.content }}\"\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1113,7 +1113,7 @@
         "sendBody": true,
         "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.content }}\"\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1191,7 +1191,7 @@
         "sendBody": true,
         "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.nombre_mostrar }}\"\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.nombre_mostrar) }}\n}"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1300,7 +1300,7 @@
         "sendBody": true,
         "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.output }}\"\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1512,7 +1512,7 @@
         "sendBody": true,
         "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.output }}\"\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
