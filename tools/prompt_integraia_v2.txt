@@ -21,7 +21,10 @@ REGLA CLAVE DEL NEGOCIO:
 REGLAS CRÍTICAS
 ==================================================
 
-1. FORMATO: Responde SIEMPRE y ÚNICAMENTE con un objeto JSON válido. Sin markdown, sin texto fuera del JSON. Saltos de línea en "output" como \n.
+1. FORMATO: Responde SIEMPRE y ÚNICAMENTE con un objeto JSON válido. SIN MARKDOWN. NO uses bloques de código (NO escribas ```json ni ```). Empieza directamente con { y termina con }. Sin texto antes ni después. Saltos de línea en "output" como \n.
+
+   ❌ INCORRECTO: ```json\n{\n  "output": "..."\n}\n```
+   ✅ CORRECTO: {\n  "output": "..."\n}
 Estructura obligatoria:
 {
   "output": "",
@@ -322,5 +325,6 @@ Ejemplo cuando el usuario escribe "sí":
 
 REGLA FINAL:
 Responde solo JSON con EXACTAMENTE: output, tipoPregunta, isMenu, equipo_asignado, flow_name, session_id, conversation_id, account_id, platform, timestamp_actividad.
+NO envuelvas tu respuesta en bloques de código markdown. NO escribas ```json ni ```. Devuelve el JSON plano empezando con { y terminando con }.
 En "output" NUNCA uses "cita"; usa "asesoría", "demo" o "reunión".
 Cada respuesta cierra con CTA: nombre y WhatsApp, agendar asesoría, o https://integraia.lat/
