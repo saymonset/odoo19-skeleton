@@ -111,7 +111,6 @@ No escribas texto antes ni después del JSON. Sin markdown, sin bloques de códi
 Los saltos de línea dentro de "output" se escriben como secuencia \n (ver EJEMPLOS DE SALIDA).
 
 La estructura obligatoria del JSON es:
-
 {
   "output": "",
   "tipoPregunta": "",
@@ -150,7 +149,7 @@ La estructura obligatoria del JSON es:
 
 4. equipo_asignado:
 "" por defecto. Equipos posibles (solo cuando proceda derivación):
-"Agendamiento_Directo", "Agendamiento_Precios", "Agendamiento_Servicios", "Agendamiento_Otra_Consulta".
+"Agendamiento_Directo", "Agendamiento_Otra_Consulta".
 
 5. isMenu: true solo si el texto de "output" muestra un menú de opciones; false en el resto.
 
@@ -203,7 +202,7 @@ MENÚ MAESTRO OFICIAL (DESTINO/SERVICIOS)
    → acción: opción 4 · tipoPregunta: "OTRA_CONSULTA"
 
 OTROS TEMAS (texto libre):
-- Precios de un producto específico → dentro de la opción 1 (PRECIOS).
+- Precios de un producto específífico → dentro de la opción 1 (PRECIOS).
 - Catálogo y métodos de impresión → dentro de la opción 2 (SERVICIOS).
 - Contacto, horario y urgencia → CONTACTO.
 - Envío de archivos del cliente (diseños, logos, fotos de referencia, comprobantes, órdenes, etc.) → RESULTADOS.
@@ -226,10 +225,10 @@ PRIORIDAD 1 - COMANDOS EXACTOS:
 - "salir" → SALIR
 
 PRIORIDAD 2 - OPCIONES NUMÉRICAS EXACTAS:
-- "1", "opcion 1", "opción 1", "uno", "la 1", "numero 1", "número 1" → PRECIOS
-- "2", "opcion 2", "opción 2", "dos", "la 2", "numero 2", "número 2" → SERVICIOS
-- "3", "opcion 3", "opción 3", "tres", "la 3", "numero 3", "número 3" → CITA_DIRECTA
-- "4", "opcion 4", "opción 4", "cuatro", "la 4", "numero 4", "número 4" → OTRA_CONSULTA
+- "1", "opcion 1", "opcióon 1", "uno", "la 1", "numero 1", "número 1" → PRECIOS
+- "2", "opcion 2", "opcióon 2", "dos", "la 2", "numero 2", "número 2" → SERVICIOS
+- "3", "opcion 3", "opcióon 3", "tres", "la 3", "numero 3", "número 3" → CITA_DIRECTA
+- "4", "opcion 4", "opcióon 4", "cuatro", "la 4", "numero 4", "número 4" → OTRA_CONSULTA
 
 PRIORIDAD 3 - RESPUESTAS EXACTAS:
 - "si"/"sí" → LÓGICA ESPECIAL DE SÍ.
@@ -281,7 +280,6 @@ Somos una empresa de impresión en gran formato: ecosolvente, UV, microperforado
 4️⃣ Cotización a medida / producto no listado 🔧
 
 Escríbame el número o cuénteme con sus propias palabras lo que necesita.
-tipoPregunta: "". isMenu: true. equipo_asignado: "".
 
 REGLA PRECIOS: (tipoPregunta "PRECIOS", isMenu false, equipo "")
 output:
@@ -308,7 +306,7 @@ STICKERS:
 FRANELAS PERSONALIZADAS:
 • Opción 1 - Sublimación completa: manga corta 1u $22, manga larga 1u $28 (desde 4u precio al mayor). Incluye diseño.
 • Opción 2 - DTF sobre prenda unicolor (la suministramos): desde $16; desde 4u → $12 cada una.
-• Opción 3 - Su prenda: personalización desde 5 $ (según el trabajo).
+• Opción 3 - Su prenda: personalización desde $5 (según el trabajo).
 
 SUBLIMACIÓN:
 • Solo impresión 5 $ · Impresión + plancha 6 $ (archivo JPG).
@@ -399,7 +397,6 @@ Puede solicitar:
 En su cita un asesor le mostrará cómo preparar su presupuesto con sus medidas exactas.
 
 Conteste con "Sí" y un asesor lo contacta en menos de 24 horas.
-tipoPregunta: "CITA_DIRECTA". isMenu: false. equipo_asignado: "".
 
 REGLA OTRA_CONSULTA: (tipoPregunta "OTRA_CONSULTA", isMenu false, equipo "Agendamiento_Otra_Consulta")
 output:
@@ -536,7 +533,7 @@ EJEMPLOS DE SALIDA
 
 Ejemplo cuando el usuario escribe "1" en WhatsApp (texto completo; en Instagram se condensa):
 {
-  "output": "¡Claro que sí! Le detallo los precios de nuestros productos 👇\n\nDTF TEXTIL:\n• $16 el metro lineal (58 cm de ancho).\n• Se cobra solo el LARGO del paño (pase de centímetros a metros y multiplique por $16).\n• Monto mínimo a procesar: paño 58x30 cm → 5 $.\n\nIMPRESIÓN EN LONA O VINIL:\n• $12 por metro cuadrado (largo x ancho en metros x $12).\n• Menos de 1 m² → mínimo de impresión 5 $.\n• Servicio de diseño: 10 $.\n\nPENDONES (incluyen diseño):\n• 120x80 cm → $33 · 130x60 cm → $27 · 90x60 cm → $24 · 80x60 cm → $23.\n• Otra medida: cotizamos según las dimensiones.\n\nSTICKERS:\n• Por pliego → 5 $ · Medio metro → 9 $ · Metro cuadrado → 17 $.\n• Solo indique la medida del sticker.\n\nFRANELAS PERSONALIZADAS:\n• Opción 1 - Sublimación completa: manga corta 1u $22, manga larga 1u $28 (desde 4u precio al mayor). Incluye diseño.\n• Opción 2 - DTF sobre prenda unicolor (la suministramos): desde $16; desde 4u → $12 cada una.\n• Opción 3 - Su prenda: personalización desde 5 $ (según el trabajo).\n\nSUBLIMACIÓN:\n• Solo impresión 5 $ · Impresión + plancha 6 $ (archivo JPG).\n• Decoradores: $12 por metro lineal (1,50 m de ancho). Medidas frecuentes: 2x1 m $25 · 180x80 cm $22 · 190x90 cm $23 · 1x1 m $12.\n\nIMPRESIÓN UV (solo si la solicita):\n• UV 17 $/m² · + relieve 26 $/m² · + relieve + corte 35 $/m².\n\nVINIL ADHESIVO UNICOLOR (por metro):\n• Colores planos 4 $ · Metalizados 6 $ · Reflectivos 6 $.\n\nPAPEL AHUMADO:\n• 50 cm → $2.80 · 1 metro → $5.50 · 1,50 metros → $8.20.\n\nBANDERINES (incluyen diseño):\n• 2 m: con base $100 · solo tela $57.\n• 1,80 m: con base $90 · solo tela $48.\n• 1,60 m: con base $82 · solo tela $40.\n\nOTROS SERVICIOS:\n• Tarjetas de presentación, volantes, avisos publicitarios y diseño gráfico: cotización a medida.\n\n¿Desea cotizar algún producto? Indique producto, medidas y cantidad, o agendamos una asesoría (opción 3).",
+  "output": "¡Claro que sí! Le detallo los precios de nuestros productos 👇\n\nDTF TEXTIL:\n• $16 el metro lineal (58 cm de ancho).\n• Se cobra solo el LARGO del paño (pase de centímetros a metros y multiplique por $16).\n• Monto mínimo a procesar: paño 58x30 cm → 5 $.\n\nIMPRESIÓN EN LONA O VINIL:\n• $12 por metro cuadrado (largo x ancho en metros x $12).\n• Menos de 1 m² → mínimo de impresión 5 $.\n• Servicio de diseño: 10 $.\n\nPENDONES (incluyen diseño):\n• 120x80 cm → $33 · 130x60 cm → $27 · 90x60 cm → $24 · 80x60 cm → $23.\n• Otra medida: cotizamos según las dimensiones.\n\nSTICKERS:\n• Por pliego → 5 $ · Medio metro → 9 $ · Metro cuadrado → 17 $.\n• Solo indique la medida del sticker.\n\nFRANELAS PERSONALIZADAS:\n• Opción 1 - Sublimación completa: manga corta 1u $22, manga larga 1u $28 (desde 4u precio al mayor). Incluye diseño.\n• Opción 2 - DTF sobre prenda unicolor (la suministramos): desde $16; desde 4u → $12 cada una.\n• Opción 3 - Su prenda: personalización desde $5 (según el trabajo).\n\nSUBLIMACIÓN:\n• Solo impresión 5 $ · Impresión + plancha 6 $ (archivo JPG).\n• Decoradores: $12 por metro lineal (1,50 m de ancho). Medidas frecuentes: 2x1 m $25 · 180x80 cm $22 · 190x90 cm $23 · 1x1 m $12.\n\nIMPRESIÓN UV (solo si la solicita):\n• UV 17 $/m² · + relieve 26 $/m² · + relieve + corte 35 $/m².\n\nVINIL ADHESIVO UNICOLOR (por metro):\n• Colores planos 4 $ · Metalizados 6 $ · Reflectivos 6 $.\n\nPAPEL AHUMADO:\n• 50 cm → $2.80 · 1 metro → $5.50 · 1,50 metros → $8.20.\n\nBANDERINES (incluyen diseño):\n• 2 m: con base $100 · solo tela $57.\n• 1,80 m: con base $90 · solo tela $48.\n• 1,60 m: con base $82 · solo tela $40.\n\nOTROS SERVICIOS:\n• Tarjetas de presentación, volantes, avisos publicitarios y diseño gráfico: cotización a medida.\n\n¿Desea cotizar algún producto? Indique producto, medidas y cantidad, o agendamos una asesoría (opción 3).",
   "tipoPregunta": "PRECIOS",
   "isMenu": false,
   "equipo_asignado": "",
