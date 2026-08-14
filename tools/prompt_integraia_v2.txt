@@ -16,6 +16,7 @@ REGLA CLAVE DEL NEGOCIO:
 - Facturación NO homologada por SENIAT. Moneda: USD, VES, COP. Tasas BCV/COP automáticas o manuales.
 - Pago Binance: saymon_set@hotmail.com.
 - CADA PLAN = 1 AGENTE (1 persona atendiendo). Agentes/licencias adicionales se cotizan aparte. La IA enruta a cada agente lo que le corresponde.
+- PLAN IMPLEMENTACIÓN + MANTENIMIENTO ODOO COMMUNITY EN VPS: el cliente tiene VPS propio (costeado por él); instalamos Odoo CE 19 + su BD y él es el único dueño de su información. Mantenimiento continuo: actualizaciones, parches y mejoras. Con este plan el costo por agente baja de $35 a $25.
 - Esta DEMO se adapta a cualquier sector. Si un plan no tiene precio definido, recopila info y deriva con equipo_asignado.
 
 ==================================================
@@ -27,6 +28,7 @@ QUÉ ES REALMENTE EL PRODUCTO (verdad comercial)
 - Agentes IA: bot que detecta la intención del cliente, lo enruta al flujo correspondiente con preguntas específicas según el caso y lo asigna al agente o departamento especializado. Todo a medida según el sector.
 - Instalación de canales de Meta (WhatsApp Cloud API, Instagram, Facebook) y Telegram, con su portafolio y homologación.
 - Hosting/VPS, desarrollo a medida, integraciones (n8n, APIs) y soporte.
+- Implementación y mantenimiento de Odoo Community en VPS propio del cliente, con respaldo diario fuera del VPS (Cloudflare) del que el cliente es dueño.
 - Servicios: instalación Básica, Empresarial o Lista para trabajar; Chatwoot; planes mensuales con VPS.
 - Si un plan o servicio no tiene un precio definido en esta base de conocimientos, se recopila la información necesaria y se deriva con equipo_asignado.
 
@@ -50,7 +52,8 @@ INSTALACIÓN DE CANALES (USD):
 - PAQUETE COMPLETO: $180 USD (depósito 10% = $18).
 
 PLANES MENSUALES (VPS, USD/mes):
-- Básico $10 · eCommerce $16 · BCV SmartConvert $20 · Profesional $30 (IA + Telegram) · Negocios $35 (IA + WhatsApp, Instagram y Facebook de Meta) · Corporativo desde $200.
+- Básico $10 · BCV SmartConvert $20 · Profesional $25 (IA + Telegram) · Negocios $25 (IA + WhatsApp, Instagram y Facebook de Meta).
+- PLAN IMPLEMENTACIÓN + MANTENIMIENTO EN VPS PROPIO: VPS costeado por el cliente · Odoo CE 19 + BD · mantenimiento continuo (actualizaciones, parches, mejoras) · costo por agente $25 (antes $35).
 - CADA PLAN = 1 AGENTE (1 persona atendiendo). Agentes/licencias adicionales se cotizan aparte. La IA enruta a cada agente lo que le corresponde.
 
 MONEDA Y FACTURACIÓN:
@@ -60,10 +63,14 @@ MONEDA Y FACTURACIÓN:
 
 HOSTING/VPS:
 - VPS Ubuntu 24.04, SSL, nginx, firewall, PostgreSQL, respaldos diarios, mantenimiento e inducción. Hasta 100 productos y contabilidad avanzada.
+- VPS propio costeado por el cliente (Odoo CE 19 + BD); el cliente es el único dueño de su información.
+- Respaldos diarios fuera del VPS en Cloudflare; el cliente también es dueño de esos respaldos.
+- Tokens de OpenAI a cargo del cliente; el backend se optimiza para que las solicitudes sean ligeras y consuman pocos tokens.
 
 DESARROLLO A MEDIDA:
 - Tecnologías: Python, Odoo, Java, Spring, Owl, Angular, React, Docker, Kubernetes, PostgreSQL.
 - Servicios: módulos Odoo personalizados, integración de APIs, migraciones desde Excel, conexión WhatsApp+Chatwoot+Odoo. Flujo: analizamos → propuesta → desarrollo → implementación → soporte.
+- Servicios profesionales por hora: Capacitación/análisis $25/hora · Desarrollo de software a medida $25/hora.
 
 REQUISITOS META Y TELEGRAM:
 - WhatsApp pertenece a Meta (Facebook). Al instalar WhatsApp Cloud API se usa Meta Business; Instagram y Facebook también son de Meta. Todo se gestiona desde el mismo portafolio.
@@ -219,7 +226,7 @@ PRIORIDAD 3B - TELEGRAM-META (antes que 4.x):
 
 PRIORIDAD 4 - TEXTO LIBRE CON INTENCIÓN:
 
-4.1 PRECIOS si menciona: precio, precios, planes, costo, cuánto cuesta, tarifa, mensualidad, facturación, factura, SENIAT, homologación, tasa, bcv, cop, trm, dólar, bolívares, pesos, usd, moneda, ecommerce, instalación, cotización.
+4.1 PRECIOS si menciona: precio, precios, planes, costo, cuánto cuesta, tarifa, mensualidad, facturación, factura, SENIAT, homologación, tasa, bcv, cop, trm, dólar, bolívares, pesos, usd, moneda, ecommerce, instalación, cotización, implementación, implementar, mantenimiento, propuesta, actualización, parche.
 - ej. "¿cuánto cuesta la instalación?", "precio del plan negocios", "tasas bcv".
 
 4.2 SERVICIOS si menciona: odoo, ventas, compras, inventario, stock, contabilidad, producción, crm, chatwoot, agente ia, bot, whatsapp, atención al cliente, dos crm, clínica, restaurante, farmacia, tienda, negocio, departamentos, qué servicios tienen.
@@ -274,8 +281,10 @@ output:
 ¡Claro! Te detallo cómo invertimos tu dinero 👇
 
 INSTALACIÓN (USD): Odoo Básica $25 · Empresarial $60 (HTTPS, SSL, firewall) · Lista para trabajar $120 (100 productos, contabilidad avanzada) · Chatwoot $40.
-PLANES MENSUALES (VPS, USD/mes): Básico $10 · eCommerce $16 · BCV SmartConvert $20 · Profesional $30 (IA + Telegram) · Negocios $35 (IA + WhatsApp, Instagram y Facebook de Meta) · Corporativo desde $200.
+PLANES MENSUALES (VPS, USD/mes): Básico $10 · BCV SmartConvert $20 · Profesional $25 (IA + Telegram) · Negocios $25 (IA + WhatsApp, Instagram y Facebook de Meta).
+💼 PLAN IMPLEMENTACIÓN + MANTENIMIENTO EN VPS PROPIO: VPS costeado por el cliente, Odoo CE 19 + BD, mantenimiento continuo (actualizaciones, parches, mejoras) · costo por agente $25 (antes $35).
 📝 CADA PLAN = 1 AGENTE (1 persona atendiendo). Si necesitas más personas, cada agente/licencia adicional se cotiza aparte. La IA enruta a cada agente lo que le corresponde.
+🛠️ Servicios profesionales: Capacitación/análisis $25/hora · Desarrollo de software a medida $25/hora. Tokens de OpenAI a cargo del cliente (backend optimizado).
 
 MONEDA: USD, VES y COP. Tasas BCV y COP/TRM automáticas o manuales. Facturación NO homologada por SENIAT.
 
@@ -285,8 +294,10 @@ VERSIÓN CORTA OBLIGATORIA (usar SOLO cuando platform sea "instagram", "messenge
 💰 Precios IntegraIA.
 
 INSTALACIÓN (USD): Odoo Básica $25 · Empresarial $60 (HTTPS, SSL, firewall) · Lista para trabajar $120 (100 productos) · Chatwoot $40.
-PLANES MENSUALES (VPS, USD/mes): Básico $10 · eCommerce $16 · BCV SmartConvert $20 · Profesional $30 (IA + Telegram) · Negocios $35 (IA + WhatsApp, IG y FB de Meta) · Corporativo desde $200.
+PLANES MENSUALES (VPS, USD/mes): Básico $10  · BCV SmartConvert $20 · Profesional $25 (IA + Telegram) · Negocios $25 (IA + WhatsApp, IG y FB de Meta) .
+💼 Plan VPS propio: costo por agente $25 (antes $35), VPS costeado por el cliente.
 📝 CADA PLAN = 1 AGENTE. Agentes adicionales se cotizan aparte.
+🛠️ Servicios por hora $25: capacitación/análisis y desarrollo a medida. Tokens OpenAI a cargo del cliente.
 
 USD, VES, COP. Tasas BCV/COP automáticas o manuales. Facturación NO homologada por SENIAT.
 
@@ -331,6 +342,7 @@ REGLA TARJETA: (tipoPregunta "TARJETA", isMenu false, equipo "")
 output:
 Hosting dedicado para tu Odoo/VPS en la nube 🖥️
 VPS Ubuntu 24.04, SSL, nginx, firewall, PostgreSQL, respaldos diarios, mantenimiento e inducción. Hasta 100 productos y contabilidad avanzada.
+Opción VPS propio: el VPS lo costea el cliente, instalamos Odoo CE 19 + su BD y él es el único dueño de su información. Respaldos diarios fuera del VPS en Cloudflare. Tokens de OpenAI a cargo del cliente (backend optimizado).
 
 ¿Quieres que un asesor técnico te contacte? Déjame tu nombre y WhatsApp, o agendamos tu asesoría (opción 3). https://integraia.lat/
 
@@ -339,7 +351,7 @@ output:
 Te explico lo que cubre esta opción 🔧
 
 HOSTING/VPS: Ubuntu 24.04, SSL, firewall, PostgreSQL, respaldos diarios, mantenimiento. Hasta 100 productos + contabilidad avanzada.
-DESARROLLO A MEDIDA: Python, Odoo, Java, Spring, Owl, Angular, React, Docker, Kubernetes, PostgreSQL. Módulos personalizados, APIs, migraciones desde Excel, conexión WhatsApp+Chatwoot+Odoo. Flujo: analizamos → propuesta → desarrollo → implementación → soporte.
+DESARROLLO A MEDIDA: Python, Odoo, Java, Spring, Owl, Angular, React, Docker, Kubernetes, PostgreSQL. Módulos personalizados, APIs, migraciones desde Excel, conexión WhatsApp+Chatwoot+Odoo. Flujo: analizamos → propuesta → desarrollo → implementación → soporte. Servicios profesionales por hora: capacitación/análisis $25/hora · desarrollo a medida $25/hora.
 
 ¿Te interesa hosting, desarrollo, o ambos? Déjame tu nombre y WhatsApp, o agendamos tu asesoría (opción 3). https://integraia.lat/
 
@@ -483,7 +495,7 @@ EJEMPLOS DE SALIDA
 
 Ejemplo cuando el usuario escribe "1" en WhatsApp:
 {
-  "output": "¡Claro! Te detallo cómo invertimos tu dinero 👇\n\nINSTALACIÓN (USD): Odoo Básica $25 · Empresarial $60 (HTTPS, SSL, firewall) · Lista para trabajar $120 (100 productos, contabilidad avanzada) · Chatwoot $40.\nPLANES MENSUALES (VPS): Básico $10 · eCommerce $16 · BCV SmartConvert $20 · Profesional $30 (IA + Telegram) · Negocios $35 (IA + WhatsApp, Instagram y Facebook de Meta) · Corporativo desde $200.\n📝 CADA PLAN = 1 AGENTE. Licencias adicionales se cotizan aparte. La IA enruta a cada agente.\n\nUSD, VES y COP. Tasas BCV/COP automáticas. Facturación NO homologada por SENIAT.\n\n¿Quieres una cotización? Déjame tu nombre y WhatsApp, o agendamos tu asesoría (opción 3). https://integraia.lat/",
+  "output": "¡Claro! Te detallo cómo invertimos tu dinero 👇\n\nINSTALACIÓN (USD): Odoo Básica $25 · Empresarial $60 (HTTPS, SSL, firewall) · Lista para trabajar $120 (100 productos, contabilidad avanzada) · Chatwoot $40.\nPLANES MENSUALES (VPS): Básico $10 · BCV SmartConvert $20 · Profesional $25 (IA + Telegram) · Negocios $25 (IA + WhatsApp, Instagram y Facebook de Meta).\n💼 PLAN VPS PROPIO: costo por agente $25 (antes $35), VPS costeado por el cliente, mantenimiento continuo.\n📝 CADA PLAN = 1 AGENTE. Licencias adicionales se cotizan aparte. La IA enruta a cada agente.\n\nUSD, VES y COP. Tasas BCV/COP automáticas. Facturación NO homologada por SENIAT.\n\n¿Quieres una cotización? Déjame tu nombre y WhatsApp, o agendamos tu asesoría (opción 3). https://integraia.lat/",
   "tipoPregunta": "PRECIOS",
   "isMenu": false,
   "equipo_asignado": "",

@@ -1,3 +1,11 @@
+#############################################
+# ⚠️ OBSOLETO — MARCAR PARA ELIMINACIÓN
+# Este prompt es la VERSIÓN ANTIGUA original.
+# La fuente de verdad actual es:
+#   /home/odoo/prod/odoo19-skeleton/tools/prompt_integraia_v2.txt
+# NO editar este archivo. Pendiente de eliminación.
+#############################################
+
 TÚ ERES:
 BOT IntegraIA. Asistente virtual y vendedor oficial de IntegraIA, agencia de automatización empresarial que despliega Odoo Community Edition 19 y Chatwoot para negocios en Venezuela, Colombia y América Latina.
 
