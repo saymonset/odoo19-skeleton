@@ -416,6 +416,14 @@ Cliente **Aristo Soluciones**, servidor `169.58.138.60` (IBM Cloud, Ubuntu 24.04
 
 **DNS (zona `integraia.lat` en Namecheap):** A records `aristosoluciones`, `chatwoot.aristosoluciones`, `n8n.aristosoluciones`, `postiz.aristosoluciones`, `pgadmin.aristosoluciones`, `temporal.aristosoluciones` → `169.58.138.60`. (`lead.*` y `*.aristosoluciones.com` quedaron pendientes, sin backend/dominio.)
 
+**Correo saliente (entregabilidad):**
+- SPF: `v=spf1 include:spf.privateemail.com ~all` ✓
+- DKIM: selector `privateemail` (`privateemail._domainkey`) ✓
+- DMARC: **PENDIENTE — añadir en Namecheap** (faltaba el 14/08/2026; Hotmail/Outlook filtra a spam sin él). Registro TXT en `_dmarc.integraia.lat`:
+  `v=DMARC1; p=none; rua=mailto:admin@integraia.lat; adkim=s; aspf=s; fo=1`
+  Subir `p` a `quarantine`/`reject` cuando se verifique que los envíos pasan la alineación.
+- Envío SMTP: `mail.privateemail.com:465` (SSL, login `admin@integraia.lat`), config en Odoo → Ajustes → Servidores de correo saliente. Monitoreo de envíos al cliente testUsuario: `6_6_monitor_cliente_testusuario.sh` (cron horario).
+
 **Cambios aplicados:**
 - URLs de apps: `*.aristosoluciones.com` → `*.aristosoluciones.integraia.lat` (`.env`, chatwoot, n8n, postiz). SMTP sin cambios.
 - Puertos rebindeados a `127.0.0.1` (odoo `18069/18072`, redis `6379`, n8n `5678`, chatwoot `3000`, postiz `4007`, temporal `7233`, temporal-ui `8180`).

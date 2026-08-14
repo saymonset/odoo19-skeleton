@@ -64,6 +64,14 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/v19/chatwoot_*/
 # Excepción para conservar el config de Odoo si se necesitara (opcional)
 # !postiz-n8n-chatwoot-pgadmin-odoo_19/v19/config/odoo.conf
 
+# Logs y estado del monitor de BD (6_5_monitor_bd_salud.sh)
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/monitor_bd.log
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/monitor_bd.state
+
+# Logs y estado del monitor de cliente testUsuario (6_6_monitor_cliente_testusuario.sh)
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/monitor_cliente_testusuario.log
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19/monitor_cliente_testusuario.state
+
 # General data directories
 **/temporal_elasticsearch_data/
 
