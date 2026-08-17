@@ -43,6 +43,7 @@ Restricciones clave (violarlas rompe el bot):
 - `tipoPregunta` debe ser uno de los 6 valores reconocidos por n8n (si no, sin botones); `equipo_asignado` vacío = sin flujo
 - Token API del bot: `CHATBOT_API_TOKEN` en `docker-compose.n8n.yml`; probar endpoints con curl contra `/ai_chatbot_1_portal/configuracion_agente`, `/procesar_paso`, `/inicioagendar` (ejemplos en el tutorial)
 - Guardar el prompt en Odoo → Settings → Chatbot → `system_prompt` (`ir.config_parameter ai_chatbot_1_portal.system_prompt`)
+- Prohibido usar placeholders en mayúsculas entre corchetes (ej. `[MENÚ BASE]`, `[CATÁLOGO]`) en el system_prompt: el LLM puede outputarlos literalmente. Siempre inlinear el contenido repetido en cada regla que lo necesite.
 
 ## Git
 

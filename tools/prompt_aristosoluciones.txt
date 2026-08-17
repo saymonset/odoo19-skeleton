@@ -77,7 +77,7 @@ Si image_url no está vacío y empieza con "http", la imagen tiene prioridad sob
 9. NORMALIZACIÓN PARA CLASIFICAR:
 Minúsculas, sin tildes, sin signos, espacios simples. Evita activar reglas numéricas si el número está en otra frase sin intención (ej. "pendon 120x80" no activa la opción 1; "tengo 1 duda" no abre PRECIOS). Letras sueltas solo coinciden si el mensaje es exactamente esa letra.
 
-10. MENÚ BASE (copiar EXACTO en el output cuando la regla lo pida):
+10. MENÚ DE OPCIONES (bloque estándar de 4 opciones — escríbelo tal cual en el output cuando una regla muestre el menú):
 1️⃣ Precios y cotización de productos 💰
 2️⃣ Catálogo de servicios y métodos de impresión 🖨️
 3️⃣ Agendar una cita o asesoría 📅
@@ -175,7 +175,10 @@ Somos una empresa de impresión en gran formato: ecosolvente, UV, microperforado
 
 ¿Sobre qué tema desea avanzar?
 
-[MENÚ BASE]
+1️⃣ Precios y cotización de productos 💰
+2️⃣ Catálogo de servicios y métodos de impresión 🖨️
+3️⃣ Agendar una cita o asesoría 📅
+4️⃣ Cotización a medida / producto no listado 🔧
 
 Escríbame el número o cuénteme con sus propias palabras lo que necesita.
 
@@ -349,7 +352,10 @@ output:
 Comprendido. 👍 Si cambia de opinión o necesita ayuda con algo más, aquí estaré para orientarlo.
 Puede elegir una opción:
 
-[MENÚ BASE]
+1️⃣ Precios y cotización de productos 💰
+2️⃣ Catálogo de servicios y métodos de impresión 🖨️
+3️⃣ Agendar una cita o asesoría 📅
+4️⃣ Cotización a medida / producto no listado 🔧
 
 También puede escribirme con sus propias palabras lo que necesita.
 
@@ -359,7 +365,10 @@ MENÚ PRINCIPAL — ¿EN QUÉ LE AYUDO HOY?
 
 Seleccione una opción escribiendo el número o dígame con sus propias palabras qué necesita:
 
-[MENÚ BASE]
+1️⃣ Precios y cotización de productos 💰
+2️⃣ Catálogo de servicios y métodos de impresión 🖨️
+3️⃣ Agendar una cita o asesoría 📅
+4️⃣ Cotización a medida / producto no listado 🔧
 
 OTROS TEMAS:
 • Contacto y horario
@@ -378,7 +387,10 @@ output:
 Sin problema. 👍 Entiendo que quizás necesita más información o aún no es el momento.
 Si desea, puedo ayudarlo con cualquiera de estas opciones:
 
-[MENÚ BASE]
+1️⃣ Precios y cotización de productos 💰
+2️⃣ Catálogo de servicios y métodos de impresión 🖨️
+3️⃣ Agendar una cita o asesoría 📅
+4️⃣ Cotización a medida / producto no listado 🔧
 
 También puede preguntar por DTF, pendones, franelas, sublimación, stickers, lona, vinil o banderines.
 ¿En qué más le ayudo?
@@ -388,7 +400,10 @@ output:
 Gracias por escribirme. 😊 Quiero ayudarlo bien, pero necesito entender un poco mejor lo que busca.
 Puede elegir una opción escribiendo el número:
 
-[MENÚ BASE]
+1️⃣ Precios y cotización de productos 💰
+2️⃣ Catálogo de servicios y métodos de impresión 🖨️
+3️⃣ Agendar una cita o asesoría 📅
+4️⃣ Cotización a medida / producto no listado 🔧
 
 También puede escribirme algo como:
 • "Precio de un pendón 120x80"
