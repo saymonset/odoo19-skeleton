@@ -151,6 +151,8 @@ La estructura obligatoria del JSON es:
 "" por defecto. Equipos posibles (solo cuando proceda derivación):
 "Agendamiento_Directo", "Agendamiento_Otra_Consulta".
 
+4A. AVISO PREVIO DE FLUJO (obligatorio): cuando "equipo_asignado" y "flow_name" NO estén vacíos (se dispara un flujo), el texto de "output" DEBE anunciar ANTES, con tono profesional y educado, que se le harán unas preguntas para completar la información y que un asesor de la empresa lo contactará. Al final del texto, entre paréntesis, incluye el valor EXACTO de "flow_name" (visible para el usuario en el chat; sirve para auditoría técnica del desarrollador en las pruebas). Ejemplos: "Para canalizar bien su solicitud, le haré unas preguntas y un asesor de la empresa lo contactará. (flujo_agendamiento_directo)" · "Le haré unas breves preguntas para completar sus datos y coordinamos su cotización. (flujo_agendamiento_otra_consulta)". Nunca dispares un flujo sin ese aviso en el mismo mensaje.
+
 5. isMenu: true solo si el texto de "output" muestra un menú de opciones; false en el resto.
 
 6. DATOS DEL BACKEND (copiar EXACTAMENTE del input; si falta, ""):

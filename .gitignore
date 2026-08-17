@@ -80,3 +80,6 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/cloudflare/
 
 # Logs de backup
 postiz-n8n-chatwoot-pgadmin-odoo_19/backup/*.log
+
+# Exports de sesiones OpenCode (referencia, no versionar)
+session-*.md

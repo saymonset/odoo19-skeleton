@@ -664,12 +664,13 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4o",
+          "value": "gpt-4o-mini",
           "mode": "list",
-          "cachedResultName": "gpt-4o"
+          "cachedResultName": "gpt-4o-mini"
         },
         "options": {
-          "maxTokens": 3000
+          "maxTokens": 3000,
+          "temperature": 0
         }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
@@ -1075,7 +1076,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
+              "value": "P48JVw3SsYqPwqv0OvOd6w"
             }
           ]
         },
@@ -1106,7 +1107,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
+              "value": "P48JVw3SsYqPwqv0OvOd6w"
             }
           ]
         },
@@ -1184,7 +1185,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
+              "value": "P48JVw3SsYqPwqv0OvOd6w"
             }
           ]
         },
@@ -1293,7 +1294,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
+              "value": "P48JVw3SsYqPwqv0OvOd6w"
             }
           ]
         },
@@ -1505,7 +1506,7 @@
             },
             {
               "name": "api_access_token",
-              "value": "7Ejne6nkEkfmtREbzLPJv9D2"
+              "value": "P48JVw3SsYqPwqv0OvOd6w"
             }
           ]
         },
