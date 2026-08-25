@@ -1,0 +1,392 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: integraia\n"
+"POT-Creation-Date: 2026-08-25\n"
+"PO-Revision-Date: 2026-08-25\n"
+"Last-Translator: IntegraIA\n"
+"Language-Team: IntegraIA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "⚠️ Important Note:"
+msgstr "⚠️ Nota importante:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "All plans include hosting/VPS. Each plan includes 1 agent (1 person attending). Additional agents cost $25 usdt/agent/month and include the advanced chatbot for your business: it detects the intent of each customer, triggers the corresponding flow, and each flow requests its own data, tailored to your company. Only your domain and your corporate email server (SMTP) are paid separately, annually. All prices are in USDT. Accessible: a full package for much less than a dedicated license with custom flows (~$90)."
+msgstr "Todos los planes incluyen hosting/VPS. Cada plan incluye 1 agente (1 persona atendiendo). Los agentes adicionales cuestan $25 usdt/agente/mes e incluyen el chatbot avanzado para tu negocio: detecta la intención de cada cliente, dispara el flujo correspondiente y cada flujo pide sus propios datos, adaptado a tu empresa. Solo tu dominio y tu servidor de correo corporativo (SMTP) se pagan aparte, anualmente. Todos los precios en USDT. Accesible: un paquete completo por mucho menos que una licencia dedicada con flujos personalizados (~$90)."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Invoicing ready for Venezuela"
+msgstr "Facturación lista para Venezuela"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Included in Odoo Community: accounting books, invoicing and financial reports. No SENIAT homologation required anymore. BCV and COP/TRM exchange rates, automatic or manual. 25 Venezuelan banks preconfigured."
+msgstr "Incluido en Odoo Community: libros contables, facturación y reportes financieros. Ya no requiere homologación del SENIAT. Tasas BCV y COP/TRM automáticas o manuales. 25 bancos venezolanos preconfigurados."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Currencies: USD, VES, COP · Payment: Binance."
+msgstr "Monedas: USD, VES, COP · Pago: Binance."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "📌 Service Requirements"
+msgstr "📌 Requisitos del servicio"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Start Now"
+msgstr "Comenzar ahora"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Cloud installation (required)"
+msgstr "Instalación en la nube (requerida)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Monthly plan (required)"
+msgstr "Plan mensual (requerido)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Website (optional — quoted)"
+msgstr "Sitio web (opcional — se cotiza)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Note:"
+msgstr "Nota:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Odoo cannot be used without an installation or an active plan. The website is an extra you can subscribe to now or later."
+msgstr "Odoo no puede usarse sin una instalación o un plan activo. El sitio web es un extra que puedes contratar ahora o después."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Website (optional)"
+msgstr "Sitio web (opcional)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Get a Quote"
+msgstr "Cotización"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Contact Us"
+msgstr "Contáctanos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Home"
+msgstr "Inicio"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Contact"
+msgstr "Contacto"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Services"
+msgstr "Servicios"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "About us"
+msgstr "Nosotros"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Security policies"
+msgstr "Políticas de seguridad"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "General note:"
+msgstr "Nota general:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "photos and texts are provided by the client. If you want us to write the descriptions, it is quoted separately."
+msgstr "las fotos y textos las aporta el cliente. Si quieres que escribamos las descripciones, se cotiza aparte."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "🌐 Installation (one-time payment)"
+msgstr "🌐 Instalación (pago único)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Basic Cloud Installation — Odoo CE"
+msgstr "Instalación Básica en la Nube — Odoo CE"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Basic installation of Odoo Community"
+msgstr "Instalación básica de Odoo Community"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Ubuntu 24.04 operating system"
+msgstr "Sistema operativo Ubuntu 24.04"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Cloud Installation — Ready to Work"
+msgstr "Instalación en la Nube — Lista para Trabajar"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Everything is set up so you just log in and start working"
+msgstr "Todo está configurado para que solo entres e inicies a trabajar"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Complete installation of Odoo Community"
+msgstr "Instalación completa de Odoo Community"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "HTTPS access with free SSL certificate"
+msgstr "Acceso HTTPS con certificado SSL gratis"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "SSH access and PostgreSQL database"
+msgstr "Acceso SSH y base de datos PostgreSQL"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Nginx (reverse proxy) · Firewall rules"
+msgstr "Nginx (reverse proxy) · Reglas de firewall"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Upload of your first 100 products"
+msgstr "Carga de tus primeros 100 productos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Advanced accounting setup"
+msgstr "Configuración contable avanzada"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "(OCA modules): accounts receivable, banks, journals, account types, fiscal localization for your country"
+msgstr "(módulos OCA): cuentas por cobrar, bancos, diarios, tipos de cuenta, localización fiscal de tu país"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Separate development environment to test safely"
+msgstr "Entorno de desarrollo separado para probar con seguridad"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Basic induction: Purchases · Sales · Inventory · Accounting"
+msgstr "Inducción básica: Compras · Ventas · Inventario · Contabilidad"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "All channels included:"
+msgstr "Todos los canales incluidos:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Chatwoot, Meta portfolio + homologation, Instagram, Facebook, Telegram"
+msgstr "Chatwoot, portafolio + homologación Meta, Instagram, Facebook, Telegram"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Starts with a 30% deposit = $36"
+msgstr "Empieza con un depósito del 30% = $36"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Domain and corporate email server are configured but paid annually by the client."
+msgstr "El dominio y el servidor de correo corporativo se configuran pero se pagan anualmente por el cliente."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "📲 Included Channels — Client Requirements"
+msgstr "📲 Canales incluidos — Requisitos del cliente"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "📲 Channels Included with the Ready to Work Installation ($120 usdt)"
+msgstr "📲 Canales incluidos con la instalación Lista para Trabajar ($120 usdt)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Chatwoot (communication CRM) that centralizes WhatsApp, Instagram, Facebook and email"
+msgstr "Chatwoot (CRM de comunicación) que centraliza WhatsApp, Instagram, Facebook y correo"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Meta Business Portfolio + client app + homologation"
+msgstr "Portafolio de Meta Business + app de cliente + homologación"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Instagram · Facebook · Telegram installation"
+msgstr "Instalación de Instagram · Facebook · Telegram"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Client requirements to install the channels:"
+msgstr "Requisitos del cliente para instalar los canales:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "1. Facebook fanpage + landing page. 2. Meta Business Portfolio with full rights. 3. Facebook account (we help you create it). 4. Telegram: bot with BotFather (we guide you)."
+msgstr "1. Fanpage de Facebook + landing page. 2. Portafolio de Meta Business con derechos totales. 3. Cuenta de Facebook (te ayudamos a crearla). 4. Telegram: bot con BotFather (te guiamos)."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Your team answers every channel from one place."
+msgstr "Tu equipo responde cada canal desde un solo lugar."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "🚀 Monthly Plans (USD / month — VPS hosting included)"
+msgstr "🚀 Planes mensuales (USD/mes — hosting/VPS incluido)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Basic Plan"
+msgstr "Plan Básico"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Sell online."
+msgstr "Vende en línea."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "24/7 shopping cart"
+msgstr "Carrito de compras 24/7"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Basic inventory"
+msgstr "Inventario básico"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Chat support"
+msgstr "Chat de soporte"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "VPS hosting included"
+msgstr "Hosting/VPS incluido"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Ideal for: businesses that want to keep selling while physically closed."
+msgstr "Ideal para: negocios que quieren seguir vendiendo mientras el local está cerrado."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "No agents or channels."
+msgstr "Sin agentes ni canales."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "🔵 BCV SmartConvert Plan (Recommended)"
+msgstr "🔵 Plan BCV SmartConvert (Recomendado)"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "All in one."
+msgstr "Todo en uno."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "1 Agent"
+msgstr "1 agente"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Everything included in the Basic Plan"
+msgstr "Todo lo incluido en el Plan Básico"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Full Odoo Community ERP included:"
+msgstr "ERP completo de Odoo Community incluido:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Sales · Purchases · Inventory · Accounting · Manufacturing"
+msgstr "Ventas · Compras · Inventario · Contabilidad · Producción"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "BCV SmartConvert module"
+msgstr "Módulo BCV SmartConvert"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "automatic BCV rate scan, instant $ → Bs conversion, payment proof upload and approval with 1 click"
+msgstr "escaneo automático de la tasa BCV, conversión instantánea $ → Bs, subida del comprobante de pago y aprobación con 1 clic"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "AI that answers repetitive questions and qualifies leads (only real prospects reach your CRM) with automatic data capture"
+msgstr "IA que responde preguntas repetitivas y califica leads (solo los prospectos reales llegan a tu CRM) con captura automática de datos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Official WhatsApp Cloud API by Meta + Instagram + Facebook"
+msgstr "WhatsApp Cloud API oficial de Meta + Instagram + Facebook"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Telegram integration"
+msgstr "Integración con Telegram"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Agents by Department and advanced prospect qualification"
+msgstr "Agentes por departamento y calificación avanzada de prospectos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "OpenAI tokens included"
+msgstr "Tokens de OpenAI incluidos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "One system. All your networks. Without losing any leads."
+msgstr "Un solo sistema. Todas tus redes. Sin perder ningún lead."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Accessible:"
+msgstr "Accesible:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "much less than a dedicated license with custom flows (~$90)."
+msgstr "mucho menos que una licencia dedicada con flujos personalizados (~$90)."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Additional Agents"
+msgstr "Agentes adicionales"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "From the 2nd agent onwards"
+msgstr "A partir del 2º agente"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Includes the advanced chatbot: it detects the intent of each customer, triggers the corresponding flow and each flow requests its own data"
+msgstr "Incluye el chatbot avanzado: detecta la intención de cada cliente, dispara el flujo correspondiente y cada flujo pide sus propios datos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Each plan = 1 agent. Additional agents are quoted at $25/agent/month."
+msgstr "Cada plan = 1 agente. Los agentes adicionales se cotizan a $25/agente/mes."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "🔐 Backups on Cloudflare"
+msgstr "🔐 Respaldos en Cloudflare"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Daily backups hosted on Cloudflare"
+msgstr "Respaldos diarios alojados en Cloudflare"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "We create a free Cloudflare account with you to host your backups"
+msgstr "Creamos una cuenta gratuita de Cloudflare contigo para alojar tus respaldos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Your data, database and backups are yours"
+msgstr "Tus datos, base de datos y respaldos son tuyos"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "no vendor lock-in"
+msgstr "sin vendor lock-in"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "No vendor lock-in: your database and your backups are yours."
+msgstr "Sin vendor lock-in: tu base de datos y tus respaldos son tuyos."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "🛠️ Professional Services"
+msgstr "🛠️ Servicios profesionales"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Consulting and Development — Odoo CE 19"
+msgstr "Consultoría y Desarrollo — Odoo CE 19"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Applies to any area you need:"
+msgstr "Aplica a cualquier área que necesites:"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Training and analysis: $25 usdt/hour"
+msgstr "Capacitación y análisis: $25 usdt/hora"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Custom software development: $25 usdt/hour"
+msgstr "Desarrollo de software a medida: $25 usdt/hora"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Sales · Purchases · Inventory · Invoicing"
+msgstr "Ventas · Compras · Inventario · Facturación"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Online Store · Manufacturing · Accounting · Web"
+msgstr "Tienda online · Manufactura · Contabilidad · Web"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Technologies: Python, Odoo, Java, Spring, Owl, Angular, React, Docker, Kubernetes, PostgreSQL"
+msgstr "Tecnologías: Python, Odoo, Java, Spring, Owl, Angular, React, Docker, Kubernetes, PostgreSQL"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "Process: we analyze → proposal → development → implementation → support"
+msgstr "Proceso: analizamos → propuesta → desarrollo → implementación → soporte"
+
+#. model:ir.ui.view,arch_db:1316
+msgid "📈 From doubt to action. Implement and optimize Odoo with an expert."
+msgstr "📈 De la duda a la acción. Implementa y optimiza Odoo con un experto."
+
+#. model:ir.ui.view,arch_db:1316
+msgid "usdt"
+msgstr "usdt"

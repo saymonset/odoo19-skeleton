@@ -2,7 +2,7 @@
 
 **Session ID:** ses_fdbd54e38ffexsvz3DVo5pBTY0
 **Created:** 8/21/2026, 1:52:52 PM
-**Updated:** 8/21/2026, 4:23:46 PM
+**Updated:** 8/21/2026, 4:32:15 PM
 
 ---
 
@@ -3458,6 +3458,536 @@ if paso in ('solicitar_phone', 'phone', 'telefono'):
 Reiniciar el servicio Odoo (ej. `docker compose restart odoo` o el equivalente de tu stack) y enviar `+584222779750` al flujo para confirmar que pasa la validación.
 
 ¿Apruebas el plan?
+
+---
+
+## User
+
+si
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 7.3s)
+
+_Thinking:_
+
+The user approved the plan. I'm still in plan mode (read-only). I should present the finalized plan. Since plan mode is active and I cannot edit, I'll present the plan for approval to exit plan mode.
+
+Plan aprobado. Estoy en modo solo-lectura, así que no puedo aplicar cambios aún. Para continuar, sale del plan mode y ejecuto el único cambio:
+
+**Archivo:** `/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py`
+
+**Edición:** En `validar_valor` (rama `solicitar_phone`/`phone`/`telefono`, ~1221-1231) eliminar los dos bloques de validación de prefijo (`0...` y `58...`), conservando el resto de validaciones (no vacío, 7-15 dígitos, no todos iguales, no secuenciales).
+
+Listo para aplicar cuando confirmes saliendo del plan mode.
+
+---
+
+## User
+
+si
+
+---
+
+## Assistant (Build · DeepSeek V4 Flash · 6.5s)
+
+Aplico el cambio. Primero leo el archivo para editar con precisión.
+
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py",
+  "limit": 20,
+  "offset": 1215
+}
+```
+
+**Output:**
+```
+<path>/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py</path>
+<type>file</type>
+<content>
+1215:             # Validar que no sea un número inválido (todo ceros, todo el mismo dígito)
+1216:             if len(set(digits)) == 1:
+1217:                 return False, "El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)"
+1218:             # Validar que no sean patrones secuenciales obvios
+1219:             if digits in ['0123456789', '1234567890', '9876543210']:
+1220:                 return False, "El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)"
+1221:             # Validar prefijo venezolano si parece número local
+1222:             if digits.startswith('0') and len(digits) >= 11:
+1223:                 prefix = digits[1:4]
+1224:                 prefijos_validos_ve = ['412', '414', '416', '424', '426', '212', '241', '251', '261', '271', '281', '291']
+1225:                 if prefix not in prefijos_validos_ve:
+1226:                     return False, f"El prefijo 0{prefix} no es válido. Ingresa un número venezolano válido (ej: +584141234567)"
+1227:             if digits.startswith('58') and len(digits) >= 12:
+1228:                 prefix = digits[2:5]
+1229:                 prefijos_validos_ve = ['412', '414', '416', '424', '426', '212', '241', '251', '261', '271', '281', '291']
+1230:                 if prefix not in prefijos_validos_ve:
+1231:                     return False, f"El prefijo {prefix} no es válido. Ingresa un número venezolano válido (ej: +584141234567)"
+1232:             return True, valor_str
+1233: 
+1234:         if tipo_dato == 'text':
+
+(Showing lines 1215-1234 of 1280. Use offset=1235 to continue.)
+</content>
+```
+
+---
+
+## Assistant (Build · DeepSeek V4 Flash · 4.8s)
+
+
+
+
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py",
+  "oldString": "            # Validar que no sean patrones secuenciales obvios\n            if digits in ['0123456789', '1234567890', '9876543210']:\n                return False, \"El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)\"\n            # Validar prefijo venezolano si parece número local\n            if digits.startswith('0') and len(digits) >= 11:\n                prefix = digits[1:4]\n                prefijos_validos_ve = ['412', '414', '416', '424', '426', '212', '241', '251', '261', '271', '281', '291']\n                if prefix not in prefijos_validos_ve:\n                    return False, f\"El prefijo 0{prefix} no es válido. Ingresa un número venezolano válido (ej: +584141234567)\"\n            if digits.startswith('58') and len(digits) >= 12:\n                prefix = digits[2:5]\n                prefijos_validos_ve = ['412', '414', '416', '424', '426', '212', '241', '251', '261', '271', '281', '291']\n                if prefix not in prefijos_validos_ve:\n                    return False, f\"El prefijo {prefix} no es válido. Ingresa un número venezolano válido (ej: +584141234567)\"\n            return True, valor_str",
+  "newString": "            # Validar que no sean patrones secuenciales obvios\n            if digits in ['0123456789', '1234567890', '9876543210']:\n                return False, \"El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)\"\n            return True, valor_str"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+## Assistant (Build · DeepSeek V4 Flash · 4.4s)
+
+Cambio aplicado. Verifico la sintaxis y que el bloque quedó correcto.
+
+
+
+**Tool: bash**
+
+**Input:**
+```json
+{
+  "command": "python3 -m py_compile /home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py && echo \"OK: compila sin errores\""
+}
+```
+
+**Output:**
+```
+OK: compila sin errores
+
+```
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py",
+  "limit": 18,
+  "offset": 1204
+}
+```
+
+**Output:**
+```
+<path>/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/controllers/chatbot_utils.py</path>
+<type>file</type>
+<content>
+1204:         if paso in ('solicitar_phone', 'phone', 'telefono'):
+1205:             if not valor:
+1206:                 return False, "El teléfono no puede estar vacío"
+1207:             valor_str = str(valor).strip()
+1208:             digits = ''.join(filter(str.isdigit, valor_str))
+1209:             if not digits:
+1210:                 return False, "El teléfono debe contener al menos un dígito"
+1211:             if len(digits) < 7:
+1212:                 return False, "El teléfono debe tener al menos 7 dígitos (ej: +584141234567)"
+1213:             if len(digits) > 15:
+1214:                 return False, "El número de teléfono es muy largo. Ingresa un número válido (ej: +584141234567)"
+1215:             # Validar que no sea un número inválido (todo ceros, todo el mismo dígito)
+1216:             if len(set(digits)) == 1:
+1217:                 return False, "El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)"
+1218:             # Validar que no sean patrones secuenciales obvios
+1219:             if digits in ['0123456789', '1234567890', '9876543210']:
+1220:                 return False, "El número de teléfono no es válido. Ingresa un número real (ej: +584141234567)"
+1221:             return True, valor_str
+
+(Showing lines 1204-1221 of 1269. Use offset=1222 to continue.)
+</content>
+```
+
+---
+
+## Assistant (Build · DeepSeek V4 Flash · 3.3s)
+
+Listo. Eliminé la validación de prefijo en `chatbot_utils.py:1221-1231`; ahora `+584222779750` (422, Digitel) pasa la validación, manteniendo el resto (7-15 dígitos, no todos iguales, no secuenciales). Compila sin errores.
+
+No reinicié Odoo ni probé (como acordamos). Cuando reinicies el servicio, envíale `+584222779750` al flujo para confirmar.
+
+---
+
+## User
+
+Este mensaje siempre confunde al suuariop, es muy tecnico. Puedes arreglarlo para que sea mas humano invitarlo a seguir buscando una asesoria o indagar para mas informacion?: Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 6.4s)
+
+_Thinking:_
+
+Let me find where this session expiry message is. Search for "inactividad" or "sesión ha expirado".
+
+Voy a ubicar el mensaje de expiración de sesión.
+
+
+
+**Tool: grep**
+
+**Input:**
+```json
+{
+  "pattern": "expirado por inactividad|sesión ha expirado|sesion ha expirado|inactividad|por inactividad"
+}
+```
+
+**Error:**
+```
+Ripgrep JSON record exceeded 65536 bytes
+```
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 22.2s)
+
+
+
+
+
+**Tool: grep**
+
+**Input:**
+```json
+{
+  "pattern": "expirado por inactividad|por inactividad|sesi[oó]n ha expirado",
+  "include": "*.py"
+}
+```
+
+**Output:**
+```
+No files found
+```
+
+**Tool: bash**
+
+**Input:**
+```json
+{
+  "command": "grep -rl \"expirado por inactividad\" /home/odoo/prod/modulos_odoo 2>/dev/null"
+}
+```
+
+**Output:**
+```
+/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py
+/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py
+
+```
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 4.6s)
+
+
+
+
+
+**Tool: bash**
+
+**Input:**
+```json
+{
+  "command": "grep -rn \"expirado por inactividad\" /home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py /home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py 2>/dev/null"
+}
+```
+
+**Output:**
+```
+/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py:82:                'expirado': "Tu sesión ha expirado por inactividad. Por favor, inicia un nuevo proceso.",
+/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py:977:            return res.get('mensaje', "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!")
+/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py:980:            return "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!"
+
+```
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 48.3s)
+
+Reviso el contexto de ambos archivos para entender cuál se usa realmente y cómo invitar al usuario a seguir.
+
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py",
+  "limit": 40,
+  "offset": 60
+}
+```
+
+**Output:**
+```
+<path>/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py</path>
+<type>file</type>
+<content>
+60:         try:
+61:             response = openai_client.chat.completions.create(
+62:                 model=model,
+63:                 messages=[
+64:                     {"role": "system", "content": system_content},
+65:                     {"role": "user", "content": f"Contexto: {contexto}"}
+66:                 ],
+67:                 max_tokens=max_tokens,
+68:                 temperature=0.5,
+69:                 response_format={"type": "json_object"}
+70:             )
+71:             content = response.choices[0].message.content
+72:             data = json.loads(content)
+73:             mensaje = data.get("mensaje", "")
+74:             if not mensaje:
+75:                 raise ValueError("No se encontró mensaje en la respuesta")
+76:             return {"mensaje": mensaje}
+77:         except Exception as e:
+78:             _logger.error(f"Error generando mensaje de contexto '{contexto}': {e}")
+79:             # Fallbacks claros
+80:             fallbacks = {
+81:                 'sin_sesion': "No tengo una conversación activa. ¿Te gustaría comenzar de nuevo?",
+82:                 'expirado': "Tu sesión ha expirado por inactividad. Por favor, inicia un nuevo proceso.",
+83:                 'sin_pasos': "Ya habías completado el proceso anterior. ¿Necesitas algo más?"
+84:             }
+85:             return {"mensaje": fallbacks.get(contexto, "Lo siento, hubo un error. Por favor, intenta de nuevo.")}
+
+(End of file - total 85 lines)
+</content>
+```
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py",
+  "limit": 30,
+  "offset": 960
+}
+```
+
+**Output:**
+```
+<path>/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_1_portal/models/chatbot_session.py</path>
+<type>file</type>
+<content>
+960:                 lines.append("A continuación, un resumen de lo registrado:")
+961:             lines.append("")
+962:             if resumen:
+963:                 lines.append(resumen)
+964:                 lines.append("")
+965:             lines.append("Siguiente paso: Nuestro equipo revisará tu solicitud y se comunicará contigo muy pronto. ¡Gracias por tu confianza!")
+966:             msg = "\n".join(lines)
+967:         lead_id = None
+968:         if lead_resultado and lead_resultado.get('success'):
+969:             lead_info = lead_resultado.get('lead_info', {})
+970:             lead_id = lead_info.get('lead_id')
+971:         pie = ChatBotUtils._pie_mensaje(lead_id, equipo_asignado, env=self.env)
+972:         return msg + "\n\n" + pie
+973:     
+974:     def _generar_mensaje_expirado(self, texto_usuario):
+975:         try:
+976:             res = self._get_gpt_service().generar_mensaje_personalizado('expirado', texto_usuario)
+977:             return res.get('mensaje', "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!")
+978:         except Exception as e:
+979:             _logger.error(f"Error generando mensaje de expiración: {e}")
+980:             return "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!"
+981: 
+982:     def _generar_mensaje_sin_pasos(self, texto_usuario):
+983:         try:
+984:             res = self._get_gpt_service().generar_mensaje_personalizado('sin_pasos', texto_usuario)
+985:             return res.get('mensaje', "El proceso ya está completado. ¡Muchas gracias por tu tiempo y confianza!")
+986:         except Exception as e:
+987:             _logger.error(f"Error generando mensaje sin pasos: {e}")
+988:             return "El proceso ya está completado. ¡Muchas gracias por tu tiempo y confianza!"
+
+(End of file - total 988 lines)
+</content>
+```
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 9.5s)
+
+_Thinking:_
+
+The message shown to the user comes from `chatbot_session.py:980` (the fallback) and 977. There are two layers:
+1. The GPT-generated message via `generar_mensaje_personalizado('expirado', ...)` — this uses the `expirado` context which generates a message via OpenAI.
+2. The fallback hardcoded messages in `chatbot_session.py` (977, 980).
+
+The user sees "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!" which is exactly the fallback at 977/980. That suggests either GPT returns empty/fails, or this is the message actually used.
+
+Wait — the GPT service at line 82 fallback also has 'expirado': "Tu sesión ha expirado por inactividad. Por favor, inicia un nuevo proceso." which is different. The user's message matches the chatbot_session.py fallback, not the core one. So the actual returned message is the fallback in chatbot_session.py (977/980).
+
+Actually let me think. The user message is: "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!"
+
+This exactly matches chatbot_session.py:977/980 default. So that's the one to fix.
+
+But the GPT generation could also produce a message. The user wants it more human and to invite to seek an advisory / ask for more info.
+
+Let me check what generar_mensaje_personalizado('expirado') actually does and where the system_content comes from, to understand which message is actually surfaced. Let me look at the use case file fully and how _get_gpt_service works.
+
+Let me look at the beginning of the use case file.
+
+Reviso cómo se genera el mensaje para saber cuál prevalece (el de OpenAI o el fallback).
+
+
+
+
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py",
+  "limit": 60
+}
+```
+
+**Output:**
+```
+<path>/home/odoo/prod/modulos_odoo/shared/extra/19.0/ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py</path>
+<type>file</type>
+<content>
+1:  # -*- coding: utf-8 -*-
+2: 
+3: import logging
+4: import json
+5: from odoo import models, api
+6: 
+7: _logger = logging.getLogger(__name__)
+8: 
+9: class GenerarMensajeContextoUseCase(models.TransientModel):
+10:     _name = 'generar.mensaje.contexto.use.case'
+11:     _description = 'Genera mensajes amigables según el contexto (sin sesión, expirado, sin pasos)'
+12: 
+13:     @api.model
+14:     def execute(self, options):
+15:         """
+16:         Genera un mensaje personalizado para un contexto específico.
+17:         :param options: dict con:
+18:             - 'contexto': string, puede ser 'sin_sesion', 'expirado', 'sin_pasos'
+19:             - 'texto_usuario': (opcional) el último mensaje del usuario
+20:             - 'openai_client': cliente OpenAI
+21:             - 'model': modelo a usar (ej. 'gpt-3.5-turbo')
+22:             - 'max_tokens': opcional, default 150
+23:         :return: dict con 'mensaje' (string)
+24:         """
+25:         contexto = options.get('contexto')
+26:         texto_usuario = options.get('texto_usuario', '')
+27:         openai_client = options.get('openai_client')
+28:         model = options.get('model', 'gpt-3.5-turbo')
+29:         max_tokens = options.get('max_tokens', 150)
+30: 
+31:         if not contexto:
+32:             _logger.error("No se proporcionó contexto para generar mensaje")
+33:             return {"mensaje": ""}
+34:         if not openai_client:
+35:             _logger.error("No se proporcionó cliente de OpenAI")
+36:             return {"mensaje": "Lo siento, no puedo responder en este momento."}
+37: 
+38:         # Descripción del contexto para la IA
+39:         descripcion_contexto = {
+40:             'sin_sesion': 'El usuario envió un mensaje pero no hay una conversación activa (no existe sesión).',
+41:             'expirado': 'La sesión del usuario expiró por inactividad (10 minutos sin actividad).',
+42:             'sin_pasos': 'El usuario ya completó un flujo anteriormente y no hay pasos pendientes, pero la sesión aún existe.'
+43:         }.get(contexto, f'Contexto desconocido: {contexto}')
+44: 
+45:         system_content = f"""
+46: Eres un asistente amable de un servicio de atención. Tu objetivo es generar un mensaje breve, cálido y claro para el usuario, según la situación que se describe a continuación.
+47: 
+48: Situación: {descripcion_contexto}
+49: El usuario acaba de escribir: "{texto_usuario}" (si está vacío, ignóralo).
+50: 
+51: Debes:
+52: - Explicar brevemente qué ocurrió (sin tecnicismos).
+53: - Invitar al usuario a comenzar un nuevo proceso o acción.
+54: - Mantener un tono empático y humano.
+55: - Máximo 2 frases.
+56: 
+57: Responde ÚNICAMENTE con un JSON en este formato: {{ "mensaje": "texto del mensaje" }}
+58: """
+59: 
+60:         try:
+
+(Showing lines 1-60 of 85. Use offset=61 to continue.)
+</content>
+```
+
+---
+
+## Assistant (Plan · DeepSeek V4 Flash · 11.0s)
+
+_Thinking:_
+
+Now I understand the flow. The GPT service generates the message. When it succeeds, it uses the AI message. The fallback (line 977/980) is only used when GPT fails. The user's reported message "Tu sesión ha expirado por inactividad. No te preocupes, puedes iniciar un nuevo proceso cuando estés listo. ¡Estaremos encantados de ayudarte!" matches the fallback in chatbot_session.py, suggesting GPT is failing (or that's the actual message they saw).
+
+The user says the message is too technical and wants it more human, inviting them to keep looking for an advisory or ask for more info.
+
+I should improve:
+1. The fallback messages (both in chatbot_session.py:977,980 and in the use case file:82).
+2. The system prompt instructions in the use case (lines 51-55) so the AI generates a warmer message inviting to advisory.
+
+Let me present a plan. The message shown could come from either. To be safe, update both. Let me propose concrete text.
+
+Let me think about the best human phrasing. Something like:
+"¡No te preocupes! Parece que pasó un tiempo sin actividad y tu proceso se cerró. ¿Quieres retomarlo? Cuéntame qué necesitas y con gusto te ayudo, o si prefieres agendamos una asesoría para resolverlo juntos. 😊"
+
+That's warm, invites to continue. Let me present the plan with proposed text for both files.
+
+I'm in plan mode, so I present the plan.
+
+He ubicado el mensaje y su mecanismo. Hay dos capas que producen el texto que ve el usuario:
+
+1. **`ai_chatbot_0_core/uses_cases/generar_mensaje_contexto_use_case.py`** — genera el mensaje vía OpenAI. La instrucción (líneas 45-58) pide "breve, cálido y claro" pero usa la palabra técnica "expiró/inactividad", y el fallback (línea 82) dice "Tu sesión ha expirado por inactividad. Por favor, inicia un nuevo proceso."
+2. **`ai_chatbot_1_portal/models/chatbot_session.py:977` y `:980`** — fallback local con el texto exacto que reportas (técnico). Este se muestra cuando OpenAI falla o no responde.
+
+## Plan: humanizar el mensaje de sesión expirada
+
+### Cambio 1 — `chatbot_session.py` (fallbacks, líneas 977 y 980)
+Reemplazar por un texto cálido que invite a retomar o agendar asesoría:
+
+> "¡No te preocupes! 😊 Pasó un rato sin actividad y cerramos tu proceso para cuidar tu información. Si quieres, retomamos donde ibas, o si prefieres agendamos una asesoría para orientarte mejor. ¿Qué necesitas?"
+
+(Texto final a validar contigo; mismo en ambos `return`.)
+
+### Cambio 2 — `generar_mensaje_contexto_use_case.py`
+- **Instrucción a la IA** (líneas 51-55): reforzar que evite tecnicismos como "expiró"/"inactividad" y que cierre invitando a agendar una asesoría o pedir más información, no solo "iniciar un nuevo proceso". Ejemplo de redacción para la instrucción:
+  - "Explica brevemente qué ocurrió en lenguaje sencillo y sin tecnicismos (no uses 'expiró' ni 'inactividad')."
+  - "Invita al usuario a continuar: pregúntale si quiere retomar lo que buscaba, agendar una asesoría, o resolver otra consulta."
+- **Fallback** (línea 82): actualizar al mismo texto humano del cambio 1.
+
+### Alcance
+- Afecta a todos los clientes (módulos compartidos). Solo edito código; el reinicio y las pruebas los harás tú.
+
+¿Apruebas el texto propuesto (o prefieres ajustar la redacción) y el plan?
 
 ---
 
