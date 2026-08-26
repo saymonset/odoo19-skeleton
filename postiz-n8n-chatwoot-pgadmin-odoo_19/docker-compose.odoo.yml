@@ -87,6 +87,7 @@ services:
       DB_NAME: dbodoo19
       POSTGRES_USER: odoo
       PASSWORD_FILE: /run/secrets/postgres_password
+      PYTHONDONTWRITEBYTECODE: "1"
     secrets:
       - postgres_password
     stop_grace_period: 60s
