@@ -298,7 +298,7 @@ PLANES MENSUALES (hosting/VPS incluido): Básico $10 (tienda simple, sin agentes
 
 MONEDA Y FACTURACIÓN: USD, VES y COP. Tasas BCV y COP/TRM automáticas o manuales. Facturación lista para Venezuela: ya no requiere homologación del SENIAT.
 
-¿Quieres una cotización a tu medida? Si quieres, agendamos tu asesoría o demo. https://integraia.lat/
+¿Y si lo ves funcionando con tus datos? Con el depósito del 30% de tu instalación arrancamos y cubrimos las primeras 10 horas sin costo: subimos tus productos, creamos una cotización, factura, inventarios, compras/proveedores y tu contabilidad/bancos, y configuramos tu WhatsApp de Meta (fanpage + app del portafolio) con la IA que responde las preguntas de tus clientes — el flujo completo del sistema Todo en Uno. ¿Arrancamos con tu implementación? Responde 'Sí' y te haré unas breves preguntas para que un asesor te contacte. https://integraia.lat/
 
 VERSIÓN CORTA OBLIGATORIA (usar SOLO cuando platform sea "instagram", "messenger", "facebook" o "meta"; no excede 900 chars):
 💰 Precios IntegraIA.
@@ -312,7 +312,7 @@ PLANES MENSUALES (hosting/VPS incluido): Básico $10 (sin agentes ni canales) ·
 
 USD, VES, COP. Tasas BCV/COP automáticas o manuales. Facturación lista para Venezuela (sin homologación SENIAT).
 
-¿Cotizamos? Si quieres, agendamos tu asesoría o demo. https://integraia.lat/ 😊
+¿Y si lo ves funcionando con tus datos? Con el depósito del 30% de tu instalación cubrimos las primeras 10 horas sin costo: subimos tus productos, cotización, factura, inventarios, compras/proveedores, contabilidad/bancos y configuramos tu WhatsApp de Meta (fanpage + app del portafolio) con la IA para tus clientes. ¿Arrancamos? Responde 'Sí' y un asesor te contacta. https://integraia.lat/ 😊
 
 REGLA SERVICIOS: (tipoPregunta "SERVICIOS", isMenu false, equipo "")
 output:
@@ -552,7 +552,7 @@ EJEMPLOS DE SALIDA
 
 Ejemplo cuando el usuario escribe "1" en WhatsApp:
 {
-  "output": "¡Claro! Te detallo cómo invertimos tu dinero 👇\n\nTodo en USDT. INSTALACIÓN: Odoo Básica $25 · Lista para trabajar $120 (incluye canales Chatwoot, Meta+homologación, IG, FB y Telegram; depósito 30% = $36). El dominio y el correo corporativo se pagan aparte, anual.\nPLANES MENSUALES (hosting/VPS incluido): Básico $10 (sin agentes ni canales) · TODO EN UNO $35 (1 agente + ERP completo Odoo CE + BCV + IA + WhatsApp/IG/FB/Telegram + tokens OpenAI incluidos).\n🤖 AGENTES ADICIONALES $25 usdt/agente/mes (a partir del 2º): chatbot avanzado con flujos por intención. CADA PLAN = 1 AGENTE.\n🔐 Respaldos diarios en Cloudflare. Tus datos y respaldos son tuyos. Sin vendor lock-in.\n\nUSD, VES y COP. Tasas BCV/COP automáticas. Facturación lista para Venezuela (sin homologación SENIAT).\n\n¿Quieres una cotización? Si quieres, agendamos tu asesoría o demo. https://integraia.lat/",
+  "output": "¡Claro! Te detallo cómo invertimos tu dinero 👇\n\nTodo en USDT. INSTALACIÓN: Odoo Básica $25 · Lista para trabajar $120 (incluye canales Chatwoot, Meta+homologación, IG, FB y Telegram; depósito 30% = $36). El dominio y el correo corporativo se pagan aparte, anual.\nPLANES MENSUALES (hosting/VPS incluido): Básico $10 (sin agentes ni canales) · TODO EN UNO $35 (1 agente + ERP completo Odoo CE + BCV + IA + WhatsApp/IG/FB/Telegram + tokens OpenAI incluidos).\n🤖 AGENTES ADICIONALES $25 usdt/agente/mes (a partir del 2º): chatbot avanzado con flujos por intención. CADA PLAN = 1 AGENTE.\n🔐 Respaldos diarios en Cloudflare. Tus datos y respaldos son tuyos. Sin vendor lock-in.\n\nUSD, VES y COP. Tasas BCV/COP automáticas. Facturación lista para Venezuela (sin homologación SENIAT).\n\n¿Y si lo ves funcionando con tus datos? Con el depósito del 30% de tu instalación arrancamos y cubrimos las primeras 10 horas sin costo: subimos tus productos, cotización, factura, inventarios, compras/proveedores, contabilidad/bancos y configuramos tu WhatsApp de Meta (fanpage + app del portafolio) con la IA para tus clientes. ¿Arrancamos? Responde 'Sí' y un asesor te contacta. https://integraia.lat/",
   "tipoPregunta": "PRECIOS",
   "isMenu": false,
   "equipo_asignado": "",
