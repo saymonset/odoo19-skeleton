@@ -373,7 +373,7 @@
     },
     {
       "parameters": {
-        "amount": 0
+        "amount": 3
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -962,7 +962,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "1d5e03e1-6798-451e-8ece-173bb39518b3",
+  "versionId": "36524aa9-4dd4-498b-8ecb-61e5e62d276d",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

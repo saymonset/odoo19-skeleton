@@ -9,11 +9,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        35264,
-        9136
+        40160,
+        10384
       ],
       "typeVersion": 1,
-      "id": "4620c92c-6bae-4ab7-95e4-0fb2b36ff827",
+      "id": "5246ad8b-e317-49e1-9848-8ffcf3306010",
       "name": "Sticky Note2"
     },
     {
@@ -21,10 +21,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        39152,
-        9568
+        44048,
+        10816
       ],
-      "id": "a9e81aea-df83-4d6e-86fa-fae26d89da6d",
+      "id": "9d6f4121-8bba-41ad-8f23-d9a9e9de5b8d",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -35,10 +35,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        34512,
-        10640
+        39408,
+        11888
       ],
-      "id": "790e28d7-d6e8-4f01-86e9-d45c7f3f166b",
+      "id": "0c2e447c-5a08-4dcd-ba7d-13e615e0db99",
       "name": "When chat message received",
       "webhookId": "d7373d29-7364-41f7-a73f-bd24b72daeea"
     },
@@ -143,10 +143,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        34912,
-        10576
+        39808,
+        11824
       ],
-      "id": "9520370b-f2f6-49d1-9053-3868e4f098a0",
+      "id": "579db7bb-2dc6-47d8-928e-e44016b1b4a3",
       "name": "Seteamos_variables"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        35840,
-        10560
+        40736,
+        11808
       ],
-      "id": "e925a5bc-9191-42b6-94b4-e280ddaf2ffa",
+      "id": "0be33d6a-5996-490e-ab28-2bf21b3d9cf9",
       "name": "Indentifica_canal"
     },
     {
@@ -287,10 +287,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        35168,
-        10928
+        40064,
+        12176
       ],
-      "id": "9a271da3-c738-403a-b2fb-2ca9fef7806e",
+      "id": "3e4bdfbc-e217-45d8-9a6b-4cb7b3e9d5d8",
       "name": "Dueno_o_Bot_responde"
     },
     {
@@ -350,10 +350,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        35456,
-        10576
+        40352,
+        11824
       ],
-      "id": "a80118e2-f5a3-4a7a-9fd5-45cb92bae5d3",
+      "id": "209985bc-8ee2-4ec1-90e9-190b4d65aaf4",
       "name": "Configurar_IA_Responda?"
     },
     {
@@ -413,10 +413,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        35216,
-        10592
+        40112,
+        11840
       ],
-      "id": "61a66c11-9e14-4b7f-be28-7c591ff97e48",
+      "id": "bb9e2763-e491-4a48-9fa9-b67b0f437149",
       "name": "Pregunta_el_Cliente?"
     },
     {
@@ -424,10 +424,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        35760,
-        10304
+        40656,
+        11552
       ],
-      "id": "2bc403ec-fc1f-4a22-af0a-c6b7a7ed1922",
+      "id": "1d3d22e1-c89c-47e6-aa2c-894c79747cff",
       "name": "End1"
     },
     {
@@ -439,10 +439,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        38000,
-        10288
+        42896,
+        11536
       ],
-      "id": "9532c28e-067b-4910-816f-82826119e1f4",
+      "id": "fba160a1-426e-4477-93fe-0f6b6676b60f",
       "name": "Simple Memory"
     },
     {
@@ -454,10 +454,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        34400,
-        9904
+        39296,
+        11152
       ],
-      "id": "e891a161-cba6-41cc-b141-041d0d9ec598",
+      "id": "20e721ec-ffb4-470e-b16b-586543db261e",
       "name": "Entrar_ChattWoot",
       "webhookId": "f2f3dab4-9ee7-4ad7-9fe8-96f79468b1f4"
     },
@@ -568,10 +568,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        34960,
-        10176
+        39856,
+        11424
       ],
-      "id": "bc6fd84c-cd4c-4174-a0b9-8ed75fccf59f",
+      "id": "60e0a6c8-9ce5-450c-8ddc-b8d5f2cde17f",
       "name": "Obtener_Info_basica"
     },
     {
@@ -654,10 +654,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        37184,
-        10832
+        42080,
+        12080
       ],
-      "id": "a6525352-419b-4b9f-a2d7-d339c66054b4",
+      "id": "0208eb7f-8b2e-40c3-9290-1b1e965241ae",
       "name": "Consulta_o_agendar_cita"
     },
     {
@@ -675,10 +675,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        37888,
-        10288
+        42784,
+        11536
       ],
-      "id": "480bdfeb-ea4d-495a-83e9-0dc6d603be32",
+      "id": "4b413721-28bd-422c-a9d8-524fccf26db9",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -698,10 +698,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        37904,
-        10032
+        42800,
+        11280
       ],
-      "id": "3bbb0d97-2e46-4d69-b2d2-528caf8acd4d",
+      "id": "ad76a81e-c967-46f2-b734-f195a4b52397",
       "name": "Agente_Informacion_basica"
     },
     {
@@ -711,10 +711,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        38976,
-        9984
+        43872,
+        11232
       ],
-      "id": "c6fbd54d-e918-4f65-9dc7-6195dcbccf6c",
+      "id": "2891d249-7fd3-4757-a2b8-420f8252b359",
       "name": "Unificar_salida"
     },
     {
@@ -745,10 +745,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        38672,
-        9872
+        43568,
+        11120
       ],
-      "id": "054bf9bd-5fd0-4f57-9e32-1b86692f1861",
+      "id": "f5254a53-2ca3-4f45-8895-39069128f9a0",
       "name": "Cita_con_Equipo_asignado"
     },
     {
@@ -759,11 +759,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37728,
-        9888
+        42624,
+        11136
       ],
       "typeVersion": 1,
-      "id": "05710877-22d1-4e55-acf5-b1103783f601",
+      "id": "5b0fbdca-1128-44c7-85d9-69718dda0d7f",
       "name": "Sticky Note"
     },
     {
@@ -772,11 +772,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37136,
-        10704
+        42032,
+        11952
       ],
       "typeVersion": 1,
-      "id": "0928129b-d2b0-4de7-b85c-d4ec2fb20638",
+      "id": "4ce20287-c91b-453a-a803-378201cf015a",
       "name": "Sticky Note3"
     },
     {
@@ -965,10 +965,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        36368,
-        10848
+        41264,
+        12096
       ],
-      "id": "1103e49c-afc1-4d7f-9b8a-4e99aec603af",
+      "id": "31721c41-aa49-476a-8119-7701ed7fa94c",
       "name": "Call 'chatbot-simple_1_subflow'"
     },
     {
@@ -983,10 +983,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        39040,
-        9264
+        43936,
+        10512
       ],
-      "id": "dc0b334c-8294-47e2-9442-6c8dc1b45da7",
+      "id": "0ecf139f-3495-410a-ab6c-0664706fe683",
       "name": "paso_0_inicio_agendar",
       "alwaysOutputData": true
     },
@@ -997,10 +997,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        38240,
-        10032
+        43136,
+        11280
       ],
-      "id": "90b075cb-13b0-4668-8ffd-e8aa50a0c8fb",
+      "id": "2eb109fe-fc1e-4aec-8961-3c5f8888556b",
       "name": "Separar_variables_en_json"
     },
     {
@@ -1056,10 +1056,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        39296,
-        9248
+        44192,
+        10496
       ],
-      "id": "74864363-6851-4ec7-a185-087806565cfa",
+      "id": "84ff97c3-7007-416c-b486-d54a36ab91c3",
       "name": "Agendar_cita"
     },
     {
@@ -1080,17 +1080,17 @@
           ]
         },
         "sendBody": true,
-        "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        39504,
-        10224
+        44400,
+        11472
       ],
-      "id": "bcd7d73c-eab5-4ca9-97df-c5197d57d1c5",
+      "id": "22b6af4f-e8b7-439d-ab4a-2c9df121a725",
       "name": "Enviar_mensaje_de_IA1"
     },
     {
@@ -1111,17 +1111,17 @@
           ]
         },
         "sendBody": true,
-        "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.content) }}\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        39552,
-        9264
+        44496,
+        10544
       ],
-      "id": "cbc72523-c211-4caa-8414-45fb5476a1a2",
+      "id": "4ff48238-24a4-44d7-a4c8-95483434173c",
       "name": "Enviar_mensaje_de_IA2"
     },
     {
@@ -1165,10 +1165,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        37632,
-        10928
+        42528,
+        12176
       ],
-      "id": "214299f0-3974-44b6-ae4c-6845fa5a964a",
+      "id": "f8f95a39-c17a-464f-982b-84d22360546d",
       "name": "tomar_parametros"
     },
     {
@@ -1189,17 +1189,17 @@
           ]
         },
         "sendBody": true,
-        "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.nombre_mostrar) }}\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.nombre_mostrar) }}\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        37936,
-        10800
+        42832,
+        12048
       ],
-      "id": "f6779545-9cd7-4605-bfcf-6b280406e2c2",
+      "id": "22314116-3290-414b-97ba-2295b3cc9a87",
       "name": "Enviar_mensaje_de_IA3"
     },
     {
@@ -1229,10 +1229,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        38416,
-        10048
+        43312,
+        11296
       ],
-      "id": "a37a5b0f-3e96-4127-a718-678471f3e83a",
+      "id": "4400ef0e-56c4-486f-a16f-17370c28e58e",
       "name": "¿Enviar menú interactivo?"
     },
     {
@@ -1242,10 +1242,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        38736,
-        10192
+        43632,
+        11440
       ],
-      "id": "17268637-d986-4f53-9b07-f1ce74e58637",
+      "id": "b4c247f8-5174-437a-90c8-a2f451125076",
       "name": "Formatear número de teléfono"
     },
     {
@@ -1273,10 +1273,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        39056,
-        10752
+        43952,
+        12000
       ],
-      "id": "9d2c5f2f-e6eb-4049-a568-f2b089bf6cc9",
+      "id": "f13286bd-5985-4c75-b6b4-2a8f54bb6c3f",
       "name": "Enviar menú interactivo a WhatsApp",
       "disabled": true
     },
@@ -1298,17 +1298,17 @@
           ]
         },
         "sendBody": true,
-        "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        39520,
-        9680
+        44416,
+        10928
       ],
-      "id": "c9b12e79-bfe4-4eb4-9b4f-b8cfa303d249",
+      "id": "1e5afc10-c440-447b-a033-8724790d1280",
       "name": "Enviar texto despues del menu"
     },
     {
@@ -1316,10 +1316,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        39440,
-        10768
+        44336,
+        12016
       ],
-      "id": "c1276dec-9342-4232-9cc9-dd4f3a3c719e",
+      "id": "17ca8e54-d11d-4bdc-ad14-4be08b12731c",
       "name": "Fin menú WhatsApp"
     },
     {
@@ -1349,10 +1349,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        39184,
-        10000
+        44080,
+        11248
       ],
-      "id": "a8db7b11-7aca-4dd1-8f77-00823d6bda91",
+      "id": "4700fabb-2201-4089-89e7-d0275d174f9a",
       "name": "¿Enviar menú interactivo?1"
     },
     {
@@ -1362,10 +1362,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        39312,
-        9808
+        44208,
+        11056
       ],
-      "id": "41e002f7-5e9f-4c29-97de-f169112cd368",
+      "id": "004ca854-f5fa-4a95-ab85-8f3da68bbdfb",
       "name": "Construir_botones_WhatsApp"
     },
     {
@@ -1393,10 +1393,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        39904,
-        10112
+        44800,
+        11360
       ],
-      "id": "e149596e-7669-4ed0-8492-289155ff769c",
+      "id": "7e174ea6-1546-413e-8910-862b87aec888",
       "name": "Enviar menú interactivo a WhatsApp1",
       "disabled": true
     },
@@ -1405,76 +1405,76 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        40000,
-        9824
+        44896,
+        11072
       ],
-      "id": "b3c8da0b-3b1b-4d99-8862-493f4e779d57",
+      "id": "fedee620-be04-47df-bd52-bde3162c69b6",
       "name": "Fin menú WhatsApp1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37152,
-        10432
+        42048,
+        11680
       ],
       "typeVersion": 1,
-      "id": "26f7fe2f-bcdf-4768-af11-1908860ae892",
+      "id": "11b92786-291d-41ef-aa36-020eeb6c1b54",
       "name": "Sticky Note1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37152,
-        10432
+        42048,
+        11680
       ],
       "typeVersion": 1,
-      "id": "780643fa-2229-45bf-a7cc-66c3820940c1",
+      "id": "5fca52ad-3b3c-4c38-84bb-87295d92856f",
       "name": "Sticky Note4"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37152,
-        10432
+        42048,
+        11680
       ],
       "typeVersion": 1,
-      "id": "53c288da-6cec-4559-9c59-fc9500ad803d",
+      "id": "dd092b25-85ae-412b-906d-9f421b521e88",
       "name": "Sticky Note5"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37232,
-        10512
+        42128,
+        11760
       ],
       "typeVersion": 1,
-      "id": "772bef9f-9250-4c39-b29d-82f73c90620a",
+      "id": "513e91a7-5c0c-472b-8950-a1ed344d99ad",
       "name": "Sticky Note6"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37232,
-        10512
+        42128,
+        11760
       ],
       "typeVersion": 1,
-      "id": "1855a5cf-5b5f-4e5b-a69d-413445aa68dc",
+      "id": "26d697e7-b22e-4702-88c0-8d416c1fc926",
       "name": "Sticky Note7"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        37232,
-        10512
+        42128,
+        11760
       ],
       "typeVersion": 1,
-      "id": "d9ebeefd-32a1-4b84-9e29-88952dfa52f8",
+      "id": "b2b3b31b-b414-461f-bea7-57e87f6636bd",
       "name": "Sticky Note8"
     },
     {
@@ -1485,11 +1485,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        36176,
-        10704
+        41072,
+        11952
       ],
       "typeVersion": 1,
-      "id": "301f8d89-ef03-439c-9fc0-57d76cbe272e",
+      "id": "c65fdfd9-8c26-4b06-925e-c2f7a2b12a3f",
       "name": "Sticky Note9"
     },
     {
@@ -1510,17 +1510,17 @@
           ]
         },
         "sendBody": true,
-        "options": {},
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}"
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify($json.output) }}\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        39152,
-        10336
+        44048,
+        11584
       ],
-      "id": "26d81e32-39d7-4b76-9e3c-18e5fc6f7676",
+      "id": "b628732c-ec0f-401d-8506-3ad3cb6018b3",
       "name": "Enviar_mensaje_de_IA"
     },
     {
@@ -1534,13 +1534,13 @@
           "timeout": 30000
         }
       },
-      "id": "612063e5-c3e1-467b-a95f-2969bb41cc40",
+      "id": "25900d16-9671-4e61-8c96-9d65ac5ba708",
       "name": "Obtener_configuracion_agente",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        37632,
-        10736
+        42528,
+        11984
       ]
     }
   ],
@@ -1969,7 +1969,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "8cab233c-75ae-4d92-9606-12735ec6ff11",
+  "versionId": "74f734f5-4483-4e30-b758-09270297e57b",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
