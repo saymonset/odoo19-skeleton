@@ -301,18 +301,16 @@ MONEDA Y FACTURACIÓN: USD, VES y COP. Tasas BCV y COP/TRM automáticas o manual
 ¿Y si lo ves funcionando con tus datos? Con el depósito del 30% de tu instalación arrancamos y cubrimos las primeras 10 horas sin costo: subimos tus productos, creamos una cotización, factura, inventarios, compras/proveedores y tu contabilidad/bancos, y configuramos tu WhatsApp de Meta (fanpage + app del portafolio) con la IA que responde las preguntas de tus clientes — el flujo completo del sistema Todo en Uno. ¿Arrancamos con tu implementación? Responde 'Sí' y te haré unas breves preguntas para que un asesor te contacte. https://integraia.lat/
 
 VERSIÓN CORTA OBLIGATORIA (usar SOLO cuando platform sea "instagram", "messenger", "facebook" o "meta"; no excede 900 chars):
-💰 Precios IntegraIA.
+💰 Precios IntegraIA (USDT).
 
-Todo en USDT. INSTALACIÓN: Odoo Básica $25 · Lista para trabajar $120 (incluye canales: Chatwoot, Meta+homologación, IG, FB, Telegram).
-PLANES MENSUALES (hosting/VPS incluido): Básico $10 (sin agentes ni canales) · TODO EN UNO $35 (1 agente + ERP completo Odoo CE + BCV + IA + WhatsApp/IG/FB/Telegram + tokens OpenAI incluidos).
-🤖 Agentes adicionales $25/agente/mes (a partir del 2º): chatbot avanzado con flujos por intención. CADA PLAN = 1 AGENTE.
-🔐 Respaldos diarios en Cloudflare. Tus datos y respaldos son tuyos. Sin vendor lock-in.
-🛠️ Servicios por hora $25 usdt: capacitación/análisis y desarrollo a medida.
-💡 Accesible: mucho menos que una licencia dedicada con flujos personalizados (~$90).
-
-USD, VES, COP. Tasas BCV/COP automáticas o manuales. Facturación lista para Venezuela (sin homologación SENIAT).
-
-¿Y si lo ves funcionando con tus datos? Con el depósito del 30% de tu instalación cubrimos las primeras 10 horas sin costo: subimos tus productos, cotización, factura, inventarios, compras/proveedores, contabilidad/bancos y configuramos tu WhatsApp de Meta (fanpage + app del portafolio) con la IA para tus clientes. ¿Arrancamos? Responde 'Sí' y un asesor te contacta. https://integraia.lat/ 😊
+INSTALACIÓN: Básica $25 · Lista para trabajar $120 (incluye Chatwoot + canales Meta, IG, FB y Telegram).
+PLANES MENSUALES (VPS incluido): Básico $10 (sin agentes) · TODO EN UNO $35 (1 agente + ERP Odoo CE + IA + canales Meta/Telegram + tokens OpenAI).
+🤖 Agentes extra $25/agente/mes (desde el 2º): chatbot avanzado por intención. 1 PLAN = 1 AGENTE.
+🔐 Respaldos diarios en Cloudflare. Sin vendor lock-in.
+🛠️ Servicios por hora $25 usdt.
+💡 Menos que una licencia dedicada (~$90).
+USD/VES/COP. Tasas BCV/COP automáticas. Facturación lista para Venezuela.
+¿Lo ves con tus datos? Con el 30% del depósito arrancamos (10h sin costo). ¿Agendamos? Responde 'Sí'. https://integraia.lat/ 😊
 
 REGLA SERVICIOS: (tipoPregunta "SERVICIOS", isMenu false, equipo "")
 output:
