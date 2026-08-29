@@ -6,6 +6,14 @@ services:
     image: ghcr.io/gitroomhq/postiz-app:v2.21.7
     container_name: postiz
     restart: always
+    # FIX: prisma db push --accept-data-loss corre en cada reinicio de la imagen,
+    # borra columnas runtime de Mastra y acumula columnas fantasma en pg_attribute
+    # hasta alcanzar el limite de 1600 (issue postiz-app #1473). Se ejecuta solo
+    # la primera vez (marcador /config/.db-pushed) para evitar el crash-loop del backend.
+    command: >
+      sh -c 'nginx; pm2 delete all || true;
+      [ -f /config/.db-pushed ] || { pnpm run prisma-db-push && touch /config/.db-pushed; };
+      pnpm run --parallel pm2 && pm2 logs'
     depends_on:
       db:
         condition: service_healthy
