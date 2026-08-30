@@ -10,7 +10,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        14704,
+        14432,
         1616
       ],
       "typeVersion": 1,
@@ -26,7 +26,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        15568,
+        15296,
         1600
       ],
       "typeVersion": 1,
@@ -41,7 +41,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        15536,
+        15264,
         2576
       ],
       "id": "83a85935-1614-40c6-9198-75098c807b19",
@@ -62,7 +62,7 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        14976,
+        14704,
         2016
       ],
       "id": "91f6fdd3-2a35-4924-8db1-b7af53cea6dc",
@@ -76,7 +76,7 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        15216,
+        14944,
         2128
       ],
       "id": "1f424a0a-8b5b-43f9-9716-c1ed885c30ea",
@@ -89,7 +89,7 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        15648,
+        15376,
         1712
       ],
       "id": "eb9f4146-96ae-43e3-926b-f700b5636026",
@@ -105,7 +105,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        15920,
+        15648,
         1712
       ],
       "id": "889dc2fd-8939-4861-a195-40efd6ecd8d6",
@@ -123,7 +123,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        15616,
+        15344,
         1920
       ],
       "id": "f192e5bd-b974-4ab9-a08e-b92ce612142d",
@@ -142,7 +142,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        15824,
+        15552,
         1936
       ],
       "id": "04fec6fc-344f-423f-9cac-cdd565fd7a0c",
@@ -155,7 +155,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        16144,
+        15872,
         1840
       ],
       "id": "f7cb4052-0600-4051-add5-65d38e567a36",
@@ -168,7 +168,7 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        15952,
+        15680,
         2096
       ],
       "id": "e3d90519-31b1-43ee-a560-41430575371d",
@@ -192,7 +192,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        16336,
+        16064,
         2000
       ],
       "id": "ac3a9185-5500-4002-8cdc-11b69a586533",
@@ -217,7 +217,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        14464,
+        14192,
         1856
       ],
       "id": "ed5f64cc-9745-4d12-a69a-2d75d54a4379",
@@ -292,8 +292,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        12496,
-        1840
+        13072,
+        2576
       ],
       "id": "3312c8a8-7e98-4511-b5be-5599b34332bb",
       "name": "Limpiar base de conocimiento",
@@ -303,11 +303,11 @@
           "name": "Postgres account 2"
         }
       },
-      "disabled": false
+      "disabled": true
     },
     {
       "parameters": {
-        "content": "## BOTÓN: purge + recarga completa\n\n1. Click en **Execute workflow**: asegura la extensión pgvector, crea tablas, **borra todos los vectores** y re-ingesta desde cero la carpeta de Google Drive.\n2. **Google Drive es la fuente de verdad**: si quitas un archivo de la carpeta, desaparece de la base de conocimiento en el próximo click.\n3. Cada ejecución re-embbebedcea todo el contenido (costo OpenAI mínimo con documentos pequeños).",
+        "content": "## BOTÓN: inicialización + carga de conocimiento\n\n1. Click en **Execute workflow**: asegura la extensión pgvector, crea las tablas (si no existen) y ingesta la carpeta de Google Drive.\n2. Para **empezar de cero** (cambiar de cliente / limpiar vectores): activa y ejecuta a mano el nodo **Limpiar base de conocimiento** (deshabilitado, NO está en la cadena automática).",
         "height": 360,
         "width": 640,
         "color": 3
@@ -361,7 +361,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        12768,
+        12496,
         1840
       ],
       "id": "12a08f9a-a9a6-4dbf-b6f3-216f088b1ce4",
@@ -401,7 +401,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        13040,
+        12768,
         1840
       ],
       "id": "bdd15aad-baf3-4bd1-9f21-42126208787a",
@@ -427,7 +427,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        13280,
+        13008,
         2256
       ],
       "id": "875b5297-e9a2-4eb1-a150-6d636978e009",
@@ -466,7 +466,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        13536,
+        13264,
         1824
       ],
       "id": "a7257b9c-aa1d-4702-b780-e3ee019e9347",
@@ -477,7 +477,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        13760,
+        13488,
         1600
       ],
       "id": "aa3da811-bfc8-495d-a49d-faaeebb401c9",
@@ -571,7 +571,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        14240,
+        13968,
         1856
       ],
       "id": "e08732e8-72e3-4171-b36c-c0d4433a94bc",
@@ -590,7 +590,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        15264,
+        14992,
         1680
       ],
       "id": "5d23c8dd-7d78-4098-8cf6-a0dc693f1b4f",
@@ -620,7 +620,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        13344,
+        13072,
         1824
       ],
       "id": "3aec71d0-c488-4af6-a05b-8454133e16ab",
@@ -641,7 +641,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        13904,
+        13632,
         2032
       ],
       "id": "a51f83c5-1d3c-44dd-817e-8775870224b2",
@@ -661,7 +661,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        14048,
+        13776,
         1840
       ],
       "id": "e981cdf0-5598-41ea-9f5d-e49286f5c431",
@@ -675,7 +675,7 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        14800,
+        14528,
         1856
       ],
       "id": "74320511-db2e-4dcb-86ea-aeda6ac0d3ab",
@@ -696,7 +696,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        15040,
+        14768,
         1680
       ],
       "id": "56d068b9-dd2d-4e8b-8d4a-62352ea87c54",
@@ -749,7 +749,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        13728,
+        13456,
         1840
       ],
       "id": "b937aec8-e4d2-4a5a-bace-72ba23fd5c0e",
@@ -910,7 +910,7 @@
       "main": [
         [
           {
-            "node": "Limpiar base de conocimiento",
+            "node": "Buscar_archivos_directorios",
             "type": "main",
             "index": 0
           }
@@ -1051,17 +1051,6 @@
           },
           {
             "node": "Borrar referencias(Ejecutar un query manualmente tipo delete)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Limpiar base de conocimiento": {
-      "main": [
-        [
-          {
-            "node": "Buscar_archivos_directorios",
             "type": "main",
             "index": 0
           }
