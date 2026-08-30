@@ -9,11 +9,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        40624,
-        12064
+        39632,
+        15200
       ],
       "typeVersion": 1,
-      "id": "f81ccd7c-43dd-4a23-8378-b3c1a43ccbd2",
+      "id": "63f76104-f451-4986-a3d6-3a457f5b18c3",
       "name": "Sticky Note2"
     },
     {
@@ -21,10 +21,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        40128,
-        12768
+        39184,
+        15824
       ],
-      "id": "1e135066-cc32-4cf6-9e9c-85a3b00f41c1",
+      "id": "e8a1595e-5205-42f7-aa78-e9d223ed1e96",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -35,10 +35,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        39872,
-        13568
+        38880,
+        16704
       ],
-      "id": "589767b2-f344-43b9-97bb-846e89400e94",
+      "id": "31f69590-9d76-43f6-bfb4-6f3f4cdaa96d",
       "name": "When chat message received",
       "webhookId": "a24efc8d-00a6-4acd-9c87-2b4c8a8fedd5"
     },
@@ -143,10 +143,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        40272,
-        13504
+        39280,
+        16640
       ],
-      "id": "7a252c8a-65fb-46c2-a78a-c4b12d199183",
+      "id": "7f998cfa-092f-4498-9717-032f1df9093a",
       "name": "Seteamos_variables"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        41200,
-        13488
+        40208,
+        16624
       ],
-      "id": "edc93c88-6fd3-4dec-9a56-d109c40cfaf6",
+      "id": "c5e48334-ff49-48a3-8b91-65408271ca30",
       "name": "Indentifica_canal"
     },
     {
@@ -287,10 +287,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        40528,
-        13856
+        39536,
+        16992
       ],
-      "id": "3e849b5b-6114-4f85-85d6-bf7a9e70973c",
+      "id": "e68e012b-4673-41ec-bcde-5b955d16e673",
       "name": "Dueno_o_Bot_responde"
     },
     {
@@ -350,10 +350,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        40816,
-        13504
+        39824,
+        16640
       ],
-      "id": "5795e8bd-7825-4e1a-a5fb-d4ed5b9ca76e",
+      "id": "74733115-e66e-432c-b3d1-b380f513009d",
       "name": "Configurar_IA_Responda?"
     },
     {
@@ -413,10 +413,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        40576,
-        13520
+        39584,
+        16656
       ],
-      "id": "6eff47ef-ffd2-4b20-9270-3ad16e223c4f",
+      "id": "9d015c49-6d56-4b81-a585-1b22593c60dc",
       "name": "Pregunta_el_Cliente?"
     },
     {
@@ -424,10 +424,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        41120,
-        13232
+        40256,
+        16416
       ],
-      "id": "1310d1aa-f110-4131-aad8-9f743a69798d",
+      "id": "9fb6f132-22ab-4017-a72a-213ee991791d",
       "name": "End1"
     },
     {
@@ -439,10 +439,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        43360,
-        13216
+        42368,
+        16352
       ],
-      "id": "ee9331ab-bc5d-4fe6-9f1f-83c8926e1a8d",
+      "id": "ad8bcf24-c1a0-4a96-b16d-fcdb7f0e3c2a",
       "name": "Simple Memory"
     },
     {
@@ -454,10 +454,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        39760,
-        12832
+        38416,
+        15824
       ],
-      "id": "e514e8c0-beff-4297-b489-58c05a171ef0",
+      "id": "c7129423-7a39-4c75-a6e7-f8080c3cfeb9",
       "name": "Entrar_ChattWoot",
       "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2"
     },
@@ -550,9 +550,9 @@
               "type": "string"
             },
             {
-              "id": "9741fd66-6a23-47b2-a5b1-0acb8401af6b",
-              "name": "agente_desactivado",
-              "value": "on",
+              "id": "eb85d8b8-a454-4bfd-9751-05a2314beee3",
+              "name": "conversation_id",
+              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}",
               "type": "string"
             }
           ]
@@ -562,16 +562,15 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        40320,
-        13104
+        38944,
+        16032
       ],
-      "id": "a36f9179-bb87-49ff-a3a6-ef84410d610e",
+      "id": "a7d6c13a-3dde-4f01-b34c-87575895f894",
       "name": "Obtener_Info_basica"
     },
     {
       "parameters": {
-        "method": "GET",
-        "url": "=https://api.ycloud.com/v2/contacts?filter.phoneNumber={{ encodeURIComponent($json.user_number) }}",
+        "url": "=https://api.ycloud.com/v2/contact/contacts?filter.phoneNumber={{ encodeURIComponent($json.user_number) }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -586,10 +585,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        40688,
-        13104
+        39280,
+        16176
       ],
-      "id": "86d3867c-cf27-4b59-90e0-bd1c154345f5",
+      "id": "648cb305-bb2b-492a-a9fc-c8cf7bb22312",
       "name": "Obtener_Contacto_YCloud"
     },
     {
@@ -599,10 +598,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        40944,
-        13104
+        39232,
+        16464
       ],
-      "id": "e5b6d798-f40c-4146-a6ca-36ca968a2121",
+      "id": "cc691de0-c0e7-416a-a564-7e4aedd00d05",
       "name": "Ajustar_agente_desactivado"
     },
     {
@@ -613,6 +612,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -636,6 +636,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -659,6 +660,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -685,10 +687,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        42544,
-        13760
+        41552,
+        16896
       ],
-      "id": "f8bff771-e051-4818-a11d-ab0d03ea0285",
+      "id": "e25054d5-ca6d-4bf7-9524-8f97a653c7f3",
       "name": "Consulta_o_agendar_cita"
     },
     {
@@ -706,10 +708,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        43248,
-        13216
+        42256,
+        16352
       ],
-      "id": "dccb3c49-2025-4273-a27c-0d728686d570",
+      "id": "57ba8bfa-9906-43c0-aad2-4436fc386ab3",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -729,10 +731,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        43264,
-        12960
+        42272,
+        16096
       ],
-      "id": "e21e5f6c-a002-466c-8900-e9fc6ef7ba78",
+      "id": "a781f7e4-6ecb-4003-942a-9fce1c8af6b3",
       "name": "Agente_Informacion_basica"
     },
     {
@@ -742,10 +744,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        44336,
-        12912
+        43344,
+        16048
       ],
-      "id": "3fa2bce0-c26a-408e-a33f-17a5cefb575f",
+      "id": "9d20c11b-80a5-41fa-b2a7-2ba39eed3675",
       "name": "Unificar_salida"
     },
     {
@@ -776,10 +778,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        44032,
-        12800
+        43040,
+        15936
       ],
-      "id": "69ad6c35-218c-4aba-b838-654b6316be34",
+      "id": "186cbc9f-b7e1-4b23-8586-514a4b0654ed",
       "name": "Cita_con_Equipo_asignado"
     },
     {
@@ -790,11 +792,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        43088,
-        12816
+        42096,
+        15952
       ],
       "typeVersion": 1,
-      "id": "a0f8d748-01f7-4f66-b4b5-e61334d4866d",
+      "id": "7b55ae97-6274-4831-9933-ae0f2dc9e4b2",
       "name": "Sticky Note"
     },
     {
@@ -803,21 +805,593 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        42496,
-        13632
+        41504,
+        16768
       ],
       "typeVersion": 1,
-      "id": "eb219017-1604-470a-a621-80330a2b1a39",
+      "id": "adfc65a6-454f-445d-8e4f-cc8a18a5e45c",
       "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://lead.integraia.lat/ai_chatbot_1_portal/inicioagendar",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        43408,
+        15328
+      ],
+      "id": "1b25ed76-cc8d-4774-a155-e74055bfa01d",
+      "name": "paso_0_inicio_agendar",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlowBase = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\n\n// Merge dinámico: Odoo amplía el mapeo base con flow_map (defaults preservados).\nlet flowMapOdoo = {};\ntry {\n  flowMapOdoo = $('Obtener_configuracion_agente').item.json.flow_map || {};\n} catch (e) {\n  flowMapOdoo = {};\n}\nconst mapeoFlow = Object.assign({}, mapeoFlowBase, flowMapOdoo);\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: devolvemos item de error para debugging\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json\n          }\n        };\n        errorItem.json.flow_name = flowPorDefecto;\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json\n        }\n      };\n      errorItem.json.flow_name = flowPorDefecto;\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    let isMenuValue = false;\n    if (datosParseados.isMenu === true) {\n      isMenuValue = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const texto = datosParseados.output;\n      if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n          texto.includes('Para ayudarte mejor, por favor selecciona') ||\n          texto.includes('¿Qué necesitas hoy?')) {\n        isMenuValue = true;\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json\n      }\n    };\n    errorItem.json.flow_name = flowPorDefecto;\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        42608,
+        16096
+      ],
+      "id": "b7ab4eb0-f34b-4595-8efe-448151b65458",
+      "name": "Separar_variables_en_json"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dda4884d-04e1-451c-b3af-f5a3183f2580",
+              "name": "session_id",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "70bff820-cfc3-4071-bcaa-4478eb7828e9",
+              "name": "conversation_id",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d80d48b5-7d3e-4e34-bf33-cf46fa3b4e5d",
+              "name": "account_id",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d784b741-4e38-4288-9223-4974592d75fb",
+              "name": "platform",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.platform }}",
+              "type": "string"
+            },
+            {
+              "id": "1021f53b-9c20-4d37-abf1-1622ce5bbd86",
+              "name": "text",
+              "value": "={{ $json.steps[0].nombre_mostrar }}",
+              "type": "string"
+            },
+            {
+              "id": "4046b530-a78d-4676-b4ad-f2f8f2f81919",
+              "name": "output",
+              "value": "={{ $json.steps[0].nombre_mostrar }}",
+              "type": "string"
+            },
+            {
+              "id": "0aebd45e-44c0-4633-9710-c3af2e6d9422",
+              "name": "content",
+              "value": "={{ $json.steps[0].nombre_mostrar }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        43664,
+        15312
+      ],
+      "id": "7b6390dd-7588-4f84-8481-5386e694f84e",
+      "name": "Agendar_cita"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-Key",
+              "value": "93327d22f6546624889c7b967a1e4e95"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        43872,
+        16288
+      ],
+      "id": "2fa64dd1-68df-46d0-8f59-ade377ac887f",
+      "name": "Enviar_mensaje_de_IA1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-Key",
+              "value": "93327d22f6546624889c7b967a1e4e95"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        43968,
+        15360
+      ],
+      "id": "de36b83d-823a-4fc3-bbaf-36db8275324b",
+      "name": "Enviar_mensaje_de_IA2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "890f5802-1895-46b4-bfb3-c2f44596d4ce",
+              "name": "session_id",
+              "value": "={{ $json.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e0d55966-2cdd-436b-b684-a8b11a217a2b",
+              "name": "conversation_id",
+              "value": "={{ $json.conversation_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f33e3c5f-da1a-466a-b726-e12e19fdcb0b",
+              "name": "account_id",
+              "value": "={{ $json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "53961174-87e8-4d3c-ae50-4da02dbac3c3",
+              "name": "modo",
+              "value": "={{ $json.modo }}",
+              "type": "string"
+            },
+            {
+              "id": "dcb665ab-5283-4902-bc0f-bff04a90180f",
+              "name": "nombre_mostrar",
+              "value": "={{ $json.texto_para_usuario }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        42000,
+        16992
+      ],
+      "id": "72536f8a-4bef-434b-b809-924b37fb907a",
+      "name": "tomar_parametros"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-Key",
+              "value": "93327d22f6546624889c7b967a1e4e95"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.nombre_mostrar) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        42304,
+        16864
+      ],
+      "id": "850835b7-784e-4b94-a70c-32a39d289149",
+      "name": "Enviar_mensaje_de_IA3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "menu_whatsapp_condition",
+              "leftValue": "={{\n  $json.platform === 'whatsapp' && \n  ($json.isMenu === true ||\n   (typeof $json.output === 'string' && $json.output.length > 0 &&\n    ($json.output.match(/[1-5]\\.\\s*(Precios|Servicios|Agendar|Tarjeta|Otra)/i) !== null ||\n     $json.output.includes('Bienvenido/a') ||\n     $json.output.includes('selecciona una opción'))))\n}}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        42784,
+        16112
+      ],
+      "id": "9060ec3f-7c5c-480c-ba53-5a15942d5c58",
+      "name": "¿Enviar menú interactivo?"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nfor (const item of items) {\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n  \n  if (!phone) {\n    item.json.phone_number_formatted = null;\n    continue;\n  }\n  \n  phone = String(phone);\n  if (!phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n  item.json.phone_number_formatted = phone;\n}\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        43104,
+        16256
+      ],
+      "id": "2ad3ed9a-d02b-4c17-ae21-58976ae71f65",
+      "name": "Formatear número de teléfono"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.phone_number_formatted }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"list\",\n    \"header\": {\n      \"type\": \"text\",\n      \"text\": \"🚀 IntegraIA - Automatización con Odoo CE 19\"\n    },\n    \"body\": {\n      \"text\": \"Hola! 😊 Bienvenido/a a IntegraIA (https://integraia.lat). ¿Qué necesitas hoy?\"\n    },\n    \"footer\": {\n      \"text\": \"https://integraia.lat\"\n    },\n    \"action\": {\n      \"button\": \"📋 Ver opciones\",\n      \"sections\": [\n        {\n          \"title\": \"Nuestros Servicios\",\n          \"rows\": [\n            { \"id\": \"precios\", \"title\": \"💰 Tienda Virtual\", \"description\": \"Tienda online profesional con Odoo CE 19 → https://integraia.lat\" },\n            { \"id\": \"servicios\", \"title\": \"🤖 Agentes de IA\", \"description\": \"Chatbots WhatsApp, FB, Instagram 24/7\" },\n            { \"id\": \"agendar_cita\", \"title\": \"📅 Agendar Demo\", \"description\": \"Demo interactiva o asesoría Odoo\" }\n          ]\n        },\n        {\n          \"title\": \"Infraestructura\",\n          \"rows\": [\n            { \"id\": \"tarjeta_salud\", \"title\": \"🖥️ Hosting Dedicado\", \"description\": \"Servidor, SSL, dominio y mantenimiento → https://integraia.lat\" },\n            { \"id\": \"otra_consulta\", \"title\": \"🔧 Desarrollo\", \"description\": \"Módulos, migraciones, APIs\" }\n          ]\n        },\n        {\n          \"title\": \"Información\",\n          \"rows\": [\n            { \"id\": \"horario\", \"title\": \"🕒 Soporte\", \"description\": \"Horarios y contacto\" },\n            { \"id\": \"promociones\", \"title\": \"🎉 Promociones\", \"description\": \"Ofertas y descuentos vigentes\" },\n            { \"id\": \"resultados\", \"title\": \"🧪 Resultados\", \"description\": \"Consultar resultados de estudios\" }\n          ]\n        }\n      ]\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        43424,
+        16816
+      ],
+      "id": "449f7cab-6459-44cd-a1ed-40101d1e04d2",
+      "name": "Enviar menú interactivo a WhatsApp",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-Key",
+              "value": "93327d22f6546624889c7b967a1e4e95"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        43888,
+        15744
+      ],
+      "id": "57ed1976-c9b7-4ad7-85b3-0a0a42e49d2a",
+      "name": "Enviar texto despues del menu"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        43808,
+        16832
+      ],
+      "id": "a78a4675-3bef-4efa-bfed-4ce7510b344c",
+      "name": "Fin menú WhatsApp"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "menu_whatsapp_condition",
+              "leftValue": "={{\n  $json.platform === 'whatsapp' && ($json.esPreguntaSiNo === true || $json.tipoPregunta === \"ESTATICO\" || $json.tipoPregunta === \"CITA_DIRECTA\" || $json.tipoPregunta === \"RESULTADOS\")\n}}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        43552,
+        16064
+      ],
+      "id": "39b42f40-ee46-4f47-a3c0-b375fbb8f790",
+      "name": "¿Enviar menú interactivo?1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\nfor (const item of items) {\n  const tipo = item.json.tipoPregunta;\n  const outputText = item.json.output;\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n\n  if (phone && !phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n\n  let botones = [];\n\n  // PRECIOS - botones Sí/No\n  if (tipo === 'PRECIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_PRECIOS\", title: \"✅ Quiero cotización\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // SERVICIOS - botones Sí/No\n  else if (tipo === 'SERVICIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_SERVICIOS\", title: \"✅ Sí, quiero demo\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // TARJETA - botones Sí/No\n  else if (tipo === 'TARJETA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_TARJETA\", title: \"✅ Sí, contratar\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // CITA_DIRECTA - botones para elegir Demo o Asesoría\n  else if (tipo === 'CITA_DIRECTA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MEDIOS_PROPIOS\", title: \"💰 Demo Chatbot\" } },\n      { type: \"reply\", reply: { id: \"SEGURO_MEDICO\", title: \"🩺 Asesoría Odoo\" } }\n    ];\n  }\n  else if (tipo === 'RESULTADOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"LABORATORIO\", title: \"🔬 Laboratorio\" } },\n      { type: \"reply\", reply: { id: \"IMAGENES\", title: \"📷 Imágenes\" } }\n    ];\n  }\n  // ESTATICO - horario, promociones, resultados (botones: Menú y Salir)\n  else if (tipo === 'ESTATICO') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MENU_PRINCIPAL\", title: \"🔙 Menú\" } },\n      { type: \"reply\", reply: { id: \"SALIR\", title: \"👋 Salir\" } }\n    ];\n  }\n  // ✅ NUEVO: Si es pregunta Sí/No genérica sin tipo específico\n  else if (item.json.esPreguntaSiNo === true) {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_SI\", title: \"✅ Sí\" } },\n      { type: \"reply\", reply: { id: \"CONFIRMAR_NO\", title: \"❌ No\" } }\n    ];\n  }\n  // Si no hay tipoPregunta, no enviamos botones (se envía como texto normal)\n  else {\n    nuevosItems.push(item);\n    continue;\n  }\n\n  // Construir el payload de WhatsApp\n  const whatsappPayload = {\n    messaging_product: \"whatsapp\",\n    recipient_type: \"individual\",\n    to: phone,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: outputText },\n      action: { buttons: botones }\n    }\n  };\n\n  nuevosItems.push({\n    json: {\n      ...item.json,\n      whatsappPayload: whatsappPayload,\n      phone_number_formatted: phone\n    }\n  });\n}\n\nreturn nuevosItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        43680,
+        15872
+      ],
+      "id": "f359b53e-0a99-460a-9f79-4222e0014d41",
+      "name": "Construir_botones_WhatsApp"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.whatsappPayload }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        44272,
+        16176
+      ],
+      "id": "8cbc10eb-2100-4a90-a82e-0dccd6c4db2c",
+      "name": "Enviar menú interactivo a WhatsApp1",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        44368,
+        15888
+      ],
+      "id": "57936148-e928-4996-8d73-52cc9ab39368",
+      "name": "Fin menú WhatsApp1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41520,
+        16496
+      ],
+      "typeVersion": 1,
+      "id": "93373a43-1bf6-4069-b70b-e52aab93e979",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41520,
+        16496
+      ],
+      "typeVersion": 1,
+      "id": "0c3713ee-9a8b-41ec-927b-d866393caa6e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41520,
+        16496
+      ],
+      "typeVersion": 1,
+      "id": "a2979221-2c5e-49f6-8d8c-fcb497118bb7",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41600,
+        16576
+      ],
+      "typeVersion": 1,
+      "id": "9015081a-7d66-416e-b179-a61b011f46dc",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41600,
+        16576
+      ],
+      "typeVersion": 1,
+      "id": "421d833b-42b3-4716-bc6b-4416699dbd44",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        41600,
+        16576
+      ],
+      "typeVersion": 1,
+      "id": "f188e535-3cb2-4436-92f0-c80e8fc784c3",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Procesa la data de entrada, y si es agendar cita con el primer paso chequea el telefono para buscar ya variables en bd y el suuario tipeee menos",
+        "height": 480,
+        "width": 560
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        40544,
+        16768
+      ],
+      "typeVersion": 1,
+      "id": "a514eada-be35-4556-972d-b71a293d7f73",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-Key",
+              "value": "93327d22f6546624889c7b967a1e4e95"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        43520,
+        16400
+      ],
+      "id": "310b0c88-8cb7-4579-bf89-21dc2b14d63a",
+      "name": "Enviar_mensaje_de_IA"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://lead.integraia.lat/ai_chatbot_1_portal/configuracion_agente",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"{{ $json.text }}\",\n  \"image_url\": \"{{ $json.image_url || '' }}\",\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\": \"{{ $json.conversation_id }}\",\n  \"account_id\": \"{{ $json.account_id }}\",\n  \"platform\": \"{{ $json.platform }}\",\n  \"token\": \"{{ $env.CHATBOT_API_TOKEN || '' }}\"\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "c35e1647-843d-4536-818f-c21fe0b61a79",
+      "name": "Obtener_configuracion_agente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        42000,
+        16800
+      ]
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "Er44fSL1mNP20oKt",
+          "value": "jlHU9VPqKMuwuxNh",
           "mode": "list",
-          "cachedResultUrl": "/workflow/Er44fSL1mNP20oKt",
-          "cachedResultName": "chatbot-simple_1_subflow"
+          "cachedResultUrl": "/workflow/jlHU9VPqKMuwuxNh",
+          "cachedResultName": "yclod-simple_1_subflow"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -996,627 +1570,29 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        41728,
-        13776
+        40736,
+        16912
       ],
-      "id": "d61fcce2-228d-428c-8dae-e75cd6e0d4a4",
-      "name": "Call 'chatbot-simple_1_subflow'"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/inicioagendar",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\"\n}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        44400,
-        12192
-      ],
-      "id": "e4e9467c-c32e-4e7d-9d1d-f65804d5bf35",
-      "name": "paso_0_inicio_agendar",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlow = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: devolvemos item de error para debugging\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json\n          }\n        };\n        errorItem.json.flow_name = flowPorDefecto;\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json\n        }\n      };\n      errorItem.json.flow_name = flowPorDefecto;\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    let isMenuValue = false;\n    if (datosParseados.isMenu === true) {\n      isMenuValue = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const texto = datosParseados.output;\n      if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n          texto.includes('Para ayudarte mejor, por favor selecciona') ||\n          texto.includes('¿Qué necesitas hoy?')) {\n        isMenuValue = true;\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json\n      }\n    };\n    errorItem.json.flow_name = flowPorDefecto;\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        43600,
-        12960
-      ],
-      "id": "7e53c674-cb0c-4984-a769-180cb7c8b921",
-      "name": "Separar_variables_en_json"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "dda4884d-04e1-451c-b3af-f5a3183f2580",
-              "name": "session_id",
-              "value": "={{ $json.session_id }}",
-              "type": "string"
-            },
-            {
-              "id": "70bff820-cfc3-4071-bcaa-4478eb7828e9",
-              "name": "conversation_id",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}",
-              "type": "string"
-            },
-            {
-              "id": "d80d48b5-7d3e-4e34-bf33-cf46fa3b4e5d",
-              "name": "account_id",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.account_id }}",
-              "type": "string"
-            },
-            {
-              "id": "d784b741-4e38-4288-9223-4974592d75fb",
-              "name": "platform",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.platform }}",
-              "type": "string"
-            },
-            {
-              "id": "1021f53b-9c20-4d37-abf1-1622ce5bbd86",
-              "name": "text",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
-            },
-            {
-              "id": "4046b530-a78d-4676-b4ad-f2f8f2f81919",
-              "name": "output",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
-            },
-            {
-              "id": "0aebd45e-44c0-4633-9710-c3af2e6d9422",
-              "name": "content",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        44656,
-        12176
-      ],
-      "id": "a209e24d-18dd-4211-a9cd-43368a64a1b2",
-      "name": "Agendar_cita"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.ycloud.com/v2/whatsapp/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "X-API-Key",
-              "value": "93327d22f6546624889c7b967a1e4e95"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        44864,
-        13152
-      ],
-      "id": "e3745c58-c75d-4a6d-8ff5-c4179bc15359",
-      "name": "Enviar_mensaje_de_IA1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.ycloud.com/v2/whatsapp/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "X-API-Key",
-              "value": "93327d22f6546624889c7b967a1e4e95"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        44960,
-        12224
-      ],
-      "id": "4da6b075-4ae3-4c80-abc1-8e07ac6b5638",
-      "name": "Enviar_mensaje_de_IA2"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "890f5802-1895-46b4-bfb3-c2f44596d4ce",
-              "name": "session_id",
-              "value": "={{ $json.session_id }}",
-              "type": "string"
-            },
-            {
-              "id": "e0d55966-2cdd-436b-b684-a8b11a217a2b",
-              "name": "conversation_id",
-              "value": "={{ $json.conversation_id }}",
-              "type": "string"
-            },
-            {
-              "id": "f33e3c5f-da1a-466a-b726-e12e19fdcb0b",
-              "name": "account_id",
-              "value": "={{ $json.account_id }}",
-              "type": "string"
-            },
-            {
-              "id": "53961174-87e8-4d3c-ae50-4da02dbac3c3",
-              "name": "modo",
-              "value": "={{ $json.modo }}",
-              "type": "string"
-            },
-            {
-              "id": "dcb665ab-5283-4902-bc0f-bff04a90180f",
-              "name": "nombre_mostrar",
-              "value": "={{ $json.texto_para_usuario }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        42992,
-        13856
-      ],
-      "id": "c661ce1d-c96f-494c-ba87-a29e972832ec",
-      "name": "tomar_parametros"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.ycloud.com/v2/whatsapp/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "X-API-Key",
-              "value": "93327d22f6546624889c7b967a1e4e95"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.nombre_mostrar) }}\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        43296,
-        13728
-      ],
-      "id": "7d7d466c-8ad8-4175-947d-ae2552270a4a",
-      "name": "Enviar_mensaje_de_IA3"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "menu_whatsapp_condition",
-              "leftValue": "={{\n  $json.platform === 'whatsapp' && \n  ($json.isMenu === true ||\n   (typeof $json.output === 'string' && $json.output.length > 0 &&\n    ($json.output.match(/[1-5]\\.\\s*(Precios|Servicios|Agendar|Tarjeta|Otra)/i) !== null ||\n     $json.output.includes('Bienvenido/a') ||\n     $json.output.includes('selecciona una opción'))))\n}}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        43776,
-        12976
-      ],
-      "id": "96386021-ed1f-4b65-a587-942feaa65c97",
-      "name": "¿Enviar menú interactivo?"
-    },
-    {
-      "parameters": {
-        "jsCode": "const items = $input.all();\nfor (const item of items) {\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n  \n  if (!phone) {\n    item.json.phone_number_formatted = null;\n    continue;\n  }\n  \n  phone = String(phone);\n  if (!phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n  item.json.phone_number_formatted = phone;\n}\nreturn items;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        44096,
-        13120
-      ],
-      "id": "eaa34c97-7322-4024-9d81-444ba0f86817",
-      "name": "Formatear número de teléfono"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.phone_number_formatted }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"list\",\n    \"header\": {\n      \"type\": \"text\",\n      \"text\": \"🚀 IntegraIA - Automatización con Odoo CE 19\"\n    },\n    \"body\": {\n      \"text\": \"Hola! 😊 Bienvenido/a a IntegraIA (https://integraia.lat). ¿Qué necesitas hoy?\"\n    },\n    \"footer\": {\n      \"text\": \"https://integraia.lat\"\n    },\n    \"action\": {\n      \"button\": \"📋 Ver opciones\",\n      \"sections\": [\n        {\n          \"title\": \"Nuestros Servicios\",\n          \"rows\": [\n            { \"id\": \"precios\", \"title\": \"💰 Tienda Virtual\", \"description\": \"Tienda online profesional con Odoo CE 19 → https://integraia.lat\" },\n            { \"id\": \"servicios\", \"title\": \"🤖 Agentes de IA\", \"description\": \"Chatbots WhatsApp, FB, Instagram 24/7\" },\n            { \"id\": \"agendar_cita\", \"title\": \"📅 Agendar Demo\", \"description\": \"Demo interactiva o asesoría Odoo\" }\n          ]\n        },\n        {\n          \"title\": \"Infraestructura\",\n          \"rows\": [\n            { \"id\": \"tarjeta_salud\", \"title\": \"🖥️ Hosting Dedicado\", \"description\": \"Servidor, SSL, dominio y mantenimiento → https://integraia.lat\" },\n            { \"id\": \"otra_consulta\", \"title\": \"🔧 Desarrollo\", \"description\": \"Módulos, migraciones, APIs\" }\n          ]\n        },\n        {\n          \"title\": \"Información\",\n          \"rows\": [\n            { \"id\": \"horario\", \"title\": \"🕒 Soporte\", \"description\": \"Horarios y contacto\" },\n            { \"id\": \"promociones\", \"title\": \"🎉 Promociones\", \"description\": \"Ofertas y descuentos vigentes\" },\n            { \"id\": \"resultados\", \"title\": \"🧪 Resultados\", \"description\": \"Consultar resultados de estudios\" }\n          ]\n        }\n      ]\n    }\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        44416,
-        13680
-      ],
-      "id": "a3245a81-6db7-4432-90b5-f6f3adb8a6ae",
-      "name": "Enviar menú interactivo a WhatsApp",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.ycloud.com/v2/whatsapp/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "X-API-Key",
-              "value": "93327d22f6546624889c7b967a1e4e95"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        44880,
-        12608
-      ],
-      "id": "98667656-2feb-4c96-9aed-c205a31c7362",
-      "name": "Enviar texto despues del menu"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        44800,
-        13696
-      ],
-      "id": "19c0ec12-faab-42c2-b166-52e94a6dbe24",
-      "name": "Fin menú WhatsApp"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "menu_whatsapp_condition",
-              "leftValue": "={{\n  $json.platform === 'whatsapp' && ($json.esPreguntaSiNo === true || $json.tipoPregunta === \"ESTATICO\" || $json.tipoPregunta === \"CITA_DIRECTA\" || $json.tipoPregunta === \"RESULTADOS\")\n}}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        44544,
-        12928
-      ],
-      "id": "7a00fa37-684a-4a77-a64a-c848b5aeca19",
-      "name": "¿Enviar menú interactivo?1"
-    },
-    {
-      "parameters": {
-        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\nfor (const item of items) {\n  const tipo = item.json.tipoPregunta;\n  const outputText = item.json.output;\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n\n  if (phone && !phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n\n  let botones = [];\n\n  // PRECIOS - botones Sí/No\n  if (tipo === 'PRECIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_PRECIOS\", title: \"✅ Quiero cotización\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // SERVICIOS - botones Sí/No\n  else if (tipo === 'SERVICIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_SERVICIOS\", title: \"✅ Sí, quiero demo\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // TARJETA - botones Sí/No\n  else if (tipo === 'TARJETA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_TARJETA\", title: \"✅ Sí, contratar\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // CITA_DIRECTA - botones para elegir Demo o Asesoría\n  else if (tipo === 'CITA_DIRECTA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MEDIOS_PROPIOS\", title: \"💰 Demo Chatbot\" } },\n      { type: \"reply\", reply: { id: \"SEGURO_MEDICO\", title: \"🩺 Asesoría Odoo\" } }\n    ];\n  }\n  else if (tipo === 'RESULTADOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"LABORATORIO\", title: \"🔬 Laboratorio\" } },\n      { type: \"reply\", reply: { id: \"IMAGENES\", title: \"📷 Imágenes\" } }\n    ];\n  }\n  // ESTATICO - horario, promociones, resultados (botones: Menú y Salir)\n  else if (tipo === 'ESTATICO') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MENU_PRINCIPAL\", title: \"🔙 Menú\" } },\n      { type: \"reply\", reply: { id: \"SALIR\", title: \"👋 Salir\" } }\n    ];\n  }\n  // ✅ NUEVO: Si es pregunta Sí/No genérica sin tipo específico\n  else if (item.json.esPreguntaSiNo === true) {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_SI\", title: \"✅ Sí\" } },\n      { type: \"reply\", reply: { id: \"CONFIRMAR_NO\", title: \"❌ No\" } }\n    ];\n  }\n  // Si no hay tipoPregunta, no enviamos botones (se envía como texto normal)\n  else {\n    nuevosItems.push(item);\n    continue;\n  }\n\n  // Construir el payload de WhatsApp\n  const whatsappPayload = {\n    messaging_product: \"whatsapp\",\n    recipient_type: \"individual\",\n    to: phone,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: outputText },\n      action: { buttons: botones }\n    }\n  };\n\n  nuevosItems.push({\n    json: {\n      ...item.json,\n      whatsappPayload: whatsappPayload,\n      phone_number_formatted: phone\n    }\n  });\n}\n\nreturn nuevosItems;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        44672,
-        12736
-      ],
-      "id": "bd79e0ff-4b48-4c25-963a-1c877f34b661",
-      "name": "Construir_botones_WhatsApp"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $json.whatsappPayload }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        45264,
-        13040
-      ],
-      "id": "9766893a-9ddc-40a5-8e7e-c0938ca55e0b",
-      "name": "Enviar menú interactivo a WhatsApp1",
-      "disabled": true
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        45360,
-        12752
-      ],
-      "id": "ac893e22-b633-4a06-a39d-47abda8ef5ae",
-      "name": "Fin menú WhatsApp1"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42512,
-        13360
-      ],
-      "typeVersion": 1,
-      "id": "7a716bf9-6d57-4d81-8b13-d254d3950cd1",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42512,
-        13360
-      ],
-      "typeVersion": 1,
-      "id": "91bb5fb2-0b67-4749-9ee7-c3cd2c0bd15a",
-      "name": "Sticky Note4"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42512,
-        13360
-      ],
-      "typeVersion": 1,
-      "id": "d79677b6-3843-4dd8-9893-5acd3bc6baef",
-      "name": "Sticky Note5"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42592,
-        13440
-      ],
-      "typeVersion": 1,
-      "id": "218f4e8a-6721-41d8-a8f9-8941a4a1b533",
-      "name": "Sticky Note6"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42592,
-        13440
-      ],
-      "typeVersion": 1,
-      "id": "efc4db35-a505-41db-a033-d27f0b0da8fc",
-      "name": "Sticky Note7"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        42592,
-        13440
-      ],
-      "typeVersion": 1,
-      "id": "549dfb94-bfff-469d-a224-aad69146f6d3",
-      "name": "Sticky Note8"
-    },
-    {
-      "parameters": {
-        "content": "## Procesa la data de entrada, y si es agendar cita con el primer paso chequea el telefono para buscar ya variables en bd y el suuario tipeee menos",
-        "height": 480,
-        "width": 560
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        41536,
-        13632
-      ],
-      "typeVersion": 1,
-      "id": "e1f621dd-2c03-4d15-9a6e-1117f59345c8",
-      "name": "Sticky Note9"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.ycloud.com/v2/whatsapp/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "X-API-Key",
-              "value": "93327d22f6546624889c7b967a1e4e95"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{ $('Entrar_ChattWoot').item.json.body.whatsappInboundMessage.to }}\",\n  \"to\": \"{{ $('Obtener_Info_basica').item.json.user_number || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        44512,
-        13264
-      ],
-      "id": "c1ac8ce1-6fb9-4d6c-8ae8-5190a7e29463",
-      "name": "Enviar_mensaje_de_IA"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/configuracion_agente",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"text\": \"{{ $json.text }}\",\n  \"image_url\": \"{{ $json.image_url || '' }}\",\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\": \"{{ $json.conversation_id }}\",\n  \"account_id\": \"{{ $json.account_id }}\",\n  \"platform\": \"{{ $json.platform }}\",\n  \"token\": \"{{ $env.CHATBOT_API_TOKEN || '' }}\"\n}",
-        "options": {
-          "timeout": 30000
-        }
-      },
-      "id": "21372d49-1a64-41e0-98a6-eb80bd4a4f0a",
-      "name": "Obtener_configuracion_agente",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        42992,
-        13664
-      ]
+      "id": "317e8f00-d88e-47ae-9ca4-0938315962ee",
+      "name": "Call 'yclod-simple_1_subflow'"
     }
   ],
   "pinData": {
     "When clicking ‘Execute workflow’": [
       {
         "json": {
-          "headers": {
-            "connection": "upgrade",
-            "host": "n8n.integraia.lat",
-            "content-length": "506",
-            "ycloud-signature": "t=1788045550,s=536e7de40214b6fdbc574772c278e4a2a4d29c26040ddb1f43d2e207d793b698",
-            "baggage": "Eagleeye-Pappname=1fof0zltrv1@d3b96e44a5c9fa6,Eagleeye-Prpc=",
-            "traceparent": "00-97474ba47ea4de93af594010b0ea9bb7-f33b5e413a794c3f-00",
-            "content-type": "application/json",
-            "x-webhook-endpoint-id": "6a934837f8c4c63141d198a1",
-            "accept-encoding": "gzip",
-            "user-agent": "Go-http-client/2.0"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "id": "evt_6a9368ee9aadba426014bd40",
-            "type": "whatsapp.inbound_message.received",
-            "apiVersion": "v2",
-            "createTime": "2026-08-29T23:19:10.917Z",
-            "whatsappInboundMessage": {
-              "id": "6a9368eeff3b28382359f4c0",
-              "wamid": "wamid.HBgMNTg0MTQzODk4NjAyFQIAEhggQUM4MzAxRTJGODg0RDEwRUQyMDA5QjNENTVCQjdCREEA",
-              "wabaId": "30493040447009379",
-              "from": "+584143898602",
-              "fromUserId": "VE.2315767775835748",
-              "customerProfile": {
-                "name": "Teresa"
-              },
-              "to": "+584142711347",
-              "sendTime": "2026-08-29T23:19:10.000Z",
-              "type": "text",
-              "text": {
-                "body": "drsde"
-              }
-            }
-          },
-          "webhookUrl": "https://n8n.integraia.lat/webhook/ycloud",
-          "executionMode": "production"
+          "text": "hola",
+          "session_id": "+584143898602",
+          "account_id": "+584143898602",
+          "message_type": "incoming",
+          "user_name": "Teresa",
+          "user_number": "+584143898602",
+          "platform": "whatsapp",
+          "channel": "Channel::Whatsapp",
+          "content": "hola",
+          "file_type": "text",
+          "phone_number": "+584143898602",
+          "image_url": ""
         }
       }
     ]
@@ -1648,28 +1624,28 @@
       "main": [
         [
           {
-            "node": "Call 'chatbot-simple_1_subflow'",
+            "node": "Call 'yclod-simple_1_subflow'",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Call 'chatbot-simple_1_subflow'",
+            "node": "Call 'yclod-simple_1_subflow'",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Call 'chatbot-simple_1_subflow'",
+            "node": "Call 'yclod-simple_1_subflow'",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Call 'chatbot-simple_1_subflow'",
+            "node": "Call 'yclod-simple_1_subflow'",
             "type": "main",
             "index": 0
           }
@@ -1843,17 +1819,6 @@
         ]
       ]
     },
-    "Call 'chatbot-simple_1_subflow'": {
-      "main": [
-        [
-          {
-            "node": "Consulta_o_agendar_cita",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Separar_variables_en_json": {
       "main": [
         [
@@ -1953,7 +1918,7 @@
       "main": [
         [
           {
-            "node": "Obtener_Info_basica",
+            "node": "Obtener_Contacto_YCloud",
             "type": "main",
             "index": 0
           }
@@ -2010,6 +1975,17 @@
           }
         ]
       ]
+    },
+    "Call 'yclod-simple_1_subflow'": {
+      "main": [
+        [
+          {
+            "node": "Consulta_o_agendar_cita",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -2017,7 +1993,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "7bf38563-ca38-4430-a270-8c44729fc056",
+  "versionId": "59e7d3ce-2331-4815-a9fb-231116883a08",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
