@@ -22,7 +22,7 @@ SCRIPT_DIR="$(pwd)"
 ENV_FILE="$SCRIPT_DIR/.env"
 COMPOSE_CHATWOOT="$SCRIPT_DIR/docker-compose.chatwoot.yml"
 COMPOSE_N8N="$SCRIPT_DIR/docker-compose.n8n.yml"
-N8N_JSON_FILE="$SCRIPT_DIR/n8n/chatbot_create_lead_0_con_menu_whatsapp.json"
+N8N_JSON_FILE="$SCRIPT_DIR/../n8n_json/chatbot_create_lead_0_con_menu_whatsapp.json"
 
 echo "============================================================"
 echo "  CONFIGURADOR DE CLIENTE NUEVO  (Odoo 19 + n8n + Chatwoot)"

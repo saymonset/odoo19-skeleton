@@ -67,20 +67,28 @@ Buscar y reemplazar el dominio viejo por el del cliente:
 - (Opcional) `CHATBOT_API_TOKEN` si cambias el token de Odoo.
 
 ### Paso 4 — Editar los workflows de n8n (¡el más olvidado!)
-Abrir `n8n/chatbot_create_lead_0_con_menu_whatsapp.json` y `n8n/chatbot-simple_1_subflow.json`.
+
+> 📁 Los workflows JSON por cliente viven en la carpeta **`odoo19-skeleton/n8n_json/`**
+> (arriba del stack), con un archivo por cliente (ej. `chatbot_create_lead_0_con_menu_whatsapp.json`
+> para integraia, `ycloud_create_lead_0_con_menu_whatsapp.json` para ycloud).
+> Es la **única fuente de verdad** (git-versionada); **no** está en el repo de módulos ni en la
+> carpeta `n8n/` del stack (que ya no se usa).
+
+Abrir `../n8n_json/chatbot_create_lead_0_con_menu_whatsapp.json` y `../n8n_json/chatbot-simple_1_subflow.json`.
 
 Hay **2 formas**:
 
 **a) Directo en el archivo JSON** (igual que el script):
 ```bash
+cd ../n8n_json
 # Reemplazar dominio de Chatwoot
-sed -i 's|chatwoot.integraia.lat|chatwoot.MIDOMINIO|g' n8n/chatbot_create_lead_0_con_menu_whatsapp.json
+sed -i 's|chatwoot.integraia.lat|chatwoot.MIDOMINIO|g' chatbot_create_lead_0_con_menu_whatsapp.json
 
 # Reemplazar token de Chatwoot
-sed -i 's|yvJxkWhiTMioFgKTZTq3ZE3h|MITOKEN_NUEVO|g' n8n/chatbot_create_lead_0_con_menu_whatsapp.json
+sed -i 's|yvJxkWhiTMioFgKTZTq3ZE3h|MITOKEN_NUEVO|g' chatbot_create_lead_0_con_menu_whatsapp.json
 
 # Reemplazar lo que apunta al dominio de Odoo (backend del bot)
-sed -i 's|https://integraia.lat/ai_chatbot|https://MIDOMINIO/ai_chatbot|g' n8n/chatbot_create_lead_0_con_menu_whatsapp.json
+sed -i 's|https://integraia.lat/ai_chatbot|https://MIDOMINIO/ai_chatbot|g' chatbot_create_lead_0_con_menu_whatsapp.json
 ```
 
 **b) Desde la UI de n8n** (si ya desplegaste):
