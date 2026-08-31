@@ -1413,7 +1413,7 @@
         "url": "https://lead.integraia.lat/ai_chatbot_1_portal/configuracion_agente",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"text\": \"{{ $json.text }}\",\n  \"image_url\": \"{{ $json.image_url || '' }}\",\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\": \"{{ $json.conversation_id }}\",\n  \"account_id\": \"{{ $json.account_id }}\",\n  \"platform\": \"{{ $json.platform }}\",\n  \"token\": \"{{ $env.CHATBOT_API_TOKEN || '' }}\"\n}",
+        "jsonBody": "={\n  \"text\": {{ JSON.stringify($json.text) }},\n  \"image_url\": {{ JSON.stringify($json.image_url || '') }},\n  \"session_id\": {{ JSON.stringify($json.session_id) }},\n  \"conversation_id\": {{ JSON.stringify($json.conversation_id) }},\n  \"account_id\": {{ JSON.stringify($json.account_id) }},\n  \"platform\": {{ JSON.stringify($json.platform) }},\n  \"token\": {{ JSON.stringify($env.CHATBOT_API_TOKEN || '') }}\n}",
         "options": {
           "timeout": 30000
         }
