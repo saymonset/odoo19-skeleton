@@ -10,11 +10,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        14704,
-        1616
+        19024,
+        2048
       ],
       "typeVersion": 1,
-      "id": "3b5a771d-00b5-4780-9299-15cf0d07b8f9",
+      "id": "3206a353-2917-4aea-9a37-b6fc6c530e89",
       "name": "Sticky Note"
     },
     {
@@ -26,11 +26,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        15568,
-        1600
+        19888,
+        2032
       ],
       "typeVersion": 1,
-      "id": "0a031292-1bc5-47fd-a785-6e498b3edc75",
+      "id": "3a2ebef2-8e01-4415-981e-b8dac751833b",
       "name": "Sticky Note1"
     },
     {
@@ -41,10 +41,10 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        15536,
-        2576
+        19856,
+        3008
       ],
-      "id": "83a85935-1614-40c6-9198-75098c807b19",
+      "id": "f2c8e60a-1f28-4649-b9f7-fec90933aaf4",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
@@ -62,10 +62,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        14976,
-        2016
+        19296,
+        2448
       ],
-      "id": "91f6fdd3-2a35-4924-8db1-b7af53cea6dc",
+      "id": "c6384144-ea38-4965-a03e-19ec8875f050",
       "name": "Default Data Loader"
     },
     {
@@ -76,10 +76,10 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        15216,
-        2128
+        19536,
+        2560
       ],
-      "id": "1f424a0a-8b5b-43f9-9716-c1ed885c30ea",
+      "id": "7ff9984e-b0cf-49d8-b3e8-52105f52d4b6",
       "name": "Recursive Character Text Splitter"
     },
     {
@@ -89,10 +89,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        15648,
-        1712
+        19968,
+        2144
       ],
-      "id": "eb9f4146-96ae-43e3-926b-f700b5636026",
+      "id": "e48bd97c-3c8e-4888-838e-a13fdb94f481",
       "name": "When chat message received",
       "webhookId": "f459f95b-42a6-4853-ae55-b0ed014e8a76"
     },
@@ -105,10 +105,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        15920,
-        1712
+        20240,
+        2144
       ],
-      "id": "889dc2fd-8939-4861-a195-40efd6ecd8d6",
+      "id": "be8187dd-1491-4c7d-9312-b7e900711ae3",
       "name": "AI Agent"
     },
     {
@@ -123,10 +123,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        15616,
-        1920
+        19936,
+        2352
       ],
-      "id": "f192e5bd-b974-4ab9-a08e-b92ce612142d",
+      "id": "6a2be01c-c17c-4efd-b7d9-f693f123779c",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -142,10 +142,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        15824,
-        1936
+        20144,
+        2368
       ],
-      "id": "04fec6fc-344f-423f-9cac-cdd565fd7a0c",
+      "id": "4b9ec658-c031-460d-9f09-3af71037b97a",
       "name": "Simple Memory"
     },
     {
@@ -155,10 +155,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        16144,
-        1840
+        20464,
+        2272
       ],
-      "id": "f7cb4052-0600-4051-add5-65d38e567a36",
+      "id": "6f357857-3b53-4a2d-9449-5f55cad33e24",
       "name": "Answer questions with a vector store"
     },
     {
@@ -168,10 +168,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        15952,
-        2096
+        20272,
+        2528
       ],
-      "id": "e3d90519-31b1-43ee-a560-41430575371d",
+      "id": "3a09475b-81ce-495d-aecb-f8699f585c1b",
       "name": "Postgres PGVector Store1",
       "credentials": {
         "postgres": {
@@ -192,10 +192,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        16336,
-        2000
+        20656,
+        2432
       ],
-      "id": "ac3a9185-5500-4002-8cdc-11b69a586533",
+      "id": "5a84482c-8d34-4ade-b599-26993fc1274c",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
@@ -217,10 +217,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        14464,
-        1856
+        18784,
+        2288
       ],
-      "id": "ed5f64cc-9745-4d12-a69a-2d75d54a4379",
+      "id": "a3c3b18b-d71b-4f43-a844-05bc48f1ea4d",
       "name": "Descargar archivo",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -234,10 +234,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        11872,
-        1600
+        16192,
+        2032
       ],
-      "id": "b9e1fbb9-fe6f-4fe3-9e85-d4c83e02a314",
+      "id": "47a00d3f-7453-4da8-9eb9-e4cd03e98b7d",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -249,10 +249,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        12016,
-        1840
+        16336,
+        2272
       ],
-      "id": "1d4e4a93-4f0d-410c-a5ca-98ef3baf4e59",
+      "id": "9bcfa895-19d6-4713-8a11-27066dc8de74",
       "name": "Asegurar extension pgvector",
       "credentials": {
         "postgres": {
@@ -271,10 +271,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        12256,
-        1840
+        16576,
+        2272
       ],
-      "id": "e528b61d-5109-40b6-ab2b-90759e66939c",
+      "id": "6ae5e222-3b97-4564-863f-65040376f9ee",
       "name": "Inicializar tablas RAG",
       "credentials": {
         "postgres": {
@@ -292,18 +292,17 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        12496,
-        1840
+        16816,
+        2272
       ],
-      "id": "3312c8a8-7e98-4511-b5be-5599b34332bb",
+      "id": "eada0035-dab1-4a1a-8ba8-01c2a1609533",
       "name": "Limpiar base de conocimiento",
       "credentials": {
         "postgres": {
           "id": "KTEgdnqa0zFjxO2W",
           "name": "Postgres account 2"
         }
-      },
-      "disabled": false
+      }
     },
     {
       "parameters": {
@@ -315,27 +314,29 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        11648,
-        2224
+        15968,
+        2656
       ],
-      "id": "3395d4e6-00c7-4002-84bf-b8f42ebc49cc",
+      "id": "61e95422-b424-403a-865f-54c282dae9a1",
       "name": "Sticky Note Inicialización"
     },
     {
       "parameters": {
         "rule": {
           "interval": [
-            {}
+            {
+              "field": "months"
+            }
           ]
         }
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        11776,
-        2016
+        16096,
+        2448
       ],
-      "id": "492a6caa-f28c-4809-ab6c-dd838bb90cf1",
+      "id": "68ca448c-c44b-4e58-ae39-3f1bd8090795",
       "name": "Schedule Trigger"
     },
     {
@@ -361,10 +362,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        12768,
-        1840
+        17088,
+        2272
       ],
-      "id": "12a08f9a-a9a6-4dbf-b6f3-216f088b1ce4",
+      "id": "6dda5700-1314-4853-bea9-26ef3d61568d",
       "name": "Buscar_archivos_directorios",
       "alwaysOutputData": true,
       "credentials": {
@@ -401,10 +402,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        13040,
-        1840
+        17360,
+        2272
       ],
-      "id": "bdd15aad-baf3-4bd1-9f21-42126208787a",
+      "id": "fc2e451e-cc2c-4f79-9234-78292346886f",
       "name": "Es un archivo?"
     },
     {
@@ -427,10 +428,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        13280,
-        2256
+        17600,
+        2688
       ],
-      "id": "875b5297-e9a2-4eb1-a150-6d636978e009",
+      "id": "1438dc8f-ac86-4c1a-817c-488bbe87a066",
       "name": "Search files and folders",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -466,10 +467,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        13536,
-        1824
+        17856,
+        2256
       ],
-      "id": "a7257b9c-aa1d-4702-b780-e3ee019e9347",
+      "id": "a5575d88-9c9d-40a1-a26e-f850dd8fd36e",
       "name": "Fue previamente cargado?"
     },
     {
@@ -477,10 +478,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        13760,
-        1600
+        18080,
+        2032
       ],
-      "id": "aa3da811-bfc8-495d-a49d-faaeebb401c9",
+      "id": "f51af1ad-98e6-4788-89e3-8f9113fa1270",
       "name": "No Operation, do nothing"
     },
     {
@@ -571,10 +572,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        14240,
-        1856
+        18560,
+        2288
       ],
-      "id": "e08732e8-72e3-4171-b36c-c0d4433a94bc",
+      "id": "25a6383a-070a-478e-a5f9-157682d528d8",
       "name": "Insertar documento",
       "alwaysOutputData": true,
       "credentials": {
@@ -590,10 +591,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        15264,
-        1680
+        19584,
+        2112
       ],
-      "id": "5d23c8dd-7d78-4098-8cf6-a0dc693f1b4f",
+      "id": "b0d9fb41-1c81-4e79-88a0-bfff033c39bd",
       "name": "Termina proceso"
     },
     {
@@ -604,11 +605,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        12384,
-        1504
+        16704,
+        1936
       ],
       "typeVersion": 1,
-      "id": "9a6dee2b-bd34-41b1-89f3-d76118f3ed2b",
+      "id": "7d211e41-c087-4773-95e8-ad45e17555bb",
       "name": "Sticky Note2"
     },
     {
@@ -620,10 +621,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        13344,
-        1824
+        17664,
+        2256
       ],
-      "id": "3aec71d0-c488-4af6-a05b-8454133e16ab",
+      "id": "232b4fa8-eccb-46a6-9e6e-53a434e2ba0d",
       "name": "Obtener carga previa (Ejecutamos query manualmente)",
       "credentials": {
         "postgres": {
@@ -641,10 +642,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        13904,
-        2032
+        18224,
+        2464
       ],
-      "id": "a51f83c5-1d3c-44dd-817e-8775870224b2",
+      "id": "706a6d20-076b-4cfe-884a-16a8ad9eecaf",
       "name": "Borrar referencias(Ejecutar un query manualmente tipo delete)",
       "alwaysOutputData": true,
       "credentials": {
@@ -661,10 +662,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        14048,
-        1840
+        18368,
+        2272
       ],
-      "id": "e981cdf0-5598-41ea-9f5d-e49286f5c431",
+      "id": "02ad01ef-dabf-41d0-8804-a821b16841f0",
       "name": "Esperar eliminacion (Merge))"
     },
     {
@@ -675,10 +676,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        14800,
-        1856
+        19120,
+        2288
       ],
-      "id": "74320511-db2e-4dcb-86ea-aeda6ac0d3ab",
+      "id": "8f20c1ef-a27d-4105-b0fc-87083fa1f6e6",
       "name": "Postgres PGVector Store(BD Principal)",
       "credentials": {
         "postgres": {
@@ -696,10 +697,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        15040,
-        1680
+        19360,
+        2112
       ],
-      "id": "56d068b9-dd2d-4e8b-8d4a-62352ea87c54",
+      "id": "bc30b78a-2837-43d0-b044-9d1ddc87afe9",
       "name": "Actualizar file_id en vectores(es el campo de referencia para saber si es modificaop o no con la ta)",
       "credentials": {
         "postgres": {
@@ -749,10 +750,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        13728,
-        1840
+        18048,
+        2272
       ],
-      "id": "b937aec8-e4d2-4a5a-bace-72ba23fd5c0e",
+      "id": "88fb03ef-e500-47cd-aefb-42dcf497d4c1",
       "name": "Extraer_variables"
     }
   ],
@@ -1074,7 +1075,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "8363ba06-2c99-445f-9f67-e4a98b756004",
+  "versionId": "345725cb-eb8d-42b9-be62-2fdba511c670",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

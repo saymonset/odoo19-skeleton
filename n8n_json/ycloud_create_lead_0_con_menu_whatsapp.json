@@ -9,11 +9,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        39632,
-        15200
+        45952,
+        17200
       ],
       "typeVersion": 1,
-      "id": "63f76104-f451-4986-a3d6-3a457f5b18c3",
+      "id": "7ac15576-ff5b-4d47-9692-444d54ca1bf7",
       "name": "Sticky Note2"
     },
     {
@@ -21,10 +21,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        39184,
-        15824
+        45504,
+        17824
       ],
-      "id": "e8a1595e-5205-42f7-aa78-e9d223ed1e96",
+      "id": "cf5e58f4-341e-4522-be1b-02a9cb7332a6",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -35,10 +35,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        38880,
-        16704
+        45200,
+        18704
       ],
-      "id": "31f69590-9d76-43f6-bfb4-6f3f4cdaa96d",
+      "id": "fa2bb937-5177-4c3c-9a11-c157a8950d50",
       "name": "When chat message received",
       "webhookId": "a24efc8d-00a6-4acd-9c87-2b4c8a8fedd5"
     },
@@ -143,10 +143,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        39280,
-        16640
+        45600,
+        18640
       ],
-      "id": "7f998cfa-092f-4498-9717-032f1df9093a",
+      "id": "448edac1-c63f-46bd-aa7a-dc6ac6c3d993",
       "name": "Seteamos_variables"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        40208,
-        16624
+        46528,
+        18624
       ],
-      "id": "c5e48334-ff49-48a3-8b91-65408271ca30",
+      "id": "bc622f32-b641-4328-b53b-6c0ad32848ee",
       "name": "Indentifica_canal"
     },
     {
@@ -287,10 +287,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        39536,
-        16992
+        45856,
+        18992
       ],
-      "id": "e68e012b-4673-41ec-bcde-5b955d16e673",
+      "id": "cbab2797-5430-4fae-91f9-17ded829b9f6",
       "name": "Dueno_o_Bot_responde"
     },
     {
@@ -350,10 +350,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        39824,
-        16640
+        46144,
+        18640
       ],
-      "id": "74733115-e66e-432c-b3d1-b380f513009d",
+      "id": "887e99b6-059a-45f9-97a1-185d6521cc36",
       "name": "Configurar_IA_Responda?"
     },
     {
@@ -413,10 +413,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        39584,
-        16656
+        45904,
+        18656
       ],
-      "id": "9d015c49-6d56-4b81-a585-1b22593c60dc",
+      "id": "fc090c4f-677f-4ca4-8967-a4b8a41269fa",
       "name": "Pregunta_el_Cliente?"
     },
     {
@@ -424,10 +424,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        40256,
-        16416
+        46576,
+        18416
       ],
-      "id": "9fb6f132-22ab-4017-a72a-213ee991791d",
+      "id": "fcea0ced-02c3-43bc-ac26-8f8cba761481",
       "name": "End1"
     },
     {
@@ -439,10 +439,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        42368,
-        16352
+        48688,
+        18352
       ],
-      "id": "ad8bcf24-c1a0-4a96-b16d-fcdb7f0e3c2a",
+      "id": "251bd648-ba7f-49ae-8fbb-639d2ce10b5c",
       "name": "Simple Memory"
     },
     {
@@ -454,10 +454,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        38416,
-        15824
+        44736,
+        17824
       ],
-      "id": "c7129423-7a39-4c75-a6e7-f8080c3cfeb9",
+      "id": "237293aa-56c1-469a-acb0-aca21a446e08",
       "name": "Entrar_ChattWoot",
       "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2"
     },
@@ -562,10 +562,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        38944,
-        16032
+        45264,
+        18032
       ],
-      "id": "a7d6c13a-3dde-4f01-b34c-87575895f894",
+      "id": "bc234eb0-bf2a-4b9f-bd81-9c84d69ff4bf",
       "name": "Obtener_Info_basica"
     },
     {
@@ -585,10 +585,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        39280,
-        16176
+        45600,
+        18176
       ],
-      "id": "648cb305-bb2b-492a-a9fc-c8cf7bb22312",
+      "id": "e9154032-c91d-4885-9fb8-011561b60592",
       "name": "Obtener_Contacto_YCloud"
     },
     {
@@ -598,10 +598,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        39232,
-        16464
+        45552,
+        18464
       ],
-      "id": "cc691de0-c0e7-416a-a564-7e4aedd00d05",
+      "id": "61795e61-429f-48de-99b1-9e3d71b810ac",
       "name": "Ajustar_agente_desactivado"
     },
     {
@@ -687,10 +687,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        41552,
-        16896
+        47872,
+        18896
       ],
-      "id": "e25054d5-ca6d-4bf7-9524-8f97a653c7f3",
+      "id": "ab0553dc-8062-4db4-b5f2-58637061ba23",
       "name": "Consulta_o_agendar_cita"
     },
     {
@@ -708,10 +708,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        42256,
-        16352
+        48576,
+        18352
       ],
-      "id": "57ba8bfa-9906-43c0-aad2-4436fc386ab3",
+      "id": "d0d6f98d-bc98-4232-bdc5-b1804a9e1ca4",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -731,27 +731,25 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        42272,
-        16096
+        48592,
+        18096
       ],
-      "id": "a781f7e4-6ecb-4003-942a-9fce1c8af6b3",
+      "id": "125a870d-9cb1-4817-9112-4d37212fa30c",
       "name": "Agente_Informacion_basica"
     },
     {
       "parameters": {
         "mode": "retrieve-as-tool",
         "toolDescription": "Base de conocimiento del negocio: precios, planes, servicios, requisitos, horarios y políticas. Úsala SIEMPRE antes de responder cualquier pregunta informativa del cliente (precios, servicios, planes, requisitos, promociones, horarios). Si no encuentras la información, dilo con naturalidad y ofrece agendar asesoría/demo o hablar con el dueño.",
-        "tableName": "n8n_vectors",
-        "topK": 4,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        40272,
-        16096
+        46592,
+        18096
       ],
-      "id": "95f00102-444a-4666-a45d-ed31beca2ccb",
+      "id": "6e6235fa-c09d-4979-a720-a27598c36ed8",
       "name": "Base_Conocimiento_RAG",
       "credentials": {
         "postgres": {
@@ -768,10 +766,10 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        39272,
-        17056
+        45600,
+        19056
       ],
-      "id": "2768e08d-4bdb-46a5-8389-0ff7c92dc31d",
+      "id": "e8b469f6-29fb-4a04-a174-0944dda19353",
       "name": "Embeddings Base Conocimiento",
       "credentials": {
         "openAiApi": {
@@ -787,10 +785,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43344,
-        16048
+        49664,
+        18048
       ],
-      "id": "9d20c11b-80a5-41fa-b2a7-2ba39eed3675",
+      "id": "69a7ad3d-fe7b-4b15-8d43-413ee5624235",
       "name": "Unificar_salida"
     },
     {
@@ -821,10 +819,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        43040,
-        15936
+        49360,
+        17936
       ],
-      "id": "186cbc9f-b7e1-4b23-8586-514a4b0654ed",
+      "id": "a8846450-5ad9-4239-8b40-05dcb5cc2b5d",
       "name": "Cita_con_Equipo_asignado"
     },
     {
@@ -835,11 +833,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        42096,
-        15952
+        48416,
+        17952
       ],
       "typeVersion": 1,
-      "id": "7b55ae97-6274-4831-9933-ae0f2dc9e4b2",
+      "id": "a5769987-7238-4d11-814c-e876f444e1d0",
       "name": "Sticky Note"
     },
     {
@@ -848,11 +846,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41504,
-        16768
+        47824,
+        18768
       ],
       "typeVersion": 1,
-      "id": "adfc65a6-454f-445d-8e4f-cc8a18a5e45c",
+      "id": "424ab096-acf6-4fb8-bd4b-5033b31007e9",
       "name": "Sticky Note3"
     },
     {
@@ -867,10 +865,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        43408,
-        15328
+        49728,
+        17328
       ],
-      "id": "1b25ed76-cc8d-4774-a155-e74055bfa01d",
+      "id": "50958216-6cba-46bb-afe7-4b97a20ae3fc",
       "name": "paso_0_inicio_agendar",
       "alwaysOutputData": true
     },
@@ -881,10 +879,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        42608,
-        16096
+        48928,
+        18096
       ],
-      "id": "b7ab4eb0-f34b-4595-8efe-448151b65458",
+      "id": "bcfe7ddc-2066-4b19-885d-9b7b115a545f",
       "name": "Separar_variables_en_json"
     },
     {
@@ -940,10 +938,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        43664,
-        15312
+        49984,
+        17312
       ],
-      "id": "7b6390dd-7588-4f84-8481-5386e694f84e",
+      "id": "0c0a07be-6c07-403d-8e3c-f7747e66f6a4",
       "name": "Agendar_cita"
     },
     {
@@ -971,10 +969,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        43872,
-        16288
+        50192,
+        18288
       ],
-      "id": "2fa64dd1-68df-46d0-8f59-ade377ac887f",
+      "id": "811ccaab-9018-43ff-992d-e419089e6f44",
       "name": "Enviar_mensaje_de_IA1"
     },
     {
@@ -1002,10 +1000,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        43968,
-        15360
+        50288,
+        17360
       ],
-      "id": "de36b83d-823a-4fc3-bbaf-36db8275324b",
+      "id": "76a146aa-a838-41c0-8ffe-0a1a1b2063c8",
       "name": "Enviar_mensaje_de_IA2"
     },
     {
@@ -1049,10 +1047,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        42000,
-        16992
+        48320,
+        18992
       ],
-      "id": "72536f8a-4bef-434b-b809-924b37fb907a",
+      "id": "8bb1f3a5-f74a-49c4-ac53-e2fe95cf87b0",
       "name": "tomar_parametros"
     },
     {
@@ -1080,10 +1078,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        42304,
-        16864
+        48624,
+        18864
       ],
-      "id": "850835b7-784e-4b94-a70c-32a39d289149",
+      "id": "a05a282e-b21c-4676-a86f-5839f4e0a2c6",
       "name": "Enviar_mensaje_de_IA3"
     },
     {
@@ -1113,10 +1111,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        42784,
-        16112
+        49104,
+        18112
       ],
-      "id": "9060ec3f-7c5c-480c-ba53-5a15942d5c58",
+      "id": "914ce40f-50b3-498b-ac05-60ae5529f519",
       "name": "¿Enviar menú interactivo?"
     },
     {
@@ -1126,43 +1124,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43104,
-        16256
+        49424,
+        18256
       ],
-      "id": "2ad3ed9a-d02b-4c17-ae21-58976ae71f65",
+      "id": "ad456446-8690-4f17-92cc-fafb20fdb617",
       "name": "Formatear número de teléfono"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.phone_number_formatted }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"list\",\n    \"header\": {\n      \"type\": \"text\",\n      \"text\": \"🚀 IntegraIA - Automatización con Odoo CE 19\"\n    },\n    \"body\": {\n      \"text\": \"Hola! 😊 Bienvenido/a a IntegraIA (https://integraia.lat). ¿Qué necesitas hoy?\"\n    },\n    \"footer\": {\n      \"text\": \"https://integraia.lat\"\n    },\n    \"action\": {\n      \"button\": \"📋 Ver opciones\",\n      \"sections\": [\n        {\n          \"title\": \"Nuestros Servicios\",\n          \"rows\": [\n            { \"id\": \"precios\", \"title\": \"💰 Tienda Virtual\", \"description\": \"Tienda online profesional con Odoo CE 19 → https://integraia.lat\" },\n            { \"id\": \"servicios\", \"title\": \"🤖 Agentes de IA\", \"description\": \"Chatbots WhatsApp, FB, Instagram 24/7\" },\n            { \"id\": \"agendar_cita\", \"title\": \"📅 Agendar Demo\", \"description\": \"Demo interactiva o asesoría Odoo\" }\n          ]\n        },\n        {\n          \"title\": \"Infraestructura\",\n          \"rows\": [\n            { \"id\": \"tarjeta_salud\", \"title\": \"🖥️ Hosting Dedicado\", \"description\": \"Servidor, SSL, dominio y mantenimiento → https://integraia.lat\" },\n            { \"id\": \"otra_consulta\", \"title\": \"🔧 Desarrollo\", \"description\": \"Módulos, migraciones, APIs\" }\n          ]\n        },\n        {\n          \"title\": \"Información\",\n          \"rows\": [\n            { \"id\": \"horario\", \"title\": \"🕒 Soporte\", \"description\": \"Horarios y contacto\" },\n            { \"id\": \"promociones\", \"title\": \"🎉 Promociones\", \"description\": \"Ofertas y descuentos vigentes\" },\n            { \"id\": \"resultados\", \"title\": \"🧪 Resultados\", \"description\": \"Consultar resultados de estudios\" }\n          ]\n        }\n      ]\n    }\n  }\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        43424,
-        16816
-      ],
-      "id": "449f7cab-6459-44cd-a1ed-40101d1e04d2",
-      "name": "Enviar menú interactivo a WhatsApp",
-      "disabled": true
     },
     {
       "parameters": {
@@ -1189,22 +1155,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        43888,
-        15744
+        50208,
+        17744
       ],
-      "id": "57ed1976-c9b7-4ad7-85b3-0a0a42e49d2a",
+      "id": "9a1c61d9-f7ff-4f8f-a9ef-914a772f40f5",
       "name": "Enviar texto despues del menu"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        43808,
-        16832
-      ],
-      "id": "a78a4675-3bef-4efa-bfed-4ce7510b344c",
-      "name": "Fin menú WhatsApp"
     },
     {
       "parameters": {
@@ -1233,10 +1188,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        43552,
-        16064
+        49872,
+        18064
       ],
-      "id": "39b42f40-ee46-4f47-a3c0-b375fbb8f790",
+      "id": "180897f3-c65a-4d5d-9f74-98da2e1b5284",
       "name": "¿Enviar menú interactivo?1"
     },
     {
@@ -1246,119 +1201,87 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43680,
-        15872
+        50000,
+        17872
       ],
-      "id": "f359b53e-0a99-460a-9f79-4222e0014d41",
+      "id": "d7e69520-914e-4362-bc3f-e0dc75e25135",
       "name": "Construir_botones_WhatsApp"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://graph.facebook.com/v20.0/902885109570961/messages",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer EAAUQgN2MLxIBRTyZCJuo2KoseoO1lpeTkSP1jqnsFLLcFEBZBZBbHut1XVZBCI3VknTF0txxDfI7b0sM2qMutBL2KdI4rCUFMzufCufruousYfeR9WQwAT3nFCs6KPV7W3w7v1YGzpyyZAV1AME3BHl7ryl7anc7hoODi1BOdpglIFrDYTD1vj9souhp6cwZDZD"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $json.whatsappPayload }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        44272,
-        16176
-      ],
-      "id": "8cbc10eb-2100-4a90-a82e-0dccd6c4db2c",
-      "name": "Enviar menú interactivo a WhatsApp1",
-      "disabled": true
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        44368,
-        15888
+        50688,
+        17888
       ],
-      "id": "57936148-e928-4996-8d73-52cc9ab39368",
+      "id": "467a9777-d4e5-49fb-8844-7a6b8ac87a34",
       "name": "Fin menú WhatsApp1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41520,
-        16496
+        47840,
+        18496
       ],
       "typeVersion": 1,
-      "id": "93373a43-1bf6-4069-b70b-e52aab93e979",
+      "id": "4f1a09aa-6373-4b60-9186-81712d8a11d1",
       "name": "Sticky Note1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41520,
-        16496
+        47840,
+        18496
       ],
       "typeVersion": 1,
-      "id": "0c3713ee-9a8b-41ec-927b-d866393caa6e",
+      "id": "c2009f3b-0b20-47e7-b72c-35083b38b319",
       "name": "Sticky Note4"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41520,
-        16496
+        47840,
+        18496
       ],
       "typeVersion": 1,
-      "id": "a2979221-2c5e-49f6-8d8c-fcb497118bb7",
+      "id": "9d6ef65e-660b-4d15-8d37-52168dd97561",
       "name": "Sticky Note5"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41600,
-        16576
+        47920,
+        18576
       ],
       "typeVersion": 1,
-      "id": "9015081a-7d66-416e-b179-a61b011f46dc",
+      "id": "c774a9c6-9046-45a6-84f8-4ae100e18656",
       "name": "Sticky Note6"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41600,
-        16576
+        47920,
+        18576
       ],
       "typeVersion": 1,
-      "id": "421d833b-42b3-4716-bc6b-4416699dbd44",
+      "id": "a53a43bf-48da-4002-b8af-b375c14d6499",
       "name": "Sticky Note7"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41600,
-        16576
+        47920,
+        18576
       ],
       "typeVersion": 1,
-      "id": "f188e535-3cb2-4436-92f0-c80e8fc784c3",
+      "id": "8fd1a72c-de9c-4d7d-b275-30509a5c6023",
       "name": "Sticky Note8"
     },
     {
@@ -1369,11 +1292,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        40544,
-        16768
+        46864,
+        18768
       ],
       "typeVersion": 1,
-      "id": "a514eada-be35-4556-972d-b71a293d7f73",
+      "id": "b32377c9-d82d-47ea-a13a-9fe7bdb0154a",
       "name": "Sticky Note9"
     },
     {
@@ -1401,10 +1324,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        43520,
-        16400
+        49840,
+        18400
       ],
-      "id": "310b0c88-8cb7-4579-bf89-21dc2b14d63a",
+      "id": "feffe3c6-c068-47b2-9e45-a0edeb5b6e6d",
       "name": "Enviar_mensaje_de_IA"
     },
     {
@@ -1418,13 +1341,13 @@
           "timeout": 30000
         }
       },
-      "id": "c35e1647-843d-4536-818f-c21fe0b61a79",
+      "id": "88e7ac54-1bb2-451e-a5b6-edc1e954d8a3",
       "name": "Obtener_configuracion_agente",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        42000,
-        16800
+        48320,
+        18800
       ]
     },
     {
@@ -1613,10 +1536,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        40736,
-        16912
+        47056,
+        18912
       ],
-      "id": "317e8f00-d88e-47ae-9ca4-0938315962ee",
+      "id": "a3bf4bb5-7b45-4686-82ed-7bfcc601838f",
       "name": "Call 'yclod-simple_1_subflow'"
     }
   ],
@@ -1935,17 +1858,6 @@
         ]
       ]
     },
-    "Enviar menú interactivo a WhatsApp": {
-      "main": [
-        [
-          {
-            "node": "Fin menú WhatsApp",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Enviar texto despues del menu": {
       "main": [
         [
@@ -1991,17 +1903,6 @@
         [
           {
             "node": "Enviar texto despues del menu",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Enviar menú interactivo a WhatsApp1": {
-      "main": [
-        [
-          {
-            "node": "Fin menú WhatsApp1",
             "type": "main",
             "index": 0
           }
@@ -2058,7 +1959,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "59e7d3ce-2331-4815-a9fb-231116883a08",
+  "versionId": "080fb4c9-3135-4dfa-9f33-04952d4ca99a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
