@@ -10,10 +10,10 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        -464,
-        1312
+        -2128,
+        1360
       ],
-      "id": "d171ccae-cd6e-4baa-96a9-75f2b1b64a0e",
+      "id": "98286a7a-f0e6-4840-b83a-fbd9c718aaae",
       "name": "Audio_a_Texto_whatsapp",
       "credentials": {
         "openAiApi": {
@@ -129,10 +129,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1168,
-        1344
+        -496,
+        1392
       ],
-      "id": "1c7574f0-e06b-48f6-97d9-d7341a91855a",
+      "id": "32412ef9-a887-4d24-ac15-064ab0731339",
       "name": "Preparar_Input_AI"
     },
     {
@@ -221,10 +221,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -864,
-        1296
+        -2528,
+        1344
       ],
-      "id": "9dba85ff-5aa0-4895-9e8c-f61607499268",
+      "id": "e3645983-1933-4082-b71b-1c2036245fe1",
       "name": "Texto_o_Audio?"
     },
     {
@@ -274,10 +274,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -464,
-        1472
+        -2128,
+        1520
       ],
-      "id": "e887dcf9-3619-432b-8867-1a3eb6ded9d8",
+      "id": "7d6e2e3a-54b7-4e99-902f-1e39ce99dda9",
       "name": "Procesar_Imagen_whatsapp"
     },
     {
@@ -321,10 +321,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -304,
-        1312
+        -1968,
+        1360
       ],
-      "id": "2d33b26e-1d53-48eb-b7ae-649a4d9e8454",
+      "id": "89097ff3-3bc6-49f9-a3f7-b5ecd9ceb5b3",
       "name": "Extraer_Texto_Audio"
     },
     {
@@ -337,10 +337,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        512,
-        976
+        -1152,
+        1024
       ],
-      "id": "45dd6956-c56d-4572-bba0-091fa62da358",
+      "id": "5eea2f2d-6d61-4a1d-9694-076e7b1a9a77",
       "name": "Get_buffer_data",
       "credentials": {
         "redis": {
@@ -359,10 +359,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        32,
-        976
+        -1632,
+        1024
       ],
-      "id": "31eb7695-49ad-4325-b372-4adcf6793310",
+      "id": "be31c3ac-a6b8-4b01-ba03-32ee83fd268c",
       "name": "Buffer",
       "credentials": {
         "redis": {
@@ -378,10 +378,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        288,
-        976
+        -1376,
+        1024
       ],
-      "id": "498fb809-4421-42cb-a79a-5bacaa02d8eb",
+      "id": "ce330014-e98d-49d1-aecb-90875d2c3df4",
       "name": "Wait",
       "webhookId": "d7bd6fc5-bbb3-451a-bbb4-b01a45635946"
     },
@@ -397,7 +397,7 @@
           "conditions": [
             {
               "id": "06942dbe-1fd7-4bae-b8fb-97cec3b5ed14",
-              "leftValue": "={{ $json.text.last() }}",
+              "leftValue": "={{ $json.text ? $json.text.last() : '' }}",
               "rightValue": "={{ $('Wait').item.json.text }}",
               "operator": {
                 "type": "string",
@@ -412,10 +412,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        736,
-        976
+        -928,
+        1024
       ],
-      "id": "bef4d19b-3d51-4b3d-a160-be34fa9ce403",
+      "id": "f34f6773-9613-4f4a-a8f7-7fd8ac15635c",
       "name": "If"
     },
     {
@@ -423,10 +423,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        864,
-        1104
+        -800,
+        1152
       ],
-      "id": "5b7797f1-b982-4419-99cf-e127a353d9b3",
+      "id": "590d4664-f17b-48ef-8592-bcda993c4299",
       "name": "No Operation, do nothing"
     },
     {
@@ -434,10 +434,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -192,
-        976
+        -1856,
+        1024
       ],
-      "id": "8f63d6c9-98f2-4bcc-8d28-4a1020fcbf40",
+      "id": "520df6ab-b735-4f3e-a59d-f4f5b1f60f3e",
       "name": "Merge"
     },
     {
@@ -448,10 +448,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1072,
-        768
+        -592,
+        816
       ],
-      "id": "1d367297-5f00-4b76-a93c-7405db9d2231",
+      "id": "c4d1a590-47bb-47cb-aa96-00d570b69f07",
       "name": "Borrar_mensajes_buffer",
       "credentials": {
         "redis": {
@@ -519,10 +519,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
-        768
+        -816,
+        816
       ],
-      "id": "ce7623ef-b9fb-438a-b6a0-922397e740fd",
+      "id": "b85eff6a-7fbd-48c9-8bad-3d75713278f9",
       "name": "Agrupar_texto_acumulado_resto_variables_enviar"
     },
     {
@@ -559,10 +559,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1376,
-        1344
+        -288,
+        1392
       ],
-      "id": "a36f489c-5072-4294-886e-0affde65f2db",
+      "id": "c521a950-d890-4143-aa75-9791b6ebd2d7",
       "name": "Consultar_estado_Odoo",
       "alwaysOutputData": true,
       "onError": "continueErrorOutput"
@@ -572,10 +572,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1408,
-        1072
+        -256,
+        1120
       ],
-      "id": "3aacf153-d7b0-475d-b71a-35f3fac2f83c",
+      "id": "62faf91c-b791-4fb2-b2b0-2e4cf49f3f42",
       "name": "Combinar_entrada_session_odoo",
       "disabled": true
     },
@@ -584,10 +584,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        832,
-        1232
+        -832,
+        1280
       ],
-      "id": "34fc168e-4581-48cd-ae46-0594e90764da",
+      "id": "56bf530b-3af6-4f85-8233-17e46e16fbaa",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -667,10 +667,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -752,
-        960
+        -2416,
+        1008
       ],
-      "id": "e06e1643-8059-4aed-b855-d4834454e8bd",
+      "id": "0c0df776-c29b-46d5-9b94-c6dd3889e324",
       "name": "Obtener_Info"
     },
     {
@@ -681,10 +681,10 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1040,
-        1312
+        -2704,
+        1360
       ],
-      "id": "ade23a03-1cf2-4e12-9b1f-e7e36d458717",
+      "id": "0f06394e-a8f7-47bf-b1aa-9ea48c648ec0",
       "name": "answer_chatbot_sdimple_0"
     },
     {
@@ -694,41 +694,30 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1600,
-        1072
+        -64,
+        1120
       ],
-      "id": "79804325-8113-4cec-9aaf-0464adc3d97c",
+      "id": "03b8aa95-7cf5-46f1-b8ae-0d71755129d6",
       "name": "Recuperar_paso",
       "disabled": true
     },
     {
       "parameters": {
         "url": "={{ $json.image_url }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {}
-          ]
-        },
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -640,
-        1312
+        -2304,
+        1360
       ],
-      "id": "a883990a-5506-472e-9b28-acec4607cec8",
+      "id": "222ed5dc-3c45-407c-b7d5-17abbbdb417c",
       "name": "Obtenemos_imagen",
       "alwaysOutputData": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "SxSs5ggMU2LgbDMZ",
-          "name": "Bearer Auth account"
-        }
-      }
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 3000
     }
   ],
   "pinData": {
@@ -962,7 +951,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "36524aa9-4dd4-498b-8ecb-61e5e62d276d",
+  "versionId": "a9556b97-2d29-4b2e-a671-8b509ec131e4",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

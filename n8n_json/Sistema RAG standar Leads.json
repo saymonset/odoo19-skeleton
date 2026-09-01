@@ -249,8 +249,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        16336,
-        2272
+        16000,
+        2864
       ],
       "id": "9bcfa895-19d6-4713-8a11-27066dc8de74",
       "name": "Asegurar extension pgvector",
@@ -271,8 +271,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        16576,
-        2272
+        16256,
+        2880
       ],
       "id": "6ae5e222-3b97-4564-863f-65040376f9ee",
       "name": "Inicializar tablas RAG",
@@ -292,8 +292,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        16816,
-        2272
+        16480,
+        2880
       ],
       "id": "eada0035-dab1-4a1a-8ba8-01c2a1609533",
       "name": "Limpiar base de conocimiento",
@@ -755,6 +755,17 @@
       ],
       "id": "88fb03ef-e500-47cd-aefb-42dcf497d4c1",
       "name": "Extraer_variables"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        16688,
+        2880
+      ],
+      "id": "3b920078-7014-4806-a3bd-bcd6bf07a356",
+      "name": "No Operation, do nothing1"
     }
   ],
   "pinData": {},
@@ -878,7 +889,7 @@
       "main": [
         [
           {
-            "node": "Asegurar extension pgvector",
+            "node": "Buscar_archivos_directorios",
             "type": "main",
             "index": 0
           }
@@ -889,7 +900,7 @@
       "main": [
         [
           {
-            "node": "Asegurar extension pgvector",
+            "node": "Buscar_archivos_directorios",
             "type": "main",
             "index": 0
           }
@@ -1062,7 +1073,7 @@
       "main": [
         [
           {
-            "node": "Buscar_archivos_directorios",
+            "node": "No Operation, do nothing1",
             "type": "main",
             "index": 0
           }
@@ -1075,7 +1086,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "345725cb-eb8d-42b9-be62-2fdba511c670",
+  "versionId": "d8881da0-31ec-4ba4-afea-c42f7e117491",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

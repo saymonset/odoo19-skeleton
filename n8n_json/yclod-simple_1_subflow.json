@@ -1,4 +1,4 @@
-{
+ {
   "name": "yclod-simple_1_subflow",
   "nodes": [
     {
@@ -10,10 +10,10 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        -464,
-        1312
+        528,
+        1360
       ],
-      "id": "26c9487d-e8ee-4496-a630-d08f59535188",
+      "id": "a93da5ce-7e71-467a-87d2-259f8f4eef03",
       "name": "Audio_a_Texto_whatsapp",
       "credentials": {
         "openAiApi": {
@@ -129,10 +129,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1168,
-        1344
+        2160,
+        1392
       ],
-      "id": "0b295f3e-b372-4f97-ad61-69198235348c",
+      "id": "126ecd6d-a09e-4a56-a7f7-e0b2e43727c7",
       "name": "Preparar_Input_AI"
     },
     {
@@ -221,10 +221,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -864,
-        1296
+        128,
+        1344
       ],
-      "id": "2108e863-b374-49ab-8c8c-b9ef56ac6ab7",
+      "id": "ff2f82d1-80db-46f5-8068-e8eda7feb3af",
       "name": "Texto_o_Audio?"
     },
     {
@@ -274,10 +274,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -464,
-        1472
+        528,
+        1520
       ],
-      "id": "48a66b82-7b74-4dbb-b320-a134c4615b61",
+      "id": "919c52d2-b89b-40ff-a015-a84d894a8837",
       "name": "Procesar_Imagen_whatsapp"
     },
     {
@@ -321,10 +321,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -304,
-        1312
+        688,
+        1360
       ],
-      "id": "2808c3d5-5eb1-4bcd-a9eb-4bcd0e3b9ad9",
+      "id": "25b30ec8-46d9-446b-978d-0b06167d1d5a",
       "name": "Extraer_Texto_Audio"
     },
     {
@@ -337,10 +337,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        512,
-        976
+        1504,
+        1024
       ],
-      "id": "58b06589-957f-4e85-af16-33dea0231459",
+      "id": "55c342d3-679b-4e01-bfee-533a480c534e",
       "name": "Get_buffer_data",
       "credentials": {
         "redis": {
@@ -359,10 +359,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        32,
-        976
+        1024,
+        1024
       ],
-      "id": "87d4f2d3-5a00-4af3-bfd8-77ea47dee27a",
+      "id": "4bd96047-402f-448f-9feb-6cf40bb7d9ae",
       "name": "Buffer",
       "credentials": {
         "redis": {
@@ -378,10 +378,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        288,
-        976
+        1280,
+        1024
       ],
-      "id": "c0c84f19-6840-45e3-b124-9c90683937d5",
+      "id": "a305433a-089f-4d0c-b957-1a12e301de85",
       "name": "Wait",
       "webhookId": "27fd3015-d5c6-445d-9b70-1d3337184ab2"
     },
@@ -397,7 +397,7 @@
           "conditions": [
             {
               "id": "06942dbe-1fd7-4bae-b8fb-97cec3b5ed14",
-              "leftValue": "={{ $json.text.last() }}",
+              "leftValue": "={{ $json.text ? $json.text.last() : '' }}",
               "rightValue": "={{ $('Wait').item.json.text }}",
               "operator": {
                 "type": "string",
@@ -412,10 +412,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        736,
-        976
+        1728,
+        1024
       ],
-      "id": "f3062268-c194-43c3-a2f3-3233eef2f15a",
+      "id": "c282c59e-aa07-4e01-8a0d-829fb541e3be",
       "name": "If"
     },
     {
@@ -423,10 +423,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        864,
-        1104
+        1856,
+        1152
       ],
-      "id": "bb060a6d-c4a4-4609-89bf-6854fb8322d2",
+      "id": "54dad38f-8c5b-41d9-af1e-21a1b62e6a28",
       "name": "No Operation, do nothing"
     },
     {
@@ -434,10 +434,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -192,
-        976
+        800,
+        1024
       ],
-      "id": "1e078a3f-da48-4774-a92c-7273c6a4179a",
+      "id": "3683b248-8c2a-41a1-840e-001907352402",
       "name": "Merge"
     },
     {
@@ -448,10 +448,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1072,
-        768
+        2064,
+        816
       ],
-      "id": "43ca83c8-a51e-4668-b5a7-24984d83932a",
+      "id": "a33a784c-4a53-431c-9c52-0f9d50c5e827",
       "name": "Borrar_mensajes_buffer",
       "credentials": {
         "redis": {
@@ -519,10 +519,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
-        768
+        1840,
+        816
       ],
-      "id": "a2b53007-a1a6-4b13-80d2-3befa54ccc88",
+      "id": "9b353567-9564-4691-8757-bc44970727b6",
       "name": "Agrupar_texto_acumulado_resto_variables_enviar"
     },
     {
@@ -559,10 +559,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1376,
-        1344
+        2368,
+        1392
       ],
-      "id": "32516e7d-f2e1-4233-8b4e-052662ba346b",
+      "id": "c6d9ab98-fb6d-4530-91f9-05018da07172",
       "name": "Consultar_estado_Odoo",
       "alwaysOutputData": true,
       "onError": "continueErrorOutput"
@@ -572,10 +572,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1408,
-        1072
+        2400,
+        1120
       ],
-      "id": "09dac16a-6062-4542-9a82-bfb19f66924f",
+      "id": "46972616-526a-403d-ab62-25fe978d433e",
       "name": "Combinar_entrada_session_odoo",
       "disabled": true
     },
@@ -584,10 +584,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        832,
-        1232
+        1824,
+        1280
       ],
-      "id": "8ef7ece4-0b2f-4808-95d3-893cc5acd672",
+      "id": "e84b223d-c808-4fd3-9f0d-c9954967ad5b",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -667,10 +667,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -752,
-        960
+        240,
+        1008
       ],
-      "id": "7e2c103a-6f98-407b-9b73-c8f736a75569",
+      "id": "f93a32a2-ff8a-4b17-bc06-cc818f55fa0d",
       "name": "Obtener_Info"
     },
     {
@@ -681,10 +681,10 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1040,
-        1312
+        -48,
+        1360
       ],
-      "id": "a066ec5a-9cec-4810-a01a-7736e7395f59",
+      "id": "2e0e6abc-089f-4afc-9187-7051fe0ee905",
       "name": "answer_chatbot_sdimple_0"
     },
     {
@@ -694,41 +694,30 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1600,
-        1072
+        2592,
+        1120
       ],
-      "id": "6a0d3a0b-237e-4c77-8438-b66d4516b63f",
+      "id": "931cda47-5bf1-4011-82b9-ae457718248c",
       "name": "Recuperar_paso",
       "disabled": true
     },
     {
       "parameters": {
         "url": "={{ $json.image_url }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {}
-          ]
-        },
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -640,
-        1312
+        352,
+        1360
       ],
-      "id": "f11dec3f-cf1d-4d05-a371-29a501749753",
+      "id": "d07ffb8d-7c34-47d0-95cb-a943d3903cb4",
       "name": "Obtenemos_imagen",
       "alwaysOutputData": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "SxSs5ggMU2LgbDMZ",
-          "name": "Bearer Auth account"
-        }
-      }
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 3000
     }
   ],
   "pinData": {
@@ -962,7 +951,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "eae4df95-59ce-4764-89ab-f115a08f38b2",
+  "versionId": "48cf78b0-b2e2-4f73-ba61-92edb09e9caf",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
