@@ -27,6 +27,7 @@ services:
   web-leads:
     image: "odoo-pers:19"
     container_name: "odoo-19-web-leads"
+    restart: unless-stopped
     user: "1001:1001"
     depends_on:
       db-leads:

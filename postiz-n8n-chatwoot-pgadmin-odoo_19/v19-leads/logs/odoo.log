@@ -26319,3 +26319,505 @@ Traceback (most recent call last):
     raise RuntimeError(
 RuntimeError: Couldn't bind the websocket. Is the connection opened on the evented port (8072)?
 2026-07-12 19:37:15,619 15 INFO dbodoo19 werkzeug: 172.21.0.1 - - [12/Jul/2026 19:37:15] "GET /websocket?version=19.0-2 HTTP/1.1" 500 - 2 0.001 0.005
+2026-09-02 21:32:51,870 14 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:32:51,870 14 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:32:51,870 14 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:32:51,870 14 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:32:51,871 14 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:32:51,871 14 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:32:51,871 14 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:32:51,871 14 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:32:54,794 14 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2026-09-02 21:32:54,935 14 INFO dbodoo19 odoo.modules.loading: Initializing database dbodoo19 
+2026-09-02 21:32:57,079 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:32:57,081 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:33:00,140 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:33:00,144 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:33:00,213 14 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:33:00,215 14 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:33:02,974 14 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:33:02,975 14 INFO dbodoo19 odoo.modules.loading: Loading module base (1/1) 
+2026-09-02 21:33:03,048 14 INFO dbodoo19 odoo.registry: module base: creating or updating database tables 
+2026-09-02 21:33:04,533 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-02 21:33:04,534 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-02 21:33:04,534 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-02 21:33:04,972 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.user_id 
+2026-09-02 21:33:04,973 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-02 21:33:04,973 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-02 21:33:04,973 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.lang 
+2026-09-02 21:33:04,973 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-02 21:33:04,973 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-02 21:33:04,974 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.properties 
+2026-09-02 21:33:04,974 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-02 21:33:05,097 14 INFO dbodoo19 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-02 21:33:05,195 14 INFO dbodoo19 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-02 21:33:05,196 14 INFO dbodoo19 odoo.models: Prepare computation of res.company.logo_web 
+2026-09-02 21:33:05,209 14 INFO dbodoo19 odoo.models: Computing parent_path for table res_company... 
+2026-09-02 21:33:05,356 14 INFO dbodoo19 odoo.models: Prepare computation of res.users.signature 
+2026-09-02 21:33:05,356 14 INFO dbodoo19 odoo.models: Prepare computation of res.users.share 
+2026-09-02 21:33:10,447 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-02 21:33:10,461 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-02 21:33:10,567 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-02 21:33:10,740 14 INFO dbodoo19 odoo.modules.loading: skipping reset_modules_state, ir_module_module table does not exists 
+2026-09-02 21:33:10,741 14 ERROR dbodoo19 odoo.registry: Failed to load registry 
+2026-09-02 21:33:10,741 14 CRITICAL dbodoo19 odoo.service.server: Failed to initialize database `dbodoo19`. 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 608, in _tag_root
+    f(rec)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 463, in _tag_record
+    record = model._load_records([data], self.mode == 'update')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 5173, in _load_records
+    data['record']._load_records_write(data['values'])
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 5094, in _load_records_write
+    self.write(values)
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/res_lang.py", line 366, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 4469, in write
+    field.write(self, value)
+  File "/opt/odoo/odoo-core/odoo/orm/fields_binary.py", line 297, in write
+    super().write(records, new_value)
+  File "/opt/odoo/odoo-core/odoo/orm/fields_binary.py", line 220, in write
+    atts.create([{
+  File "/opt/odoo/odoo-core/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 779, in create
+    values.update(self._get_datas_related_values(raw, values['mimetype']))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 328, in _get_datas_related_values
+    values['store_fname'], _full_path = self._get_path(data, checksum)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 139, in _get_path
+    os.makedirs(dirname, exist_ok=True)
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  [Previous line repeated 2 more times]
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [Errno 13] Permission denied: '/var/lib/odoo/.local'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/odoo/odoo-core/odoo/service/server.py", line 1585, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/registry.py", line 187, in new
+    load_modules(
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 405, in load_modules
+    load_module_graph(
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 217, in load_module_graph
+    load_data(env, idref, 'init', kind='data', package=package)
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 59, in load_data
+    convert_file(env, package.name, filename, idref, mode, noupdate=kind == 'demo')
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 696, in convert_file
+    convert_xml_import(env, module, fp, idref, mode, noupdate)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 795, in convert_xml_import
+    obj.parse(doc.getroot())
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 666, in parse
+    self._tag_root(de)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 608, in _tag_root
+    f(rec)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 621, in _tag_root
+    raise ParseError('while parsing %s:%s, somewhere inside\n%s' % (
+odoo.tools.convert.ParseError: while parsing /opt/odoo/odoo-core/odoo/addons/base/data/res_lang_data.xml:18, somewhere inside
+<record id="base.lang_ar" model="res.lang">
+            <field name="flag_image" type="base64" file="base/static/img/lang_flags/lang_ar.png"/>
+        </record>
+2026-09-02 21:33:10,752 14 INFO dbodoo19 odoo.service.server: Stopping workers gracefully 
+2026-09-02 21:34:22,355 14 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:34:22,355 14 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:34:22,355 14 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:34:22,355 14 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:34:22,356 14 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:34:22,356 14 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:34:22,357 14 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:34:22,357 14 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:34:23,316 14 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2026-09-02 21:34:23,378 14 INFO dbodoo19 odoo.modules.loading: Initializing database dbodoo19 
+2026-09-02 21:34:23,986 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:34:23,990 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:34:26,599 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:34:26,601 14 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:34:26,654 14 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:34:26,656 14 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:34:28,692 14 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:34:28,694 14 INFO dbodoo19 odoo.modules.loading: Loading module base (1/1) 
+2026-09-02 21:34:28,764 14 INFO dbodoo19 odoo.registry: module base: creating or updating database tables 
+2026-09-02 21:34:29,961 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-02 21:34:29,962 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-02 21:34:29,962 14 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-02 21:34:30,424 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.user_id 
+2026-09-02 21:34:30,424 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-02 21:34:30,424 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-02 21:34:30,424 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.lang 
+2026-09-02 21:34:30,425 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-02 21:34:30,425 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-02 21:34:30,425 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.properties 
+2026-09-02 21:34:30,425 14 INFO dbodoo19 odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-02 21:34:30,539 14 INFO dbodoo19 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-02 21:34:30,620 14 INFO dbodoo19 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-02 21:34:30,620 14 INFO dbodoo19 odoo.models: Prepare computation of res.company.logo_web 
+2026-09-02 21:34:30,628 14 INFO dbodoo19 odoo.models: Computing parent_path for table res_company... 
+2026-09-02 21:34:30,724 14 INFO dbodoo19 odoo.models: Prepare computation of res.users.signature 
+2026-09-02 21:34:30,725 14 INFO dbodoo19 odoo.models: Prepare computation of res.users.share 
+2026-09-02 21:34:35,131 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-02 21:34:35,144 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-02 21:34:35,241 14 INFO dbodoo19 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-02 21:34:35,387 14 INFO dbodoo19 odoo.modules.loading: skipping reset_modules_state, ir_module_module table does not exists 
+2026-09-02 21:34:35,388 14 ERROR dbodoo19 odoo.registry: Failed to load registry 
+2026-09-02 21:34:35,388 14 CRITICAL dbodoo19 odoo.service.server: Failed to initialize database `dbodoo19`. 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 608, in _tag_root
+    f(rec)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 463, in _tag_record
+    record = model._load_records([data], self.mode == 'update')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 5173, in _load_records
+    data['record']._load_records_write(data['values'])
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 5094, in _load_records_write
+    self.write(values)
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/res_lang.py", line 366, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/models.py", line 4469, in write
+    field.write(self, value)
+  File "/opt/odoo/odoo-core/odoo/orm/fields_binary.py", line 297, in write
+    super().write(records, new_value)
+  File "/opt/odoo/odoo-core/odoo/orm/fields_binary.py", line 220, in write
+    atts.create([{
+  File "/opt/odoo/odoo-core/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 779, in create
+    values.update(self._get_datas_related_values(raw, values['mimetype']))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 328, in _get_datas_related_values
+    values['store_fname'], _full_path = self._get_path(data, checksum)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/addons/base/models/ir_attachment.py", line 139, in _get_path
+    os.makedirs(dirname, exist_ok=True)
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  [Previous line repeated 2 more times]
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [Errno 13] Permission denied: '/var/lib/odoo/.local'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/odoo/odoo-core/odoo/service/server.py", line 1585, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/odoo/odoo-core/odoo/orm/registry.py", line 187, in new
+    load_modules(
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 405, in load_modules
+    load_module_graph(
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 217, in load_module_graph
+    load_data(env, idref, 'init', kind='data', package=package)
+  File "/opt/odoo/odoo-core/odoo/modules/loading.py", line 59, in load_data
+    convert_file(env, package.name, filename, idref, mode, noupdate=kind == 'demo')
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 696, in convert_file
+    convert_xml_import(env, module, fp, idref, mode, noupdate)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 795, in convert_xml_import
+    obj.parse(doc.getroot())
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 666, in parse
+    self._tag_root(de)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 608, in _tag_root
+    f(rec)
+  File "/opt/odoo/odoo-core/odoo/tools/convert.py", line 621, in _tag_root
+    raise ParseError('while parsing %s:%s, somewhere inside\n%s' % (
+odoo.tools.convert.ParseError: while parsing /opt/odoo/odoo-core/odoo/addons/base/data/res_lang_data.xml:18, somewhere inside
+<record id="base.lang_ar" model="res.lang">
+            <field name="flag_image" type="base64" file="base/static/img/lang_flags/lang_ar.png"/>
+        </record>
+2026-09-02 21:34:35,408 14 INFO dbodoo19 odoo.service.server: Stopping workers gracefully 
+2026-09-02 21:36:26,446 13 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:36:26,447 13 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:36:26,447 13 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:36:26,447 13 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:36:26,448 13 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:36:26,448 13 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:36:26,449 13 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/19.0', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:36:26,449 13 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:36:28,532 13 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2026-09-02 21:36:28,662 13 INFO dbodoo19 odoo.modules.loading: Initializing database dbodoo19 
+2026-09-02 21:36:29,867 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:36:29,871 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:36:32,392 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:36:32,395 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:36:32,462 13 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:36:32,464 13 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:36:34,711 13 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:36:34,712 13 INFO dbodoo19 odoo.modules.loading: Loading module base (1/1) 
+2026-09-02 21:36:34,771 13 INFO dbodoo19 odoo.registry: module base: creating or updating database tables 
+2026-09-02 21:36:36,178 13 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-02 21:36:36,179 13 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-02 21:36:36,179 13 INFO dbodoo19 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-02 21:36:36,825 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.user_id 
+2026-09-02 21:36:36,825 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-02 21:36:36,825 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-02 21:36:36,826 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.lang 
+2026-09-02 21:36:36,826 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-02 21:36:36,826 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-02 21:36:36,826 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.properties 
+2026-09-02 21:36:36,826 13 INFO dbodoo19 odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-02 21:36:36,935 13 INFO dbodoo19 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-02 21:36:37,029 13 INFO dbodoo19 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-02 21:36:37,030 13 INFO dbodoo19 odoo.models: Prepare computation of res.company.logo_web 
+2026-09-02 21:36:37,039 13 INFO dbodoo19 odoo.models: Computing parent_path for table res_company... 
+2026-09-02 21:36:37,138 13 INFO dbodoo19 odoo.models: Prepare computation of res.users.signature 
+2026-09-02 21:36:37,139 13 INFO dbodoo19 odoo.models: Prepare computation of res.users.share 
+2026-09-02 21:36:41,508 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-02 21:36:41,525 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-02 21:36:41,626 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-02 21:36:41,727 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-02 21:36:41,885 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-02 21:36:43,567 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-02 21:36:43,588 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-02 21:36:44,740 13 INFO dbodoo19 odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-02 21:36:44,771 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-02 21:36:47,197 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-02 21:36:47,241 13 INFO dbodoo19 odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-02 21:36:47,666 13 INFO dbodoo19 odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-02 21:36:48,202 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-02 21:36:48,243 13 INFO dbodoo19 odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-02 21:36:48,478 13 INFO dbodoo19 odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-02 21:36:48,533 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-02 21:36:48,550 13 INFO dbodoo19 odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-02 21:36:49,426 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-02 21:36:49,813 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-02 21:36:49,859 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-02 21:36:49,911 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-02 21:36:50,002 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-02 21:36:50,075 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-02 21:36:50,159 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-02 21:36:50,259 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-02 21:36:50,945 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-02 21:36:51,030 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-02 21:36:51,110 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-02 21:36:51,198 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-02 21:36:51,276 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-02 21:36:51,457 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-02 21:36:51,531 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-02 21:36:51,544 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-02 21:36:51,603 13 INFO dbodoo19 odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-02 21:36:51,652 13 INFO dbodoo19 odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-02 21:36:51,682 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-02 21:36:51,761 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-02 21:36:51,815 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-02 21:36:52,028 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-02 21:36:52,175 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-02 21:36:52,482 13 INFO dbodoo19 odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-02 21:36:52,497 13 INFO dbodoo19 odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-02 21:36:52,519 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-02 21:36:52,564 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-02 21:36:52,618 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-02 21:36:52,644 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-02 21:36:52,697 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-02 21:36:52,722 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-02 21:36:52,762 13 INFO dbodoo19 odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-02 21:36:52,799 13 INFO dbodoo19 odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-02 21:36:52,840 13 INFO dbodoo19 odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-02 21:36:52,908 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-02 21:36:52,982 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-02 21:36:53,058 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-02 21:36:53,335 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-02 21:36:53,448 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-02 21:36:53,569 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-02 21:36:53,677 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-02 21:36:53,837 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-02 21:36:54,128 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-02 21:36:54,145 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-02 21:36:54,210 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-02 21:36:54,232 13 INFO dbodoo19 odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-02 21:36:54,252 13 INFO dbodoo19 odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-02 21:36:54,317 13 INFO dbodoo19 odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-02 21:36:54,615 13 INFO dbodoo19 odoo.modules.loading: Module base loaded in 19.90s, 8455 queries (+8455 other) 
+2026-09-02 21:36:54,616 13 INFO dbodoo19 odoo.modules.loading: 1 modules loaded in 19.90s, 8455 queries (+8455 extra) 
+2026-09-02 21:36:54,628 13 INFO dbodoo19 odoo.modules.loading: updating modules list 
+2026-09-02 21:36:54,632 13 INFO dbodoo19 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-02 21:36:55,056 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'ai_chatbot_0_core', defaulting to '' 
+2026-09-02 21:36:56,876 13 WARNING dbodoo19 odoo.modules.module: Missing `author` key in manifest for 'mrp_bom_cost_update', defaulting to '' 
+2026-09-02 21:36:56,894 13 WARNING dbodoo19 odoo.modules.module: Missing `license` key in manifest for 'odoo_chatwoot_connector', defaulting to LGPL-3 
+2026-09-02 21:36:57,834 13 INFO dbodoo19 odoo.modules.loading: loading 14 modules... 
+2026-09-02 21:36:57,835 13 INFO dbodoo19 odoo.modules.loading: Loading module rpc (2/14) 
+2026-09-02 21:36:57,936 13 INFO dbodoo19 odoo.modules.loading: Module rpc loaded in 0.10s, 9 queries (+9 other) 
+2026-09-02 21:36:57,937 13 INFO dbodoo19 odoo.modules.loading: Loading module web (3/14) 
+2026-09-02 21:36:58,034 13 INFO dbodoo19 odoo.registry: module web: creating or updating database tables 
+2026-09-02 21:36:59,226 13 INFO dbodoo19 odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-02 21:36:59,247 13 INFO dbodoo19 odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-02 21:36:59,283 13 INFO dbodoo19 odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-02 21:36:59,452 13 INFO dbodoo19 odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-02 21:36:59,672 13 INFO dbodoo19 odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-02 21:36:59,707 13 INFO dbodoo19 odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-02 21:36:59,724 13 INFO dbodoo19 odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-02 21:36:59,735 13 INFO dbodoo19 odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-02 21:36:59,745 13 INFO dbodoo19 odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-02 21:36:59,756 13 INFO dbodoo19 odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-02 21:36:59,776 13 INFO dbodoo19 odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-02 21:36:59,797 13 INFO dbodoo19 odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-02 21:36:59,809 13 INFO dbodoo19 odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-02 21:36:59,895 13 INFO dbodoo19 odoo.modules.loading: Module web loaded in 1.96s, 1232 queries (+1232 other) 
+2026-09-02 21:36:59,895 13 INFO dbodoo19 odoo.modules.loading: Loading module api_doc (4/14) 
+2026-09-02 21:36:59,926 13 INFO dbodoo19 odoo.registry: module api_doc: creating or updating database tables 
+2026-09-02 21:36:59,957 13 INFO dbodoo19 odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-02 21:37:00,010 13 INFO dbodoo19 odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-02 21:37:00,079 13 INFO dbodoo19 odoo.modules.loading: Module api_doc loaded in 0.18s, 64 queries (+64 other) 
+2026-09-02 21:37:00,079 13 INFO dbodoo19 odoo.modules.loading: Loading module auth_totp (5/14) 
+2026-09-02 21:37:00,200 13 INFO dbodoo19 odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-02 21:37:00,493 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-02 21:37:00,617 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-02 21:37:00,643 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-02 21:37:00,667 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-02 21:37:00,787 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-02 21:37:00,809 13 INFO dbodoo19 odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-02 21:37:00,868 13 INFO dbodoo19 odoo.modules.loading: Module auth_totp loaded in 0.79s, 218 queries (+218 other) 
+2026-09-02 21:37:00,868 13 INFO dbodoo19 odoo.modules.loading: Loading module base_import (6/14) 
+2026-09-02 21:37:00,994 13 INFO dbodoo19 odoo.registry: module base_import: creating or updating database tables 
+2026-09-02 21:37:02,789 13 INFO dbodoo19 odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-02 21:37:02,844 13 INFO dbodoo19 odoo.modules.loading: Module base_import loaded in 1.98s, 956 queries (+956 other) 
+2026-09-02 21:37:02,844 13 INFO dbodoo19 odoo.modules.loading: Loading module base_import_module (7/14) 
+2026-09-02 21:37:02,911 13 INFO dbodoo19 odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-02 21:37:03,105 13 INFO dbodoo19 odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-02 21:37:03,139 13 INFO dbodoo19 odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-02 21:37:03,220 13 INFO dbodoo19 odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-02 21:37:03,438 13 INFO dbodoo19 odoo.modules.loading: Module base_import_module loaded in 0.59s, 172 queries (+172 other) 
+2026-09-02 21:37:03,439 13 INFO dbodoo19 odoo.modules.loading: Loading module base_setup (8/14) 
+2026-09-02 21:37:03,485 13 INFO dbodoo19 odoo.registry: module base_setup: creating or updating database tables 
+2026-09-02 21:37:03,615 13 INFO dbodoo19 odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-02 21:37:03,632 13 INFO dbodoo19 odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-02 21:37:03,733 13 INFO dbodoo19 odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-02 21:37:03,809 13 INFO dbodoo19 odoo.modules.loading: Module base_setup loaded in 0.37s, 152 queries (+152 other) 
+2026-09-02 21:37:03,809 13 INFO dbodoo19 odoo.modules.loading: Loading module bus (9/14) 
+2026-09-02 21:37:03,927 13 INFO dbodoo19 odoo.registry: module bus: creating or updating database tables 
+2026-09-02 21:37:04,217 13 INFO dbodoo19 odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-02 21:37:04,254 13 INFO dbodoo19 odoo.modules.loading: Module bus loaded in 0.44s, 159 queries (+159 other) 
+2026-09-02 21:37:04,254 13 INFO dbodoo19 odoo.modules.loading: Loading module web_tour (10/14) 
+2026-09-02 21:37:04,287 13 INFO dbodoo19 odoo.registry: module web_tour: creating or updating database tables 
+2026-09-02 21:37:04,298 13 INFO dbodoo19 odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-02 21:37:04,533 13 INFO dbodoo19 odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-02 21:37:04,568 13 INFO dbodoo19 odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-02 21:37:04,693 13 INFO dbodoo19 odoo.modules.loading: Module web_tour loaded in 0.44s, 180 queries (+180 other) 
+2026-09-02 21:37:04,694 13 INFO dbodoo19 odoo.modules.loading: Loading module auth_passkey (11/14) 
+2026-09-02 21:37:04,926 13 INFO dbodoo19 odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-02 21:37:05,132 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-02 21:37:05,188 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-02 21:37:05,234 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-02 21:37:05,265 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-02 21:37:05,333 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-02 21:37:05,363 13 INFO dbodoo19 odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-02 21:37:05,445 13 INFO dbodoo19 odoo.modules.loading: Module auth_passkey loaded in 0.75s, 218 queries (+218 other) 
+2026-09-02 21:37:05,445 13 INFO dbodoo19 odoo.modules.loading: Loading module html_editor (12/14) 
+2026-09-02 21:37:06,496 13 INFO dbodoo19 odoo.registry: module html_editor: creating or updating database tables 
+2026-09-02 21:37:07,968 13 INFO dbodoo19 odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-02 21:37:08,013 13 INFO dbodoo19 odoo.modules.loading: Module html_editor loaded in 2.57s, 1034 queries (+1034 other) 
+2026-09-02 21:37:08,013 13 INFO dbodoo19 odoo.modules.loading: Loading module iap (13/14) 
+2026-09-02 21:37:08,025 13 INFO dbodoo19 odoo.registry: module iap: creating or updating database tables 
+2026-09-02 21:37:08,248 13 INFO dbodoo19 odoo.modules.loading: loading iap/data/services.xml 
+2026-09-02 21:37:08,267 13 INFO dbodoo19 odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-02 21:37:08,295 13 INFO dbodoo19 odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-02 21:37:08,328 13 INFO dbodoo19 odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-02 21:37:08,410 13 INFO dbodoo19 odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-02 21:37:08,487 13 INFO dbodoo19 odoo.modules.loading: Module iap loaded in 0.47s, 182 queries (+182 other) 
+2026-09-02 21:37:08,487 13 INFO dbodoo19 odoo.modules.loading: Loading module web_unsplash (14/14) 
+2026-09-02 21:37:08,530 13 INFO dbodoo19 odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-02 21:37:08,641 13 INFO dbodoo19 odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-02 21:37:08,752 13 INFO dbodoo19 odoo.modules.loading: Module web_unsplash loaded in 0.26s, 93 queries (+93 other) 
+2026-09-02 21:37:08,753 13 INFO dbodoo19 odoo.modules.loading: 14 modules loaded in 10.92s, 4669 queries (+4669 extra) 
+2026-09-02 21:37:09,428 13 INFO dbodoo19 odoo.modules.loading: Modules loaded. 
+2026-09-02 21:37:09,445 13 INFO dbodoo19 odoo.registry: Registry changed, signaling through the database 
+2026-09-02 21:37:09,450 13 INFO dbodoo19 odoo.registry: Registry loaded in 40.918s 
+2026-09-02 21:37:09,453 13 INFO dbodoo19 odoo.service.server: Stopping workers gracefully 
+2026-09-02 21:37:10,806 1 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:10,807 1 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:10,807 1 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:10,807 1 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:10,807 1 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:37:10,807 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:37:10,807 1 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/19.0', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:37:10,807 1 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:37:11,531 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2026-09-02 21:37:11,572 1 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:37:11,581 1 INFO dbodoo19 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-02 21:37:11,591 1 INFO dbodoo19 odoo.modules.loading: loading 14 modules... 
+2026-09-02 21:37:11,879 1 INFO dbodoo19 odoo.modules.loading: 14 modules loaded in 0.29s, 0 queries (+0 extra) 
+2026-09-02 21:37:11,964 1 INFO dbodoo19 odoo.modules.loading: Modules loaded. 
+2026-09-02 21:37:12,005 1 INFO dbodoo19 odoo.registry: Registry loaded in 0.473s 
+2026-09-02 21:37:12,005 1 INFO dbodoo19 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-02 21:37:12,037 1 INFO dbodoo19 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-02 21:37:12,049 14 INFO dbodoo19 odoo.service.server: Worker WorkerHTTP (14) alive 
+2026-09-02 21:37:12,055 15 INFO dbodoo19 odoo.service.server: Worker WorkerHTTP (15) alive 
+2026-09-02 21:37:12,070 19 INFO dbodoo19 odoo.service.server: Worker WorkerCron (19) alive 
+2026-09-02 21:37:13,180 16 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:13,180 16 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:13,180 16 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:13,181 16 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:13,181 16 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:37:13,181 16 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:37:13,181 16 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/19.0', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:37:13,182 16 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:37:14,002 16 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:37:14,011 16 INFO dbodoo19 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-02 21:37:14,024 16 INFO dbodoo19 odoo.modules.loading: loading 14 modules... 
+2026-09-02 21:37:14,337 16 INFO dbodoo19 odoo.modules.loading: 14 modules loaded in 0.31s, 0 queries (+0 extra) 
+2026-09-02 21:37:14,417 16 INFO dbodoo19 odoo.modules.loading: Modules loaded. 
+2026-09-02 21:37:14,456 16 INFO dbodoo19 odoo.registry: Registry loaded in 0.500s 
+2026-09-02 21:37:14,463 16 INFO dbodoo19 odoo.service.server: Evented Service (longpolling) running on 0.0.0.0:8072 
+2026-09-02 21:37:22,069 15 INFO dbodoo19 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-09-02 21:37:22,733 15 INFO dbodoo19 werkzeug: 172.18.0.1 - - [02/Sep/2026 21:37:22] "HEAD /web/login HTTP/1.1" 200 - 52 0.064 0.625
+2026-09-02 21:37:28,391 1 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:28,391 1 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:28,391 1 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:28,391 1 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:28,391 1 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:37:28,392 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:37:28,392 1 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/19.0', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:37:28,392 1 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:37:29,138 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2026-09-02 21:37:29,171 1 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:37:29,179 1 INFO dbodoo19 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-02 21:37:29,189 1 INFO dbodoo19 odoo.modules.loading: loading 14 modules... 
+2026-09-02 21:37:29,496 1 INFO dbodoo19 odoo.modules.loading: 14 modules loaded in 0.31s, 0 queries (+0 extra) 
+2026-09-02 21:37:29,568 1 INFO dbodoo19 odoo.modules.loading: Modules loaded. 
+2026-09-02 21:37:29,598 1 INFO dbodoo19 odoo.registry: Registry loaded in 0.460s 
+2026-09-02 21:37:29,599 1 INFO dbodoo19 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-02 21:37:29,625 1 INFO dbodoo19 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-02 21:37:29,636 14 INFO dbodoo19 odoo.service.server: Worker WorkerHTTP (14) alive 
+2026-09-02 21:37:29,641 15 INFO dbodoo19 odoo.service.server: Worker WorkerHTTP (15) alive 
+2026-09-02 21:37:29,652 19 INFO dbodoo19 odoo.service.server: Worker WorkerCron (19) alive 
+2026-09-02 21:37:30,565 16 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:30,565 16 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:30,566 16 WARNING ? odoo.tools.config: option addons_path, no such directory '/opt/odoo/custom-addons/enterprise', skipped 
+2026-09-02 21:37:30,566 16 WARNING ? odoo.tools.config: option without_demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-02 21:37:30,566 16 INFO ? odoo: Odoo version 19.0 
+2026-09-02 21:37:30,566 16 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-02 21:37:30,566 16 INFO ? odoo: addons paths: _NamespacePath(['/opt/odoo/odoo-core/odoo/addons', '/var/lib/odoo/.local/share/Odoo/addons/19.0', '/opt/odoo/odoo-core/addons', '/opt/odoo/custom-addons/extra', '/opt/odoo/custom-addons/oca']) 
+2026-09-02 21:37:30,566 16 INFO ? odoo: database: odoo@db-leads:5432 
+2026-09-02 21:37:31,302 16 INFO dbodoo19 odoo.modules.loading: loading 1 modules... 
+2026-09-02 21:37:31,311 16 INFO dbodoo19 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-02 21:37:31,324 16 INFO dbodoo19 odoo.modules.loading: loading 14 modules... 
+2026-09-02 21:37:31,657 16 INFO dbodoo19 odoo.modules.loading: 14 modules loaded in 0.33s, 0 queries (+0 extra) 
+2026-09-02 21:37:31,736 16 INFO dbodoo19 odoo.modules.loading: Modules loaded. 
+2026-09-02 21:37:31,771 16 INFO dbodoo19 odoo.registry: Registry loaded in 0.515s 
+2026-09-02 21:37:31,775 16 INFO dbodoo19 odoo.service.server: Evented Service (longpolling) running on 0.0.0.0:8072 
+2026-09-02 21:38:38,943 19 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2026-09-02 21:38:39,211 19 INFO dbodoo19 odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2026-09-02 21:38:39,272 19 INFO dbodoo19 odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 0 removed 
+2026-09-02 21:38:39,281 19 INFO dbodoo19 odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2026-09-02 21:38:39,294 19 INFO dbodoo19 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-09-02 21:38:39,402 19 INFO dbodoo19 odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2026-09-02 21:38:39,465 19 INFO dbodoo19 odoo.addons.api_doc.models.ir_attachment: GC'd 0 /doc cached index 
+2026-09-02 21:38:39,510 19 INFO dbodoo19 odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2026-09-02 21:38:39,573 19 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) fully done (#loop 1; done 0; remaining 0; duration 0.63s) 
+2026-09-02 21:38:39,593 19 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) starting 
+2026-09-02 21:38:39,626 19 INFO dbodoo19 odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) fully done (#loop 1; done 0; remaining 0; duration 0.03s) 
