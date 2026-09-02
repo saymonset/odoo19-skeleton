@@ -10,7 +10,7 @@ services:
       - "127.0.0.1:8080:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: oraclefedora@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_DEFAULT_PASSWORD: 0c7ea99eb597bce5495e2d93cb0cdaa0ab3294f4d48933c892ac6133d6c20491
       PGADMIN_CONFIG_SERVER_MODE: "True"
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     restart: unless-stopped

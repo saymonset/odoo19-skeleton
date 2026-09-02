@@ -528,7 +528,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://integraia.lat/ai_chatbot_1_portal/procesar_paso",
+        "url": "https://aristosoluciones.integraia.lat/ai_chatbot_1_portal/procesar_paso",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
