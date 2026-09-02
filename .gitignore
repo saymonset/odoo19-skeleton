@@ -49,6 +49,7 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/backup/out/*
 # Datos de Odoo
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/logs/
+postiz-n8n-chatwoot-pgadmin-odoo_19/v19-leads/logs/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/n8n_data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/odoo-web-data/
 postiz-n8n-chatwoot-pgadmin-odoo_19/v19/odoo_n8n_pgdata/
