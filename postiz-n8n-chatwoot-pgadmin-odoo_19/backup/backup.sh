@@ -32,7 +32,7 @@ MAIN_DB_CONTAINER="odoo-db19-leads"
 BACKUP_BASE_DIR="./backup/out"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 BACKUP_DIR="$BACKUP_BASE_DIR/backup_$DATE"
-ABS_BACKUP_DIR=$(readlink -f "$BACKUP_DIR")
+ABS_BACKUP_DIR=$(readlink -m "$BACKUP_DIR")
 RETENTION_DAYS=7
 
 # Colores

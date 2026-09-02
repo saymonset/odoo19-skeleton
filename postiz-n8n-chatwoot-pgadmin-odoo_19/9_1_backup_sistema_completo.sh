@@ -19,9 +19,12 @@ chmod +x ./backup/backup.sh
 
 # Ejecutar backup
 log "🚀 Iniciando proceso de backup unificado..."
+set +e
 ./backup/backup.sh
+rc=$?
+set -e
 
-if [ $? -eq 0 ]; then
+if [ $rc -eq 0 ]; then
     log "✅ Proceso finalizado correctamente."
 else
     error "❌ El backup falló. Revisa los logs arriba."
