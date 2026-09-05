@@ -9,11 +9,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        52432,
-        19632
+        57808,
+        19952
       ],
       "typeVersion": 1,
-      "id": "bf4d9e08-5100-41cb-b05c-b351ff2a29bf",
+      "id": "11f1fc64-26f5-4266-8d6d-ee363ef9f4a7",
       "name": "Sticky Note2"
     },
     {
@@ -21,10 +21,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        56224,
-        20224
+        61600,
+        20544
       ],
-      "id": "7ce42b49-2ec1-4f2d-987e-690bfd953eef",
+      "id": "d233341c-ab50-40db-a4ff-7be7bd8d5842",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -35,10 +35,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        51680,
-        21136
+        57056,
+        21456
       ],
-      "id": "b4951c2e-9642-4686-9953-2816fbf6efbb",
+      "id": "e8e4c241-22b1-44a1-ab97-99d0539d1402",
       "name": "When chat message received",
       "webhookId": "a24efc8d-00a6-4acd-9c87-2b4c8a8fedd5"
     },
@@ -143,10 +143,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        52080,
-        21072
+        57456,
+        21392
       ],
-      "id": "01ca2231-8fea-4d6f-a9a2-f39886ab0a60",
+      "id": "b690faff-f727-4cfc-b338-2cb77677a648",
       "name": "Seteamos_variables"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        53008,
-        21056
+        58384,
+        21376
       ],
-      "id": "01e95411-b930-4476-add5-62cb7896a263",
+      "id": "12e8e9b2-f665-4782-9d99-f9939f39b0cb",
       "name": "Indentifica_canal"
     },
     {
@@ -287,10 +287,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        52336,
-        21424
+        57712,
+        21744
       ],
-      "id": "10d477cb-0f96-4a3f-9797-a078d7ecece7",
+      "id": "9dc7ab6b-6b45-47bf-ab8d-734e3082cced",
       "name": "Dueno_o_Bot_responde"
     },
     {
@@ -350,10 +350,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        52624,
-        21072
+        58000,
+        21392
       ],
-      "id": "b005376e-bc21-4bc8-b64b-1d90c2a89901",
+      "id": "24c28e2b-e74f-4bf5-911f-936ba8e41180",
       "name": "Configurar_IA_Responda?"
     },
     {
@@ -413,10 +413,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        52384,
-        21088
+        57760,
+        21408
       ],
-      "id": "559a782c-3b75-459c-b7f5-247b3f95d352",
+      "id": "5db20ff7-ffb6-4214-b9dd-fccad31f7907",
       "name": "Pregunta_el_Cliente?"
     },
     {
@@ -424,10 +424,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        53056,
-        20848
+        58432,
+        21168
       ],
-      "id": "bc2a1a1c-4486-4bff-8383-a8cdfc808dc4",
+      "id": "73b3ce28-75fc-4d2b-88de-2eedc5c3c5b7",
       "name": "End1"
     },
     {
@@ -439,10 +439,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        55168,
-        20784
+        60544,
+        21104
       ],
-      "id": "beb1b23c-ea0d-45ef-9fab-3a613d1c1da5",
+      "id": "05dd6d2f-c19b-48c5-b5d0-9330469a3c38",
       "name": "Simple Memory"
     },
     {
@@ -454,10 +454,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        51216,
-        20256
+        56592,
+        20576
       ],
-      "id": "f219cb26-ff58-4106-a90c-466c589c40a4",
+      "id": "dc33e871-aeed-47d8-8b88-7981eb1954e8",
       "name": "Entrar_ChattWoot",
       "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2"
     },
@@ -568,10 +568,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        51744,
-        20464
+        57120,
+        20784
       ],
-      "id": "76742691-843f-498d-8d59-8e38a0158c01",
+      "id": "bd653d3c-e7bd-4d50-bc3e-8e51f761bd7c",
       "name": "Obtener_Info_basica"
     },
     {
@@ -591,10 +591,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        52080,
-        20608
+        57456,
+        20928
       ],
-      "id": "905d457e-953f-45ae-a1ee-83f954af2c28",
+      "id": "ac43f1ec-d742-4e79-b264-de222d01de4e",
       "name": "Obtener_Contacto_YCloud"
     },
     {
@@ -604,10 +604,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        52032,
-        20896
+        57408,
+        21216
       ],
-      "id": "cbca7df4-4ffa-4a57-bfdf-587ceeb16a7c",
+      "id": "b4b123e6-3b9a-49ea-ac4a-6b63d874f5ba",
       "name": "Ajustar_agente_desactivado"
     },
     {
@@ -693,10 +693,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        54352,
-        21328
+        59728,
+        21648
       ],
-      "id": "28ae5c63-07c3-4336-a9d2-bbfdc770e4ac",
+      "id": "4c3fd8c3-4ace-4592-8d6d-93e1407c9da6",
       "name": "Consulta_o_agendar_cita"
     },
     {
@@ -714,10 +714,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        55056,
-        20784
+        60432,
+        21104
       ],
-      "id": "01f78fa0-4829-4089-8849-8e089def3542",
+      "id": "3cd115ae-ef19-4e44-b83d-d26fe2c06d52",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -729,7 +729,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Mensaje del usuario: {{ $json.text }}\nURL de imagen: {{ $json.image_url }}\nSession ID: {{ $json.session_id }}\nConversation ID: {{ $json.conversation_id }}\nAccount ID: {{ $json.account_id }}\nPlatform: {{ $json.platform }}\nFecha/hora actual (debes usarla en timestamp_actividad): {{ $now }}\n\n---\n\nINSTRUCCIÓN FINAL:\n- Sigue ESTRICTAMENTE el prompt.\n- En el paso ESPERANDO_FOTO_CEDULA: PRIMERO verifica image_url. Si hay imagen (no vacía y empieza con http), IGNORA el texto y procesa la imagen.\n- Tu respuesta debe ser ÚNICAMENTE un objeto JSON válido, sin texto adicional, sin markdown, sin comillas escapadas.\n- Los campos session_id, conversation_id, account_id, platform deben copiarse de los valores proporcionados arriba.\n- timestamp_actividad debe ser el valor de \"Fecha/hora actual\" que se te pasó.\n- Para preguntas del negocio (precios, planes, servicios, requisitos, horarios, políticas) consulta SIEMPRE PRIMERO la herramienta Base_Conocimiento_RAG. Si no encuentras la información, NO la inventes: responde con naturalidad y ofrece agendar asesoría/demo o conectar con el dueño.",
+        "text": "=Mensaje del usuario: {{ $json.text }}\nURL de imagen: {{ $json.image_url }}\nSession ID: {{ $json.session_id }}\nConversation ID: {{ $json.conversation_id }}\nAccount ID: {{ $json.account_id }}\nPlatform: {{ $json.platform }}\nFecha/hora actual (debes usarla en timestamp_actividad): {{ $now }}\n\n---\n\nPASOS DE EJECUCIÓN:\n1. Si el usuario hace preguntas sobre el negocio (precios, planes, servicios, requisitos, horarios, políticas), DEBES consultar PRIMERO la herramienta Base_Conocimiento_RAG.\n2. Una vez obtenida la información de la herramienta (o tras evaluar la imagen/situación), genera tu RESPUESTA FINAL.\n\nFORMATO DE SALIDA (Aplica solo a la respuesta final):\n- Tu respuesta final debe ser ÚNICAMENTE un objeto JSON válido, sin texto adicional, sin markdown (```json), sin comillas escapadas.\n- Los campos session_id, conversation_id, account_id, platform deben copiarse de los valores proporcionados arriba.\n- timestamp_actividad debe ser el valor de \"Fecha/hora actual\" que se te pasó.\n- Si no encuentras información en la herramienta, NO la inventes: responde en el campo JSON correspondiente ofreciendo agendar asesoría/demo o conectar con el dueño.",
         "options": {
           "systemMessage": "={{ $json.system_prompt || \"Eres un asistente virtual. Responde unicamente con un objeto JSON valido con las claves output, tipoPregunta, isMenu, equipo_asignado, flow_name, session_id, conversation_id, account_id, platform y timestamp_actividad.\" }}"
         }
@@ -737,32 +737,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        55072,
-        20528
+        60464,
+        20816
       ],
-      "id": "647fc673-4360-42d3-8901-5bfefb0835a7",
+      "id": "3cade6b3-2a0d-4c6d-935a-255004d2ef30",
       "name": "Agente_Informacion_basica"
-    },
-    {
-      "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolDescription": "Base de conocimiento del negocio: precios, planes, servicios, requisitos, horarios y políticas. Úsala SIEMPRE antes de responder cualquier pregunta informativa del cliente (precios, servicios, planes, requisitos, promociones, horarios). Si no encuentras la información, dilo con naturalidad y ofrece agendar asesoría/demo o hablar con el dueño.",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
-      "typeVersion": 1.3,
-      "position": [
-        55488,
-        20896
-      ],
-      "id": "c9724b7e-93f4-412d-92ab-9df4c6eb7871",
-      "name": "Base_Conocimiento_RAG",
-      "credentials": {
-        "postgres": {
-          "id": "KTEgdnqa0zFjxO2W",
-          "name": "Postgres account 2"
-        }
-      }
     },
     {
       "parameters": {
@@ -772,10 +751,10 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        55600,
-        21088
+        60736,
+        21472
       ],
-      "id": "529e0c8f-83fd-4292-b265-5c1adcee1ce6",
+      "id": "ef382f2c-f976-49d6-b4af-16549aa9ae6c",
       "name": "Embeddings Base Conocimiento",
       "credentials": {
         "openAiApi": {
@@ -791,10 +770,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        56144,
-        20480
+        61520,
+        20800
       ],
-      "id": "c1f1102f-1822-4071-aa66-d05ba1dc3a5c",
+      "id": "556b6b54-9cfe-47c6-9169-f57f6a6d9d78",
       "name": "Unificar_salida"
     },
     {
@@ -825,10 +804,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        55840,
-        20368
+        61216,
+        20688
       ],
-      "id": "b8ed3d01-6fd1-4f6a-b328-9a970e74cbcf",
+      "id": "d4ed01ce-a1d1-433a-bf13-619508b78e49",
       "name": "Cita_con_Equipo_asignado"
     },
     {
@@ -839,11 +818,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54896,
-        20384
+        60272,
+        20704
       ],
       "typeVersion": 1,
-      "id": "e1bb1fea-6be8-4ff1-80d4-5b0827a2af6e",
+      "id": "bd5f013d-81e5-4d71-9472-d9b8d4c94795",
       "name": "Sticky Note"
     },
     {
@@ -852,11 +831,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54304,
-        21200
+        59680,
+        21520
       ],
       "typeVersion": 1,
-      "id": "c2483c7b-54bc-456f-8eac-da11fac32ad5",
+      "id": "acd6b50f-d2ba-4d58-8b34-3646f4eb0f52",
       "name": "Sticky Note3"
     },
     {
@@ -871,10 +850,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        56208,
-        19760
+        61584,
+        20080
       ],
-      "id": "d14f54bc-a91f-4204-9102-04e59d5dd8e5",
+      "id": "5a5d9da3-fc1c-46d4-802d-5da0dcdd1c0e",
       "name": "paso_0_inicio_agendar",
       "alwaysOutputData": true
     },
@@ -885,10 +864,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        55408,
-        20528
+        60784,
+        20848
       ],
-      "id": "d0b250ff-c72b-45d1-9b89-b70997f031fe",
+      "id": "0980ca3c-7ee5-428b-bb00-fdc3e6de6865",
       "name": "Separar_variables_en_json"
     },
     {
@@ -944,10 +923,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        56464,
-        19744
+        61840,
+        20064
       ],
-      "id": "293cb862-d46a-4380-9e51-8f0b1c3b2f18",
+      "id": "f655374e-c149-4b85-8c51-bee43bb1ce96",
       "name": "Agendar_cita"
     },
     {
@@ -975,10 +954,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        56672,
-        20720
+        62048,
+        21040
       ],
-      "id": "98003af3-4a3a-47e5-873d-0e9aa7f96613",
+      "id": "eecb0cac-f6b0-4134-bda7-41d7d2d31687",
       "name": "Enviar_mensaje_de_IA1"
     },
     {
@@ -1006,10 +985,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        56768,
-        19792
+        62144,
+        20112
       ],
-      "id": "498373ea-3344-4410-a582-d81724350a76",
+      "id": "c59f35e7-57d2-40c5-95b1-8cd519de35af",
       "name": "Enviar_mensaje_de_IA2"
     },
     {
@@ -1053,10 +1032,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        54800,
-        21424
+        60176,
+        21744
       ],
-      "id": "275b0daf-3959-4b52-b886-ba8b1c057f89",
+      "id": "cc675d08-6924-4c43-86e7-c6be08ed4012",
       "name": "tomar_parametros"
     },
     {
@@ -1084,10 +1063,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        55104,
-        21296
+        60480,
+        21616
       ],
-      "id": "dd0d3861-a7dc-4857-b322-241c1521d477",
+      "id": "bf97c313-2074-4b53-8c40-af548eb6df9c",
       "name": "Enviar_mensaje_de_IA3"
     },
     {
@@ -1117,10 +1096,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        55584,
-        20544
+        60960,
+        20864
       ],
-      "id": "ac6ffe77-15f2-41c7-89b3-f411e4778ce4",
+      "id": "3a4d43c3-b75c-4ac5-aa36-3fa1eac297fa",
       "name": "¿Enviar menú interactivo?"
     },
     {
@@ -1130,10 +1109,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        55904,
-        20688
+        61280,
+        21008
       ],
-      "id": "b6495433-1d85-41b4-86ba-796448adce75",
+      "id": "d4430d06-6ed8-4dca-9605-fc1a94e67153",
       "name": "Formatear número de teléfono"
     },
     {
@@ -1161,10 +1140,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        56688,
-        20176
+        62064,
+        20496
       ],
-      "id": "cb64c555-63f9-4d81-8461-605b3e2a1adc",
+      "id": "190a5f94-8e94-45b6-aac5-e80f37cda8b5",
       "name": "Enviar texto despues del menu"
     },
     {
@@ -1194,10 +1173,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        56352,
-        20496
+        61728,
+        20816
       ],
-      "id": "b920eb26-4d56-4b5d-8f0b-ee171a3ce459",
+      "id": "cfb6f6c4-ad19-46eb-9f41-463688dff299",
       "name": "¿Enviar menú interactivo?1"
     },
     {
@@ -1207,10 +1186,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        56480,
-        20304
+        61856,
+        20624
       ],
-      "id": "f034bdeb-b778-4bfd-be7e-88d274d286d1",
+      "id": "62d68026-c205-4e8d-90be-88f83d800562",
       "name": "Construir_botones_WhatsApp"
     },
     {
@@ -1218,76 +1197,76 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        57168,
-        20320
+        62544,
+        20640
       ],
-      "id": "49c50cd1-408b-420c-adf7-593b3e4cddad",
+      "id": "075e4203-d6fc-4432-baf1-844473dd249a",
       "name": "Fin menú WhatsApp1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54320,
-        20928
+        59696,
+        21248
       ],
       "typeVersion": 1,
-      "id": "5a412293-9b0b-4ab5-b409-333debee2f6f",
+      "id": "d56f08d8-c458-4c3a-835e-fb5d3772bf97",
       "name": "Sticky Note1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54320,
-        20928
+        59696,
+        21248
       ],
       "typeVersion": 1,
-      "id": "9956c02b-c0d1-4a35-b78e-41583c1a34fa",
+      "id": "32dbd1d0-166d-4e10-9237-8b3ff0a5761f",
       "name": "Sticky Note4"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54320,
-        20928
+        59696,
+        21248
       ],
       "typeVersion": 1,
-      "id": "18353101-6ff0-4bb1-878d-a38959581ad4",
+      "id": "d6b7846e-b437-40e0-8a21-1570588fd77b",
       "name": "Sticky Note5"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54400,
-        21008
+        59776,
+        21328
       ],
       "typeVersion": 1,
-      "id": "beba53f8-6269-4ca0-9d84-cb45417c092a",
+      "id": "60895cf6-6ad0-41ef-ad3b-ce6f194ac66f",
       "name": "Sticky Note6"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54400,
-        21008
+        59776,
+        21328
       ],
       "typeVersion": 1,
-      "id": "0624bb6a-a6ec-4525-a4c2-d19728e2051b",
+      "id": "860d6713-3bd3-4179-8624-10cb6098271c",
       "name": "Sticky Note7"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        54400,
-        21008
+        59776,
+        21328
       ],
       "typeVersion": 1,
-      "id": "82366d8b-f512-4881-ab30-b0068cf55c4a",
+      "id": "d6ecc847-952e-402f-b7fa-768794d4a419",
       "name": "Sticky Note8"
     },
     {
@@ -1298,11 +1277,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        53344,
-        21200
+        58720,
+        21520
       ],
       "typeVersion": 1,
-      "id": "34f0222b-8279-4985-a486-7c8ddcc06f57",
+      "id": "b3b4ca87-e7c8-49ac-94cf-3f5ac63c1855",
       "name": "Sticky Note9"
     },
     {
@@ -1330,10 +1309,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        56320,
-        20832
+        61696,
+        21152
       ],
-      "id": "0f0df759-32a4-445b-9410-84f72cf29bf8",
+      "id": "8a97b571-6e0c-40f9-b42d-e7bbd307f818",
       "name": "Enviar_mensaje_de_IA"
     },
     {
@@ -1347,13 +1326,13 @@
           "timeout": 30000
         }
       },
-      "id": "5573ad2e-8a69-4eda-be88-62e6f9762908",
+      "id": "c67403c1-4fc4-49f8-9f03-15d90d392682",
       "name": "Obtener_configuracion_agente",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        54800,
-        21232
+        60176,
+        21552
       ]
     },
     {
@@ -1542,11 +1521,68 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        53536,
-        21344
+        58912,
+        21664
       ],
-      "id": "4a0de666-d530-48f3-b76d-efcc83a38c76",
+      "id": "6b58c155-7a2c-4790-a949-67731ca9fff0",
       "name": "Call 'yclod-simple_1_subflow'"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1.3,
+      "position": [
+        60576,
+        21328
+      ],
+      "id": "e45c30b7-6a8c-4045-9630-f15394b95e1f",
+      "name": "Postgres PGVector Store",
+      "credentials": {
+        "postgres": {
+          "id": "KTEgdnqa0zFjxO2W",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        60944,
+        21360
+      ],
+      "id": "4f4d7d1a-5c3c-4341-bd6f-4c737db6e788",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "SynY9HmZH2SsZkWD",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Aquí puedes tomar los documentos cargados como base de información. Para responder preguntas relacionadas "
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        60656,
+        21104
+      ],
+      "id": "0e38fa17-ecbd-4912-bf7e-125d83dead8d",
+      "name": "Base_Conocimiento_RAG"
     }
   ],
   "pinData": {
@@ -1938,23 +1974,45 @@
         ]
       ]
     },
+    "Embeddings Base Conocimiento": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Postgres PGVector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres PGVector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Base_Conocimiento_RAG",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Base_Conocimiento_RAG",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Base_Conocimiento_RAG": {
       "ai_tool": [
         [
           {
             "node": "Agente_Informacion_basica",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Embeddings Base Conocimiento": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Base_Conocimiento_RAG",
-            "type": "ai_embedding",
             "index": 0
           }
         ]
@@ -1966,7 +2024,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "c2fc52f4-dc89-4d01-99b5-fdc28954007d",
+  "versionId": "4cc35411-c539-42e6-ba9d-eebd6573e990",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

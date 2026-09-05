@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "odoo-19": {
+      "source": "unclecatvn/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/odoo-19.0/SKILL.md",
+      "computedHash": "12bc99d8237cf72752f2be4dd052e16310c1accd7b1c7b5bc6ce30cc49f90309"
+    },
+    "odoo-oca-developer": {
+      "source": "miquelalzanillas/odoo-oca-convention-skill",
+      "sourceType": "github",
+      "skillPath": "odoo-oca-developer/SKILL.md",
+      "computedHash": "09c967cce1738181d4e57ab089c424c23464675e913940203a079025672f2e5d"
+    }
+  }
+}
