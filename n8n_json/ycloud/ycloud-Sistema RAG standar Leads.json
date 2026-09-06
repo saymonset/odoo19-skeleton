@@ -324,9 +324,7 @@
       "parameters": {
         "rule": {
           "interval": [
-            {
-              "field": "months"
-            }
+            {}
           ]
         }
       },
@@ -346,10 +344,10 @@
         "filter": {
           "folderId": {
             "__rl": true,
-            "value": "17RreK8NYT98dNB0Cjbae9gZ4xpsOhONL",
+            "value": "1DCFNHQzv_-eNZrZeuyB-zfCasilB-zH8",
             "mode": "list",
-            "cachedResultName": "AristoSoluciones",
-            "cachedResultUrl": "https://drive.google.com/drive/folders/17RreK8NYT98dNB0Cjbae9gZ4xpsOhONL"
+            "cachedResultName": "ycloud-rag",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1DCFNHQzv_-eNZrZeuyB-zfCasilB-zH8"
           },
           "includeTrashed": false
         },
@@ -1086,7 +1084,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "d8881da0-31ec-4ba4-afea-c42f7e117491",
+  "versionId": "dd486cc0-b09d-4fa9-9c0a-dc7457d95094",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"

@@ -324,9 +324,7 @@
       "parameters": {
         "rule": {
           "interval": [
-            {
-              "field": "months"
-            }
+            {}
           ]
         }
       },
@@ -346,10 +344,10 @@
         "filter": {
           "folderId": {
             "__rl": true,
-            "value": "17RreK8NYT98dNB0Cjbae9gZ4xpsOhONL",
+            "value": "1R9EkqFKuyI785sYlHoyI-FW0TsNHdZ9c",
             "mode": "list",
-            "cachedResultName": "AristoSoluciones",
-            "cachedResultUrl": "https://drive.google.com/drive/folders/17RreK8NYT98dNB0Cjbae9gZ4xpsOhONL"
+            "cachedResultName": "chatwoot-rag",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1R9EkqFKuyI785sYlHoyI-FW0TsNHdZ9c"
           },
           "includeTrashed": false
         },
@@ -1086,7 +1084,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "b5ec2f01-35c9-46c6-a3df-76c398c9fac7",
+  "versionId": "758c3dae-5837-4c2f-929e-a94625a50275",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
