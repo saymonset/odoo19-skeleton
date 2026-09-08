@@ -6,8 +6,9 @@
 # cliente: carpetas v19/ con ownerships correctos, secrets auto-generados,
 # .env desde env-example, odoo.conf, override con modulos_odoo y tokens nuevos
 # en los compose. Idempotente y NO destructivo (no borra v19/ ni secrets/).
+# Corre COMO odoo; usa sudo solo para los chown a UIDs de contenedores.
 #
-# Uso:  sudo -u odoo ./4_desplegar_stack.sh
+# Uso:  su - odoo  &&  cd ~/installer_vps && ./4_desplegar_stack.sh
 # ============================================================================
 set -euo pipefail
 
@@ -16,12 +17,10 @@ print_ok()  { echo -e "${GREEN}[OK]${NC} $1"; }
 print_warn(){ echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_err(){ echo -e "${RED}[ERROR]${NC} $1"; }
 
-if [ "$(id -u)" -ne 0 ]; then
-    print_err "Ejecuta con sudo:  sudo -u odoo ./4_desplegar_stack.sh"
+if [ "$(id -un)" != "odoo" ]; then
+    print_err "Ejecuta como usuario odoo:  su - odoo  (y luego este script)"
     exit 1
 fi
-
-ODOO_HOME="$(getent passwd odoo | cut -d: -f6)"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="$SCRIPT_DIR/config_instalacion.env"
@@ -40,7 +39,7 @@ SMTP_PASSWORD="${SMTP_PASSWORD:-}"
 SMTP_FROM="${SMTP_FROM:-$SMTP_USER}"
 
 CLIENTE_FQDN="$CLIENTE_SLUG.$DOMINIO_BASE"
-STACK_DIR="$ODOO_HOME/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19"
+STACK_DIR="$HOME/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19"
 
 if [ ! -d "$STACK_DIR" ]; then
     print_err "No existe el stack: $STACK_DIR. Ejecuta primero 2_clonar_repos.sh."
@@ -61,9 +60,9 @@ mkdir -p v19/odoo_n8n_pgdata/{data,init}
 mkdir -p v19/{chatwoot_storage,chatwoot_logs,chatwoot_tmp,chatwoot_pgdata}
 mkdir -p v19/{postiz_config,postiz_uploads,temporal_elasticsearch_data}
 
-chown -R 1001:1001 v19/logs v19/odoo-web-data v19/config v19/redis_data v19/data v19/odoo_n8n_pgdata
-chown -R 1000:1000 v19/n8n_data v19/chatwoot_storage v19/chatwoot_logs v19/chatwoot_tmp v19/chatwoot_pgdata v19/postiz_config v19/postiz_uploads v19/temporal_elasticsearch_data
-chown -R 5050:5050 v19/pgadmin-data
+sudo chown -R 1001:1001 v19/logs v19/odoo-web-data v19/config v19/redis_data v19/data v19/odoo_n8n_pgdata
+sudo chown -R 1000:1000 v19/n8n_data v19/chatwoot_storage v19/chatwoot_logs v19/chatwoot_tmp v19/chatwoot_pgdata v19/postiz_config v19/postiz_uploads v19/temporal_elasticsearch_data
+sudo chown -R 5050:5050 v19/pgadmin-data
 print_ok "v19/ con ownerships (1001:1001, 1000:1000, 5050:5050)"
 
 # ------------------------------------------------------------
@@ -80,7 +79,6 @@ gen_secret() {
         print_ok "  $name.txt ya existe"
     fi
     chmod 600 "secrets/$name.txt"
-    chown odoo:odoo "secrets/$name.txt"
 }
 gen_secret postgres_password
 gen_secret redis_password
@@ -206,7 +204,7 @@ data_dir = /var/lib/odoo/.local/share/Odoo
 server_wide_modules = base,web
 without_demo = all
 EOF
-chown -R 1001:1001 v19/config
+sudo chown -R 1001:1001 v19/config
 chmod 644 v19/config/odoo.conf
 print_ok "odoo.conf generado"
 
@@ -239,5 +237,5 @@ echo "  DB        : $DB_NAME (user odoo)"
 echo "  Secrets   : $STACK_DIR/secrets/"
 echo "  CHATBOT_API_TOKEN generado (debe coincidir con Odoo ir.config_parameter)"
 echo ""
-print_ok "Stack listo. Siguiente: ./5_post_instalacion.sh (como odoo)"
+print_ok "Stack listo. Siguiente: ./5_post_instalacion.sh"
 print_warn "Luego despliega:  cd $STACK_DIR && ./1_despliegue_reconstruye_imagen_servicios_adicionales.sh && ./2_despliegue_servicios_adicionales.sh && ./4_start-all.sh"

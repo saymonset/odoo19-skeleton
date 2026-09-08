@@ -5,8 +5,9 @@
 # Cierra la instalación: crontab del monitor 6_5, rclone opcional y checklist
 # final de verificación. NO instala 6_6_monitor_cliente_testusuario.sh (es
 # específico del cliente de referencia).
+# Corre COMO odoo; no necesita sudo.
 #
-# Uso:  sudo -u odoo ./5_post_instalacion.sh
+# Uso:  su - odoo  &&  cd ~/installer_vps && ./5_post_instalacion.sh
 # ============================================================================
 set -euo pipefail
 
@@ -15,22 +16,21 @@ print_ok()  { echo -e "${GREEN}[OK]${NC} $1"; }
 print_warn(){ echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_err(){ echo -e "${RED}[ERROR]${NC} $1"; }
 
-if [ "$(id -u)" -ne 0 ]; then
-    print_err "Ejecuta con sudo:  sudo -u odoo ./5_post_instalacion.sh"
+if [ "$(id -un)" != "odoo" ]; then
+    print_err "Ejecuta como usuario odoo:  su - odoo  (y luego este script)"
     exit 1
 fi
 
-ODOO_HOME="$(getent passwd odoo | cut -d: -f6)"
-STACK_DIR="$ODOO_HOME/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19"
+STACK_DIR="$HOME/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19"
 
 echo "=== [1/3] Crontab del monitor ==="
 MONITOR="$STACK_DIR/6_5_monitor_bd_salud.sh"
 if [ -f "$MONITOR" ]; then
     CRON_LINE="15 * * * * $MONITOR"
-    if crontab -u odoo -l 2>/dev/null | grep -Fq "$MONITOR"; then
+    if crontab -l 2>/dev/null | grep -Fq "$MONITOR"; then
         print_ok "Monitor 6_5 ya en crontab"
     else
-        ( crontab -u odoo -l 2>/dev/null; echo "$CRON_LINE" ) | crontab -u odoo -
+        ( crontab -l 2>/dev/null; echo "$CRON_LINE" ) | crontab -
         print_ok "Monitor 6_5 agregado al crontab de odoo"
     fi
 else
@@ -38,10 +38,10 @@ else
 fi
 
 echo "[2/3] rclone opcional (backups R2)..."
-if command -v rclone > /dev/null 2>&1 || [ -x "$ODOO_HOME/bin/rclone" ]; then
+if command -v rclone > /dev/null 2>&1 || [ -x "$HOME/bin/rclone" ]; then
     print_ok "rclone ya disponible"
 else
-    read -r -p "¿Instalar rclone en $ODOO_HOME/bin? (s/n): " INSTALL_RCLONE
+    read -r -p "¿Instalar rclone en ~/bin? (s/n): " INSTALL_RCLONE
     if [ "${INSTALL_RCLONE,,}" = "s" ]; then
         ARCH="$(uname -m)"
         case "$ARCH" in
@@ -55,11 +55,11 @@ else
             curl -fsSL "$RCLONE_URL" -o "$TMP_ZIP"
             TMP_DIR="$(mktemp -d)"
             unzip -q "$TMP_ZIP" -d "$TMP_DIR"
-            cp "$TMP_DIR"/rclone-*/rclone "$ODOO_HOME/bin/rclone"
-            chmod +x "$ODOO_HOME/bin/rclone"
-            chown odoo:odoo "$ODOO_HOME/bin/rclone"
+            mkdir -p "$HOME/bin"
+            cp "$TMP_DIR"/rclone-*/rclone "$HOME/bin/rclone"
+            chmod +x "$HOME/bin/rclone"
             rm -rf "$TMP_DIR" "$TMP_ZIP"
-            print_ok "rclone instalado en $ODOO_HOME/bin/rclone"
+            print_ok "rclone instalado en $HOME/bin/rclone"
         fi
     else
         print_warn "rclone omitido (los backups remotos R2 quedan pendientes)"
@@ -68,13 +68,13 @@ fi
 
 echo "[3/3] Checklist final..."
 echo "================================================================"
-echo "  Usuario  : $(id odoo 2>/dev/null | cut -d' ' -f1) / grupos: $(groups odoo 2>/dev/null)"
+echo "  Usuario  : $(id -un) / grupos: $(groups)"
 echo "  Docker   : $(docker --version 2>/dev/null || echo 'pendiente de login')"
 echo "  Red      : $(docker network ls --format '{{.Name}}' 2>/dev/null | grep odoo_network_19 || echo 'odoo_network_19 pendiente')"
 echo "  nginx    : $(ls /etc/nginx/sites-enabled/*.conf 2>/dev/null | tr '\n' ' ')"
 echo "  Stack    : $STACK_DIR"
 echo "  Crontab  :"
-crontab -u odoo -l 2>/dev/null | grep -v '^#' || echo "    (vacío)"
+crontab -l 2>/dev/null | grep -v '^#' || echo "    (vacío)"
 echo "================================================================"
 echo ""
 print_ok "Instalación completada."

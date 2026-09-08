@@ -11,7 +11,9 @@
 #   2) certbot certonly --webroot -> certs reales
 #   3) re-render con certs reales -> nginx -t + reload
 #
-# Uso:  sudo -u odoo ./3.5_instalar_nginx_certbot.sh
+# Corre COMO odoo; usa sudo para lo privilegiado (apt, /etc/nginx, certbot, ufw).
+#
+# Uso:  su - odoo  &&  cd ~/installer_vps && ./3.5_instalar_nginx_certbot.sh
 # ============================================================================
 set -euo pipefail
 
@@ -20,8 +22,8 @@ print_ok()  { echo -e "${GREEN}[OK]${NC} $1"; }
 print_warn(){ echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_err(){ echo -e "${RED}[ERROR]${NC} $1"; }
 
-if [ "$(id -u)" -ne 0 ]; then
-    print_err "Ejecuta con sudo:  sudo -u odoo ./3.5_instalar_nginx_certbot.sh"
+if [ "$(id -un)" != "odoo" ]; then
+    print_err "Ejecuta como usuario odoo:  su - odoo  (y luego este script)"
     exit 1
 fi
 
@@ -52,19 +54,19 @@ echo "=== [1/8] Instalación nginx + certbot ==="
 if command -v nginx > /dev/null 2>&1; then
     print_ok "nginx ya instalado: $(nginx -v 2>&1)"
 else
-    DEBIAN_FRONTEND=noninteractive apt-get update -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y nginx certbot python3-certbot-nginx
+    sudo apt-get update -y
+    DEBIAN_FRONTEND=noninteractive sudo apt-get install -y nginx certbot python3-certbot-nginx
     print_ok "nginx + certbot instalados"
 fi
-systemctl enable --now nginx > /dev/null 2>&1 || true
+sudo systemctl enable --now nginx > /dev/null 2>&1 || true
 
 # ------------------------------------------------------------
 # 2) Snippets + directorio webroot
 # ------------------------------------------------------------
 echo "[2/8] Snippets y webroot..."
-install -d -m 0755 /etc/nginx/snippets /var/www/html
-cp "$SCRIPT_DIR/nginx_snippets/ssl.conf"         /etc/nginx/snippets/ssl.conf
-cp "$SCRIPT_DIR/nginx_snippets/letsencrypt.conf" /etc/nginx/snippets/letsencrypt.conf
+sudo install -d -m 0755 /etc/nginx/snippets /var/www/html
+sudo cp "$SCRIPT_DIR/nginx_snippets/ssl.conf"         /etc/nginx/snippets/ssl.conf
+sudo cp "$SCRIPT_DIR/nginx_snippets/letsencrypt.conf" /etc/nginx/snippets/letsencrypt.conf
 print_ok "snippets/ssl.conf y snippets/letsencrypt.conf instalados"
 
 # ------------------------------------------------------------
@@ -99,14 +101,14 @@ render_conf "$TMP_CERT_DIR" "$RENDER"
 # 4) Desplegar en nginx (primera pasada, cert temporal)
 # ------------------------------------------------------------
 echo "[4/8] Desplegando conf en nginx..."
-cp "$RENDER" "/etc/nginx/sites-available/$CONF_NAME"
-ln -sf "/etc/nginx/sites-available/$CONF_NAME" "/etc/nginx/sites-enabled/$CONF_NAME"
-rm -f /etc/nginx/sites-enabled/default
-if ! nginx -t; then
+sudo cp "$RENDER" "/etc/nginx/sites-available/$CONF_NAME"
+sudo ln -sf "/etc/nginx/sites-available/$CONF_NAME" "/etc/nginx/sites-enabled/$CONF_NAME"
+sudo rm -f /etc/nginx/sites-enabled/default
+if ! sudo nginx -t; then
     print_err "nginx -t falló con el cert temporal. Revisa el conf renderizado: $RENDER"
     exit 1
 fi
-systemctl reload nginx
+sudo systemctl reload nginx
 print_ok "nginx sirviendo el conf temporal (puerto 80 para ACME)"
 
 # ------------------------------------------------------------
@@ -146,7 +148,7 @@ for svc in "$CLIENTE_SLUG" $SERVICIOS; do
     DOMAINS="$DOMAINS -d $fqdn"
 done
 # shellcheck disable=SC2086
-certbot certonly --webroot -w /var/www/html $DOMAINS \
+sudo certbot certonly --webroot -w /var/www/html $DOMAINS \
     --non-interactive --agree-tos -m "$CERT_ADMIN" \
     --keep-until-expiring > /dev/null 2>&1 || {
     print_err "certbot falló. Revisa que el puerto 80 esté abierto y el DNS correcto."
@@ -160,22 +162,22 @@ print_ok "Certificado en /etc/letsencrypt/live/$CLIENTE_FQDN/"
 echo "[7/8] Re-render con certs reales..."
 CERT_BASE="/etc/letsencrypt/live/$CLIENTE_FQDN"
 render_conf "$CERT_BASE" "$RENDER"
-cp "$RENDER" "/etc/nginx/sites-available/$CONF_NAME"
-if ! nginx -t; then
+sudo cp "$RENDER" "/etc/nginx/sites-available/$CONF_NAME"
+if ! sudo nginx -t; then
     print_err "nginx -t falló con los certs reales."
     exit 1
 fi
-systemctl reload nginx
+sudo systemctl reload nginx
 print_ok "Conf final validado y desplegado"
 
 # ------------------------------------------------------------
 # 8) Firewall UFW
 # ------------------------------------------------------------
 echo "[8/8] Firewall UFW..."
-if command -v ufw > /dev/null 2>&1 && ufw status | grep -q "Status: active"; then
-    ufw allow 22/tcp > /dev/null
-    ufw allow 80/tcp > /dev/null
-    ufw allow 443/tcp > /dev/null
+if command -v ufw > /dev/null 2>&1 && sudo ufw status | grep -q "Status: active"; then
+    sudo ufw allow 22/tcp > /dev/null
+    sudo ufw allow 80/tcp > /dev/null
+    sudo ufw allow 443/tcp > /dev/null
     print_ok "UFW: permitidos 22, 80 y 443"
 else
     print_warn "UFW no activo u ausente; omite si el proveedor filtra los puertos."
@@ -183,8 +185,8 @@ fi
 
 echo "================================================"
 print_ok "nginx + SSL listos para $CLIENTE_FQDN"
-echo "  Conf:        /etc/nginx/sites-available/$CONF_NAME"
+echo "  Conf:         /etc/nginx/sites-available/$CONF_NAME"
 echo "  Render local: $RENDER"
-echo "  Cert:        /etc/letsencrypt/live/$CLIENTE_FQDN/"
-echo "  Siguiente:   ./4_desplegar_stack.sh (como odoo)"
+echo "  Cert:         /etc/letsencrypt/live/$CLIENTE_FQDN/"
+echo "  Siguiente:    ./4_desplegar_stack.sh"
 echo "================================================"

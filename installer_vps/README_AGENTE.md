@@ -3,8 +3,8 @@
 Guía para que un **agente de IA** aprovisione un VPS nuevo para un cliente de Odoo 19
 (usuario, repos, Docker, stack `postiz-n8n-chatwoot-pgadmin-odoo_19` y nginx+SSL).
 
-Este kit es **portable**: puedes llevarlo por `scp`/`rsync` a cualquier VPS
-o encontrarlo dentro del repo `odoo19-skeleton` (carpeta `installer_vps/`).
+Este kit es **portable**: se lleva por `scp`/`rsync` a cualquier VPS
+o se encuentra dentro del repo `odoo19-skeleton` (carpeta `installer_vps/`).
 No depende de estar dentro de un clon del skeleton.
 
 ---
@@ -13,8 +13,8 @@ No depende de estar dentro de un clon del skeleton.
 
 | Requisito | Detalle |
 |---|---|
-| SO | Ubuntu 22.04 / 24.04, acceso `root` o `sudo` |
-| VPS nuevo | Sin odoo_user previo; puertos 80 y 443 libres |
+| SO | Ubuntu 22.04 / 24.04 |
+| VPS nuevo | Sin usuario odoo previo; puertos 80 y 443 libres |
 | IP pública | La del VPS (los A records DNS deben apuntar a ella) |
 | Datos del cliente | Nombre/marca, dominio, SMTP (se piden al usuario) |
 
@@ -23,34 +23,61 @@ Datos que debes **preguntar al usuario** antes de empezar:
 1. Nombre/marca del cliente (slug): para torteralevis es `torteralevis`.
 2. Dominio base: para torteralevis es `integraia.lat` → FQDN `torteralevis.integraia.lat`.
 3. SMTP del cliente (host, puerto, usuario, password, from).
-4. Confirmación de que puede agregar una llave SSH pública a GitHub
-   (Settings → SSH and GPG keys) o al repo `saymonset` como deploy key.
+4. Confirmación de que puede agregar una llave SSH pública a GitHub.
 
 > Todos estos datos ya vienen pre-llenados en `config_instalacion.env` para torteralevis
-> (excepto `SMTP_PASSWORD`, que debe completar el usuario).
+> (excepto `SMTP_PASSWORD`, que lo pide `instalar_todo.sh`).
 
 ---
 
-## 2. Orden de ejecución (¡en este orden!)
+## 2. Flujo de instalación (2 fases)
 
-Ejecuta los scripts como el usuario correspondiente. Cada uno es **idempotente**
-(puedes re-ejecutarlo sin miedo) y **no destructivo** (nunca borra datos).
+### FASE ROOT — solo la primera conexión (una vez)
 
-| Paso | Script | Usuario | Qué hace |
-|---|---|---|---|
-| 1 | `0_crear_usuario_odoo.sh` | root/sudo | Grupos `docker/odoo/odoogroup` + usuario `odoo` (uid 1001, grupos adm,sudo,docker,odoogroup), home 750, password aleatoria |
-| 2 | `1_preparar_ssh_git.sh` | odoo | Llave ed25519 nueva, `~/.ssh/config` para GitHub, `.gitconfig`, **pausa** para agregar la llave a GitHub, test `ssh -T` |
-| 3 | `2_clonar_repos.sh` | odoo | Clona `modulos_odoo` y `odoo19-skeleton` en `~/prod/` + crea `bin/`, `dynamicconfig/`, `opencode/` |
-| 4 | `3_instalar_docker.sh` | odoo | Docker engine + compose plugin + red externa `odoo_network_19` (sin borrar nada) |
-| 5 | `3.5_instalar_nginx_certbot.sh` | odoo | nginx + certbot + snippets + render del conf del cliente + verificación DNS + emisión de certs SSL |
-| 6 | `4_desplegar_stack.sh` | odoo | Carpetas `v19/` con ownerships correctos, secrets auto-generados, `.env` del stack, `odoo.conf`, override, token n8n nuevo |
-| 7 | `5_post_instalacion.sh` | odoo | Crontab del monitor 6_5, rclone opcional, checklist final |
+Entra como root y ejecuta el **bootstrap**. Solo crea el usuario odoo con
+superpoderes y deja el kit en su home. No instala nada más.
+
+```bash
+# (el tarball ya está extraído en esta máquina, ej. /root/installer)
+sudo ./0_crear_usuario_odoo.sh
+```
+
+Qué hace:
+- Crea grupos `docker`, `odoo`, `odoogroup`.
+- Crea usuario `odoo` (uid 1001, grupos `adm,sudo,docker,odoogroup`).
+  El grupo `sudo` da superpoderes **con password** (no NOPASSWD).
+- **NO fija password**: lo defines tú con `sudo passwd odoo`.
+- Copia el kit a `/home/odoo/installer_vps` y lo deja de odoo.
+
+> **Root ya no se usa más.** El resto corre como odoo.
+
+### FASE ODOO — instalación completa
+
+```bash
+sudo passwd odoo                    # (una vez) ponle el password a odoo
+su - odoo                           # o: ssh odoo@<IP>
+cd ~/installer_vps
+./instalar_todo.sh                  # todo (pregunta por nginx)
+# o:  ./instalar_todo.sh --skip-nginx   # si el DNS aún no está listo
+```
+
+`instalar_todo.sh` verifica que corre como odoo y que `sudo` funciona, y
+encadena en orden:
+
+| Paso | Script | Qué hace |
+|---|---|---|
+| 1 | `1_preparar_ssh_git.sh` | Llave ed25519, `~/.ssh/config` GitHub, `.gitconfig`, **pausa** para agregar la llave a GitHub, test `ssh -T` |
+| 2 | `2_clonar_repos.sh` | Clona `modulos_odoo` y `odoo19-skeleton` en `~/prod/` + `bin/`, `dynamicconfig/`, `opencode/` |
+| 3 | `3_instalar_docker.sh` | Docker engine + compose plugin + red externa `odoo_network_19` (sin borrar nada) |
+| 3.5 | `3.5_instalar_nginx_certbot.sh` | nginx + certbot + snippets + render del conf del cliente + verificación DNS + emisión de certs SSL (opcional en el orquestador) |
+| 4 | `4_desplegar_stack.sh` | Carpetas `v19/` con ownerships correctos, secrets auto-generados, `.env` del stack, `odoo.conf`, override, tokens nuevos |
+| 5 | `5_post_instalacion.sh` | Crontab del monitor 6_5, rclone opcional, checklist final |
 
 **Pausas obligatorias:**
 
-- Tras el paso 2: el usuario debe agregar la llave pública impresa a GitHub y
+- Tras el paso 1: el usuario debe agregar la llave pública impresa a GitHub y
   confirmar antes de continuar (`ssh -T git@github.com` debe responder `Hi ...!`).
-- Tras el paso 3.5: el DNS debe apuntar al VPS **antes** de emitir certs.
+- Antes del paso 3.5: el DNS debe apuntar al VPS **antes** de emitir certs.
   El script lo verifica con `dig`; si falla, aborta con mensaje claro.
 
 **No ejecutar en el VPS nuevo:** el `0_install_docker_and_setup.sh` del stack
@@ -132,13 +159,14 @@ cd ~/prod/odoo19-skeleton/postiz-n8n-chatwoot-pgadmin-odoo_19
 
 ## 6. Pasos manuales que quedan (documentados, no automatizables)
 
-1. **Agregar la llave SSH a GitHub** (tras paso 2).
-2. **DNS** (Namecheap): A records `@`, `chatwoot`, `n8n`, `postiz`, `pgadmin`,
+1. **Password de odoo** (tras el bootstrap): `sudo passwd odoo`.
+2. **Agregar la llave SSH a GitHub** (tras paso 1).
+3. **DNS** (Namecheap): A records `@`, `chatwoot`, `n8n`, `postiz`, `pgadmin`,
    `temporal` (y `lead` si aplica) → IP del VPS. Ver `MANUAL-NGINX-INSTALACION.md` paso 0.
-3. **R2 backups**: llenar `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_ACCOUNT_ID`,
+4. **R2 backups**: llenar `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_ACCOUNT_ID`,
    `R2_CRYPT_PASSWORD`, `R2_CRYPT_PASSWORD2` en `.env` + regenerar `~/.config/rclone/rclone.conf`
    con `rclone obscure "<valor del .env>"`.
-4. **Onboarding del chatbot** del cliente: `tools/TUTORIAL_NUEVO_CLIENTE.md`.
+5. **Onboarding del chatbot** del cliente: `tools/TUTORIAL_NUEVO_CLIENTE.md`.
 
 ---
 
@@ -152,10 +180,13 @@ cd ~/odoo19-skeleton   # o donde esté el repo
 # genera: installer_vps_torteralevis.tar.gz
 ```
 
-Llevarlo al VPS nuevo con `scp` y descomprimir:
+Llevarlo al VPS nuevo:
 
 ```bash
 scp installer_vps_torteralevis.tar.gz root@<IP_VPS>:/tmp/
 ssh root@<IP_VPS> "mkdir -p /root/installer && tar -xzf /tmp/installer_vps_torteralevis.tar.gz -C /root/installer"
-cd /root/installer && ls   # ejecutar los scripts desde aquí
+ssh root@<IP_VPS>
+cd /root/installer
+sudo ./0_crear_usuario_odoo.sh      # bootstrap (root, una vez)
+# luego: passwd odoo -> su - odoo -> cd ~/installer_vps -> ./instalar_todo.sh
 ```

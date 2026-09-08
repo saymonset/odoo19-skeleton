@@ -1,10 +1,14 @@
 #!/bin/bash
 # ============================================================================
-# 0_crear_usuario_odoo.sh
+# 0_crear_usuario_odoo.sh  —  BOOTSTRAP (primera y única ejecución como root)
 #
-# Crea el usuario 'odoo' con los grupos y permisos que exige el stack
-# (mismo perfil que el VPS de referencia: uid 1001, adm,sudo,docker,odoogroup).
-# Idempotente y no destructivo: si el usuario ya existe, solo verifica y completa.
+# Crea el usuario 'odoo' con los grupos del stack (uid 1001,
+# adm,sudo,docker,odoogroup) y deja el kit portable en su home. El password
+# NO se fija aquí: lo defines tú con `passwd odoo` cuando quieras.
+# El grupo 'sudo' da superpoderes CON password (sudo estándar, sin NOPASSWD).
+#
+# Después de este script: pon password, entra como odoo y corre
+# `./instalar_todo.sh` (root ya no hace falta).
 #
 # Uso:  sudo ./0_crear_usuario_odoo.sh
 # ============================================================================
@@ -16,24 +20,23 @@ print_warn(){ echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_err(){ echo -e "${RED}[ERROR]${NC} $1"; }
 
 if [ "$(id -u)" -ne 0 ]; then
-    print_err "Ejecuta con sudo o como root."
+    print_err "Ejecuta como root (solo esta primera vez)."
     exit 1
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="$SCRIPT_DIR/config_instalacion.env"
-if [ -f "$CONFIG" ]; then
-    # shellcheck source=/dev/null
+[ -f "$CONFIG" ] && { # shellcheck source=/dev/null
     source "$CONFIG"
-fi
+}
 ODOO_UID="${ODOO_UID:-1001}"
 
-echo "=== [0/6] Creación de usuario odoo ==="
+echo "=== Bootstrap: creación del usuario odoo ==="
 
 # ------------------------------------------------------------
 # 1) Grupos necesarios
 # ------------------------------------------------------------
-echo "[1/6] Verificando grupos..."
+echo "[1/5] Grupos..."
 for group in docker odoo odoogroup; do
     if getent group "$group" > /dev/null 2>&1; then
         print_ok "Grupo $group ya existe"
@@ -46,51 +49,67 @@ done
 # ------------------------------------------------------------
 # 2) Usuario odoo
 # ------------------------------------------------------------
-echo "[2/6] Verificando usuario odoo..."
+echo "[2/5] Usuario..."
 if id odoo > /dev/null 2>&1; then
-    print_ok "El usuario odoo ya existe: $(id odoo)"
+    print_ok "Usuario odoo ya existe: $(id odoo)"
 else
-    print_ok "Creando usuario odoo (uid $ODOO_UID)..."
-    # -M no home temporal; -m crea home; -G grupos secundarios
-    useradd -m -s /bin/bash -g odoo -G adm,sudo,docker,odoogroup -u "$ODOO_UID" odoo
+    if getent passwd "$ODOO_UID" > /dev/null 2>&1; then
+        print_warn "UID $ODOO_UID ocupado; se usará el siguiente UID libre."
+        ODOO_UID=""
+    fi
+    # -U fuerza UID libre si ODOO_UID queda vacío; -G grupos secundarios
+    # shellcheck disable=SC2086
+    useradd -m -s /bin/bash -g odoo -G adm,sudo,docker,odoogroup -u $ODOO_UID odoo 2>/dev/null \
+        || useradd -m -s /bin/bash -g odoo -G adm,sudo,docker,odoogroup odoo
     print_ok "Usuario odoo creado"
 fi
 
 # ------------------------------------------------------------
 # 3) Grupos garantizados (idempotente)
 # ------------------------------------------------------------
-echo "[3/6] Garantizando grupos secundarios..."
+echo "[3/5] Grupos secundarios garantizados..."
 usermod -aG adm,sudo,docker,odoogroup odoo
-print_ok "Grupos: $(groups odoo)"
+print_ok "Grupos de odoo: $(groups odoo)"
 
 # ------------------------------------------------------------
-# 4) Password temporal (solo si no tiene)
+# 4) Password: NO se fija (la defines tú). Instrucción clara.
 # ------------------------------------------------------------
-echo "[4/6] Password..."
-if passwd --status odoo | grep -q 'L\|NP'; then
-    TEMP_PASS="$(openssl rand -base64 12)"
-    echo "odoo:$TEMP_PASS" | chpasswd
-    print_warn "Password temporal generada (anótala y cámbiala luego):"
-    echo "    $TEMP_PASS"
+echo "[4/5] Password..."
+if passwd --status odoo | grep -q '^odoo: L'; then
+    print_warn "odoO aún sin password. Pónselo tú (como root):"
+    echo "    sudo passwd odoo"
 else
-    print_ok "El usuario odoo ya tiene password configurada (no se toca)"
+    print_ok "odoo ya tiene password configurada"
 fi
 
 # ------------------------------------------------------------
-# 5) Permisos del home
+# 5) Kit portable en /home/odoo + permisos
 # ------------------------------------------------------------
-echo "[5/6] Permisos del home..."
-chown -R odoo:odoo /home/odoo
-chmod 750 /home/odoo
-print_ok "Home /home/odoo con dueño odoo:odoo y 750"
+echo "[5/5] Kit en el home de odoo..."
+ODOO_HOME="$(getent passwd odoo | cut -d: -f6)"
+KIT_DEST="$ODOO_HOME/installer_vps"
 
-# ------------------------------------------------------------
-# 6) Verificación final
-# ------------------------------------------------------------
-echo "[6/6] Verificación..."
-echo "----------------------------------------"
-id odoo
-groups odoo
-ls -ld /home/odoo
-echo "----------------------------------------"
-print_ok "Usuario odoo configurado. Siguiente: ./1_preparar_ssh_git.sh (como odoo)"
+if [ -d "$KIT_DEST" ]; then
+    print_ok "Kit ya presente en $KIT_DEST"
+else
+    if [ "$SCRIPT_DIR" = "$KIT_DEST" ]; then
+        print_ok "El kit ya se está ejecutando desde $KIT_DEST"
+    else
+        cp -r "$SCRIPT_DIR" "$KIT_DEST"
+        print_ok "Kit copiado a $KIT_DEST"
+    fi
+fi
+chown -R odoo:odoo "$ODOO_HOME"
+chmod 750 "$ODOO_HOME"
+chmod -R u+rwX "$KIT_DEST"
+
+echo "================================================================"
+print_ok "Bootstrap completado."
+echo ""
+echo "  Siguientes pasos (root ya no hace falta):"
+echo "  1) Pon el password de odoo:            sudo passwd odoo"
+echo "  2) Entra como odoo:                    su - odoo"
+echo "  3) Instala TODO desde su home:         cd ~/installer_vps && ./instalar_todo.sh"
+echo ""
+echo "  (opcional, si quieres entrar por ssh como odoo: ssh-copy-id odoo@IP)"
+echo "================================================================"

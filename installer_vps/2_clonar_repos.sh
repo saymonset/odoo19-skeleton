@@ -5,8 +5,9 @@
 # Crea el layout de /home/odoo (bin/, dynamicconfig/, opencode/) y clona desde
 # GitHub los repos modulos_odoo y odoo19-skeleton en ~/prod/ (o ~/lead/ según
 # config AMBIENTES). No empaqueta repos: siempre se bajan de GitHub.
+# Corre COMO odoo; no necesita sudo.
 #
-# Uso:  sudo -u odoo ./2_clonar_repos.sh
+# Uso:  su - odoo  &&  cd ~/installer_vps && ./2_clonar_repos.sh
 # ============================================================================
 set -euo pipefail
 
@@ -15,12 +16,10 @@ print_ok()  { echo -e "${GREEN}[OK]${NC} $1"; }
 print_warn(){ echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_err(){ echo -e "${RED}[ERROR]${NC} $1"; }
 
-if [ "$(id -u)" -ne 0 ]; then
-    print_err "Ejecuta con sudo:  sudo -u odoo ./2_clonar_repos.sh"
+if [ "$(id -un)" != "odoo" ]; then
+    print_err "Ejecuta como usuario odoo:  su - odoo  (y luego este script)"
     exit 1
 fi
-
-ODOO_HOME="$(getent passwd odoo | cut -d: -f6)"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="$SCRIPT_DIR/config_instalacion.env"
@@ -34,11 +33,9 @@ SKELETON_BRANCH="${SKELETON_BRANCH:-main}"
 MODULOS_BRANCH="${MODULOS_BRANCH:-main}"
 AMBIENTES="${AMBIENTES:-prod}"
 
-echo "=== [1/3] Estructura base /home/odoo ==="
-for d in bin dynamicconfig opencode; do
-    install -d -o odoo -g odoo "$ODOO_HOME/$d"
-    print_ok "$ODOO_HOME/$d"
-done
+echo "=== [1/3] Estructura base ~/ (bin, dynamicconfig, opencode) ==="
+mkdir -p "$HOME"/{bin,dynamicconfig,opencode}
+print_ok "~/bin, ~/dynamicconfig y ~/opencode listos"
 
 # ------------------------------------------------------------
 # Clonado por ambiente (prod, lead)
@@ -48,15 +45,15 @@ clone_repo() {
     if [ -d "$env_dir" ]; then
         print_ok "$repo ya existe en $env_dir (se omite el clonado)"
     else
-        install -d -o odoo -g odoo "$(dirname "$env_dir")"
+        mkdir -p "$(dirname "$env_dir")"
         print_ok "Clonando $repo (rama $branch) -> $env_dir"
-        sudo -u odoo git clone --branch "$branch" "$url" "$env_dir"
+        git clone --branch "$branch" "$url" "$env_dir"
     fi
 }
 
 echo "[2/3] Clonando repos..."
 for env in $AMBIENTES; do
-    base="$ODOO_HOME/$env"
+    base="$HOME/$env"
     clone_repo "$base/modulos_odoo"    "modulos_odoo"    "$GITHUB_MODULOS_URL"    "$MODULOS_BRANCH"
     clone_repo "$base/odoo19-skeleton" "odoo19-skeleton" "$GITHUB_SKELETON_URL" "$SKELETON_BRANCH"
 done
@@ -67,7 +64,7 @@ done
 echo "[3/3] Verificación..."
 for env in $AMBIENTES; do
     echo "----------------------------------------"
-    ls -ld "$ODOO_HOME/$env"/* 2>/dev/null || print_warn "$ODOO_HOME/$env vacío"
+    ls -ld "$HOME/$env"/* 2>/dev/null || print_warn "$HOME/$env vacío"
 done
 
-print_ok "Repos clonados. Siguiente: ./3_instalar_docker.sh (como odoo)"
+print_ok "Repos clonados. Siguiente: ./3_instalar_docker.sh"
