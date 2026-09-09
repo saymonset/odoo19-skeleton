@@ -27,7 +27,7 @@ services:
       NEXT_PUBLIC_BACKEND_URL: '${FRONTEND_URL:-https://postiz.unisasalud.com}/api'
       JWT_SECRET: '${JWT_SECRET:-pon_aqui_un_secreto_muy_largo_y_aleatorio}'
       DATABASE_URL: 'postgresql://odoo:${POSTGRES_PASSWORD}@db:5432/postiz?sslmode=disable'
-      REDIS_URL: 'redis://:${REDIS_PASSWORD:-fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d}@redis:6379'
+      REDIS_URL: 'redis://:${REDIS_PASSWORD:-redis123}@redis:6379'
       BACKEND_INTERNAL_URL: 'http://postiz:3000'
       TEMPORAL_ADDRESS: "temporal:7233"
       IS_GENERAL: 'true'

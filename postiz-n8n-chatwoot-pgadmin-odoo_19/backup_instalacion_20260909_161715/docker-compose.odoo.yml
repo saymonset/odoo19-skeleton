@@ -36,7 +36,7 @@ services:
       - "127.0.0.1:6379:6379"
     command: >
       redis-server 
-      --requirepass fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d 
+      --requirepass redis123 
       --bind 0.0.0.0
       --protected-mode no
       --maxmemory 256mb
@@ -49,7 +49,7 @@ services:
       --tcp-keepalive 300
       --timeout 0
     healthcheck:
-      test: ["CMD", "redis-cli", "-a", "fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d", "ping"]
+      test: ["CMD", "redis-cli", "-a", "redis123", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5

@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: chatwoot
-      POSTGRES_PASSWORD: 6d0690bbd513230ca42173652764ea6f5e13c912b647ac4514c2a3338d29fd04
+      POSTGRES_PASSWORD: chatwoot123
       POSTGRES_DB: chatwoot_production
     volumes:
       - ./v19/chatwoot_pgdata:/var/lib/postgresql/data
@@ -41,13 +41,13 @@ services:
       RACK_ATTACK_LOGIN_PERIOD_IP: "300"
       RACK_ATTACK_LOGIN_PERIOD_EMAIL: "900"
       
-      RAILS_HOST: https://chatwoot.torteralevis.integraia.lat
-      FRONTEND_URL: https://chatwoot.torteralevis.integraia.lat
-      APP_HOST: https://chatwoot.torteralevis.integraia.lat
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      APP_HOST: https://chatwoot.integraia.lat
       
-      ASSET_HOST: https://chatwoot.torteralevis.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.torteralevis.integraia.lat
-      RAILS_STORAGE_HOST: https://chatwoot.torteralevis.integraia.lat
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
+      RAILS_STORAGE_HOST: https://chatwoot.integraia.lat
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"
@@ -57,24 +57,24 @@ services:
       
       ACTIVE_STORAGE_ROOT: /app/storage
       RAILS_STORAGE_PATH: /app/storage
-      RAILS_ASSET_HOST: https://chatwoot.torteralevis.integraia.lat
-      ACTIVE_STORAGE_URL_HOST: https://chatwoot.torteralevis.integraia.lat
+      RAILS_ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_URL_HOST: https://chatwoot.integraia.lat
       ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN: "604800"
       
       POSTGRES_USER: chatwoot
-      POSTGRES_PASSWORD: 6d0690bbd513230ca42173652764ea6f5e13c912b647ac4514c2a3338d29fd04
+      POSTGRES_PASSWORD: chatwoot123
       POSTGRES_DB: chatwoot_production
       POSTGRES_HOST: chatwoot-postgres
       POSTGRES_PORT: 5432
-      DATABASE_URL: postgresql://chatwoot:6d0690bbd513230ca42173652764ea6f5e13c912b647ac4514c2a3338d29fd04@chatwoot-postgres:5432/chatwoot_production
+      DATABASE_URL: postgresql://chatwoot:chatwoot123@chatwoot-postgres:5432/chatwoot_production
       
-      REDIS_PASSWORD: fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d
-      REDIS_URL: redis://:fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d@redis:6379
+      REDIS_PASSWORD: redis123
+      REDIS_URL: redis://:redis123@redis:6379
       REDIS_HOST: redis
       REDIS_PORT: 6379
       
-      SECRET_KEY_BASE: 71a04d469bec13aa792afc550475fbead1f19624dfb37423d25b7df139798a26
-      RAILS_MASTER_KEY: 71a04d469bec13aa792afc550475fbead1f19624dfb37423d25b7df139798a26
+      SECRET_KEY_BASE: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      RAILS_MASTER_KEY: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
       
       FORCE_SSL: "false"
       ALLOW_INSECURE_SSL: "true"
@@ -87,7 +87,7 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
       RAILS_SERVE_STATIC_FILES: "true"
       
-      API_AUTH_TOKEN: da67540d6879710104daf24177e59f9485ae2c07d70b32ba
+      API_AUTH_TOKEN: yvJxkWhiTMioFgKTZTq3ZE3h
 
       # Configuración SMTP (estándar de Chatwoot) - valores desde .env
       SMTP_ADDRESS: ${SMTP_ADDRESS}
@@ -150,22 +150,22 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       
-      RAILS_HOST: https://chatwoot.torteralevis.integraia.lat
-      FRONTEND_URL: https://chatwoot.torteralevis.integraia.lat
-      ASSET_HOST: https://chatwoot.torteralevis.integraia.lat
-      ACTIVE_STORAGE_HOST: https://chatwoot.torteralevis.integraia.lat
+      RAILS_HOST: https://chatwoot.integraia.lat
+      FRONTEND_URL: https://chatwoot.integraia.lat
+      ASSET_HOST: https://chatwoot.integraia.lat
+      ACTIVE_STORAGE_HOST: https://chatwoot.integraia.lat
       
       POSTGRES_USER: chatwoot
-      POSTGRES_PASSWORD: 6d0690bbd513230ca42173652764ea6f5e13c912b647ac4514c2a3338d29fd04
+      POSTGRES_PASSWORD: chatwoot123
       POSTGRES_DB: chatwoot_production
       POSTGRES_HOST: chatwoot-postgres
-      DATABASE_URL: postgresql://chatwoot:6d0690bbd513230ca42173652764ea6f5e13c912b647ac4514c2a3338d29fd04@chatwoot-postgres:5432/chatwoot_production
+      DATABASE_URL: postgresql://chatwoot:chatwoot123@chatwoot-postgres:5432/chatwoot_production
       
-      REDIS_PASSWORD: fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d
-      REDIS_URL: redis://:fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d@redis:6379
+      REDIS_PASSWORD: redis123
+      REDIS_URL: redis://:redis123@redis:6379
       
-      SECRET_KEY_BASE: 71a04d469bec13aa792afc550475fbead1f19624dfb37423d25b7df139798a26
-      RAILS_MASTER_KEY: 71a04d469bec13aa792afc550475fbead1f19624dfb37423d25b7df139798a26
+      SECRET_KEY_BASE: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
+      RAILS_MASTER_KEY: 99f4fa1f8fadd2125a12148ccf962c5d1ae16592a7da11ef9fc795f6a5c68e97737746c53ce0ecbc45d64235e349b879312d0a28431c81c2a59165d2d7077c54
       
       ACTIVE_STORAGE_SERVICE: local
       FILE_ATTACHMENT_ENABLED: "true"

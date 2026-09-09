@@ -26,16 +26,16 @@ services:
       - N8N_ENCRYPTION_KEY_FILE=/run/secrets/n8n_encryption_key
       
       # URLs
-      - N8N_HOST=n8n.torteralevis.integraia.lat
+      - N8N_HOST=n8n.integraia.lat
       - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://n8n.torteralevis.integraia.lat/
-      - N8N_EDITOR_BASE_URL=https://n8n.torteralevis.integraia.lat/
+      - WEBHOOK_URL=https://n8n.integraia.lat/
+      - N8N_EDITOR_BASE_URL=https://n8n.integraia.lat/
       
       # Configuración general
       - N8N_RUNNERS_ENABLED=false
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
       - N8N_EXPRESSIONS_ALLOWED_ENV_VARS=CHATBOT_API_TOKEN
-      - CHATBOT_API_TOKEN=494aefcbc445fb62848b30b60b933b000e4eded25789eb04
+      - CHATBOT_API_TOKEN=OOm8oXtJ3Df03_El39HoYcor2myq7eKcg22_uxXabrg
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_CORS_ALLOW_ORIGIN=*
       - N8N_CORS_ALLOW_CREDENTIALS=true
@@ -44,12 +44,12 @@ services:
       - N8N_CACHE_BACKEND=redis
       - N8N_CACHE_REDIS_HOST=redis
       - N8N_CACHE_REDIS_PORT=6379
-      - N8N_CACHE_REDIS_PASSWORD=fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d
+      - N8N_CACHE_REDIS_PASSWORD=redis123
       - N8N_CACHE_REDIS_DB=1
       
       - QUEUE_BULL_REDIS_HOST=redis
       - QUEUE_BULL_REDIS_PORT=6379
-      - QUEUE_BULL_REDIS_PASSWORD=fa78c96d98b3c2b6d7e31e0a0d59bdbd4dec7c300518142b9e76789252fdd67d
+      - QUEUE_BULL_REDIS_PASSWORD=redis123
       - QUEUE_BULL_REDIS_DB=1
       
       # ✅ SOLO CAMBIA ESTO
