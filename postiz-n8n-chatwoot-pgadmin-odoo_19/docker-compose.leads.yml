@@ -1,3 +1,5 @@
+name: leads
+
 services:
   db-leads:
     image: pgvector/pgvector:pg15
@@ -25,7 +27,7 @@ services:
     stop_grace_period: 60s
 
   web-leads:
-    image: "odoo-pers:19"
+    image: "odoo-pers-leads:19"
     container_name: "odoo-19-web-leads"
     restart: unless-stopped
     user: "1001:1001"

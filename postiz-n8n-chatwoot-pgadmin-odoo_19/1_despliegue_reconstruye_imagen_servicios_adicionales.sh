@@ -17,15 +17,15 @@ print_header() { echo -e "${BLUE}═══════════════�
 # 1. Construcción de la Imagen Personalizada
 print_header "Paso 1: Construcción de la imagen personalizada Odoo 19"
 
-print_message "Eliminando imagen anterior..."
-docker image rm odoo-pers:19 2>/dev/null || true
+print_message "Eliminando imagen anterior (SOLO de leads, no toca prod)..."
+docker image rm odoo-pers-leads:19 2>/dev/null || true
 
 if [ ! -f Dockerfile ]; then
-    print_error "No se encuentra el Dockerfile para construir la imagen odoo-pers:19"
+    print_error "No se encuentra el Dockerfile para construir la imagen odoo-pers-leads:19"
     exit 1
 fi
-print_message "Construyendo nueva imagen odoo-pers:19..."
-docker build --no-cache -t odoo-pers:19 .
+print_message "Construyendo nueva imagen odoo-pers-leads:19..."
+docker build --no-cache -t odoo-pers-leads:19 .
 
 # 2. Configuración del archivo .env
 print_header "Paso 2: Configuración del archivo .env"
