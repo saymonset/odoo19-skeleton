@@ -765,7 +765,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\nfor (const item of items) {\n  const nuevoItem = {\n    json: {\n      ...item.json,\n      text: item.json.output,\n      content: item.json.output\n    }\n  };\n  nuevosItems.push(nuevoItem);\n}\n\nreturn nuevosItems;"
+        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\n// SPEC 32: anuncio determinista del carrito (independiente del LLM).\n// Se anexa cuando el negocio tiene el carrito activo (el system prompt trae\n// el bloque), la salida no lo contiene y no hay activación de flujo ni menú.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\nconst carritoActivo = systemPrompt.indexOf('=== CARRITO DE COMPRA ===') !== -1;\nconst ANUNCIO = '\\n💡 Escribe «carrito» para ver nuestro catálogo y comprar por WhatsApp.';\n\nfor (const item of items) {\n  const output = item.json.output || '';\n  const esActivacionFlujo = !!(item.json.flow_name || item.json.equipo_asignado);\n  const esMenu = item.json.isMenu === true || item.json.tipoPregunta === 'MENU';\n  const anunciar = carritoActivo && output\n    && output.indexOf('«carrito»') === -1\n    && !esActivacionFlujo && !esMenu;\n\n  const text = anunciar ? output + ANUNCIO : output;\n  const nuevoItem = {\n    json: {\n      ...item.json,\n      output: text,\n      text: text,\n      content: text\n    }\n  };\n  nuevosItems.push(nuevoItem);\n}\n\nreturn nuevosItems;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
