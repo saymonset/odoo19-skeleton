@@ -1634,7 +1634,7 @@
         "url": "https://lead.integraia.lat/chatbot_cart/procesar",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.session_id }}\",\n  \"conversation_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}\",\n  \"account_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.account_id }}\",\n  \"platform\": \"whatsapp\",\n  \"valor\": \"{{ $('Obtener_Info_basica').item.json.text }}\"\n}\n",
+        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\": \"{{ $json.conversation_id }}\",\n  \"account_id\": \"{{ $json.account_id }}\",\n  \"platform\": \"whatsapp\",\n  \"valor\": \"{{ $json.text }}\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1649,7 +1649,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const original = $('Cita_con_Equipo_asignado').item.json;\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
+        "jsCode": "let original = $json;\ntry { original = $('Cita_con_Equipo_asignado').item.json; }\ncatch (e) { original = $json; }\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $json.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id || $json.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  ...$json,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1659,6 +1659,39 @@
       ],
       "id": "b360a2be-131e-42f8-845c-e43dd97c4647",
       "name": "Unificar_salida_carrito"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "modo_carrito_condition",
+              "leftValue": "={{ $json.modo_carrito }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        68816,
+        25296
+      ],
+      "id": "9937e70d-2bd2-461d-b4c1-97c6df7563f9",
+      "name": "¿Modo_carrito?"
     }
   ],
   "connections": {
@@ -2011,7 +2044,7 @@
       "main": [
         [
           {
-            "node": "Agente_Informacion_basica",
+            "node": "¿Modo_carrito?",
             "type": "main",
             "index": 0
           }
@@ -2107,6 +2140,24 @@
         [
           {
             "node": "¿Enviar menú interactivo?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Modo_carrito?": {
+      "main": [
+        [
+          {
+            "node": "Chatbot_cart_procesar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente_Informacion_basica",
             "type": "main",
             "index": 0
           }
