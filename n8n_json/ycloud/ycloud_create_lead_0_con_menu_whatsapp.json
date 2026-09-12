@@ -948,7 +948,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"from\": \"{{  $json.account_id }}\",\n  \"to\": \"{{ $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
+        "jsonBody": "={{ $json.whatsappPayload\n  ? JSON.stringify($json.whatsappPayload)\n  : JSON.stringify({\n      from: $json.account_id,\n      to: $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id,\n      type: \"text\",\n      text: { body: $json.content }\n    }) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1634,7 +1634,7 @@
         "url": "https://lead.integraia.lat/chatbot_cart/procesar",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.session_id }}\",\n  \"conversation_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}\",\n  \"account_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.account_id }}\",\n  \"platform\": \"whatsapp\",\n  \"valor\": \"{{ $('Cita_con_Equipo_asignado').item.json.text }}\"\n}\n",
+        "jsonBody": "={\n  \"session_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.session_id }}\",\n  \"conversation_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}\",\n  \"account_id\": \"{{ $('Cita_con_Equipo_asignado').item.json.account_id }}\",\n  \"platform\": \"whatsapp\",\n  \"valor\": \"{{ $('Seteamos_variables').item.json.text }}\"\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1649,7 +1649,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const original = $('Cita_con_Equipo_asignado').item.json;\nconst texto = $json.texto_para_usuario || $json.text || '';\nreturn [{ json: {\n  ...original,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || []\n} }];"
+        "jsCode": "const original = $('Cita_con_Equipo_asignado').item.json;\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $('Seteamos_variables').item.json.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1661,27 +1661,6 @@
       "name": "Unificar_salida_carrito"
     }
   ],
-  "pinData": {
-    "When clicking ‘Execute workflow’": [
-      {
-        "json": {
-          "output": "Aquí están algunos de los precios de nuestros servicios y planes:\n\n**PLANES MENSUALES (USD/usdt — hosting/VPS incluido):**\n- **Básico $10:** tienda simple, inventario, chat de soporte. Sin agentes ni canales.\n- **TODO EN UNO (Recomendado) $35:** Incluye un agente + ERP completo de Odoo CE (Ventas, Compras, Inventario, Contabilidad, Producción) + BCV SmartConvert + IA + Integración con WhatsApp, Instagram, Facebook y Telegram, más tokens de OpenAI y respaldos diarios en Cloudflare.\n- **AGENTES ADICIONALES $25/agente/mes** (a partir del 2º): Incluye el chatbot avanzado que adapta los flujos según la intención del cliente.\n\n**INSTALACIÓN ODOO (USD/usdt):**\n- **Básica $25**\n- **Lista para trabajar $120:** Incluye todos los canales de comunicación como Chatwoot, Instagram, Facebook y Telegram.\n\nTe ofrecemos asesoría para adaptarnos a las necesidades de tu negocio. ¿Te gustaría agendar una asesoría o demo para discutir más detalles? Más info: https://integraia.lat/",
-          "tipoPregunta": "BASE DE CONOCIMIENTO DE PRECIOS Y SERVICIOS",
-          "isMenu": false,
-          "equipo_asignado": "",
-          "flow_name": "flujo_agendamiento_default",
-          "session_id": "+584143898602",
-          "conversation_id": "+584143898602",
-          "account_id": "+584142711347}}",
-          "platform": "whatsapp",
-          "timestamp_actividad": "2026-08-31T17:37:16.411-04:00",
-          "esPreguntaSiNo": true,
-          "text": "Aquí están algunos de los precios de nuestros servicios y planes:\n\n**PLANES MENSUALES (USD/usdt — hosting/VPS incluido):**\n- **Básico $10:** tienda simple, inventario, chat de soporte. Sin agentes ni canales.\n- **TODO EN UNO (Recomendado) $35:** Incluye un agente + ERP completo de Odoo CE (Ventas, Compras, Inventario, Contabilidad, Producción) + BCV SmartConvert + IA + Integración con WhatsApp, Instagram, Facebook y Telegram, más tokens de OpenAI y respaldos diarios en Cloudflare.\n- **AGENTES ADICIONALES $25/agente/mes** (a partir del 2º): Incluye el chatbot avanzado que adapta los flujos según la intención del cliente.\n\n**INSTALACIÓN ODOO (USD/usdt):**\n- **Básica $25**\n- **Lista para trabajar $120:** Incluye todos los canales de comunicación como Chatwoot, Instagram, Facebook y Telegram.\n\nTe ofrecemos asesoría para adaptarnos a las necesidades de tu negocio. ¿Te gustaría agendar una asesoría o demo para discutir más detalles? Más info: https://integraia.lat/",
-          "content": "Aquí están algunos de los precios de nuestros servicios y planes:\n\n**PLANES MENSUALES (USD/usdt — hosting/VPS incluido):**\n- **Básico $10:** tienda simple, inventario, chat de soporte. Sin agentes ni canales.\n- **TODO EN UNO (Recomendado) $35:** Incluye un agente + ERP completo de Odoo CE (Ventas, Compras, Inventario, Contabilidad, Producción) + BCV SmartConvert + IA + Integración con WhatsApp, Instagram, Facebook y Telegram, más tokens de OpenAI y respaldos diarios en Cloudflare.\n- **AGENTES ADICIONALES $25/agente/mes** (a partir del 2º): Incluye el chatbot avanzado que adapta los flujos según la intención del cliente.\n\n**INSTALACIÓN ODOO (USD/usdt):**\n- **Básica $25**\n- **Lista para trabajar $120:** Incluye todos los canales de comunicación como Chatwoot, Instagram, Facebook y Telegram.\n\nTe ofrecemos asesoría para adaptarnos a las necesidades de tu negocio. ¿Te gustaría agendar una asesoría o demo para discutir más detalles? Más info: https://integraia.lat/"
-        }
-      }
-    ]
-  },
   "connections": {
     "When chat message received": {
       "main": [
@@ -2135,17 +2114,12 @@
       ]
     }
   },
-  "active": true,
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "216935e6-9afc-427c-8a2a-b694b4b7e9aa",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
-  },
-  "id": "L2r9IMI9lGrERuZq",
-  "tags": []
+  "staticData": null,
+  "active": true,
+  "id": "L2r9IMI9lGrERuZq"
 }
