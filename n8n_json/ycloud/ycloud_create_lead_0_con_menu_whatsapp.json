@@ -462,117 +462,117 @@
       "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2"
     },
     {
+      "id": "a5b0e47f-ba92-4170-aeae-9e6e8e7018d7",
+      "name": "Obtener_Info_basica",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        64624,
+        29312
+      ],
       "parameters": {
+        "options": {},
         "assignments": {
           "assignments": [
             {
               "id": "5b9b41b4-ef98-4699-80eb-24e70dbee117",
               "name": "=text",
-              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || '' }}"
             },
             {
               "id": "0f98afd1-e2e6-4c4d-9e9f-6e38c87694c6",
               "name": "session_id",
-              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}"
             },
             {
               "id": "9cbd2d29-4e32-46fd-bbea-88317ec7681d",
               "name": "account_id",
-              "value": "={{ ($json.body.whatsappInboundMessage?.to || '').replace(/[\\s}]+/g, '') }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ ($json.body.whatsappInboundMessage?.to || '').replace(/[\\s}]+/g, '') }}"
             },
             {
               "id": "9052a8a2-5a39-4b6f-a44f-728e2e7c2c41",
               "name": "message_type",
-              "value": "={{ $json.body.whatsappInboundMessage ? 'incoming' : 'outgoing' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage ? 'incoming' : 'outgoing' }}"
             },
             {
               "id": "c76e6bbf-22cf-4dd8-ae67-49c5801c5be1",
               "name": "user_name",
-              "value": "={{ $json.body.whatsappInboundMessage?.customerProfile?.name || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.customerProfile?.name || '' }}"
             },
             {
               "id": "b16fbd53-b6a3-4e0b-ac12-01912379a2fc",
               "name": "user_number",
-              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}"
             },
             {
               "id": "327aa426-279e-4d47-b4a9-2910e9b62282",
               "name": "platform",
-              "value": "whatsapp",
-              "type": "string"
+              "type": "string",
+              "value": "whatsapp"
             },
             {
               "id": "f921da3f-2311-4646-a2c9-152401811c3f",
               "name": "message_type",
-              "value": "={{ $json.body.whatsappInboundMessage ? 'incoming' : 'outgoing' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage ? 'incoming' : 'outgoing' }}"
             },
             {
               "id": "12bb3da8-0d23-45ec-8ed8-a962d512d0fb",
               "name": "channel",
-              "value": "Channel::Whatsapp",
-              "type": "string"
+              "type": "string",
+              "value": "Channel::Whatsapp"
             },
             {
               "id": "e70d5c0a-a243-4625-af3e-c40ca295cdef",
               "name": "content",
-              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || '' }}"
             },
             {
               "id": "8a12bb4d-d77a-466b-ac20-851d770c34c0",
               "name": "file_type",
-              "value": "={{ $json.body.whatsappInboundMessage?.type || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.type || '' }}"
             },
             {
               "id": "664d94bf-9a93-472e-8d11-887f1f82af70",
               "name": "phone_number",
-              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}"
             },
             {
               "id": "31829d53-6dc4-4a0a-829f-6a203803d8ee",
               "name": "user_name",
-              "value": "={{ $json.body.whatsappInboundMessage?.customerProfile?.name || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.customerProfile?.name || '' }}"
             },
             {
               "id": "1ca7bf91-1d72-4995-a578-12c0aa68da8e",
               "name": "image_url",
-              "value": "={{ $json.body.whatsappInboundMessage?.image?.link || $json.body.whatsappInboundMessage?.video?.link || $json.body.whatsappInboundMessage?.document?.link || $json.body.whatsappInboundMessage?.audio?.link || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.image?.link || $json.body.whatsappInboundMessage?.video?.link || $json.body.whatsappInboundMessage?.document?.link || $json.body.whatsappInboundMessage?.audio?.link || '' }}"
             },
             {
               "id": "eb85d8b8-a454-4bfd-9751-05a2314beee3",
               "name": "conversation_id",
-              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.from || '' }}"
             },
             {
               "id": "b281f49c-6d19-4f52-b659-65602793afcc",
               "name": "bot_number",
-              "value": "={{ $json.body.whatsappInboundMessage?.to || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.body.whatsappInboundMessage?.to || '' }}"
             }
           ]
-        },
-        "options": {}
+        }
       },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        64624,
-        29312
-      ],
-      "id": "a5b0e47f-ba92-4170-aeae-9e6e8e7018d7",
-      "name": "Obtener_Info_basica"
+      "typeVersion": 3.4
     },
     {
       "parameters": {
@@ -858,17 +858,17 @@
       "alwaysOutputData": true
     },
     {
-      "parameters": {
-        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlowBase = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\n\n// Merge dinámico: Odoo amplía el mapeo base con flow_map (defaults preservados).\nlet flowMapOdoo = {};\ntry {\n  flowMapOdoo = $('Obtener_configuracion_agente').item.json.flow_map || {};\n} catch (e) {\n  flowMapOdoo = {};\n}\nconst mapeoFlow = Object.assign({}, mapeoFlowBase, flowMapOdoo);\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\n// Red de seguridad: texto a usar cuando el agente no produjo output (p. ej.\n// intención FALLBACK sin respuesta). Prioriza el fallback_message de Odoo.\n// SPEC 18: menu_enabled (Odoo) decide modo menú (SPEC 13/17) vs conversacional.\nlet menuEnabled = false;\ntry {\n  menuEnabled = $('Obtener_configuracion_agente').item.json.menu_enabled === true;\n} catch (e) {\n  menuEnabled = false;\n}\nlet fallbackTexto = menuEnabled\n  ? 'Disculpa, no entendí 🤔 ¿Puedes reformularlo? Escribe *menu* para ver las opciones.'\n  : 'Disculpa, no entendí 🤔 ¿Me lo cuentas con otras palabras? Con gusto te respondo con la información del negocio.';\ntry {\n  const fb = $('Obtener_configuracion_agente').item.json.fallback_message;\n  if (fb && typeof fb === 'string' && fb.trim()) fallbackTexto = fb.trim();\n} catch (e) {\n  // sin Obtener_configuracion_agente se usa el texto por defecto\n}\n\n// --- Sistema del menú determinista (SPEC 13) ---\n// El menú se sirve desde el system_prompt (única fuente, SPEC 03), sin IA ni RAG.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\n\nconst MENU_MARKER = '=== MENÚ DE OPCIONES ===';\nconst menuTexto = (() => {\n  const idx = systemPrompt.indexOf(MENU_MARKER);\n  if (idx === -1) return null;\n  const resto = systemPrompt.slice(idx + MENU_MARKER.length);\n  const fin = resto.search(/\\n=== /);\n  const seccion = (fin === -1 ? resto : resto.slice(0, fin)).trim();\n  return seccion || null;\n})();\n\nconst keywordsMenu = (() => {\n  for (const linea of systemPrompt.split('\\n')) {\n    if (linea.includes('(muestra el menú)')) {\n      const m = linea.match(/palabras clave:\\s*([^\\n→]+)/);\n      if (m) {\n        return m[1].split(',').map(k => k.trim().toLowerCase()).filter(Boolean);\n      }\n    }\n  }\n  return [];\n})();\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: devolvemos item de error para debugging\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json\n          }\n        };\n        errorItem.json.flow_name = flowPorDefecto;\n        errorItem.json.output = fallbackTexto;\n        errorItem.json.text = fallbackTexto;\n        errorItem.json.content = fallbackTexto;\n        errorItem.json.tipoPregunta = 'FALLBACK';\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json\n        }\n      };\n      errorItem.json.flow_name = flowPorDefecto;\n      errorItem.json.output = fallbackTexto;\n      errorItem.json.text = fallbackTexto;\n      errorItem.json.content = fallbackTexto;\n      errorItem.json.tipoPregunta = 'FALLBACK';\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // Des-nidificación defensiva: si 'output' es un string JSON con clave\n    // 'output', extraer el objeto interno y hacer merge de sus campos.\n    // Cubre desobediencia de formato de la IA (JSON anidado dentro de output).\n    if (typeof datosParseados.output === 'string' &&\n        datosParseados.output.trim().startsWith('{')) {\n      const interno = tryParseJSON(datosParseados.output);\n      if (interno && typeof interno === 'object' && interno !== null &&\n          interno.output !== undefined) {\n        datosParseados = Object.assign({}, datosParseados, interno);\n      }\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    // Red de seguridad: si el agente devolvió output vacío (intención sin\n    // respuesta), reemplazar por el fallback para que los nodos de envío nunca\n    // reciban un body vacío que YCloud rechaza.\n    if (typeof resultado.output !== 'string' || !resultado.output.trim()) {\n      resultado.output = fallbackTexto;\n      if (!resultado.tipoPregunta || resultado.tipoPregunta === 'FALLBACK') {\n        resultado.tipoPregunta = 'FALLBACK';\n      }\n      resultado.text = fallbackTexto;\n      resultado.content = fallbackTexto;\n    }\n\n    // SPEC 18: en modo conversacional (menu_enabled=false) isMenu SIEMPRE\n    // false: nunca se envía menú interactivo ni se detecta menú en el output.\n    let isMenuValue = false;\n    if (menuEnabled) {\n      if (datosParseados.isMenu === true) {\n        isMenuValue = true;\n      } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n        const texto = datosParseados.output;\n        if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n            texto.includes('Para ayudarte mejor, por favor selecciona') ||\n            texto.includes('¿Qué necesitas hoy?')) {\n          isMenuValue = true;\n        }\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    // --- Ruteo determinista del menú (SPEC 13, solo menu_enabled=true) ---\n    // Si el usuario pide menú o la intención detectada es MENU, se fuerza\n    // el texto del menú guardado (con marca) e isMenu=true. La salida de la\n    // IA se ignora para este caso. En modo conversacional (SPEC 18) el\n    // bloque se omite: la IA responde con la introducción desde el RAG.\n    const textoUsuario = (item.json.text || '').toString().toLowerCase();\n    let esMenu = datosParseados.tipoPregunta === 'MENU';\n    if (!esMenu && textoUsuario) {\n      esMenu = keywordsMenu.some(k => k && textoUsuario.includes(k));\n    }\n    // Texto ultra-corto (≤2 caracteres) → menú determinista (SPEC 14).\n    if (!esMenu && textoUsuario && textoUsuario.length <= 2) {\n      esMenu = true;\n    }\n    if (menuEnabled && esMenu && menuTexto) {\n      resultado.output = menuTexto;\n      resultado.text = menuTexto;\n      resultado.content = menuTexto;\n      resultado.isMenu = true;\n      resultado.tipoPregunta = 'MENU';\n      resultado.equipo_asignado = '';\n      resultado.flow_name = '';\n      resultado.esPreguntaSiNo = false;\n    }\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json\n      }\n    };\n    errorItem.json.flow_name = flowPorDefecto;\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
-      },
+      "id": "2b2b0b5f-77ba-4459-86c8-ebcf9a274af5",
+      "name": "Separar_variables_en_json",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         68560,
         29216
       ],
-      "id": "2b2b0b5f-77ba-4459-86c8-ebcf9a274af5",
-      "name": "Separar_variables_en_json"
+      "parameters": {
+        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlowBase = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\n\n// Merge dinámico: Odoo amplía el mapeo base con flow_map (defaults preservados).\nlet flowMapOdoo = {};\ntry {\n  flowMapOdoo = $('Obtener_configuracion_agente').item.json.flow_map || {};\n} catch (e) {\n  flowMapOdoo = {};\n}\nconst mapeoFlow = Object.assign({}, mapeoFlowBase, flowMapOdoo);\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\n// Red de seguridad: texto a usar cuando el agente no produjo output (p. ej.\n// intención FALLBACK sin respuesta). Prioriza el fallback_message de Odoo.\n// SPEC 18: menu_enabled (Odoo) decide modo menú (SPEC 13/17) vs conversacional.\nlet menuEnabled = false;\ntry {\n  menuEnabled = $('Obtener_configuracion_agente').item.json.menu_enabled === true;\n} catch (e) {\n  menuEnabled = false;\n}\nlet fallbackTexto = menuEnabled\n  ? 'Disculpa, no entendí 🤔 ¿Puedes reformularlo? Escribe *menu* para ver las opciones.'\n  : 'Disculpa, no entendí 🤔 ¿Me lo cuentas con otras palabras? Con gusto te respondo con la información del negocio.';\ntry {\n  const fb = $('Obtener_configuracion_agente').item.json.fallback_message;\n  if (fb && typeof fb === 'string' && fb.trim()) fallbackTexto = fb.trim();\n} catch (e) {\n  // sin Obtener_configuracion_agente se usa el texto por defecto\n}\n// --- Recuperación del texto plano (SPEC 36) ---\n// El ruteo (session_id, conversation_id, account_id, platform) viaja dentro del\n// eco JSON de la IA. Si el parseo falla, se reinyecta desde la config para que\n// los nodos de envío nunca pierdan `from`/`to` (YCloud 400 PARAM_MISSING).\nfunction routingFields() {\n  try {\n    const cfg = $('Obtener_configuracion_agente').item.json || {};\n    const out = {};\n    for (const k of ['session_id', 'conversation_id', 'account_id', 'platform']) {\n      if (cfg[k]) out[k] = cfg[k];\n    }\n    return out;\n  } catch (e) {\n    return {};\n  }\n}\n\nfunction mergeRouting(itemJson) {\n  const ruteo = routingFields();\n  const out = {};\n  for (const k in ruteo) {\n    if (!itemJson || !itemJson[k]) out[k] = ruteo[k];\n  }\n  return out;\n}\n\nfunction pareceFragmentoJson(texto) {\n  return /^\\s*[\\[{]/.test(texto) || /\"[^\"]*\"\\s*:/.test(texto);\n}\n\nfunction textoRecuperacion(raw) {\n  if (typeof raw === 'string' && raw.trim() && !pareceFragmentoJson(raw.trim())) {\n    return raw.trim();\n  }\n  return fallbackTexto;\n}\n\n\n// --- Sistema del menú determinista (SPEC 13) ---\n// El menú se sirve desde el system_prompt (única fuente, SPEC 03), sin IA ni RAG.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\n\nconst MENU_MARKER = '=== MENÚ DE OPCIONES ===';\nconst menuTexto = (() => {\n  const idx = systemPrompt.indexOf(MENU_MARKER);\n  if (idx === -1) return null;\n  const resto = systemPrompt.slice(idx + MENU_MARKER.length);\n  const fin = resto.search(/\\n=== /);\n  const seccion = (fin === -1 ? resto : resto.slice(0, fin)).trim();\n  return seccion || null;\n})();\n\nconst keywordsMenu = (() => {\n  for (const linea of systemPrompt.split('\\n')) {\n    if (linea.includes('(muestra el menú)')) {\n      const m = linea.match(/palabras clave:\\s*([^\\n→]+)/);\n      if (m) {\n        return m[1].split(',').map(k => k.trim().toLowerCase()).filter(Boolean);\n      }\n    }\n  }\n  return [];\n})();\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: item de recuperación.\n        // SPEC 36: si la IA respondió prosa válida (no fragmento JSON), enviarla\n        // al usuario en lugar del fallback genérico; se reinyecta el ruteo para\n        // que el envío por YCloud tenga `from`/`to` (evita 400 PARAM_MISSING).\n        const recuperacion = textoRecuperacion(item.json.output);\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json,\n            ...mergeRouting(item.json),\n            flow_name: flowPorDefecto,\n            output: recuperacion,\n            text: recuperacion,\n            content: recuperacion,\n            tipoPregunta: 'FALLBACK'\n          }\n        };\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido: siempre fallback genérico (no hay texto de la IA que enviar).\n      // SPEC 36: se reinyecta el ruteo igual que en JSON_PARSE_ERROR.\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json,\n          ...mergeRouting(item.json),\n          flow_name: flowPorDefecto,\n          output: fallbackTexto,\n          text: fallbackTexto,\n          content: fallbackTexto,\n          tipoPregunta: 'FALLBACK'\n        }\n      };\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // Des-nidificación defensiva: si 'output' es un string JSON con clave\n    // 'output', extraer el objeto interno y hacer merge de sus campos.\n    // Cubre desobediencia de formato de la IA (JSON anidado dentro de output).\n    if (typeof datosParseados.output === 'string' &&\n        datosParseados.output.trim().startsWith('{')) {\n      const interno = tryParseJSON(datosParseados.output);\n      if (interno && typeof interno === 'object' && interno !== null &&\n          interno.output !== undefined) {\n        datosParseados = Object.assign({}, datosParseados, interno);\n      }\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    // Red de seguridad: si el agente devolvió output vacío (intención sin\n    // respuesta), reemplazar por el fallback para que los nodos de envío nunca\n    // reciban un body vacío que YCloud rechaza.\n    if (typeof resultado.output !== 'string' || !resultado.output.trim()) {\n      resultado.output = fallbackTexto;\n      if (!resultado.tipoPregunta || resultado.tipoPregunta === 'FALLBACK') {\n        resultado.tipoPregunta = 'FALLBACK';\n      }\n      resultado.text = fallbackTexto;\n      resultado.content = fallbackTexto;\n    }\n\n    // SPEC 18: en modo conversacional (menu_enabled=false) isMenu SIEMPRE\n    // false: nunca se envía menú interactivo ni se detecta menú en el output.\n    let isMenuValue = false;\n    if (menuEnabled) {\n      if (datosParseados.isMenu === true) {\n        isMenuValue = true;\n      } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n        const texto = datosParseados.output;\n        if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n            texto.includes('Para ayudarte mejor, por favor selecciona') ||\n            texto.includes('¿Qué necesitas hoy?')) {\n          isMenuValue = true;\n        }\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    // --- Ruteo determinista del menú (SPEC 13, solo menu_enabled=true) ---\n    // Si el usuario pide menú o la intención detectada es MENU, se fuerza\n    // el texto del menú guardado (con marca) e isMenu=true. La salida de la\n    // IA se ignora para este caso. En modo conversacional (SPEC 18) el\n    // bloque se omite: la IA responde con la introducción desde el RAG.\n    const textoUsuario = (item.json.text || '').toString().toLowerCase();\n    let esMenu = datosParseados.tipoPregunta === 'MENU';\n    if (!esMenu && textoUsuario) {\n      esMenu = keywordsMenu.some(k => k && textoUsuario.includes(k));\n    }\n    // Texto ultra-corto (≤2 caracteres) → menú determinista (SPEC 14).\n    if (!esMenu && textoUsuario && textoUsuario.length <= 2) {\n      esMenu = true;\n    }\n    if (menuEnabled && esMenu && menuTexto) {\n      resultado.output = menuTexto;\n      resultado.text = menuTexto;\n      resultado.content = menuTexto;\n      resultado.isMenu = true;\n      resultado.tipoPregunta = 'MENU';\n      resultado.equipo_asignado = '';\n      resultado.flow_name = '';\n      resultado.esPreguntaSiNo = false;\n    }\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    // SPEC 36: misma recuperación que JSON_PARSE_ERROR (prosa o fallback) + ruteo.\n    const recuperacion = textoRecuperacion(item.json.output);\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json,\n        ...mergeRouting(item.json),\n        flow_name: flowPorDefecto,\n        output: recuperacion,\n        text: recuperacion,\n        content: recuperacion,\n        tipoPregunta: 'FALLBACK'\n      }\n    };\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
+      },
+      "typeVersion": 2
     },
     {
       "parameters": {
@@ -1648,17 +1648,17 @@
       "alwaysOutputData": true
     },
     {
-      "parameters": {
-        "jsCode": "let original = $json;\ntry { original = $('Cita_con_Equipo_asignado').item.json; }\ncatch (e) { original = $json; }\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $json.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id || $json.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  ...$json,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
-      },
+      "id": "3e1b54a4-f217-4563-b17e-a5e80076dfcc",
+      "name": "Unificar_salida_carrito",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         70928,
         28944
       ],
-      "id": "3e1b54a4-f217-4563-b17e-a5e80076dfcc",
-      "name": "Unificar_salida_carrito"
+      "parameters": {
+        "jsCode": "let original = $json;\ntry { original = $('Cita_con_Equipo_asignado').item.json; }\ncatch (e) { original = $json; }\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $json.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id || $json.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  ...$json,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
+      },
+      "typeVersion": 2
     },
     {
       "parameters": {
