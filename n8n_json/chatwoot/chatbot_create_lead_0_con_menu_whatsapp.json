@@ -9,11 +9,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        39824,
-        11040
+        39488,
+        11376
       ],
       "typeVersion": 1,
-      "id": "5524a0de-4dc9-4040-841d-481bc465d8e6",
+      "id": "9ceb2b4b-67db-43c7-8f32-f902168660fc",
       "name": "Sticky Note2"
     },
     {
@@ -21,10 +21,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        43712,
-        11472
+        39680,
+        12496
       ],
-      "id": "9ba9faae-d4b6-4508-ac37-fd13a8b57186",
+      "id": "9f43cdbb-9069-464c-aa3f-7d49b46d8040",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -35,10 +35,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        39072,
-        12544
+        38736,
+        12880
       ],
-      "id": "9f48fd24-25c0-4633-b304-f9b89d63422a",
+      "id": "3ac9b0e5-cd93-4bd5-a3cb-8afe795f9d42",
       "name": "When chat message received",
       "webhookId": "d7373d29-7364-41f7-a73f-bd24b72daeea"
     },
@@ -143,10 +143,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        39472,
-        12480
+        39136,
+        12816
       ],
-      "id": "76d960bf-feb4-4e1b-8da6-11de3ab10c45",
+      "id": "6a43acdb-8170-4a1d-9e18-a123806ce302",
       "name": "Seteamos_variables"
     },
     {
@@ -157,6 +157,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -180,6 +181,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -203,6 +205,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -226,6 +229,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -249,25 +253,50 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
                 "conditions": [
                   {
                     "id": "c6773713-6da3-44c1-8df0-e8957d72913e",
-                    "leftValue": {},
+                    "leftValue": "={{ $json.channel }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "number",
-                      "operation": "exists",
-                      "singleValue": true
+                      "type": "string",
+                      "operation": "isNotEmpty"
                     }
                   }
                 ],
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "error_no_existe_channel"
+              "outputKey": "otro"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d5d5dc87-03c8-4225-9c54-012d36a91949",
+                    "leftValue": "={{ $json.channel }}",
+                    "rightValue": "Channel::Telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Telegram"
             }
           ]
         },
@@ -276,10 +305,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        40400,
-        12464
+        40064,
+        12800
       ],
-      "id": "fd5a05bc-484f-48e1-91d9-83a2faf22cec",
+      "id": "520bdd74-64a1-4b98-b2a5-45f9fb72308b",
       "name": "Indentifica_canal"
     },
     {
@@ -287,10 +316,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        39728,
-        12832
+        39392,
+        13168
       ],
-      "id": "f4b863c0-5ecf-411d-b395-5417167e55ad",
+      "id": "c6221435-d55f-49b8-a50c-8d69ac5e255c",
       "name": "Dueno_o_Bot_responde"
     },
     {
@@ -352,10 +381,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        40016,
-        12480
+        39680,
+        12816
       ],
-      "id": "21be56fd-1ab1-42a2-b88f-ce84122a68b4",
+      "id": "7c74be72-38e3-4c2f-b182-d39008878a32",
       "name": "Configurar_IA_Responda?"
     },
     {
@@ -417,10 +446,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        39776,
-        12496
+        39440,
+        12832
       ],
-      "id": "3ee62aee-e58e-4e67-8759-cde28a397418",
+      "id": "7f72f6ef-89be-4a6c-9722-8529e45ed178",
       "name": "Pregunta_el_Cliente?"
     },
     {
@@ -428,10 +457,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        40320,
-        12208
+        39984,
+        12544
       ],
-      "id": "fc1323b1-efe3-4161-a5d3-004e3321b720",
+      "id": "837bbc48-70b6-449b-818d-d069f60a7d7d",
       "name": "End1"
     },
     {
@@ -443,10 +472,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        42560,
-        12192
+        42224,
+        12528
       ],
-      "id": "10052e9a-dcc5-48a3-b81d-f7ab91e24e32",
+      "id": "1a587082-139f-422a-ad27-aa1384aa0c3d",
       "name": "Simple Memory"
     },
     {
@@ -458,10 +487,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        38960,
-        11808
+        38624,
+        12144
       ],
-      "id": "737f28c3-c5ef-453c-9db4-dcd85a76e832",
+      "id": "66c203d5-c33a-41e8-ae94-8aa1012bbdd9",
       "name": "Entrar_ChattWoot",
       "webhookId": "f2f3dab4-9ee7-4ad7-9fe8-96f79468b1f4"
     },
@@ -572,10 +601,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        39520,
-        12080
+        39184,
+        12416
       ],
-      "id": "fb1db627-221e-4b7e-87c0-bcefee3d375e",
+      "id": "3cef604a-7b3e-4cdb-b35b-19dbd01ce803",
       "name": "Obtener_Info_basica"
     },
     {
@@ -586,6 +615,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -609,6 +639,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -632,6 +663,7 @@
               "conditions": {
                 "options": {
                   "caseSensitive": true,
+                  "leftValue": "",
                   "typeValidation": "strict",
                   "version": 2
                 },
@@ -658,10 +690,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        41744,
-        12736
+        41408,
+        13072
       ],
-      "id": "995f12e8-2792-45cb-b0bb-ef4c7bdbd337",
+      "id": "fecefd57-24df-471e-8484-2da9fdf162e8",
       "name": "Consulta_o_agendar_cita"
     },
     {
@@ -679,10 +711,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        42448,
-        12192
+        42112,
+        12528
       ],
-      "id": "1bb76508-a589-4562-97a4-77c65358fa23",
+      "id": "10f34532-4085-46d5-a77d-2ce7e7579123",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -702,10 +734,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        42464,
-        11936
+        42128,
+        12272
       ],
-      "id": "bf88729b-2311-4baf-8a50-d10e628e8e3a",
+      "id": "6d4f4ca7-a505-4a43-ad5e-8289a817e13a",
       "name": "Agente_Informacion_basica"
     },
     {
@@ -715,10 +747,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43536,
-        11888
+        43200,
+        12224
       ],
-      "id": "5330b66a-5030-41ee-b8bb-52af28b21cbc",
+      "id": "d8a47ce3-08fb-4da2-993d-5b92fdc51606",
       "name": "Unificar_salida"
     },
     {
@@ -749,10 +781,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        43232,
-        11776
+        42896,
+        12112
       ],
-      "id": "df133ff3-e770-4949-a8a2-bd387385d38c",
+      "id": "1da23528-b673-4c9e-8a73-237aefa840d9",
       "name": "Cita_con_Equipo_asignado"
     },
     {
@@ -763,11 +795,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        42288,
-        11792
+        41952,
+        12128
       ],
       "typeVersion": 1,
-      "id": "cce37a44-d57c-45fc-b295-2781d26f338d",
+      "id": "9aca86c7-fe68-4a4b-8138-3a62d4bafccf",
       "name": "Sticky Note"
     },
     {
@@ -776,11 +808,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41696,
-        12608
+        41360,
+        12944
       ],
       "typeVersion": 1,
-      "id": "707558c1-90b0-4efa-a325-c70a2ca42fb3",
+      "id": "e66c7ab9-2e38-4d73-8012-cf9ca75ac179",
       "name": "Sticky Note3"
     },
     {
@@ -969,10 +1001,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        40928,
-        12752
+        40592,
+        13088
       ],
-      "id": "fd2b0d65-24e5-4587-9a84-ea19e38016e4",
+      "id": "3c14909a-dc91-44a0-a783-afac8450d496",
       "name": "Call 'chatbot-simple_1_subflow'"
     },
     {
@@ -981,16 +1013,16 @@
         "url": "https://integraia.lat/ai_chatbot_1_portal/inicioagendar",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\"\n}\n",
+        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\",\n   \"plataforma\": \"{{ $(\"Call 'chatbot-simple_1_subflow'\").item.json.platform || 'whatsapp' }}\"\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        43600,
-        11168
+        43264,
+        11504
       ],
-      "id": "46654558-8d24-4132-8b3a-254beea5f1af",
+      "id": "698701ed-5fc7-4878-a993-d20077664b9b",
       "name": "paso_0_inicio_agendar",
       "alwaysOutputData": true
     },
@@ -1001,10 +1033,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        42800,
-        11936
+        42464,
+        12272
       ],
-      "id": "4130566d-e26f-4931-893b-6e89f2ffc7fc",
+      "id": "68e00bc9-1436-4b95-ad23-a6935f040bc0",
       "name": "Separar_variables_en_json"
     },
     {
@@ -1060,10 +1092,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        43856,
-        11152
+        43520,
+        11488
       ],
-      "id": "0b40168d-4d2a-443e-a088-d8b0b0fb7b11",
+      "id": "ceba1e35-5891-4b64-a644-17fa47fcb0a4",
       "name": "Agendar_cita"
     },
     {
@@ -1091,10 +1123,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        44064,
-        12128
+        43728,
+        12464
       ],
-      "id": "8c9c7100-b7f5-414c-84e4-d2661e37291f",
+      "id": "b075e309-902d-49f9-8d90-f9e8a59065cb",
       "name": "Enviar_mensaje_de_IA1"
     },
     {
@@ -1122,10 +1154,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        44160,
-        11200
+        43824,
+        11536
       ],
-      "id": "0b1a5440-9d03-4485-bf0c-f8b2a81a6a39",
+      "id": "54f44eb9-df57-4886-b5d7-ecb8ae70bddf",
       "name": "Enviar_mensaje_de_IA2"
     },
     {
@@ -1159,7 +1191,7 @@
             {
               "id": "dcb665ab-5283-4902-bc0f-bff04a90180f",
               "name": "nombre_mostrar",
-              "value": "={{ $json.texto_para_usuario }}",
+              "value": "={{ $json.texto_para_usuario || $json.text || '' }}",
               "type": "string"
             }
           ]
@@ -1169,10 +1201,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        42192,
-        12832
+        41856,
+        13168
       ],
-      "id": "d8ce6bae-9185-4625-bff6-f1460d3afc34",
+      "id": "9bc2e2c4-1aea-4373-ba09-88667a78d62a",
       "name": "tomar_parametros"
     },
     {
@@ -1200,10 +1232,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        42496,
-        12704
+        42160,
+        13040
       ],
-      "id": "dbff03d3-a757-41a8-ae56-2ad150b653b8",
+      "id": "995b811a-90aa-4d34-acfc-94e8d3ecd3e5",
       "name": "Enviar_mensaje_de_IA3"
     },
     {
@@ -1233,10 +1265,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        42976,
-        11952
+        42640,
+        12288
       ],
-      "id": "1b4ba00f-d403-4fcb-b5b9-b7ee23644ddb",
+      "id": "70ba6a9d-283a-47b7-aa6b-b1a9e1f5ae51",
       "name": "¿Enviar menú interactivo?"
     },
     {
@@ -1246,10 +1278,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43296,
-        12096
+        42960,
+        12432
       ],
-      "id": "6f095073-29b4-4d19-8753-793b721e1cf1",
+      "id": "ea728fc3-30e7-4fd6-9407-d83043ebeee4",
       "name": "Formatear número de teléfono"
     },
     {
@@ -1277,10 +1309,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        43616,
-        12656
+        43280,
+        12992
       ],
-      "id": "e9831b0c-945a-4ab6-91e0-9af9e060540c",
+      "id": "73f37e77-607b-46b3-8043-12ee1ed1e6f2",
       "name": "Enviar menú interactivo a WhatsApp",
       "disabled": true
     },
@@ -1309,10 +1341,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        44080,
-        11584
+        43744,
+        11920
       ],
-      "id": "c2e3ac8f-1286-430f-9218-86dbc3fe75af",
+      "id": "4a31e700-b5c2-4070-a07d-ab0d94e9acfc",
       "name": "Enviar texto despues del menu"
     },
     {
@@ -1320,10 +1352,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        44000,
-        12672
+        43664,
+        13008
       ],
-      "id": "5ffc94f4-4ea9-4275-b449-374c729c7bba",
+      "id": "cfdfc435-e7ba-46ab-9a0b-1512ecaef047",
       "name": "Fin menú WhatsApp"
     },
     {
@@ -1353,10 +1385,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        43744,
-        11904
+        43408,
+        12240
       ],
-      "id": "acb0dee5-a61f-4d25-9223-31c6d045089c",
+      "id": "b360cf0d-c17f-4f7a-b539-20e8fd73a194",
       "name": "¿Enviar menú interactivo?1"
     },
     {
@@ -1366,10 +1398,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        43872,
-        11712
+        43536,
+        12048
       ],
-      "id": "8064bc9a-3c21-4f22-919d-fd30486a83af",
+      "id": "9c37af95-fe91-4b6d-89ec-c5c68e8be612",
       "name": "Construir_botones_WhatsApp"
     },
     {
@@ -1397,10 +1429,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        44464,
-        12016
+        44128,
+        12352
       ],
-      "id": "91262e88-96d6-483f-b371-05a611430ffd",
+      "id": "d80181cd-13c6-47c2-a0e1-3c2207343fd8",
       "name": "Enviar menú interactivo a WhatsApp1",
       "disabled": true
     },
@@ -1409,76 +1441,76 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        44560,
-        11728
+        44224,
+        12064
       ],
-      "id": "e1a8961b-ab7d-4d43-a98c-182765885edd",
+      "id": "fc03bd79-cb7a-4c8e-92c7-b51cdbf87a7d",
       "name": "Fin menú WhatsApp1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41712,
-        12336
+        41376,
+        12672
       ],
       "typeVersion": 1,
-      "id": "3bbdb737-f260-49b7-998d-2f84f53e2d3f",
+      "id": "c3979dc3-bbbb-4eba-9e4d-52760691e5c9",
       "name": "Sticky Note1"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41712,
-        12336
+        41376,
+        12672
       ],
       "typeVersion": 1,
-      "id": "d8818e16-2f1e-4ae9-8bf6-ce1b4c8fa8f8",
+      "id": "8db293c7-c217-4167-bdfd-5651adb02a01",
       "name": "Sticky Note4"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41712,
-        12336
+        41376,
+        12672
       ],
       "typeVersion": 1,
-      "id": "041c1710-b683-4f73-934e-57ba3b5a809a",
+      "id": "8d0f9307-737f-435c-b061-98273019208a",
       "name": "Sticky Note5"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41792,
-        12416
+        41456,
+        12752
       ],
       "typeVersion": 1,
-      "id": "10dc39ff-6352-4703-aed8-aa259d2684fd",
+      "id": "7e9cefdb-69fe-4df3-ae07-b88074767515",
       "name": "Sticky Note6"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41792,
-        12416
+        41456,
+        12752
       ],
       "typeVersion": 1,
-      "id": "47b96153-ba0a-4843-93d2-424b3c1861b0",
+      "id": "73fdd6f5-cead-4b05-9a00-1c6b8fdbb213",
       "name": "Sticky Note7"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        41792,
-        12416
+        41456,
+        12752
       ],
       "typeVersion": 1,
-      "id": "85092f68-1edb-4cbd-b367-29b37909c665",
+      "id": "4cb938bf-0a27-432d-a277-1c7829a4c0f0",
       "name": "Sticky Note8"
     },
     {
@@ -1489,11 +1521,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        40736,
-        12608
+        40400,
+        12944
       ],
       "typeVersion": 1,
-      "id": "f86dea17-66c6-4881-bc3b-847edb515d52",
+      "id": "62743d5e-9cf3-446d-a855-7ec5e55fea5d",
       "name": "Sticky Note9"
     },
     {
@@ -1521,10 +1553,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        43712,
-        12240
+        43376,
+        12576
       ],
-      "id": "33756c15-39b3-4d7a-abe7-2b2cedf00e29",
+      "id": "6fba0e38-8786-41c5-a977-308c20e2227d",
       "name": "Enviar_mensaje_de_IA"
     },
     {
@@ -1538,13 +1570,13 @@
           "timeout": 30000
         }
       },
-      "id": "da973db2-2d25-4209-b572-c1c8e26efa6c",
+      "id": "f765863e-6afd-407a-aa49-11dc6f4b2a39",
       "name": "Obtener_configuracion_agente",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        42192,
-        12640
+        41856,
+        12976
       ]
     },
     {
@@ -1554,10 +1586,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        42752,
-        12176
+        42416,
+        12512
       ],
-      "id": "42b4139d-62f5-44be-9f00-539f8b0d0f4a",
+      "id": "b7458a46-d349-4142-a241-7c953a7f0fd1",
       "name": "Base_Conocimiento_RAG"
     },
     {
@@ -1567,10 +1599,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.3,
       "position": [
-        42768,
-        12416
+        42432,
+        12752
       ],
-      "id": "3be83923-f5b6-40ec-ac23-cd524aa60ecc",
+      "id": "c6a4217d-6098-4e77-ab00-c1ed3b7a17f6",
       "name": "Postgres PGVector Store",
       "credentials": {
         "postgres": {
@@ -1587,10 +1619,10 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        42912,
-        12656
+        42576,
+        12992
       ],
-      "id": "3fb2c232-8778-4db5-ab11-c1ce27372241",
+      "id": "7ae34414-fb5c-484b-9bbf-20fab283da79",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
@@ -1612,10 +1644,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        43024,
-        12304
+        42688,
+        12640
       ],
-      "id": "ef283e86-9d43-42f1-b44a-622605c227a7",
+      "id": "16542912-b756-4700-8ef8-aa2f0106bab1",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
@@ -1629,49 +1661,20 @@
     "When clicking ‘Execute workflow’": [
       {
         "json": {
-          "output": "¡Claro que sí! 💰 Para que tu negocio funcione al 100% con Odoo CE 19, primero realizamos una instalación en la nube (pago único). Tenemos 3 opciones:\n• $25 (Básica): Lo esencial para empezar en Ubuntu 24.04.\n• $60 (Empresarial): Incluye seguridad HTTPS, certificado SSL gratuito y Nginx.\n• $120 (Lista para trabajar): Incluye carga de productos, contabilidad avanzada y la conexión de la API oficial de WhatsApp de Meta para que cumplas con todos sus protocolos. 🛡️\n\nLuego, eliges el plan mensual que mejor se adapte a ti (Todos incluyen servidor VPS y están en USDT):\n• Plan Básico ($10/mes): ¡Usuarios ilimitados! Ideal para empezar bajo tu propio control.\n• Plan Soporte y eCommerce ($16/mes): Vende 24/7 con carrito e inventario.\n• Plan BCV SmartConvert ($20/mes): Nuestro favorito. Actualiza la tasa BCV automáticamente y agiliza tu caja.\n• Plan Profesional ($30/mes): Suma Inteligencia Artificial para responder las dudas frecuentes en WhatsApp.\n• Plan Negocios ($35/mes): ¡IA entrenada 24/7 con integración oficial de Meta y agentes por departamento! (Para equipos grandes: licencia corporativa ilimitada por $200/mes).\n\n¿Quieres que te enviemos una cotización más detallada? Responde Sí o No.",
-          "tipoPregunta": "PRECIOS",
-          "session_id": "584142711347",
-          "conversation_id": "53",
+          "text": "hola 6",
+          "session_id": "8798384251",
           "account_id": "1",
-          "platform": "whatsapp",
-          "timestamp_actividad": "2026-08-04T08:16:51.171-04:00",
-          "isMenu": false,
-          "esPreguntaSiNo": true,
-          "flow_name": "flujo_agendamiento_default",
-          "text": "¡Claro que sí! 💰 Para que tu negocio funcione al 100% con Odoo CE 19, primero realizamos una instalación en la nube (pago único). Tenemos 3 opciones:\n• $25 (Básica): Lo esencial para empezar en Ubuntu 24.04.\n• $60 (Empresarial): Incluye seguridad HTTPS, certificado SSL gratuito y Nginx.\n• $120 (Lista para trabajar): Incluye carga de productos, contabilidad avanzada y la conexión de la API oficial de WhatsApp de Meta para que cumplas con todos sus protocolos. 🛡️\n\nLuego, eliges el plan mensual que mejor se adapte a ti (Todos incluyen servidor VPS y están en USDT):\n• Plan Básico ($10/mes): ¡Usuarios ilimitados! Ideal para empezar bajo tu propio control.\n• Plan Soporte y eCommerce ($16/mes): Vende 24/7 con carrito e inventario.\n• Plan BCV SmartConvert ($20/mes): Nuestro favorito. Actualiza la tasa BCV automáticamente y agiliza tu caja.\n• Plan Profesional ($30/mes): Suma Inteligencia Artificial para responder las dudas frecuentes en WhatsApp.\n• Plan Negocios ($35/mes): ¡IA entrenada 24/7 con integración oficial de Meta y agentes por departamento! (Para equipos grandes: licencia corporativa ilimitada por $200/mes).\n\n¿Quieres que te enviemos una cotización más detallada? Responde Sí o No.",
-          "content": "¡Claro que sí! 💰 Para que tu negocio funcione al 100% con Odoo CE 19, primero realizamos una instalación en la nube (pago único). Tenemos 3 opciones:\n• $25 (Básica): Lo esencial para empezar en Ubuntu 24.04.\n• $60 (Empresarial): Incluye seguridad HTTPS, certificado SSL gratuito y Nginx.\n• $120 (Lista para trabajar): Incluye carga de productos, contabilidad avanzada y la conexión de la API oficial de WhatsApp de Meta para que cumplas con todos sus protocolos. 🛡️\n\nLuego, eliges el plan mensual que mejor se adapte a ti (Todos incluyen servidor VPS y están en USDT):\n• Plan Básico ($10/mes): ¡Usuarios ilimitados! Ideal para empezar bajo tu propio control.\n• Plan Soporte y eCommerce ($16/mes): Vende 24/7 con carrito e inventario.\n• Plan BCV SmartConvert ($20/mes): Nuestro favorito. Actualiza la tasa BCV automáticamente y agiliza tu caja.\n• Plan Profesional ($30/mes): Suma Inteligencia Artificial para responder las dudas frecuentes en WhatsApp.\n• Plan Negocios ($35/mes): ¡IA entrenada 24/7 con integración oficial de Meta y agentes por departamento! (Para equipos grandes: licencia corporativa ilimitada por $200/mes).\n\n¿Quieres que te enviemos una cotización más detallada? Responde Sí o No.",
-          "whatsappPayload": {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": "+584142711347",
-            "type": "interactive",
-            "interactive": {
-              "type": "button",
-              "body": {
-                "text": "¡Claro que sí! 💰 Para que tu negocio funcione al 100% con Odoo CE 19, primero realizamos una instalación en la nube (pago único). Tenemos 3 opciones:\n• $25 (Básica): Lo esencial para empezar en Ubuntu 24.04.\n• $60 (Empresarial): Incluye seguridad HTTPS, certificado SSL gratuito y Nginx.\n• $120 (Lista para trabajar): Incluye carga de productos, contabilidad avanzada y la conexión de la API oficial de WhatsApp de Meta para que cumplas con todos sus protocolos. 🛡️\n\nLuego, eliges el plan mensual que mejor se adapte a ti (Todos incluyen servidor VPS y están en USDT):\n• Plan Básico ($10/mes): ¡Usuarios ilimitados! Ideal para empezar bajo tu propio control.\n• Plan Soporte y eCommerce ($16/mes): Vende 24/7 con carrito e inventario.\n• Plan BCV SmartConvert ($20/mes): Nuestro favorito. Actualiza la tasa BCV automáticamente y agiliza tu caja.\n• Plan Profesional ($30/mes): Suma Inteligencia Artificial para responder las dudas frecuentes en WhatsApp.\n• Plan Negocios ($35/mes): ¡IA entrenada 24/7 con integración oficial de Meta y agentes por departamento! (Para equipos grandes: licencia corporativa ilimitada por $200/mes).\n\n¿Quieres que te enviemos una cotización más detallada? Responde Sí o No."
-              },
-              "action": {
-                "buttons": [
-                  {
-                    "type": "reply",
-                    "reply": {
-                      "id": "CONFIRMAR_CITA_PRECIOS",
-                      "title": "✅ Quiero cotización"
-                    }
-                  },
-                  {
-                    "type": "reply",
-                    "reply": {
-                      "id": "CANCELAR",
-                      "title": "❌ No, gracias"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "phone_number_formatted": "+584142711347"
+          "conversation_id": "171",
+          "message_type": "incoming",
+          "user_name": "integraia",
+          "user_number": null,
+          "platform": "telegram",
+          "channel": "Channel::Telegram",
+          "content": "hola 6",
+          "file_type": null,
+          "phone_number": null,
+          "image_url": "",
+          "agente_desactivado": "on"
         }
       }
     ]
@@ -1701,6 +1704,20 @@
     },
     "Indentifica_canal": {
       "main": [
+        [
+          {
+            "node": "Call 'chatbot-simple_1_subflow'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'chatbot-simple_1_subflow'",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Call 'chatbot-simple_1_subflow'",
@@ -1986,7 +2003,7 @@
       "main": [
         [
           {
-            "node": "Enviar texto despues del menu",
+            "node": "Indentifica_canal",
             "type": "main",
             "index": 0
           }
@@ -2095,7 +2112,7 @@
     "availableInMCP": false,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "c6c2a29f-a11a-4711-a711-39ed13321863",
+  "versionId": "b57d7b00-80bd-449f-8a6b-033a7c2af057",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
