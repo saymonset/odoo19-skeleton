@@ -8,9 +8,6 @@ services:
     user: "1000:1000"
     networks:
       - odoo_network_19
-    dns:
-      - 1.1.1.1
-      - 8.8.8.8
     ports:
       - "127.0.0.1:5678:5678"
     environment:
