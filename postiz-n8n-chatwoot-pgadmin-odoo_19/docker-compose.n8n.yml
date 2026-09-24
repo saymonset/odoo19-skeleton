@@ -75,9 +75,17 @@ services:
       - postgres_password
       - n8n_password
       - n8n_encryption_key
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:5678/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
 secrets:
   postgres_password:
