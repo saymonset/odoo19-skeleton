@@ -7,40 +7,40 @@
         "height": 480,
         "width": 560
       },
+      "id": "474bb704-5d9f-4051-97a4-55f3b639b74f",
+      "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         66464,
         28480
       ],
-      "typeVersion": 1,
-      "id": "474bb704-5d9f-4051-97a4-55f3b639b74f",
-      "name": "Sticky Note2"
+      "typeVersion": 1
     },
     {
       "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        71472,
-        27824
-      ],
       "id": "e34abbeb-4460-496b-aa3a-ce1c63a3a47c",
-      "name": "When clicking ‘Execute workflow’"
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        66320,
+        29664
+      ],
+      "typeVersion": 1
     },
     {
       "parameters": {
         "public": true,
         "options": {}
       },
+      "id": "925d288d-71e9-4f9c-a663-9a2aa193094f",
+      "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.4,
       "position": [
         64560,
         29984
       ],
-      "id": "925d288d-71e9-4f9c-a663-9a2aa193094f",
-      "name": "When chat message received",
-      "webhookId": "a24efc8d-00a6-4acd-9c87-2b4c8a8fedd5"
+      "webhookId": "a24efc8d-00a6-4acd-9c87-2b4c8a8fedd5",
+      "typeVersion": 1.4
     },
     {
       "parameters": {
@@ -49,105 +49,105 @@
             {
               "id": "96996d45-ddf6-4f34-850c-6135282de201",
               "name": "text",
-              "value": "={{ $json.chatInput }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.chatInput }}"
             },
             {
               "id": "886653c3-a819-4881-a860-62b44509d731",
               "name": "session_id",
-              "value": "={{ $json.sessionId }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.sessionId }}"
             },
             {
               "id": "ee045dc3-b0e6-4366-b179-2bb78781425b",
               "name": "account_id",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "4d37a5ee-0b5e-40e0-a5ca-4dc372f0a1e6",
               "name": "conversation_id",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "3eb0a246-8cb9-477b-a0df-460f3c6b3b8a",
               "name": "message_type",
-              "value": "incoming",
-              "type": "string"
+              "type": "string",
+              "value": "incoming"
             },
             {
               "id": "af85fc32-b8b9-43a3-a666-403ad84a8e5f",
               "name": "user_name",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "49e39027-d5f1-4abb-9e53-22545e9b39c5",
               "name": "user_number",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "d215ec30-76a4-4011-a990-a484c225565b",
               "name": "platform",
-              "value": "Channel::Whatsapp",
-              "type": "string"
+              "type": "string",
+              "value": "Channel::Whatsapp"
             },
             {
               "id": "fbce67e5-7649-4e4f-86da-7022b5a7a047",
               "name": "channel",
-              "value": "Channel::Whatsapp",
-              "type": "string"
+              "type": "string",
+              "value": "Channel::Whatsapp"
             },
             {
               "id": "cffc4318-41d4-470e-9204-0487f399268d",
               "name": "content",
-              "value": "={{ $json.chatInput }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.chatInput }}"
             },
             {
               "id": "80e133a1-a3f2-456a-b8b9-c777b7febaf9",
               "name": "file_type",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "d62b3d9d-284f-4bdf-a2c3-b97776ba817d",
               "name": "phone_number",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "f5e36c51-bfc3-47c2-98c4-309b259890f5",
               "name": "user_message",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "32c13a58-cbaf-45d2-ae7d-faa18aa1f017",
               "name": "image_url",
-              "value": "",
-              "type": "string"
+              "type": "string",
+              "value": ""
             },
             {
               "id": "d2dcdf4c-9ebb-4ac9-8183-fab3bafbce84",
               "name": "agente_desactivado",
-              "value": "on",
-              "type": "string"
+              "type": "string",
+              "value": "on"
             }
           ]
         },
         "options": {}
       },
+      "id": "ed7f0e7b-0078-4421-80b3-29cf5bc1340a",
+      "name": "Seteamos_variables",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
       "position": [
         64960,
         29920
       ],
-      "id": "ed7f0e7b-0078-4421-80b3-29cf5bc1340a",
-      "name": "Seteamos_variables"
+      "typeVersion": 3.4
     },
     {
       "parameters": {
@@ -156,22 +156,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.channel }}",
-                    "rightValue": "Channel::Whatsapp",
+                    "id": "4313ad77-8015-436a-a40d-3ef7cab78263",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
                     },
-                    "id": "4313ad77-8015-436a-a40d-3ef7cab78263"
+                    "leftValue": "={{ $json.channel }}",
+                    "rightValue": "Channel::Whatsapp"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "Whatsapp"
@@ -179,22 +179,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "37f80664-6420-4c2b-b965-b65ec4656310",
-                    "leftValue": "={{ $json.channel }}",
-                    "rightValue": "Channel::Instagram",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.channel }}",
+                    "rightValue": "Channel::Instagram"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "Instagram"
@@ -202,22 +202,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "cd226af3-e973-4fa2-adee-7b4988db3d90",
-                    "leftValue": "={{ $json.channel }}",
-                    "rightValue": "Channel::facebook",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.channel }}",
+                    "rightValue": "Channel::facebook"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "facebook"
@@ -225,22 +225,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "6bb7392d-9fa9-4da8-86ee-94ec3e7385e1",
-                    "leftValue": "={{ $json.channel }}",
-                    "rightValue": "Channel::FacebookPage",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.channel }}",
+                    "rightValue": "Channel::FacebookPage"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "facebook"
@@ -248,23 +248,23 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "c6773713-6da3-44c1-8df0-e8957d72913e",
-                    "leftValue": {},
-                    "rightValue": "",
                     "operator": {
                       "type": "number",
                       "operation": "exists",
                       "singleValue": true
-                    }
+                    },
+                    "leftValue": {},
+                    "rightValue": ""
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "error_no_existe_channel"
@@ -273,25 +273,25 @@
         },
         "options": {}
       },
+      "id": "cc06d5b4-8f25-401d-9c6d-0135e17fe023",
+      "name": "Indentifica_canal",
       "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
       "position": [
         65888,
         29904
       ],
-      "id": "cc06d5b4-8f25-401d-9c6d-0135e17fe023",
-      "name": "Indentifica_canal"
+      "typeVersion": 3.3
     },
     {
       "parameters": {},
+      "id": "08287216-b5a5-4ac2-9234-e6bda76833da",
+      "name": "Dueno_o_Bot_responde",
       "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
       "position": [
         65216,
         30272
       ],
-      "id": "08287216-b5a5-4ac2-9234-e6bda76833da",
-      "name": "Dueno_o_Bot_responde"
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -300,22 +300,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "3c30564f-7df5-4564-b859-e13889009357",
-                    "leftValue": "={{ $json.agente_desactivado }}",
-                    "rightValue": "off",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.agente_desactivado }}",
+                    "rightValue": "off"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "respuesta_humana"
@@ -323,22 +323,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "1239d7b6-e41f-4d3b-a7b7-c6d691a43e69",
-                    "leftValue": "={{ $json.agente_desactivado }}",
-                    "rightValue": "on",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.agente_desactivado }}",
+                    "rightValue": "on"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "Respuesta IA"
@@ -347,14 +347,14 @@
         },
         "options": {}
       },
+      "id": "e7e02be0-8628-4c3e-b8ad-ae5d74e9f8d9",
+      "name": "Configurar_IA_Responda?",
       "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
       "position": [
         65504,
         29920
       ],
-      "id": "e7e02be0-8628-4c3e-b8ad-ae5d74e9f8d9",
-      "name": "Configurar_IA_Responda?"
+      "typeVersion": 3.3
     },
     {
       "parameters": {
@@ -363,22 +363,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "3c30564f-7df5-4564-b859-e13889009357",
-                    "leftValue": "={{ $json.message_type }}",
-                    "rightValue": "incoming",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "incoming"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "incoming"
@@ -386,22 +386,22 @@
             {
               "conditions": {
                 "options": {
+                  "version": 2,
                   "caseSensitive": true,
-                  "typeValidation": "strict",
-                  "version": 2
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "8b266895-9c0c-4a53-804d-2213bca3a1a0",
-                    "leftValue": "={{ $json.message_type }}",
-                    "rightValue": "outgoing",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.message_type }}",
+                    "rightValue": "outgoing"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "outcoming"
@@ -410,25 +410,25 @@
         },
         "options": {}
       },
+      "id": "14e7dfe5-84d8-4460-8b09-8b06190b004a",
+      "name": "Pregunta_el_Cliente?",
       "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
       "position": [
         65264,
         29936
       ],
-      "id": "14e7dfe5-84d8-4460-8b09-8b06190b004a",
-      "name": "Pregunta_el_Cliente?"
+      "typeVersion": 3.3
     },
     {
       "parameters": {},
+      "id": "30211f40-305f-4aaf-841c-0c9cca55151f",
+      "name": "End1",
       "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
       "position": [
         65936,
         29696
       ],
-      "id": "30211f40-305f-4aaf-841c-0c9cca55151f",
-      "name": "End1"
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -436,14 +436,14 @@
         "sessionKey": "={{ $json.session_id }}",
         "contextWindowLength": 10
       },
+      "id": "19243a8f-020b-47ac-9b04-551c987ef553",
+      "name": "Simple Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
       "position": [
         68320,
         29472
       ],
-      "id": "19243a8f-020b-47ac-9b04-551c987ef553",
-      "name": "Simple Memory"
+      "typeVersion": 1.3
     },
     {
       "parameters": {
@@ -451,33 +451,25 @@
         "path": "ycloud",
         "options": {}
       },
+      "id": "66805e32-48c9-4c59-bc96-9e0c5f582261",
+      "name": "Entrar_ChattWoot",
       "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
       "position": [
         64096,
         29104
       ],
-      "id": "66805e32-48c9-4c59-bc96-9e0c5f582261",
-      "name": "Entrar_ChattWoot",
-      "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2"
+      "webhookId": "2ed3208c-f997-4199-9baf-291afd8df2a2",
+      "typeVersion": 2.1
     },
     {
-      "id": "a5b0e47f-ba92-4170-aeae-9e6e8e7018d7",
-      "name": "Obtener_Info_basica",
-      "type": "n8n-nodes-base.set",
-      "position": [
-        64624,
-        29312
-      ],
       "parameters": {
-        "options": {},
         "assignments": {
           "assignments": [
             {
               "id": "5b9b41b4-ef98-4699-80eb-24e70dbee117",
               "name": "=text",
               "type": "string",
-              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || '' }}"
+              "value": "={{ $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.text?.body || '' }}"
             },
             {
               "id": "0f98afd1-e2e6-4c4d-9e9f-6e38c87694c6",
@@ -531,7 +523,7 @@
               "id": "e70d5c0a-a243-4625-af3e-c40ca295cdef",
               "name": "content",
               "type": "string",
-              "value": "={{ $json.body.whatsappInboundMessage?.text?.body || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || '' }}"
+              "value": "={{ $json.body.whatsappInboundMessage?.interactive?.button_reply?.title || $json.body.whatsappInboundMessage?.interactive?.button_reply?.id || $json.body.whatsappInboundMessage?.interactive?.list_reply?.title || $json.body.whatsappInboundMessage?.interactive?.list_reply?.id || $json.body.whatsappInboundMessage?.image?.caption || $json.body.whatsappInboundMessage?.video?.caption || $json.body.whatsappInboundMessage?.document?.caption || $json.body.whatsappInboundMessage?.text?.body || '' }}"
             },
             {
               "id": "8a12bb4d-d77a-466b-ac20-851d770c34c0",
@@ -570,8 +562,16 @@
               "value": "={{ $json.body.whatsappInboundMessage?.to || '' }}"
             }
           ]
-        }
+        },
+        "options": {}
       },
+      "id": "a5b0e47f-ba92-4170-aeae-9e6e8e7018d7",
+      "name": "Obtener_Info_basica",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        64624,
+        29312
+      ],
       "typeVersion": 3.4
     },
     {
@@ -588,27 +588,27 @@
         },
         "options": {}
       },
+      "id": "36af64d9-2d05-452b-8bd6-760eccc8c20b",
+      "name": "Obtener_Contacto_YCloud",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         64960,
         29456
       ],
-      "id": "36af64d9-2d05-452b-8bd6-760eccc8c20b",
-      "name": "Obtener_Contacto_YCloud"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
         "jsCode": "const contacto = $json.items?.[0];\nconst activado = contacto?.tags?.includes('agente_desactivado') ? 'off' : 'on';\nreturn [{ json: { ...$('Obtener_Info_basica').item.json, agente_desactivado: activado } }];"
       },
+      "id": "8251a227-3d77-41a2-8a00-074c69d1f1f2",
+      "name": "Ajustar_agente_desactivado",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         64912,
         29744
       ],
-      "id": "8251a227-3d77-41a2-8a00-074c69d1f1f2",
-      "name": "Ajustar_agente_desactivado"
+      "typeVersion": 2
     },
     {
       "parameters": {
@@ -617,23 +617,47 @@
             {
               "conditions": {
                 "options": {
-                  "caseSensitive": true,
+                  "version": 2,
                   "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
+                  "caseSensitive": true,
+                  "typeValidation": "loose"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
-                    "id": "13990ce7-e3b4-4056-9e7d-4eee97e1f577",
-                    "leftValue": "={{ $json.modo }}",
-                    "rightValue": "MENU_PRINCIPAL",
+                    "id": "spec49-carrito-mode",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.modo }}",
+                    "rightValue": "CARRITO"
                   }
-                ],
-                "combinator": "or"
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "CARRITO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "version": 2,
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "or",
+                "conditions": [
+                  {
+                    "id": "13990ce7-e3b4-4056-9e7d-4eee97e1f577",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "leftValue": "={{ $json.modo }}",
+                    "rightValue": "MENU_PRINCIPAL"
+                  }
+                ]
               },
               "renameOutput": true,
               "outputKey": "MENU_PRINCIPAL"
@@ -641,23 +665,23 @@
             {
               "conditions": {
                 "options": {
-                  "caseSensitive": true,
+                  "version": 2,
                   "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "acc9bba6-bb76-43a8-8145-33b4a28ccfb7",
-                    "leftValue": "={{ $json.modo }}",
-                    "rightValue": "FLUJO",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.modo }}",
+                    "rightValue": "FLUJO"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "FLUJO"
@@ -665,23 +689,23 @@
             {
               "conditions": {
                 "options": {
-                  "caseSensitive": true,
+                  "version": 2,
                   "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
                 },
+                "combinator": "and",
                 "conditions": [
                   {
                     "id": "e4b89e53-5df8-4322-8bc7-9dacf87edc1e",
-                    "leftValue": "={{ $json.modo }}",
-                    "rightValue": "COMPLETADO",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "leftValue": "={{ $json.modo }}",
+                    "rightValue": "COMPLETADO"
                   }
-                ],
-                "combinator": "and"
+                ]
               },
               "renameOutput": true,
               "outputKey": "COMPLETADO"
@@ -690,35 +714,35 @@
         },
         "options": {}
       },
+      "id": "8d6a7476-066d-4ca5-b212-571e097c9dee",
+      "name": "Consulta_o_agendar_cita",
       "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
       "position": [
         67232,
         30176
       ],
-      "id": "8d6a7476-066d-4ca5-b212-571e097c9dee",
-      "name": "Consulta_o_agendar_cita"
+      "typeVersion": 3.3
     },
     {
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4o",
           "mode": "list",
+          "value": "gpt-4o",
           "cachedResultName": "gpt-4o"
         },
         "options": {
           "maxTokens": 3000
         }
       },
+      "id": "a28e15a0-49cf-4302-8267-72ad4380bd18",
+      "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
       "position": [
         68208,
         29472
       ],
-      "id": "a28e15a0-49cf-4302-8267-72ad4380bd18",
-      "name": "OpenAI Chat Model",
+      "typeVersion": 1.2,
       "credentials": {
         "openAiApi": {
           "id": "SynY9HmZH2SsZkWD",
@@ -734,28 +758,28 @@
           "systemMessage": "={{ $json.system_prompt || \"Eres un asistente virtual. Responde unicamente con un objeto JSON valido con las claves output, tipoPregunta, isMenu, equipo_asignado, flow_name, session_id, conversation_id, account_id, platform y timestamp_actividad.\" }}"
         }
       },
+      "id": "67e53025-c71d-438c-ab4d-1aa557a999dc",
+      "name": "Agente_Informacion_basica",
       "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.2,
       "position": [
         68240,
         29184
       ],
-      "id": "67e53025-c71d-438c-ab4d-1aa557a999dc",
-      "name": "Agente_Informacion_basica"
+      "typeVersion": 2.2
     },
     {
       "parameters": {
         "model": "text-embedding-3-large",
         "options": {}
       },
+      "id": "46fc87f8-1e31-445c-b90c-f55b43a773b8",
+      "name": "Embeddings Base Conocimiento",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
       "position": [
         68512,
         29840
       ],
-      "id": "46fc87f8-1e31-445c-b90c-f55b43a773b8",
-      "name": "Embeddings Base Conocimiento",
+      "typeVersion": 1.2,
       "credentials": {
         "openAiApi": {
           "id": "SynY9HmZH2SsZkWD",
@@ -765,50 +789,50 @@
     },
     {
       "parameters": {
-        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\n// SPEC 32: anuncio determinista del carrito (independiente del LLM).\n// Se anexa cuando el negocio tiene el carrito activo (el system prompt trae\n// el bloque), la salida no lo contiene y no hay activación de flujo ni menú.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\nconst carritoActivo = systemPrompt.indexOf('=== CARRITO DE COMPRA ===') !== -1;\nconst ANUNCIO = '\\n💡 Escribe «carrito» para ver nuestro catálogo y comprar por WhatsApp.';\n\nfor (const item of items) {\n  const output = item.json.output || '';\n  const esActivacionFlujo = !!(item.json.flow_name || item.json.equipo_asignado);\n  const esMenu = item.json.isMenu === true || item.json.tipoPregunta === 'MENU';\n  const anunciar = carritoActivo && output\n    && output.indexOf('«carrito»') === -1\n    && !esActivacionFlujo && !esMenu;\n\n  const text = anunciar ? output + ANUNCIO : output;\n  const nuevoItem = {\n    json: {\n      ...item.json,\n      output: text,\n      text: text,\n      content: text\n    }\n  };\n  nuevosItems.push(nuevoItem);\n}\n\nreturn nuevosItems;"
+        "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\n// SPEC 32 + SPEC 58: anuncio determinista de compra (independiente del LLM).\n// El anuncio es el enlace a la tienda online (SPEC 46/58), extraído del\n// system_prompt. Se anexa cuando el negocio tiene el carrito activo, la\n// salida no lo incluye y no hay activación de flujo ni menú. Sin enlace de\n// tienda en el prompt → no se anexa nada.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\nconst carritoActivo = systemPrompt.indexOf('=== CARRITO DE COMPRA ===') !== -1;\nconst match = systemPrompt.match(/❗ Visita nuestra tienda online: \\S+/);\nconst anuncioLinea = match ? match[0] : '';\nconst ANUNCIO = anuncioLinea ? '\\n' + anuncioLinea : '';\n\nfor (const item of items) {\n  const output = item.json.output || '';\n  const esActivacionFlujo = !!(item.json.flow_name || item.json.equipo_asignado);\n  const esMenu = item.json.isMenu === true || item.json.tipoPregunta === 'MENU';\n  const anunciar = carritoActivo && ANUNCIO && output\n    && output.indexOf(anuncioLinea) === -1\n    && !esActivacionFlujo && !esMenu;\n\n  const text = anunciar ? output + ANUNCIO : output;\n  const nuevoItem = {\n    json: {\n      ...item.json,\n      output: text,\n      text: text,\n      content: text\n    }\n  };\n  nuevosItems.push(nuevoItem);\n}\n\nreturn nuevosItems;"
       },
+      "id": "0644d308-ac82-4c55-8306-98aaec1cc8d5",
+      "name": "Unificar_salida",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         70672,
         30352
       ],
-      "id": "0644d308-ac82-4c55-8306-98aaec1cc8d5",
-      "name": "Unificar_salida"
+      "typeVersion": 2
     },
     {
       "parameters": {
         "conditions": {
           "options": {
-            "caseSensitive": true,
+            "version": 3,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
+            "caseSensitive": true,
+            "typeValidation": "strict"
           },
+          "combinator": "or",
           "conditions": [
             {
               "id": "3a4922be-cbaa-4bb1-8614-6d8b82e4f404",
-              "leftValue": "={{ $json.equipo_asignado }}",
-              "rightValue": "",
               "operator": {
                 "type": "string",
                 "operation": "notEmpty",
                 "singleValue": true
-              }
+              },
+              "leftValue": "={{ $json.equipo_asignado }}",
+              "rightValue": ""
             }
-          ],
-          "combinator": "or"
+          ]
         },
         "options": {}
       },
+      "id": "ee6b05a9-b0cf-4f38-a20a-971f050f8384",
+      "name": "Cita_con_Equipo_asignado",
       "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
       "position": [
         68992,
         29056
       ],
-      "id": "ee6b05a9-b0cf-4f38-a20a-971f050f8384",
-      "name": "Cita_con_Equipo_asignado"
+      "typeVersion": 2.3
     },
     {
       "parameters": {
@@ -816,27 +840,27 @@
         "height": 528,
         "width": 1168
       },
+      "id": "f8ea9a88-d139-4cc5-a85f-0d740758f638",
+      "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         68048,
         29072
       ],
-      "typeVersion": 1,
-      "id": "f8ea9a88-d139-4cc5-a85f-0d740758f638",
-      "name": "Sticky Note"
+      "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## I'Se canaliza Instagram, faceboook, whatsapp etc"
       },
+      "id": "b7dbc3f9-0885-4548-83e8-c2c79cf4bd71",
+      "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         67184,
         30048
       ],
-      "typeVersion": 1,
-      "id": "b7dbc3f9-0885-4548-83e8-c2c79cf4bd71",
-      "name": "Sticky Note3"
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -847,17 +871,20 @@
         "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\"\n}\n",
         "options": {}
       },
+      "id": "eb6035dd-4b97-4824-8725-4bc609d2e85e",
+      "name": "paso_0_inicio_agendar",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
       "position": [
         70288,
         29344
       ],
-      "id": "eb6035dd-4b97-4824-8725-4bc609d2e85e",
-      "name": "paso_0_inicio_agendar",
+      "typeVersion": 4.3,
       "alwaysOutputData": true
     },
     {
+      "parameters": {
+        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlowBase = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\n\n// Merge dinámico: Odoo amplía el mapeo base con flow_map (defaults preservados).\nlet flowMapOdoo = {};\ntry {\n  flowMapOdoo = $('Obtener_configuracion_agente').item.json.flow_map || {};\n} catch (e) {\n  flowMapOdoo = {};\n}\nconst mapeoFlow = Object.assign({}, mapeoFlowBase, flowMapOdoo);\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\n// Red de seguridad: texto a usar cuando el agente no produjo output (p. ej.\n// intención FALLBACK sin respuesta). Prioriza el fallback_message de Odoo.\n// SPEC 18: menu_enabled (Odoo) decide modo menú (SPEC 13/17) vs conversacional.\nlet menuEnabled = false;\ntry {\n  menuEnabled = $('Obtener_configuracion_agente').item.json.menu_enabled === true;\n} catch (e) {\n  menuEnabled = false;\n}\nlet fallbackTexto = menuEnabled\n  ? 'Disculpa, no entendí 🤔 ¿Puedes reformularlo? Escribe *menu* para ver las opciones.'\n  : 'Disculpa, no entendí 🤔 ¿Me lo cuentas con otras palabras? Con gusto te respondo con la información del negocio.';\ntry {\n  const fb = $('Obtener_configuracion_agente').item.json.fallback_message;\n  if (fb && typeof fb === 'string' && fb.trim()) fallbackTexto = fb.trim();\n} catch (e) {\n  // sin Obtener_configuracion_agente se usa el texto por defecto\n}\n// --- Recuperación del texto plano (SPEC 36) ---\n// El ruteo (session_id, conversation_id, account_id, platform) viaja dentro del\n// eco JSON de la IA. Si el parseo falla, se reinyecta desde la config para que\n// los nodos de envío nunca pierdan `from`/`to` (YCloud 400 PARAM_MISSING).\nfunction routingFields() {\n  try {\n    const cfg = $('Obtener_configuracion_agente').item.json || {};\n    const out = {};\n    for (const k of ['session_id', 'conversation_id', 'account_id', 'platform']) {\n      if (cfg[k]) out[k] = cfg[k];\n    }\n    return out;\n  } catch (e) {\n    return {};\n  }\n}\n\nfunction mergeRouting(itemJson) {\n  const ruteo = routingFields();\n  const out = {};\n  for (const k in ruteo) {\n    if (!itemJson || !itemJson[k]) out[k] = ruteo[k];\n  }\n  return out;\n}\n\nfunction pareceFragmentoJson(texto) {\n  return /^\\s*[\\[{]/.test(texto) || /\"[^\"]*\"\\s*:/.test(texto);\n}\n\nfunction textoRecuperacion(raw) {\n  if (typeof raw === 'string' && raw.trim() && !pareceFragmentoJson(raw.trim())) {\n    return raw.trim();\n  }\n  return fallbackTexto;\n}\n\n\n// --- Sistema del menú determinista (SPEC 13) ---\n// El menú se sirve desde el system_prompt (única fuente, SPEC 03), sin IA ni RAG.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\n\nconst MENU_MARKER = '=== MENÚ DE OPCIONES ===';\nconst menuTexto = (() => {\n  const idx = systemPrompt.indexOf(MENU_MARKER);\n  if (idx === -1) return null;\n  const resto = systemPrompt.slice(idx + MENU_MARKER.length);\n  const fin = resto.search(/\\n=== /);\n  const seccion = (fin === -1 ? resto : resto.slice(0, fin)).trim();\n  return seccion || null;\n})();\n\nconst keywordsMenu = (() => {\n  for (const linea of systemPrompt.split('\\n')) {\n    if (linea.includes('(muestra el menú)')) {\n      const m = linea.match(/palabras clave:\\s*([^\\n→]+)/);\n      if (m) {\n        return m[1].split(',').map(k => k.trim().toLowerCase()).filter(Boolean);\n      }\n    }\n  }\n  return [];\n})();\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: item de recuperación.\n        // SPEC 36: si la IA respondió prosa válida (no fragmento JSON), enviarla\n        // al usuario en lugar del fallback genérico; se reinyecta el ruteo para\n        // que el envío por YCloud tenga `from`/`to` (evita 400 PARAM_MISSING).\n        const recuperacion = textoRecuperacion(item.json.output);\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json,\n            ...mergeRouting(item.json),\n            flow_name: flowPorDefecto,\n            output: recuperacion,\n            text: recuperacion,\n            content: recuperacion,\n            tipoPregunta: 'FALLBACK'\n          }\n        };\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido: siempre fallback genérico (no hay texto de la IA que enviar).\n      // SPEC 36: se reinyecta el ruteo igual que en JSON_PARSE_ERROR.\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json,\n          ...mergeRouting(item.json),\n          flow_name: flowPorDefecto,\n          output: fallbackTexto,\n          text: fallbackTexto,\n          content: fallbackTexto,\n          tipoPregunta: 'FALLBACK'\n        }\n      };\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // Des-nidificación defensiva: si 'output' es un string JSON con clave\n    // 'output', extraer el objeto interno y hacer merge de sus campos.\n    // Cubre desobediencia de formato de la IA (JSON anidado dentro de output).\n    if (typeof datosParseados.output === 'string' &&\n        datosParseados.output.trim().startsWith('{')) {\n      const interno = tryParseJSON(datosParseados.output);\n      if (interno && typeof interno === 'object' && interno !== null &&\n          interno.output !== undefined) {\n        datosParseados = Object.assign({}, datosParseados, interno);\n      }\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    // Red de seguridad: si el agente devolvió output vacío (intención sin\n    // respuesta), reemplazar por el fallback para que los nodos de envío nunca\n    // reciban un body vacío que YCloud rechaza.\n    if (typeof resultado.output !== 'string' || !resultado.output.trim()) {\n      resultado.output = fallbackTexto;\n      if (!resultado.tipoPregunta || resultado.tipoPregunta === 'FALLBACK') {\n        resultado.tipoPregunta = 'FALLBACK';\n      }\n      resultado.text = fallbackTexto;\n      resultado.content = fallbackTexto;\n    }\n\n    // SPEC 18: en modo conversacional (menu_enabled=false) isMenu SIEMPRE\n    // false: nunca se envía menú interactivo ni se detecta menú en el output.\n    let isMenuValue = false;\n    if (menuEnabled) {\n      if (datosParseados.isMenu === true) {\n        isMenuValue = true;\n      } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n        const texto = datosParseados.output;\n        if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n            texto.includes('Para ayudarte mejor, por favor selecciona') ||\n            texto.includes('¿Qué necesitas hoy?')) {\n          isMenuValue = true;\n        }\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    // --- Ruteo determinista del menú (SPEC 13, solo menu_enabled=true) ---\n    // Si el usuario pide menú o la intención detectada es MENU, se fuerza\n    // el texto del menú guardado (con marca) e isMenu=true. La salida de la\n    // IA se ignora para este caso. En modo conversacional (SPEC 18) el\n    // bloque se omite: la IA responde con la introducción desde el RAG.\n    const textoUsuario = (item.json.text || '').toString().toLowerCase();\n    let esMenu = datosParseados.tipoPregunta === 'MENU';\n    if (!esMenu && textoUsuario) {\n      esMenu = keywordsMenu.some(k => k && textoUsuario.includes(k));\n    }\n    // Texto ultra-corto (≤2 caracteres) → menú determinista (SPEC 14).\n    if (!esMenu && textoUsuario && textoUsuario.length <= 2) {\n      esMenu = true;\n    }\n    if (menuEnabled && esMenu && menuTexto) {\n      resultado.output = menuTexto;\n      resultado.text = menuTexto;\n      resultado.content = menuTexto;\n      resultado.isMenu = true;\n      resultado.tipoPregunta = 'MENU';\n      resultado.equipo_asignado = '';\n      resultado.flow_name = '';\n      resultado.esPreguntaSiNo = false;\n    }\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    // SPEC 36: misma recuperación que JSON_PARSE_ERROR (prosa o fallback) + ruteo.\n    const recuperacion = textoRecuperacion(item.json.output);\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json,\n        ...mergeRouting(item.json),\n        flow_name: flowPorDefecto,\n        output: recuperacion,\n        text: recuperacion,\n        content: recuperacion,\n        tipoPregunta: 'FALLBACK'\n      }\n    };\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
+      },
       "id": "2b2b0b5f-77ba-4459-86c8-ebcf9a274af5",
       "name": "Separar_variables_en_json",
       "type": "n8n-nodes-base.code",
@@ -865,9 +892,6 @@
         68560,
         29216
       ],
-      "parameters": {
-        "jsCode": "// Separar_variables_en_json - versión con recuperación extra para strings como: {}, \"equipo_asignado\":...\nconst items = $input.all();\nconst nuevosItems = [];\n\nfunction detectarSiNo(texto) {\n  if (!texto || typeof texto !== 'string') return false;\n  const patrones = [\n    /\\b(sí|si)\\s*\\/\\s*no\\b/i,\n    /\\b(aceptas|confirmas|estás de acuerdo|quieres|deseas|te gustaría)\\b.*\\?/i,\n    /^.*\\?.*(sí|si).*(no).*$/i,\n    /¿(deseas|quieres|te gustaría|estás seguro|aceptas)/i,\n    /\\b(yes|no)\\b/i,\n    /\\b(responder (sí|si|no))\\\\b/i\n  ];\n  return patrones.some(p => p.test(texto));\n}\n\nconst mapeoFlowBase = {\n  'Agendamiento_Directo': 'flujo_agendamiento_directo',\n  'Agendamiento_Precios': 'flujo_agendamiento_precios',\n  'Agendamiento_Servicios': 'flujo_agendamiento_servicios',\n  'Agendamiento_Otra_Consulta': 'flujo_agendamiento_otra_consulta',\n  'Ventas': 'flujo_ventas',\n  'CITAS_MP': 'flujo_citas_medios_propios',\n  'CITAS_SEGUROS': 'flujo_citas_seguro',\n  'RESULTADOS_LAB': 'flujo_resultados_laboratorio',\n  'RESULTADOS_IMAGENES': 'flujo_resultados_imagenes'\n};\n\n// Merge dinámico: Odoo amplía el mapeo base con flow_map (defaults preservados).\nlet flowMapOdoo = {};\ntry {\n  flowMapOdoo = $('Obtener_configuracion_agente').item.json.flow_map || {};\n} catch (e) {\n  flowMapOdoo = {};\n}\nconst mapeoFlow = Object.assign({}, mapeoFlowBase, flowMapOdoo);\nconst flowPorDefecto = 'flujo_agendamiento_default';\n\n// Red de seguridad: texto a usar cuando el agente no produjo output (p. ej.\n// intención FALLBACK sin respuesta). Prioriza el fallback_message de Odoo.\n// SPEC 18: menu_enabled (Odoo) decide modo menú (SPEC 13/17) vs conversacional.\nlet menuEnabled = false;\ntry {\n  menuEnabled = $('Obtener_configuracion_agente').item.json.menu_enabled === true;\n} catch (e) {\n  menuEnabled = false;\n}\nlet fallbackTexto = menuEnabled\n  ? 'Disculpa, no entendí 🤔 ¿Puedes reformularlo? Escribe *menu* para ver las opciones.'\n  : 'Disculpa, no entendí 🤔 ¿Me lo cuentas con otras palabras? Con gusto te respondo con la información del negocio.';\ntry {\n  const fb = $('Obtener_configuracion_agente').item.json.fallback_message;\n  if (fb && typeof fb === 'string' && fb.trim()) fallbackTexto = fb.trim();\n} catch (e) {\n  // sin Obtener_configuracion_agente se usa el texto por defecto\n}\n// --- Recuperación del texto plano (SPEC 36) ---\n// El ruteo (session_id, conversation_id, account_id, platform) viaja dentro del\n// eco JSON de la IA. Si el parseo falla, se reinyecta desde la config para que\n// los nodos de envío nunca pierdan `from`/`to` (YCloud 400 PARAM_MISSING).\nfunction routingFields() {\n  try {\n    const cfg = $('Obtener_configuracion_agente').item.json || {};\n    const out = {};\n    for (const k of ['session_id', 'conversation_id', 'account_id', 'platform']) {\n      if (cfg[k]) out[k] = cfg[k];\n    }\n    return out;\n  } catch (e) {\n    return {};\n  }\n}\n\nfunction mergeRouting(itemJson) {\n  const ruteo = routingFields();\n  const out = {};\n  for (const k in ruteo) {\n    if (!itemJson || !itemJson[k]) out[k] = ruteo[k];\n  }\n  return out;\n}\n\nfunction pareceFragmentoJson(texto) {\n  return /^\\s*[\\[{]/.test(texto) || /\"[^\"]*\"\\s*:/.test(texto);\n}\n\nfunction textoRecuperacion(raw) {\n  if (typeof raw === 'string' && raw.trim() && !pareceFragmentoJson(raw.trim())) {\n    return raw.trim();\n  }\n  return fallbackTexto;\n}\n\n\n// --- Sistema del menú determinista (SPEC 13) ---\n// El menú se sirve desde el system_prompt (única fuente, SPEC 03), sin IA ni RAG.\nconst systemPrompt = (() => {\n  try {\n    return $('Obtener_configuracion_agente').item.json.system_prompt || '';\n  } catch (e) {\n    return '';\n  }\n})();\n\nconst MENU_MARKER = '=== MENÚ DE OPCIONES ===';\nconst menuTexto = (() => {\n  const idx = systemPrompt.indexOf(MENU_MARKER);\n  if (idx === -1) return null;\n  const resto = systemPrompt.slice(idx + MENU_MARKER.length);\n  const fin = resto.search(/\\n=== /);\n  const seccion = (fin === -1 ? resto : resto.slice(0, fin)).trim();\n  return seccion || null;\n})();\n\nconst keywordsMenu = (() => {\n  for (const linea of systemPrompt.split('\\n')) {\n    if (linea.includes('(muestra el menú)')) {\n      const m = linea.match(/palabras clave:\\s*([^\\n→]+)/);\n      if (m) {\n        return m[1].split(',').map(k => k.trim().toLowerCase()).filter(Boolean);\n      }\n    }\n  }\n  return [];\n})();\n\nfunction tryParseJSON(rawStr) {\n  // Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n  let cleaned = rawStr.trim();\n  cleaned = cleaned.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n  // Intento directo con string limpio\n  try {\n    return JSON.parse(cleaned);\n  } catch (e) {\n    // preparación secundaria: limpieza\n    let attempt = cleaned;\n    // eliminar prefijo \"{},\" si existe\n    attempt = attempt.replace(/^\\s*\\{\\}\\s*,\\s*/, '');\n    // eliminar comas solitarias al inicio\n    attempt = attempt.replace(/^\\s*,\\s*/, '');\n    // eliminar comas antes de cierre de objeto o array\n    attempt = attempt.replace(/,\\s*}/g, '}').replace(/,\\s*]/g, ']');\n    // si no empieza con { pero hay un } al final, añadimos '{' delante\n    if (!attempt.startsWith('{') && attempt.indexOf('}') !== -1) {\n      attempt = '{' + attempt;\n    }\n    // si no termina con } y hay una { en el string, cerramos con }\n    if (!attempt.endsWith('}') && attempt.indexOf('{') !== -1) {\n      attempt = attempt + '}';\n    }\n    // último intento de parse\n    try {\n      return JSON.parse(attempt);\n    } catch (e2) {\n      // si sigue fallando devolvemos null para indicar que no se pudo parsear\n      return null;\n    }\n  }\n}\n\nfor (const item of items) {\n  try {\n    let str = item.json.output;\n    let datosParseados = null;\n\n    // Si ya es objeto, usarlo\n    if (typeof str !== 'string' && typeof str === 'object' && str !== null) {\n      datosParseados = str;\n    } else if (typeof str === 'string') {\n      // 0) Limpiar delimitadores markdown ```json ... ``` o ``` ... ```\n      str = str.replace(/^```(?:json)?\\s*/i, '').replace(/\\s*```\\s*$/i, '').trim();\n\n      // 1) intento de parse robusto usando helper\n      // primero normalizamos backslash-u{...} como antes\n      let normalized = str.replace(/\\\\u\\{([^}]+)\\}/g, (match, inner) => {\n        const parts = inner.split(/\\\\u/);\n        let result = '';\n        for (let part of parts) {\n          if (part === '') continue;\n          result += String.fromCodePoint(parseInt(part, 16));\n        }\n        return result;\n      });\n\n      // Intento parse directo y fallback con tryParseJSON\n      datosParseados = tryParseJSON(normalized);\n\n      if (!datosParseados) {\n        // no se pudo parsear ni en el intento secundario: item de recuperación.\n        // SPEC 36: si la IA respondió prosa válida (no fragmento JSON), enviarla\n        // al usuario en lugar del fallback genérico; se reinyecta el ruteo para\n        // que el envío por YCloud tenga `from`/`to` (evita 400 PARAM_MISSING).\n        const recuperacion = textoRecuperacion(item.json.output);\n        const errorItem = {\n          json: {\n            error: 'JSON_PARSE_ERROR',\n            message: 'No se pudo extraer objeto JSON válido',\n            original: item.json.output,\n            _raw_extracted: normalized,\n            ...item.json,\n            ...mergeRouting(item.json),\n            flow_name: flowPorDefecto,\n            output: recuperacion,\n            text: recuperacion,\n            content: recuperacion,\n            tipoPregunta: 'FALLBACK'\n          }\n        };\n        nuevosItems.push(errorItem);\n        continue; // pasar al siguiente item\n      }\n    } else {\n      // tipo inválido: siempre fallback genérico (no hay texto de la IA que enviar).\n      // SPEC 36: se reinyecta el ruteo igual que en JSON_PARSE_ERROR.\n      const errorItem = {\n        json: {\n          error: 'INVALID_OUTPUT_TYPE',\n          original: item.json.output,\n          ...item.json,\n          ...mergeRouting(item.json),\n          flow_name: flowPorDefecto,\n          output: fallbackTexto,\n          text: fallbackTexto,\n          content: fallbackTexto,\n          tipoPregunta: 'FALLBACK'\n        }\n      };\n      nuevosItems.push(errorItem);\n      continue;\n    }\n\n    // Des-nidificación defensiva: si 'output' es un string JSON con clave\n    // 'output', extraer el objeto interno y hacer merge de sus campos.\n    // Cubre desobediencia de formato de la IA (JSON anidado dentro de output).\n    if (typeof datosParseados.output === 'string' &&\n        datosParseados.output.trim().startsWith('{')) {\n      const interno = tryParseJSON(datosParseados.output);\n      if (interno && typeof interno === 'object' && interno !== null &&\n          interno.output !== undefined) {\n        datosParseados = Object.assign({}, datosParseados, interno);\n      }\n    }\n\n    // --- lógica original conservada ---\n    if (!datosParseados.tipoPregunta && datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Vamos a agendar tu cita') || \n          datosParseados.output.includes('Indíqueme si la atención será por medios propios')) {\n        datosParseados.tipoPregunta = 'CITA_DIRECTA';\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      if (datosParseados.output.includes('Para enviarte tus resultados') || \n          datosParseados.output.includes('Foto de cédula') ||\n          datosParseados.output.includes('El estudio que necesitas')) {\n\n        datosParseados.tipoPregunta = 'RESULTADOS';\n\n        datosParseados.output = \"Hola 👋 Para ayudarte con los resultados, por favor indica el tipo de estudio:\\n\\n🔬 Si es un examen de LABORATORIO (sangre, orina, heces, etc.) responde 'Laboratorio'.\\n📷 Si es un estudio de IMÁGENES (radiografía, ecografía, mamografía, etc.) responde 'Imágenes'.\\n\\nEn unos segundos te pediré los detalles necesarios.\";\n\n        datosParseados.text = datosParseados.output;\n        datosParseados.content = datosParseados.output;\n      }\n    }\n\n    if (datosParseados.output && typeof datosParseados.output === 'string') {\n      const match = datosParseados.output.match(/^\\s*equipo_asignado:\\s*\"([^\"]*)\"\\s*$/);\n      if (match) {\n        datosParseados.equipo_asignado = match[1];\n      }\n    }\n\n    const resultado = {\n      ...item.json,\n      ...datosParseados,\n      output: datosParseados.output,\n      tipoPregunta: datosParseados.tipoPregunta || null\n    };\n\n    // Red de seguridad: si el agente devolvió output vacío (intención sin\n    // respuesta), reemplazar por el fallback para que los nodos de envío nunca\n    // reciban un body vacío que YCloud rechaza.\n    if (typeof resultado.output !== 'string' || !resultado.output.trim()) {\n      resultado.output = fallbackTexto;\n      if (!resultado.tipoPregunta || resultado.tipoPregunta === 'FALLBACK') {\n        resultado.tipoPregunta = 'FALLBACK';\n      }\n      resultado.text = fallbackTexto;\n      resultado.content = fallbackTexto;\n    }\n\n    // SPEC 18: en modo conversacional (menu_enabled=false) isMenu SIEMPRE\n    // false: nunca se envía menú interactivo ni se detecta menú en el output.\n    let isMenuValue = false;\n    if (menuEnabled) {\n      if (datosParseados.isMenu === true) {\n        isMenuValue = true;\n      } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n        const texto = datosParseados.output;\n        if (texto.includes('¡Hola! 😊 Bienvenido/a') || \n            texto.includes('Para ayudarte mejor, por favor selecciona') ||\n            texto.includes('¿Qué necesitas hoy?')) {\n          isMenuValue = true;\n        }\n      }\n    }\n    resultado.isMenu = isMenuValue;\n\n    let esPreguntaSiNo = false;\n    if (datosParseados.esPreguntaSiNo === true) {\n      esPreguntaSiNo = true;\n    } else if (datosParseados.output && typeof datosParseados.output === 'string') {\n      esPreguntaSiNo = detectarSiNo(datosParseados.output);\n    }\n    resultado.esPreguntaSiNo = esPreguntaSiNo;\n\n    const equipo = resultado.equipo_asignado;\n    let flow_name = '';\n    if (typeof datosParseados.flow_name === 'string' && datosParseados.flow_name.trim()) {\n      const f = datosParseados.flow_name.trim();\n      if (f.startsWith('flujo_')) {\n        flow_name = f;\n      } else if (mapeoFlow[f]) {\n        flow_name = mapeoFlow[f];\n      }\n    }\n    resultado.flow_name = flow_name || mapeoFlow[equipo] || flowPorDefecto;\n\n    // --- Ruteo determinista del menú (SPEC 13, solo menu_enabled=true) ---\n    // Si el usuario pide menú o la intención detectada es MENU, se fuerza\n    // el texto del menú guardado (con marca) e isMenu=true. La salida de la\n    // IA se ignora para este caso. En modo conversacional (SPEC 18) el\n    // bloque se omite: la IA responde con la introducción desde el RAG.\n    const textoUsuario = (item.json.text || '').toString().toLowerCase();\n    let esMenu = datosParseados.tipoPregunta === 'MENU';\n    if (!esMenu && textoUsuario) {\n      esMenu = keywordsMenu.some(k => k && textoUsuario.includes(k));\n    }\n    // Texto ultra-corto (≤2 caracteres) → menú determinista (SPEC 14).\n    if (!esMenu && textoUsuario && textoUsuario.length <= 2) {\n      esMenu = true;\n    }\n    if (menuEnabled && esMenu && menuTexto) {\n      resultado.output = menuTexto;\n      resultado.text = menuTexto;\n      resultado.content = menuTexto;\n      resultado.isMenu = true;\n      resultado.tipoPregunta = 'MENU';\n      resultado.equipo_asignado = '';\n      resultado.flow_name = '';\n      resultado.esPreguntaSiNo = false;\n    }\n\n    nuevosItems.push({ json: resultado });\n\n  } catch (e) {\n    // SPEC 36: misma recuperación que JSON_PARSE_ERROR (prosa o fallback) + ruteo.\n    const recuperacion = textoRecuperacion(item.json.output);\n    const errorItem = {\n      json: {\n        error: e.message,\n        original: item.json.output,\n        ...item.json,\n        ...mergeRouting(item.json),\n        flow_name: flowPorDefecto,\n        output: recuperacion,\n        text: recuperacion,\n        content: recuperacion,\n        tipoPregunta: 'FALLBACK'\n      }\n    };\n    nuevosItems.push(errorItem);\n  }\n}\n\nreturn nuevosItems;"
-      },
       "typeVersion": 2
     },
     {
@@ -877,57 +901,57 @@
             {
               "id": "dda4884d-04e1-451c-b3af-f5a3183f2580",
               "name": "session_id",
-              "value": "={{ $json.session_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.session_id }}"
             },
             {
               "id": "70bff820-cfc3-4071-bcaa-4478eb7828e9",
               "name": "conversation_id",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.conversation_id }}"
             },
             {
               "id": "d80d48b5-7d3e-4e34-bf33-cf46fa3b4e5d",
               "name": "account_id",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.account_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.account_id }}"
             },
             {
               "id": "d784b741-4e38-4288-9223-4974592d75fb",
               "name": "platform",
-              "value": "={{ $('Cita_con_Equipo_asignado').item.json.platform }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $('Cita_con_Equipo_asignado').item.json.platform }}"
             },
             {
               "id": "1021f53b-9c20-4d37-abf1-1622ce5bbd86",
               "name": "text",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.steps[0].nombre_mostrar }}"
             },
             {
               "id": "4046b530-a78d-4676-b4ad-f2f8f2f81919",
               "name": "output",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.steps[0].nombre_mostrar }}"
             },
             {
               "id": "0aebd45e-44c0-4633-9710-c3af2e6d9422",
               "name": "content",
-              "value": "={{ $json.steps[0].nombre_mostrar }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.steps[0].nombre_mostrar }}"
             }
           ]
         },
         "options": {}
       },
+      "id": "9c37ff28-51a7-48f8-ac50-d4ca7f58ded6",
+      "name": "Agendar_cita",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
       "position": [
         70560,
         29328
       ],
-      "id": "9c37ff28-51a7-48f8-ac50-d4ca7f58ded6",
-      "name": "Agendar_cita"
+      "typeVersion": 3.4
     },
     {
       "parameters": {
@@ -951,14 +975,14 @@
         "jsonBody": "={{ $json.whatsappPayload\n  ? JSON.stringify($json.whatsappPayload)\n  : JSON.stringify({\n      from: $json.account_id,\n      to: $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id,\n      type: \"text\",\n      text: { body: $json.content }\n    }) }}",
         "options": {}
       },
+      "id": "55c47134-8789-4393-ba74-c45207d8cd02",
+      "name": "Enviar_mensaje_de_IA1",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         71744,
         28672
       ],
-      "id": "55c47134-8789-4393-ba74-c45207d8cd02",
-      "name": "Enviar_mensaje_de_IA1"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
@@ -982,14 +1006,14 @@
         "jsonBody": "={\n  \"from\": \"{{  $json.account_id }}\",\n  \"to\": \"{{ $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.content) }}\n  }\n}",
         "options": {}
       },
+      "id": "2278ec24-ccc6-4e45-99cf-d77dacab9962",
+      "name": "Enviar_mensaje_de_IA2",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         70672,
         29728
       ],
-      "id": "2278ec24-ccc6-4e45-99cf-d77dacab9962",
-      "name": "Enviar_mensaje_de_IA2"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
@@ -998,45 +1022,45 @@
             {
               "id": "890f5802-1895-46b4-bfb3-c2f44596d4ce",
               "name": "session_id",
-              "value": "={{ $json.session_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.session_id }}"
             },
             {
               "id": "e0d55966-2cdd-436b-b684-a8b11a217a2b",
               "name": "conversation_id",
-              "value": "={{ $json.conversation_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.conversation_id }}"
             },
             {
               "id": "f33e3c5f-da1a-466a-b726-e12e19fdcb0b",
               "name": "account_id",
-              "value": "={{ $json.account_id }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.account_id }}"
             },
             {
               "id": "53961174-87e8-4d3c-ae50-4da02dbac3c3",
               "name": "modo",
-              "value": "={{ $json.modo }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.modo }}"
             },
             {
               "id": "dcb665ab-5283-4902-bc0f-bff04a90180f",
               "name": "nombre_mostrar",
-              "value": "={{ $json.texto_para_usuario || $json.text || '' }}",
-              "type": "string"
+              "type": "string",
+              "value": "={{ $json.texto_para_usuario || $json.text || '' }}"
             }
           ]
         },
         "options": {}
       },
+      "id": "81b6f18e-dad8-4326-b469-65b332c71853",
+      "name": "tomar_parametros",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
       "position": [
         67680,
         30272
       ],
-      "id": "81b6f18e-dad8-4326-b469-65b332c71853",
-      "name": "tomar_parametros"
+      "typeVersion": 3.4
     },
     {
       "parameters": {
@@ -1060,60 +1084,60 @@
         "jsonBody": "={\n  \"from\": \"{{  $json.account_id }}\",\n  \"to\": \"{{ $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.nombre_mostrar) }}\n  }\n}",
         "options": {}
       },
+      "id": "9ed0c365-cc20-4734-a5b9-153ecd0175f6",
+      "name": "Enviar_mensaje_de_IA3",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         68112,
         30432
       ],
-      "id": "9ed0c365-cc20-4734-a5b9-153ecd0175f6",
-      "name": "Enviar_mensaje_de_IA3"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
         "conditions": {
           "options": {
-            "caseSensitive": true,
+            "version": 3,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
+            "caseSensitive": true,
+            "typeValidation": "strict"
           },
+          "combinator": "and",
           "conditions": [
             {
               "id": "menu_whatsapp_condition",
-              "leftValue": "={{\n  $json.platform === 'whatsapp' && \n  ($json.isMenu === true ||\n   (typeof $json.output === 'string' && $json.output.length > 0 &&\n    ($json.output.match(/[1-5]\\.\\s*(Precios|Servicios|Agendar|Tarjeta|Otra)/i) !== null ||\n     $json.output.includes('Bienvenido/a') ||\n     $json.output.includes('selecciona una opción'))))\n}}",
-              "rightValue": true,
               "operator": {
                 "type": "boolean",
                 "operation": "equals"
-              }
+              },
+              "leftValue": "={{\n  $json.platform === 'whatsapp' && \n  ($json.isMenu === true ||\n   (typeof $json.output === 'string' && $json.output.length > 0 &&\n    ($json.output.match(/[1-5]\\.\\s*(Precios|Servicios|Agendar|Tarjeta|Otra)/i) !== null ||\n     $json.output.includes('Bienvenido/a') ||\n     $json.output.includes('selecciona una opción'))))\n}}",
+              "rightValue": true
             }
-          ],
-          "combinator": "and"
+          ]
         },
         "options": {}
       },
+      "id": "c10a0778-1ca3-46c6-bc69-a0effa3e1532",
+      "name": "¿Enviar menú interactivo?",
       "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
       "position": [
         68736,
         29232
       ],
-      "id": "c10a0778-1ca3-46c6-bc69-a0effa3e1532",
-      "name": "¿Enviar menú interactivo?"
+      "typeVersion": 2.3
     },
     {
       "parameters": {
         "jsCode": "const items = $input.all();\nfor (const item of items) {\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n  \n  if (!phone) {\n    item.json.phone_number_formatted = null;\n    continue;\n  }\n  \n  phone = String(phone);\n  if (!phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n  item.json.phone_number_formatted = phone;\n}\nreturn items;"
       },
+      "id": "73c00646-8adc-4f08-8d78-ab60aa8b8da5",
+      "name": "Formatear número de teléfono",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         69056,
         29376
       ],
-      "id": "73c00646-8adc-4f08-8d78-ab60aa8b8da5",
-      "name": "Formatear número de teléfono"
+      "typeVersion": 2
     },
     {
       "parameters": {
@@ -1137,137 +1161,137 @@
         "jsonBody": "={\n  \"from\": \"{{ $json.account_id }}\",\n  \"to\": \"{{ $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id || $('Obtener_Info_basica').first().json.user_number }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
         "options": {}
       },
+      "id": "bccfdb26-0ba4-4ba8-bb99-0f8c459a3e17",
+      "name": "Enviar texto despues del menu",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         72048,
         28288
       ],
-      "id": "bccfdb26-0ba4-4ba8-bb99-0f8c459a3e17",
-      "name": "Enviar texto despues del menu"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
         "conditions": {
           "options": {
-            "caseSensitive": true,
+            "version": 3,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
+            "caseSensitive": true,
+            "typeValidation": "strict"
           },
+          "combinator": "and",
           "conditions": [
             {
               "id": "menu_whatsapp_condition",
-              "leftValue": "={{\n  $json.platform === 'whatsapp' && ($json.esPreguntaSiNo === true || $json.tipoPregunta === \"ESTATICO\" || $json.tipoPregunta === \"CITA_DIRECTA\" || $json.tipoPregunta === \"RESULTADOS\")\n}}",
-              "rightValue": true,
               "operator": {
                 "type": "boolean",
                 "operation": "equals"
-              }
+              },
+              "leftValue": "={{\n  $json.platform === 'whatsapp' && ($json.esPreguntaSiNo === true || $json.tipoPregunta === \"ESTATICO\" || $json.tipoPregunta === \"CITA_DIRECTA\" || $json.tipoPregunta === \"RESULTADOS\")\n}}",
+              "rightValue": true
             }
-          ],
-          "combinator": "and"
+          ]
         },
         "options": {}
       },
+      "id": "ef55052d-5e96-4924-bd93-1cb83d8b15f7",
+      "name": "¿Enviar menú interactivo?1",
       "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
       "position": [
         71328,
         28944
       ],
-      "id": "ef55052d-5e96-4924-bd93-1cb83d8b15f7",
-      "name": "¿Enviar menú interactivo?1"
+      "typeVersion": 2.3
     },
     {
       "parameters": {
         "jsCode": "const items = $input.all();\nconst nuevosItems = [];\n\nfor (const item of items) {\n  const tipo = item.json.tipoPregunta;\n  const outputText = item.json.output;\n  let phone = item.json.user_number || item.json.phone_number || item.json.session_id;\n\n  if (phone && !phone.startsWith('+')) {\n    phone = '+' + phone;\n  }\n\n  let botones = [];\n\n  // PRECIOS - botones Sí/No\n  if (tipo === 'PRECIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_PRECIOS\", title: \"✅ Quiero cotización\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // SERVICIOS - botones Sí/No\n  else if (tipo === 'SERVICIOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_CITA_SERVICIOS\", title: \"✅ Sí, quiero demo\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // TARJETA - botones Sí/No\n  else if (tipo === 'TARJETA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_TARJETA\", title: \"✅ Sí, contratar\" } },\n      { type: \"reply\", reply: { id: \"CANCELAR\", title: \"❌ No, gracias\" } }\n    ];\n  }\n  // CITA_DIRECTA - botones para elegir Demo o Asesoría\n  else if (tipo === 'CITA_DIRECTA') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MEDIOS_PROPIOS\", title: \"💰 Demo Chatbot\" } },\n      { type: \"reply\", reply: { id: \"SEGURO_MEDICO\", title: \"🩺 Asesoría Odoo\" } }\n    ];\n  }\n  else if (tipo === 'RESULTADOS') {\n    botones = [\n      { type: \"reply\", reply: { id: \"LABORATORIO\", title: \"🔬 Laboratorio\" } },\n      { type: \"reply\", reply: { id: \"IMAGENES\", title: \"📷 Imágenes\" } }\n    ];\n  }\n  // ESTATICO - horario, promociones, resultados (botones: Menú y Salir)\n  else if (tipo === 'ESTATICO') {\n    botones = [\n      { type: \"reply\", reply: { id: \"MENU_PRINCIPAL\", title: \"🔙 Menú\" } },\n      { type: \"reply\", reply: { id: \"SALIR\", title: \"👋 Salir\" } }\n    ];\n  }\n  // ✅ NUEVO: Si es pregunta Sí/No genérica sin tipo específico\n  else if (item.json.esPreguntaSiNo === true) {\n    botones = [\n      { type: \"reply\", reply: { id: \"CONFIRMAR_SI\", title: \"✅ Sí\" } },\n      { type: \"reply\", reply: { id: \"CONFIRMAR_NO\", title: \"❌ No\" } }\n    ];\n  }\n  // Si no hay tipoPregunta, no enviamos botones (se envía como texto normal)\n  else {\n    nuevosItems.push(item);\n    continue;\n  }\n\n  // Construir el payload de WhatsApp\n  const whatsappPayload = {\n    messaging_product: \"whatsapp\",\n    recipient_type: \"individual\",\n    to: phone,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: outputText },\n      action: { buttons: botones }\n    }\n  };\n\n  nuevosItems.push({\n    json: {\n      ...item.json,\n      whatsappPayload: whatsappPayload,\n      phone_number_formatted: phone\n    }\n  });\n}\n\nreturn nuevosItems;"
       },
+      "id": "7c9e5e64-898a-473b-9a70-ea867148f9ca",
+      "name": "Construir_botones_WhatsApp",
       "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
       "position": [
         71600,
         28400
       ],
-      "id": "7c9e5e64-898a-473b-9a70-ea867148f9ca",
-      "name": "Construir_botones_WhatsApp"
+      "typeVersion": 2
     },
     {
       "parameters": {},
+      "id": "3da94741-9a98-428a-89bd-817533312a3b",
+      "name": "Fin menú WhatsApp1",
       "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
       "position": [
         72160,
         28480
       ],
-      "id": "3da94741-9a98-428a-89bd-817533312a3b",
-      "name": "Fin menú WhatsApp1"
+      "typeVersion": 1
     },
     {
       "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        67200,
-        29776
-      ],
-      "typeVersion": 1,
       "id": "e80eb4f3-d558-466e-a0c0-bb1f2daf942b",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {},
+      "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         67200,
         29776
       ],
-      "typeVersion": 1,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
       "id": "1d265564-2c86-4460-9f3e-17d17bf82571",
-      "name": "Sticky Note4"
-    },
-    {
-      "parameters": {},
+      "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         67200,
         29776
       ],
-      "typeVersion": 1,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
       "id": "43ad4d57-70d4-4502-ac67-11f6d5f14b0b",
-      "name": "Sticky Note5"
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        67200,
+        29776
+      ],
+      "typeVersion": 1
     },
     {
       "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        67280,
-        29856
-      ],
-      "typeVersion": 1,
       "id": "bcd8dda8-ada5-43d4-b8ed-8d37e763b38b",
-      "name": "Sticky Note6"
-    },
-    {
-      "parameters": {},
+      "name": "Sticky Note6",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         67280,
         29856
       ],
-      "typeVersion": 1,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
       "id": "24b2e4fb-7000-4ac3-9884-99272d64272c",
-      "name": "Sticky Note7"
-    },
-    {
-      "parameters": {},
+      "name": "Sticky Note7",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         67280,
         29856
       ],
-      "typeVersion": 1,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
       "id": "80b03555-8dc5-488a-bc79-bf57cf22631f",
-      "name": "Sticky Note8"
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        67280,
+        29856
+      ],
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -1275,14 +1299,14 @@
         "height": 480,
         "width": 560
       },
+      "id": "72ef8fef-2ace-48f8-a03f-44b79595eac6",
+      "name": "Sticky Note9",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         66224,
         30048
       ],
-      "typeVersion": 1,
-      "id": "72ef8fef-2ace-48f8-a03f-44b79595eac6",
-      "name": "Sticky Note9"
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -1306,14 +1330,14 @@
         "jsonBody": "={\n  \"from\": \"{{  $json.account_id }}\",\n  \"to\": \"{{ $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
         "options": {}
       },
+      "id": "64e6a549-f72d-422a-a404-59f82a08be54",
+      "name": "Enviar_mensaje_de_IA",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         69264,
         29360
       ],
-      "id": "64e6a549-f72d-422a-a404-59f82a08be54",
-      "name": "Enviar_mensaje_de_IA"
+      "typeVersion": 4.2
     },
     {
       "parameters": {
@@ -1329,18 +1353,18 @@
       "id": "5306cb44-9f19-460c-b3e9-ff818ca26140",
       "name": "Obtener_configuracion_agente",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
       "position": [
         67680,
         30080
-      ]
+      ],
+      "typeVersion": 4.2
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "jlHU9VPqKMuwuxNh",
           "mode": "list",
+          "value": "jlHU9VPqKMuwuxNh",
           "cachedResultUrl": "/workflow/jlHU9VPqKMuwuxNh",
           "cachedResultName": "yclod-simple_1_subflow"
         },
@@ -1348,169 +1372,169 @@
           "mappingMode": "defineBelow",
           "value": {
             "text": "={{ $json.text }}",
-            "session_id": "={{ $json.session_id }}",
-            "platform": "={{ $json.platform }}",
-            "image_url": "={{ $json.image_url }}",
-            "account_id": "={{ $json.account_id }}",
-            "conversation_id": "={{ $json.conversation_id }}",
-            "message_type": "={{ $json.message_type }}",
-            "user_name": "={{ $json.user_name }}",
-            "user_number": "={{ $json.user_number }}",
             "channel": "={{ $json.channel }}",
+            "content": "={{ $json.content }}",
+            "platform": "={{ $json.platform }}",
             "file_type": "={{ $json.file_type }}",
-            "content": "={{ $json.text }}",
+            "image_url": "={{ $json.image_url }}",
+            "user_name": "={{ $json.user_name }}",
+            "account_id": "={{ $json.account_id }}",
+            "session_id": "={{ $json.session_id }}",
+            "user_number": "={{ $json.user_number }}",
+            "message_type": "={{ $json.message_type }}",
             "phone_number": "={{ $json.user_number }}",
-            "user_message": "={{ $json.text }}"
+            "user_message": "={{ $json.text }}",
+            "conversation_id": "={{ $json.conversation_id }}"
           },
           "matchingColumns": [],
           "schema": [
             {
               "id": "text",
-              "displayName": "text",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "text",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "session_id",
-              "displayName": "session_id",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "session_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "account_id",
-              "displayName": "account_id",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "account_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "conversation_id",
-              "displayName": "conversation_id",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "conversation_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "message_type",
-              "displayName": "message_type",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "message_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "user_name",
-              "displayName": "user_name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "user_number",
-              "displayName": "user_number",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "platform",
-              "displayName": "platform",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "platform",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "channel",
-              "displayName": "channel",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "channel",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "content",
-              "displayName": "content",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "content",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "file_type",
-              "displayName": "file_type",
-              "required": false,
-              "defaultMatch": false,
               "display": true,
-              "canBeUsedToMatch": true,
-              "removed": false
+              "removed": false,
+              "required": false,
+              "displayName": "file_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "phone_number",
-              "displayName": "phone_number",
-              "required": false,
-              "defaultMatch": false,
               "display": true,
-              "canBeUsedToMatch": true,
-              "removed": false
+              "removed": false,
+              "required": false,
+              "displayName": "phone_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "user_message",
-              "displayName": "user_message",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_message",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "image_url",
-              "displayName": "image_url",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "string",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "image_url",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             },
             {
               "id": "agente_desactivado",
-              "displayName": "agente_desactivado",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
               "type": "boolean",
-              "removed": false
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "agente_desactivado",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -1518,27 +1542,27 @@
         },
         "options": {}
       },
+      "id": "b1a338dd-29c0-4f8c-a775-fce7ff0f7b84",
+      "name": "Call 'yclod-simple_1_subflow'",
       "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.3,
       "position": [
         66416,
         30192
       ],
-      "id": "b1a338dd-29c0-4f8c-a775-fce7ff0f7b84",
-      "name": "Call 'yclod-simple_1_subflow'"
+      "typeVersion": 1.3
     },
     {
       "parameters": {
         "options": {}
       },
+      "id": "87623efb-d558-41bf-be80-5dce4ae17f3e",
+      "name": "Postgres PGVector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
-      "typeVersion": 1.3,
       "position": [
         68352,
         29696
       ],
-      "id": "87623efb-d558-41bf-be80-5dce4ae17f3e",
-      "name": "Postgres PGVector Store",
+      "typeVersion": 1.3,
       "credentials": {
         "postgres": {
           "id": "KTEgdnqa0zFjxO2W",
@@ -1556,14 +1580,14 @@
         "builtInTools": {},
         "options": {}
       },
+      "id": "4d70f5c1-5ef5-4150-95a9-bb43443f2944",
+      "name": "OpenAI Chat Model1",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
       "position": [
         68720,
         29728
       ],
-      "id": "4d70f5c1-5ef5-4150-95a9-bb43443f2944",
-      "name": "OpenAI Chat Model1",
+      "typeVersion": 1.3,
       "credentials": {
         "openAiApi": {
           "id": "SynY9HmZH2SsZkWD",
@@ -1575,126 +1599,541 @@
       "parameters": {
         "description": "Aquí puedes tomar los documentos cargados como base de información. Para responder preguntas relacionadas "
       },
+      "id": "8a80a27d-a206-41d8-9e8f-af59e3211043",
+      "name": "Base_Conocimiento_RAG",
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
-      "typeVersion": 1.1,
       "position": [
         68432,
         29472
       ],
-      "id": "8a80a27d-a206-41d8-9e8f-af59e3211043",
-      "name": "Base_Conocimiento_RAG"
+      "typeVersion": 1.1
     },
     {
       "parameters": {
         "conditions": {
           "options": {
-            "caseSensitive": true,
+            "version": 3,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
+            "caseSensitive": true,
+            "typeValidation": "strict"
           },
+          "combinator": "or",
           "conditions": [
             {
               "id": "90c03bba-445e-4a83-be3b-308e3b2af0f4",
-              "leftValue": "={{ $json.flow_name }}",
-              "rightValue": "flujo_carrito_compra",
               "operator": {
                 "type": "string",
                 "operation": "equals",
                 "singleValue": true
-              }
+              },
+              "leftValue": "={{ $json.flow_name }}",
+              "rightValue": "flujo_carrito_compra"
             },
             {
               "id": "f75d5c9d-26be-455d-aa2c-80968f195096",
-              "leftValue": "={{ $json.equipo_asignado }}",
-              "rightValue": "flujo_carrito_compra",
               "operator": {
                 "type": "string",
                 "operation": "equals",
                 "singleValue": true
-              }
+              },
+              "leftValue": "={{ $json.equipo_asignado }}",
+              "rightValue": "flujo_carrito_compra"
             }
-          ],
-          "combinator": "or"
+          ]
         },
         "options": {}
       },
+      "id": "3025f409-324e-4bc5-af6d-c8b430128842",
+      "name": "¿Flujo_carrito?",
       "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
       "position": [
         69632,
         29040
       ],
-      "id": "3025f409-324e-4bc5-af6d-c8b430128842",
-      "name": "¿Flujo_carrito?"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://lead.integraia.lat/chatbot_cart/procesar",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": {{ JSON.stringify($('Obtener_configuracion_agente').item.json.session_id || '') }},\n  \"conversation_id\": {{ JSON.stringify($('Obtener_configuracion_agente').item.json.conversation_id || '') }},\n  \"account_id\": {{ JSON.stringify($('Obtener_configuracion_agente').item.json.account_id || '') }},\n  \"platform\": \"whatsapp\",\n  \"valor\": {{ JSON.stringify($('Obtener_configuracion_agente').item.json.text || '') }}\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        70624,
-        29056
-      ],
-      "id": "4508ec86-5573-46fc-be86-0daa7c5f1376",
-      "name": "Chatbot_cart_procesar",
-      "alwaysOutputData": true
-    },
-    {
-      "id": "3e1b54a4-f217-4563-b17e-a5e80076dfcc",
-      "name": "Unificar_salida_carrito",
-      "type": "n8n-nodes-base.code",
-      "position": [
-        70928,
-        28944
-      ],
-      "parameters": {
-        "jsCode": "let original = $json;\ntry { original = $('Cita_con_Equipo_asignado').item.json; }\ncatch (e) { original = $json; }\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $json.session_id;\nlet whatsappPayload = null;\nif (botones.length && to) {\n  whatsappPayload = {\n    from: original.account_id || $json.account_id,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nreturn [{ json: {\n  ...original,\n  ...$json,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];"
-      },
-      "typeVersion": 2
+      "typeVersion": 2.3
     },
     {
       "parameters": {
         "conditions": {
           "options": {
-            "caseSensitive": true,
+            "version": 3,
             "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
+            "caseSensitive": true,
+            "typeValidation": "strict"
           },
+          "combinator": "and",
           "conditions": [
             {
               "id": "modo_carrito_condition",
-              "leftValue": "={{ $json.modo_carrito }}",
-              "rightValue": true,
               "operator": {
                 "type": "boolean",
                 "operation": "equals"
-              }
+              },
+              "leftValue": "={{ $json.modo_carrito }}",
+              "rightValue": true
             }
-          ],
-          "combinator": "and"
+          ]
         },
         "options": {}
       },
+      "id": "3b1bb56c-17c0-4a26-ba91-6f05472e73e3",
+      "name": "¿Modo_carrito?",
       "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
       "position": [
         67952,
         30080
       ],
-      "id": "3b1bb56c-17c0-4a26-ba91-6f05472e73e3",
-      "name": "¿Modo_carrito?"
+      "typeVersion": 2.3
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "c0b40d4402d2418baf47f1d1",
+          "cachedResultUrl": "/workflow/c0b40d4402d2418baf47f1d1",
+          "cachedResultName": "ycloud_carrito_subflow"
+        },
+        "workflowInputs": {
+          "value": {
+            "text": "={{ $json.text }}",
+            "channel": "={{ $json.channel }}",
+            "content": "={{ $json.text }}",
+            "platform": "={{ $json.platform }}",
+            "file_type": "={{ $json.file_type }}",
+            "image_url": "={{ $json.image_url }}",
+            "user_name": "={{ $json.user_name }}",
+            "account_id": "={{ $json.account_id }}",
+            "session_id": "={{ $json.session_id }}",
+            "user_number": "={{ $json.user_number }}",
+            "message_type": "={{ $json.message_type }}",
+            "phone_number": "={{ $json.user_number }}",
+            "user_message": "={{ $json.text }}",
+            "conversation_id": "={{ $json.conversation_id }}",
+            "phone_number_formatted": "={{ $json.phone_number_formatted || $json.user_number }}"
+          },
+          "schema": [
+            {
+              "id": "phone_number_formatted",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "phone_number_formatted",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "text",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "session_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "account_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "account_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "conversation_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "conversation_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_type",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "message_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_name",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_number",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "platform",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "platform",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "channel",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "channel",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "content",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "content",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "file_type",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "file_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone_number",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "phone_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_message",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_message",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_url",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "image_url",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agente_desactivado",
+              "type": "boolean",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "agente_desactivado",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "f3eea9a7d8af47298899bfc6651505dd",
+      "name": "Call 'ycloud_carrito_subflow (modo)'",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "position": [
+        68624,
+        30224
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "c0b40d4402d2418baf47f1d1",
+          "cachedResultUrl": "/workflow/c0b40d4402d2418baf47f1d1",
+          "cachedResultName": "ycloud_carrito_subflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "channel": "={{ $json.platform }}",
+            "content": "={{ $json.output }}",
+            "platform": "={{ $json.platform }}",
+            "account_id": "={{ $json.account_id }}",
+            "session_id": "={{ $json.session_id }}",
+            "phone_number": "={{ $json.conversation_id }}",
+            "user_message": "={{ $json.output }}",
+            "conversation_id": "={{ $json.conversation_id }}",
+            "text": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "phone_number_formatted",
+              "type": "string",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "phone_number_formatted",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "text",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "session_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "session_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "account_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "account_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "conversation_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "conversation_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_type",
+              "type": "string",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "message_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_name",
+              "type": "string",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "user_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_number",
+              "type": "string",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "user_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "platform",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "platform",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "channel",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "channel",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "content",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "content",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "file_type",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "file_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone_number",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "phone_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_message",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "user_message",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_url",
+              "type": "string",
+              "display": true,
+              "removed": true,
+              "required": false,
+              "displayName": "image_url",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "agente_desactivado",
+              "type": "boolean",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "agente_desactivado",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "82c60233e69244a5a2eeec602c394c1b",
+      "name": "Call 'ycloud_carrito_subflow (flujo)'",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "position": [
+        70400,
+        29888
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "id": "spec49-preparar-salida-carrito",
+      "name": "Preparar_salida_carrito",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3008,
+        1536
+      ],
+      "parameters": {
+        "jsCode": "let original = $json; // SPEC 49: la respuesta Odoo trae session/account\nconst texto = $json.texto_para_usuario || $json.text || '';\nconst botones = Array.isArray($json.botones) ? $json.botones.filter(Boolean).slice(0, 3) : [];\nconst to = original.phone_number_formatted || original.user_number || original.phone_number\n  || original.session_id || $json.session_id;\nconst from = original.account_id || $json.account_id;\n// SPEC 40: la lista de categorias (buscador) tiene prioridad sobre los\n// botones — un mensaje interactivo solo admite un tipo de accion.\nconst listaCat = $json.lista_categorias;\nconst secciones = listaCat && Array.isArray(listaCat.sections) ? listaCat.sections : [];\nlet whatsappPayload = null;\nif (secciones.length && to && from) {\n  whatsappPayload = {\n    from: from,\n    to: to,\n    type: 'interactive',\n    interactive: {\n      type: 'list',\n      body: { text: texto },\n      action: { button: listaCat.button || 'Ver categorias', sections: secciones }\n    }\n  };\n} else if (botones.length && to) {\n  whatsappPayload = {\n    from: from,\n    to: to,\n    type: \"interactive\",\n    interactive: {\n      type: \"button\",\n      body: { text: texto },\n      action: { buttons: botones.map(b => ({ type: \"reply\", reply: { id: b, title: b } })) }\n    }\n  };\n}\nconst salida = [{ json: {\n  ...original,\n  ...$json,\n  output: texto,\n  text: texto,\n  content: texto,\n  modo: $json.modo || original.modo,\n  finalizado: $json.finalizado || false,\n  imagenes: $json.imagenes || [],\n  botones,\n  whatsappPayload\n} }];\n\n// SPEC 39: un media-message por producto con imagen (catálogo/búsqueda).\n// El nodo de envío ya prefiere whatsappPayload: cada item extra envía su\n// imagen con caption, después del texto (índice + botones).\nconst imagenes = Array.isArray($json.imagenes) ? $json.imagenes : [];\nif (to && from) {\n  for (const img of imagenes) {\n    // typeof: un string (codigo viejo de Odoo) expone el metodo legacy\n    // String.prototype.link (truthy) y no debe pasar como imagen.\n    if (!img || typeof img.link !== 'string' || !img.link) continue;\n    salida.push({ json: {\n      ...original,\n      ...$json,\n      whatsappPayload: {\n        from: from,\n        to: to,\n        type: 'image',\n        image: { link: img.link, caption: img.caption || '' }\n      }\n    } });\n  }\n}\nreturn salida;"
+      }
+    },
+    {
+      "id": "spec49-enviar-salida-carrito",
+      "name": "Enviar_salida_carrito",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3216,
+        1536
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ycloud.com/v2/whatsapp/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.whatsappPayload ? JSON.stringify($json.whatsappPayload) : JSON.stringify({ from: $json.account_id, to: $json.phone_number_formatted || $json.user_number || $json.phone_number || $json.session_id, type: 'text', text: { body: $json.texto_para_usuario || $json.text || $json.content } }) }}",
+        "options": {},
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth"
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "cD4Us3WKlSTj5nq5",
+          "name": "YCloud API (SPEC48)"
+        }
+      }
     }
   ],
-  "pinData": {},
   "connections": {
     "When chat message received": {
       "main": [
@@ -1843,6 +2282,13 @@
     },
     "Consulta_o_agendar_cita": {
       "main": [
+        [
+          {
+            "node": "Preparar_salida_carrito",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Obtener_configuracion_agente",
@@ -2005,7 +2451,7 @@
       "main": [
         [
           {
-            "node": "Construir_botones_WhatsApp",
+            "node": "Call 'yclod-simple_1_subflow'",
             "type": "main",
             "index": 0
           }
@@ -2111,7 +2557,7 @@
       "main": [
         [
           {
-            "node": "Chatbot_cart_procesar",
+            "node": "Call 'ycloud_carrito_subflow (flujo)'",
             "type": "main",
             "index": 0
           }
@@ -2125,33 +2571,11 @@
         ]
       ]
     },
-    "Chatbot_cart_procesar": {
-      "main": [
-        [
-          {
-            "node": "Unificar_salida_carrito",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Unificar_salida_carrito": {
-      "main": [
-        [
-          {
-            "node": "¿Enviar menú interactivo?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "¿Modo_carrito?": {
       "main": [
         [
           {
-            "node": "Chatbot_cart_procesar",
+            "node": "Call 'ycloud_carrito_subflow (modo)'",
             "type": "main",
             "index": 0
           }
@@ -2164,19 +2588,25 @@
           }
         ]
       ]
+    },
+    "Preparar_salida_carrito": {
+      "main": [
+        [
+          {
+            "node": "Enviar_salida_carrito",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": true,
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "07f87bba-7727-447a-80b9-f38a549871fa",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "ac8b8e9b824b3711008329bf41bf68736c3261debaa6dcb0eaceede9a0a7edac"
-  },
-  "id": "L2r9IMI9lGrERuZq",
-  "tags": []
+  "active": true,
+  "versionId": "c5a0b113-2ce5-4ebd-b735-aedff26cdd0f",
+  "id": "L2r9IMI9lGrERuZq"
 }
