@@ -31,6 +31,8 @@ services:
     environment:
       RAILS_ENV: production
       RACK_TIMEOUT_SERVICE_TIMEOUT: 60000
+      WEBHOOK_TIMEOUT: "15"
+      SAFE_FETCH_ALLOW_PRIVATE_NETWORK: "true"
       INSTALLATION_ENV: docker
       NODE_ENV: production
 
@@ -127,6 +129,9 @@ services:
       - ./v19/chatwoot_tmp:/app/tmp
     networks:
       - odoo_network_19
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     command: >
       sh -c "
         rm -f /app/tmp/pids/server.pid 2>/dev/null &&
@@ -149,6 +154,8 @@ services:
     environment:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
+      WEBHOOK_TIMEOUT: "15"
+      SAFE_FETCH_ALLOW_PRIVATE_NETWORK: "true"
       
       RAILS_HOST: https://chatwoot.integraia.lat
       FRONTEND_URL: https://chatwoot.integraia.lat
@@ -205,6 +212,9 @@ services:
       - ./v19/chatwoot_tmp:/app/tmp
     networks:
       - odoo_network_19
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     command: >
       sh -c "
         until nc -z redis 6379; do

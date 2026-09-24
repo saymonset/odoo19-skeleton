@@ -75,3 +75,6 @@ postiz-n8n-chatwoot-pgadmin-odoo_19/backup/*.log
 
 # Tarball portable del instalador (build artifact)
 installer_vps_*.tar.gz
+
+# Backups manuales de docker-compose (no versionar)
+*.bak-[0-9]*
