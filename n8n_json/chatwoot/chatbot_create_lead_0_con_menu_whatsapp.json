@@ -1013,7 +1013,7 @@
         "url": "https://integraia.lat/ai_chatbot_1_portal/inicioagendar",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\",\n   \"plataforma\": \"{{ $(\"Call 'chatbot-simple_1_subflow'\").item.json.platform || 'whatsapp' }}\"\n}\n",
+        "jsonBody": "={\n  \"session_id\": \"{{ $json.session_id }}\",\n  \"conversation_id\":\"{{ $json.conversation_id }}\",\n  \"account_id\":\"{{ $json.account_id }}\",\n   \"name_flow\": \"{{$json.flow_name || 'flujo_agendamiento_default'}}\",\n   \"equipo_asignado\": \"{{$json.equipo_asignado|| \"\"}}\",\n   \"plataforma\": \"{{ $(\"Call 'chatbot-simple_1_subflow'\").item.json.platform || 'whatsapp' }}\",\n   \"mensaje_usuario\": {{ JSON.stringify($('Obtener_configuracion_agente').item.json.text || '') }}\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
