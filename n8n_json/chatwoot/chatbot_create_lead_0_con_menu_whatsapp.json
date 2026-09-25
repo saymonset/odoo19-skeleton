@@ -482,6 +482,7 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "chatwoot_integraia",
+        "responseMode": "onReceived",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -1193,6 +1194,12 @@
               "name": "nombre_mostrar",
               "value": "={{ $json.texto_para_usuario || $json.text || '' }}",
               "type": "string"
+            },
+            {
+              "id": "a40885d0-6172-4a86-a023-1ebb7acea18e",
+              "name": "platform",
+              "value": "={{ $('Obtener_Info_basica').item.json.platform || '' }}",
+              "type": "string"
             }
           ]
         },
@@ -1655,6 +1662,58 @@
           "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const MAX_CHARS = 950;\nconst FIELD = 'output';\n\nconst items = $input.all();\nconst out = [];\n\nconst cpLen = (s) => Array.from(s).length;\n\nfunction isInstagram(json) {\n  const platform = String(json.platform || '').toLowerCase();\n  const channel = String(json.channel || '');\n  return platform === 'instagram' || channel === 'Channel::Instagram';\n}\n\nfunction cutSentences(paragraph, max) {\n  if (cpLen(paragraph) <= max) return [paragraph];\n  const parts = paragraph.split(/(?<=[.!?])\\s+/);\n  const res = [];\n  let buf = '';\n  for (const part of parts) {\n    const cand = buf ? buf + ' ' + part : part;\n    if (cpLen(cand) <= max) { buf = cand; continue; }\n    if (buf) { res.push(buf); buf = ''; }\n    let rest = part;\n    while (cpLen(rest) > max) {\n      res.push(Array.from(rest).slice(0, max).join(''));\n      rest = Array.from(rest).slice(max).join('');\n    }\n    buf = rest;\n  }\n  if (buf) res.push(buf);\n  return res;\n}\n\nfunction splitChunks(text, max) {\n  if (cpLen(text) <= max) return [text];\n  const chunks = [];\n  let current = '';\n  const flush = () => { const t = current.trim(); if (t) chunks.push(t); };\n  for (const paragraph of text.split(/\\n{2,}/)) {\n    for (const piece of cutSentences(paragraph, max)) {\n      const cand = current ? current + '\\n\\n' + piece : piece;\n      if (cpLen(cand) <= max) { current = cand; }\n      else { flush(); current = piece; }\n    }\n  }\n  flush();\n  return chunks.length ? chunks : [text];\n}\n\nfor (const item of items) {\n  const text = item.json[FIELD];\n  if (typeof text === 'string' && isInstagram(item.json)) {\n    for (const chunk of splitChunks(text, MAX_CHARS)) {\n      out.push({ json: { ...item.json, [FIELD]: chunk } });\n    }\n  } else {\n    out.push(item);\n  }\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        43120,
+        12576
+      ],
+      "id": "9f5b8948-8bd6-46ca-a4be-a9e477db6222",
+      "name": "Trocear_Instagram_IA"
+    },
+    {
+      "parameters": {
+        "jsCode": "const MAX_CHARS = 950;\nconst FIELD = 'content';\n\nconst items = $input.all();\nconst out = [];\n\nconst cpLen = (s) => Array.from(s).length;\n\nfunction isInstagram(json) {\n  const platform = String(json.platform || '').toLowerCase();\n  const channel = String(json.channel || '');\n  return platform === 'instagram' || channel === 'Channel::Instagram';\n}\n\nfunction cutSentences(paragraph, max) {\n  if (cpLen(paragraph) <= max) return [paragraph];\n  const parts = paragraph.split(/(?<=[.!?])\\s+/);\n  const res = [];\n  let buf = '';\n  for (const part of parts) {\n    const cand = buf ? buf + ' ' + part : part;\n    if (cpLen(cand) <= max) { buf = cand; continue; }\n    if (buf) { res.push(buf); buf = ''; }\n    let rest = part;\n    while (cpLen(rest) > max) {\n      res.push(Array.from(rest).slice(0, max).join(''));\n      rest = Array.from(rest).slice(max).join('');\n    }\n    buf = rest;\n  }\n  if (buf) res.push(buf);\n  return res;\n}\n\nfunction splitChunks(text, max) {\n  if (cpLen(text) <= max) return [text];\n  const chunks = [];\n  let current = '';\n  const flush = () => { const t = current.trim(); if (t) chunks.push(t); };\n  for (const paragraph of text.split(/\\n{2,}/)) {\n    for (const piece of cutSentences(paragraph, max)) {\n      const cand = current ? current + '\\n\\n' + piece : piece;\n      if (cpLen(cand) <= max) { current = cand; }\n      else { flush(); current = piece; }\n    }\n  }\n  flush();\n  return chunks.length ? chunks : [text];\n}\n\nfor (const item of items) {\n  const text = item.json[FIELD];\n  if (typeof text === 'string' && isInstagram(item.json)) {\n    for (const chunk of splitChunks(text, MAX_CHARS)) {\n      out.push({ json: { ...item.json, [FIELD]: chunk } });\n    }\n  } else {\n    out.push(item);\n  }\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        43472,
+        12464
+      ],
+      "id": "216dfb79-4a8d-4a4d-b9c8-0968d6ccadc3",
+      "name": "Trocear_Instagram_IA1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const MAX_CHARS = 950;\nconst FIELD = 'content';\n\nconst items = $input.all();\nconst out = [];\n\nconst cpLen = (s) => Array.from(s).length;\n\nfunction isInstagram(json) {\n  const platform = String(json.platform || '').toLowerCase();\n  const channel = String(json.channel || '');\n  return platform === 'instagram' || channel === 'Channel::Instagram';\n}\n\nfunction cutSentences(paragraph, max) {\n  if (cpLen(paragraph) <= max) return [paragraph];\n  const parts = paragraph.split(/(?<=[.!?])\\s+/);\n  const res = [];\n  let buf = '';\n  for (const part of parts) {\n    const cand = buf ? buf + ' ' + part : part;\n    if (cpLen(cand) <= max) { buf = cand; continue; }\n    if (buf) { res.push(buf); buf = ''; }\n    let rest = part;\n    while (cpLen(rest) > max) {\n      res.push(Array.from(rest).slice(0, max).join(''));\n      rest = Array.from(rest).slice(max).join('');\n    }\n    buf = rest;\n  }\n  if (buf) res.push(buf);\n  return res;\n}\n\nfunction splitChunks(text, max) {\n  if (cpLen(text) <= max) return [text];\n  const chunks = [];\n  let current = '';\n  const flush = () => { const t = current.trim(); if (t) chunks.push(t); };\n  for (const paragraph of text.split(/\\n{2,}/)) {\n    for (const piece of cutSentences(paragraph, max)) {\n      const cand = current ? current + '\\n\\n' + piece : piece;\n      if (cpLen(cand) <= max) { current = cand; }\n      else { flush(); current = piece; }\n    }\n  }\n  flush();\n  return chunks.length ? chunks : [text];\n}\n\nfor (const item of items) {\n  const text = item.json[FIELD];\n  if (typeof text === 'string' && isInstagram(item.json)) {\n    for (const chunk of splitChunks(text, MAX_CHARS)) {\n      out.push({ json: { ...item.json, [FIELD]: chunk } });\n    }\n  } else {\n    out.push(item);\n  }\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        43568,
+        11536
+      ],
+      "id": "cfab2428-97fa-48e7-b94f-5208140b1fc5",
+      "name": "Trocear_Instagram_IA2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const MAX_CHARS = 950;\nconst FIELD = 'nombre_mostrar';\n\nconst items = $input.all();\nconst out = [];\n\nconst cpLen = (s) => Array.from(s).length;\n\nfunction isInstagram(json) {\n  const platform = String(json.platform || '').toLowerCase();\n  const channel = String(json.channel || '');\n  return platform === 'instagram' || channel === 'Channel::Instagram';\n}\n\nfunction cutSentences(paragraph, max) {\n  if (cpLen(paragraph) <= max) return [paragraph];\n  const parts = paragraph.split(/(?<=[.!?])\\s+/);\n  const res = [];\n  let buf = '';\n  for (const part of parts) {\n    const cand = buf ? buf + ' ' + part : part;\n    if (cpLen(cand) <= max) { buf = cand; continue; }\n    if (buf) { res.push(buf); buf = ''; }\n    let rest = part;\n    while (cpLen(rest) > max) {\n      res.push(Array.from(rest).slice(0, max).join(''));\n      rest = Array.from(rest).slice(max).join('');\n    }\n    buf = rest;\n  }\n  if (buf) res.push(buf);\n  return res;\n}\n\nfunction splitChunks(text, max) {\n  if (cpLen(text) <= max) return [text];\n  const chunks = [];\n  let current = '';\n  const flush = () => { const t = current.trim(); if (t) chunks.push(t); };\n  for (const paragraph of text.split(/\\n{2,}/)) {\n    for (const piece of cutSentences(paragraph, max)) {\n      const cand = current ? current + '\\n\\n' + piece : piece;\n      if (cpLen(cand) <= max) { current = cand; }\n      else { flush(); current = piece; }\n    }\n  }\n  flush();\n  return chunks.length ? chunks : [text];\n}\n\nfor (const item of items) {\n  const text = item.json[FIELD];\n  if (typeof text === 'string' && isInstagram(item.json)) {\n    for (const chunk of splitChunks(text, MAX_CHARS)) {\n      out.push({ json: { ...item.json, [FIELD]: chunk } });\n    }\n  } else {\n    out.push(item);\n  }\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        41904,
+        11728
+      ],
+      "id": "485943f8-d205-43ed-a113-0f618cdcd38a",
+      "name": "Trocear_Instagram_IA3"
     }
   ],
   "pinData": {
@@ -1930,7 +1989,7 @@
       "main": [
         [
           {
-            "node": "Enviar_mensaje_de_IA2",
+            "node": "Trocear_Instagram_IA2",
             "type": "main",
             "index": 0
           }
@@ -1941,7 +2000,7 @@
       "main": [
         [
           {
-            "node": "Enviar_mensaje_de_IA3",
+            "node": "Trocear_Instagram_IA3",
             "type": "main",
             "index": 0
           }
@@ -1970,7 +2029,7 @@
       "main": [
         [
           {
-            "node": "Enviar_mensaje_de_IA",
+            "node": "Trocear_Instagram_IA",
             "type": "main",
             "index": 0
           }
@@ -2021,7 +2080,7 @@
         ],
         [
           {
-            "node": "Enviar_mensaje_de_IA1",
+            "node": "Trocear_Instagram_IA1",
             "type": "main",
             "index": 0
           }
@@ -2100,6 +2159,50 @@
           {
             "node": "Base_Conocimiento_RAG",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trocear_Instagram_IA": {
+      "main": [
+        [
+          {
+            "node": "Enviar_mensaje_de_IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trocear_Instagram_IA1": {
+      "main": [
+        [
+          {
+            "node": "Enviar_mensaje_de_IA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trocear_Instagram_IA2": {
+      "main": [
+        [
+          {
+            "node": "Enviar_mensaje_de_IA2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trocear_Instagram_IA3": {
+      "main": [
+        [
+          {
+            "node": "Enviar_mensaje_de_IA3",
+            "type": "main",
             "index": 0
           }
         ]
