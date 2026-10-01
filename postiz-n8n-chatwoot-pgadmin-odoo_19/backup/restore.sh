@@ -266,10 +266,12 @@ restore() {
     info "Deteniendo Odoo web..."
     docker compose -f $COMPOSE_ODOO_FILE stop web
     
-    # 2. Limpiar directorios de addons existentes
-    info "Limpiando directorios de addons existentes..."
-    sudo rm -rf $ADDONS_DIR/oca/* $ADDONS_DIR/extra/* $ADDONS_DIR/enterprise/* 2>/dev/null || true
-    mkdir -p $ADDONS_DIR/{oca,extra,enterprise}
+    # 2. Limpiar directorios de addons existentes solo si hay archivo de addons para restaurar
+    if [ -n "$ADDONS_FILE" ] && [ -f "$ADDONS_FILE" ]; then
+        info "Limpiando directorios de addons para restaurar..."
+        sudo rm -rf $ADDONS_DIR/oca/* $ADDONS_DIR/extra/* $ADDONS_DIR/enterprise/* 2>/dev/null || true
+        mkdir -p $ADDONS_DIR/{oca,extra,enterprise}
+    fi
     
     # 3. Restaurar filestore
     if [ -f "$FILESTORE_FILE" ]; then
@@ -280,21 +282,30 @@ restore() {
         
         tar --no-same-owner --no-same-permissions -xzf "$FILESTORE_FILE" -C "$TEMP_RESTORE_DIR"
         
-        local FILESTORE_BASE=$(find "$TEMP_RESTORE_DIR" -type d -name "filestore" | head -1)
-        
-        if [ -n "$FILESTORE_BASE" ]; then
-            ORIGINAL_DB_NAME=$(find "$FILESTORE_BASE" -maxdepth 1 -type d ! -path "$FILESTORE_BASE" | head -1 | xargs basename 2>/dev/null)
-            
-            if [ -n "$ORIGINAL_DB_NAME" ]; then
-                info "Filestore original detectado: $ORIGINAL_DB_NAME"
-                info "Renombrando a: $DB_NAME"
-                
-                sudo rm -rf $FILESTORE_DIR/$DB_NAME
-                mkdir -p $FILESTORE_DIR
-                sudo mv "$FILESTORE_BASE/$ORIGINAL_DB_NAME" "$FILESTORE_DIR/$DB_NAME"
-                
-                log "✅ Filestore restaurado"
+        local TARGET_STORE=""
+        if [ -d "$TEMP_RESTORE_DIR/filestore/$DB_NAME" ]; then
+            TARGET_STORE="$TEMP_RESTORE_DIR/filestore/$DB_NAME"
+        elif [ -d "$TEMP_RESTORE_DIR/$DB_NAME" ]; then
+            TARGET_STORE="$TEMP_RESTORE_DIR/$DB_NAME"
+        else
+            # Buscar el directorio dentro de filestore que tenga contenido real
+            TARGET_STORE=$(find "$TEMP_RESTORE_DIR" -type d -name "$DB_NAME" | head -1)
+            if [ -z "$TARGET_STORE" ]; then
+                # Buscar cualquier carpeta que contenga subcarpetas de 2 caracteres (típico de filestore odoo: 00..ff)
+                TARGET_STORE=$(find "$TEMP_RESTORE_DIR" -mindepth 2 -maxdepth 3 -type d | grep -E '/[0-9a-f]{2}$' | head -1 | xargs dirname 2>/dev/null)
             fi
+        fi
+        
+        if [ -n "$TARGET_STORE" ] && [ -d "$TARGET_STORE" ]; then
+            info "Filestore detectado en: $TARGET_STORE"
+            sudo rm -rf $FILESTORE_DIR/$DB_NAME
+            mkdir -p $FILESTORE_DIR/$DB_NAME
+            sudo cp -r "$TARGET_STORE"/* "$FILESTORE_DIR/$DB_NAME/" 2>/dev/null || sudo cp -r "$TARGET_STORE"/. "$FILESTORE_DIR/$DB_NAME/"
+            sudo chown -R 1001:1001 $FILESTORE_DIR/$DB_NAME
+            sudo chmod -R 755 $FILESTORE_DIR/$DB_NAME
+            log "✅ Filestore restaurado correctamente en $FILESTORE_DIR/$DB_NAME"
+        else
+            warn "No se pudo identificar la carpeta de datos en el filestore"
         fi
         
         sudo rm -rf "$TEMP_RESTORE_DIR"
