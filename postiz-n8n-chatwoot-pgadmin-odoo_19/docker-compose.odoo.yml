@@ -3,6 +3,7 @@ services:
   db:
     image: pgvector/pgvector:pg15 
     container_name: "odoo-db19-n8n"
+    restart: unless-stopped
     environment:
       POSTGRES_DB: dbodoo19
       POSTGRES_USER: odoo
@@ -62,6 +63,7 @@ services:
   web:
     image: "odoo-pers:19"
     container_name: "odoo-19-web"
+    restart: unless-stopped
     user: "1001:1001"
     depends_on:
       db:
